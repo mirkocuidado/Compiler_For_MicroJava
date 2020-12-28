@@ -1,0 +1,74 @@
+INFO  22:24:32,536 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  22:24:32,580 - #33 program
+INFO  22:24:32,580 - #48 MJProgram
+INFO  22:24:32,580 - #48 int
+INFO  22:24:32,581 - #48 x
+INFO  22:24:32,584 - #42 ,
+INFO  22:24:32,585 - #48 y
+INFO  22:24:32,585 - #36 ;
+INFO  22:24:32,585 - #48 int
+INFO  22:24:32,586 - #48 bla
+INFO  22:24:32,587 - #45 [
+INFO  22:24:32,587 - #46 ]
+INFO  22:24:32,587 - #42 ,
+INFO  22:24:32,587 - #48 zz
+INFO  22:24:32,588 - #42 ,
+INFO  22:24:32,588 - #48 cc
+INFO  22:24:32,588 - #45 [
+INFO  22:24:32,588 - #46 ]
+INFO  22:24:32,589 - #36 ;
+INFO  22:24:32,589 - #34 {
+INFO  22:24:32,589 - #35 }
+INFO  22:24:32,594 - Program(
+ MJProgram
+  GroupDeclarations(
+    GroupDeclarations(
+      NoGroupDecl(
+      ) [NoGroupDecl]
+      GroupDeclarationVars(
+        VarDeclClass(
+          Type(
+           int
+          ) [Type]
+          VarListClass(
+            VarListSingle(
+              VarClassNoArray(
+               x
+              ) [VarClassNoArray]
+            ) [VarListSingle]
+            VarClassNoArray(
+             y
+            ) [VarClassNoArray]
+          ) [VarListClass]
+        ) [VarDeclClass]
+      ) [GroupDeclarationVars]
+    ) [GroupDeclarations]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            VarListSingle(
+              VarClassArray(
+               bla
+              ) [VarClassArray]
+            ) [VarListSingle]
+            VarClassNoArray(
+             zz
+            ) [VarClassNoArray]
+          ) [VarListClass]
+          VarClassArray(
+           cc
+          ) [VarClassArray]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  NoMethodDecl(
+  ) [NoMethodDecl]
+) [Program]
+INFO  22:24:32,595 - ===================================
+INFO  22:24:32,599 -  Print count calls = 0
+INFO  22:24:32,599 -  Deklarisanih promenljivih ima = 0

@@ -1,0 +1,282 @@
+INFO  23:44:08,494 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  23:44:08,551 - #34 program
+INFO  23:44:08,551 - #48 MJProgram
+INFO  23:44:08,551 - #48 int
+INFO  23:44:08,553 - #48 x
+INFO  23:44:08,554 - #42 ,
+INFO  23:44:08,555 - #48 y
+INFO  23:44:08,555 - #37 ;
+INFO  23:44:08,555 - #48 int
+INFO  23:44:08,555 - #48 bla
+INFO  23:44:08,556 - #45 [
+INFO  23:44:08,556 - #46 ]
+INFO  23:44:08,556 - #42 ,
+INFO  23:44:08,556 - #48 zz
+INFO  23:44:08,556 - #42 ,
+INFO  23:44:08,556 - #48 cc
+INFO  23:44:08,556 - #45 [
+INFO  23:44:08,557 - #46 ]
+INFO  23:44:08,557 - #37 ;
+INFO  23:44:08,557 - #7 const
+INFO  23:44:08,557 - #48 int
+INFO  23:44:08,557 - #48 aa
+INFO  23:44:08,558 - #33 =
+INFO  23:44:08,558 - #47 5
+INFO  23:44:08,558 - #42 ,
+INFO  23:44:08,558 - #48 bb
+INFO  23:44:08,559 - #33 =
+INFO  23:44:08,559 - #47 6
+INFO  23:44:08,559 - #37 ;
+INFO  23:44:08,559 - #7 const
+INFO  23:44:08,559 - #48 char
+INFO  23:44:08,559 - #48 cc
+INFO  23:44:08,559 - #33 =
+INFO  23:44:08,560 - #2 c
+INFO  23:44:08,560 - #42 ,
+INFO  23:44:08,561 - #48 dd
+INFO  23:44:08,561 - #33 =
+INFO  23:44:08,561 - #2 d
+INFO  23:44:08,561 - #37 ;
+INFO  23:44:08,561 - #7 const
+INFO  23:44:08,561 - #48 bool
+INFO  23:44:08,561 - #48 ee
+INFO  23:44:08,562 - #33 =
+INFO  23:44:08,562 - #3 true
+INFO  23:44:08,562 - #42 ,
+INFO  23:44:08,563 - #48 ff
+INFO  23:44:08,563 - #33 =
+INFO  23:44:08,563 - #3 false
+INFO  23:44:08,563 - #37 ;
+INFO  23:44:08,563 - #5 class
+INFO  23:44:08,563 - #48 Klasa
+INFO  23:44:08,564 - #35 {
+INFO  23:44:08,565 - #48 int
+INFO  23:44:08,566 - #48 duca1
+INFO  23:44:08,566 - #42 ,
+INFO  23:44:08,566 - #48 duca2
+INFO  23:44:08,566 - #42 ,
+INFO  23:44:08,566 - #48 duca3
+INFO  23:44:08,566 - #37 ;
+INFO  23:44:08,566 - #36 }
+INFO  23:44:08,568 - #5 class
+INFO  23:44:08,568 - #48 KlasaDva
+INFO  23:44:08,568 - #13 extends
+INFO  23:44:08,568 - #48 Klasa
+INFO  23:44:08,568 - #35 {
+INFO  23:44:08,568 - #48 int
+INFO  23:44:08,569 - #48 aa
+INFO  23:44:08,569 - #37 ;
+INFO  23:44:08,569 - #35 {
+INFO  23:44:08,569 - #48 int
+INFO  23:44:08,570 - #48 f
+INFO  23:44:08,570 - #38 (
+INFO  23:44:08,570 - #39 )
+INFO  23:44:08,571 - #35 {
+INFO  23:44:08,571 - #36 }
+INFO  23:44:08,572 - #36 }
+INFO  23:44:08,574 - #36 }
+INFO  23:44:08,574 - #35 {
+INFO  23:44:08,574 - #36 }
+INFO  23:44:08,576 - Program(
+ MJProgram
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        GroupDeclarations(
+          GroupDeclarations(
+            GroupDeclarations(
+              GroupDeclarations(
+                NoGroupDecl(
+                ) [NoGroupDecl]
+                GroupDeclarationVars(
+                  VarDeclClass(
+                    Type(
+                     int
+                    ) [Type]
+                    VarListClass(
+                      VarListSingle(
+                        VarClassNoArray(
+                         x
+                        ) [VarClassNoArray]
+                      ) [VarListSingle]
+                      VarClassNoArray(
+                       y
+                      ) [VarClassNoArray]
+                    ) [VarListClass]
+                  ) [VarDeclClass]
+                ) [GroupDeclarationVars]
+              ) [GroupDeclarations]
+              GroupDeclarationVars(
+                VarDeclClass(
+                  Type(
+                   int
+                  ) [Type]
+                  VarListClass(
+                    VarListClass(
+                      VarListSingle(
+                        VarClassArray(
+                         bla
+                        ) [VarClassArray]
+                      ) [VarListSingle]
+                      VarClassNoArray(
+                       zz
+                      ) [VarClassNoArray]
+                    ) [VarListClass]
+                    VarClassArray(
+                     cc
+                    ) [VarClassArray]
+                  ) [VarListClass]
+                ) [VarDeclClass]
+              ) [GroupDeclarationVars]
+            ) [GroupDeclarations]
+            GroupDeclarationsConsts(
+              ConstDeclClass(
+                Type(
+                 int
+                ) [Type]
+                ConstListClass(
+                  ConstListSingle(
+                    ConstListNoArray(
+                     aa
+                      ValuesNumber(
+                       5
+                      ) [ValuesNumber]
+                    ) [ConstListNoArray]
+                  ) [ConstListSingle]
+                  ConstListNoArray(
+                   bb
+                    ValuesNumber(
+                     6
+                    ) [ValuesNumber]
+                  ) [ConstListNoArray]
+                ) [ConstListClass]
+              ) [ConstDeclClass]
+            ) [GroupDeclarationsConsts]
+          ) [GroupDeclarations]
+          GroupDeclarationsConsts(
+            ConstDeclClass(
+              Type(
+               char
+              ) [Type]
+              ConstListClass(
+                ConstListSingle(
+                  ConstListNoArray(
+                   cc
+                    ValuesChar(
+                    ) [ValuesChar]
+                  ) [ConstListNoArray]
+                ) [ConstListSingle]
+                ConstListNoArray(
+                 dd
+                  ValuesChar(
+                  ) [ValuesChar]
+                ) [ConstListNoArray]
+              ) [ConstListClass]
+            ) [ConstDeclClass]
+          ) [GroupDeclarationsConsts]
+        ) [GroupDeclarations]
+        GroupDeclarationsConsts(
+          ConstDeclClass(
+            Type(
+             bool
+            ) [Type]
+            ConstListClass(
+              ConstListSingle(
+                ConstListNoArray(
+                 ee
+                  ValuesBoolean(
+                  ) [ValuesBoolean]
+                ) [ConstListNoArray]
+              ) [ConstListSingle]
+              ConstListNoArray(
+               ff
+                ValuesBoolean(
+                ) [ValuesBoolean]
+              ) [ConstListNoArray]
+            ) [ConstListClass]
+          ) [ConstDeclClass]
+        ) [GroupDeclarationsConsts]
+      ) [GroupDeclarations]
+      GroupDeclarationClasses(
+        ClassDeclClass(
+         Klasa
+          NoExtendsOption(
+          ) [NoExtendsOption]
+          VarDeclListClass(
+            NoVarDeclList(
+            ) [NoVarDeclList]
+            VarDeclClass(
+              Type(
+               int
+              ) [Type]
+              VarListClass(
+                VarListClass(
+                  VarListSingle(
+                    VarClassNoArray(
+                     duca1
+                    ) [VarClassNoArray]
+                  ) [VarListSingle]
+                  VarClassNoArray(
+                   duca2
+                  ) [VarClassNoArray]
+                ) [VarListClass]
+                VarClassNoArray(
+                 duca3
+                ) [VarClassNoArray]
+              ) [VarListClass]
+            ) [VarDeclClass]
+          ) [VarDeclListClass]
+          NoMethodsOption(
+          ) [NoMethodsOption]
+        ) [ClassDeclClass]
+      ) [GroupDeclarationClasses]
+    ) [GroupDeclarations]
+    GroupDeclarationClasses(
+      ClassDeclClass(
+       KlasaDva
+        ExtendsClassName(
+          Type(
+           Klasa
+          ) [Type]
+        ) [ExtendsClassName]
+        VarDeclListClass(
+          NoVarDeclList(
+          ) [NoVarDeclList]
+          VarDeclClass(
+            Type(
+             int
+            ) [Type]
+            VarListSingle(
+              VarClassNoArray(
+               aa
+              ) [VarClassNoArray]
+            ) [VarListSingle]
+          ) [VarDeclClass]
+        ) [VarDeclListClass]
+        MethodsClassName(
+          MethodDeclarations(
+            NoMethodDecl(
+            ) [NoMethodDecl]
+            MethodDecl(
+              Type(
+               int
+              ) [Type]
+             f
+              NoFormParam(
+              ) [NoFormParam]
+              NoVarDeclList(
+              ) [NoVarDeclList]
+              NoStmt(
+              ) [NoStmt]
+            ) [MethodDecl]
+          ) [MethodDeclarations]
+        ) [MethodsClassName]
+      ) [ClassDeclClass]
+    ) [GroupDeclarationClasses]
+  ) [GroupDeclarations]
+  NoMethodDecl(
+  ) [NoMethodDecl]
+) [Program]
+INFO  23:44:08,576 - ===================================
+INFO  23:44:08,579 -  Print count calls = 0
+INFO  23:44:08,579 -  Deklarisanih promenljivih ima = 0

@@ -1,0 +1,175 @@
+INFO  22:51:10,996 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  22:51:11,062 - #34 program
+INFO  22:51:11,063 - #48 MJProgram
+INFO  22:51:11,063 - #48 int
+INFO  22:51:11,068 - #48 x
+INFO  22:51:11,072 - #42 ,
+INFO  22:51:11,072 - #48 y
+INFO  22:51:11,072 - #37 ;
+INFO  22:51:11,072 - #48 int
+INFO  22:51:11,073 - #48 bla
+INFO  22:51:11,073 - #45 [
+INFO  22:51:11,073 - #46 ]
+INFO  22:51:11,073 - #42 ,
+INFO  22:51:11,073 - #48 zz
+INFO  22:51:11,074 - #42 ,
+INFO  22:51:11,074 - #48 cc
+INFO  22:51:11,074 - #45 [
+INFO  22:51:11,074 - #46 ]
+INFO  22:51:11,074 - #37 ;
+INFO  22:51:11,074 - #7 const
+INFO  22:51:11,074 - #48 int
+INFO  22:51:11,075 - #48 aa
+INFO  22:51:11,075 - #33 =
+INFO  22:51:11,075 - #47 5
+INFO  22:51:11,075 - #42 ,
+INFO  22:51:11,076 - #48 bb
+INFO  22:51:11,076 - #33 =
+INFO  22:51:11,076 - #47 6
+INFO  22:51:11,076 - #37 ;
+INFO  22:51:11,076 - #7 const
+INFO  22:51:11,077 - #48 char
+INFO  22:51:11,077 - #48 cc
+INFO  22:51:11,077 - #33 =
+INFO  22:51:11,077 - #2 c
+INFO  22:51:11,077 - #42 ,
+INFO  22:51:11,078 - #48 dd
+INFO  22:51:11,078 - #33 =
+INFO  22:51:11,078 - #2 d
+INFO  22:51:11,079 - #37 ;
+INFO  22:51:11,079 - #7 const
+INFO  22:51:11,079 - #48 boolean
+INFO  22:51:11,079 - #48 ee
+INFO  22:51:11,079 - #33 =
+INFO  22:51:11,079 - #3 true
+INFO  22:51:11,079 - #42 ,
+INFO  22:51:11,080 - #48 ff
+INFO  22:51:11,081 - #33 =
+INFO  22:51:11,081 - #3 false
+INFO  22:51:11,081 - #37 ;
+INFO  22:51:11,081 - #35 {
+INFO  22:51:11,081 - #36 }
+INFO  22:51:11,088 - Program(
+ MJProgram
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        GroupDeclarations(
+          GroupDeclarations(
+            NoGroupDecl(
+            ) [NoGroupDecl]
+            GroupDeclarationVars(
+              VarDeclClass(
+                Type(
+                 int
+                ) [Type]
+                VarListClass(
+                  VarListSingle(
+                    VarClassNoArray(
+                     x
+                    ) [VarClassNoArray]
+                  ) [VarListSingle]
+                  VarClassNoArray(
+                   y
+                  ) [VarClassNoArray]
+                ) [VarListClass]
+              ) [VarDeclClass]
+            ) [GroupDeclarationVars]
+          ) [GroupDeclarations]
+          GroupDeclarationVars(
+            VarDeclClass(
+              Type(
+               int
+              ) [Type]
+              VarListClass(
+                VarListClass(
+                  VarListSingle(
+                    VarClassArray(
+                     bla
+                    ) [VarClassArray]
+                  ) [VarListSingle]
+                  VarClassNoArray(
+                   zz
+                  ) [VarClassNoArray]
+                ) [VarListClass]
+                VarClassArray(
+                 cc
+                ) [VarClassArray]
+              ) [VarListClass]
+            ) [VarDeclClass]
+          ) [GroupDeclarationVars]
+        ) [GroupDeclarations]
+        GroupDeclarationsConsts(
+          ConstDeclClass(
+            Type(
+             int
+            ) [Type]
+            ConstListClass(
+              ConstListSingle(
+                ConstListNoArray(
+                 aa
+                  ValuesNumber(
+                   5
+                  ) [ValuesNumber]
+                ) [ConstListNoArray]
+              ) [ConstListSingle]
+              ConstListNoArray(
+               bb
+                ValuesNumber(
+                 6
+                ) [ValuesNumber]
+              ) [ConstListNoArray]
+            ) [ConstListClass]
+          ) [ConstDeclClass]
+        ) [GroupDeclarationsConsts]
+      ) [GroupDeclarations]
+      GroupDeclarationsConsts(
+        ConstDeclClass(
+          Type(
+           char
+          ) [Type]
+          ConstListClass(
+            ConstListSingle(
+              ConstListNoArray(
+               cc
+                ValuesChar(
+                ) [ValuesChar]
+              ) [ConstListNoArray]
+            ) [ConstListSingle]
+            ConstListNoArray(
+             dd
+              ValuesChar(
+              ) [ValuesChar]
+            ) [ConstListNoArray]
+          ) [ConstListClass]
+        ) [ConstDeclClass]
+      ) [GroupDeclarationsConsts]
+    ) [GroupDeclarations]
+    GroupDeclarationsConsts(
+      ConstDeclClass(
+        Type(
+         boolean
+        ) [Type]
+        ConstListClass(
+          ConstListSingle(
+            ConstListNoArray(
+             ee
+              ValuesBoolean(
+              ) [ValuesBoolean]
+            ) [ConstListNoArray]
+          ) [ConstListSingle]
+          ConstListNoArray(
+           ff
+            ValuesBoolean(
+            ) [ValuesBoolean]
+          ) [ConstListNoArray]
+        ) [ConstListClass]
+      ) [ConstDeclClass]
+    ) [GroupDeclarationsConsts]
+  ) [GroupDeclarations]
+  NoMethodDecl(
+  ) [NoMethodDecl]
+) [Program]
+INFO  22:51:11,089 - ===================================
+INFO  22:51:11,093 -  Print count calls = 0
+INFO  22:51:11,093 -  Deklarisanih promenljivih ima = 0

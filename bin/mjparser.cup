@@ -1,0 +1,220 @@
+
+
+package rs.ac.bg.etf.pp1;
+
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+import rs.ac.bg.etf.pp1.ast.*;
+
+parser code {:
+
+	Logger log = Logger.getLogger(getClass());
+   
+   
+    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+     
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);
+    }
+  
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSintaksna greska", cur_token);
+    }
+  
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+    }
+
+    public void report_error(String message, Object info) {
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol)
+            msg.append (" na liniji ").append(((Symbol)info).left);
+        log.error(msg.toString());
+    }
+
+
+:}
+
+
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null) 
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+terminal CHAR, BOOLEAN, BREAK, CLASS, ENUM, CONST, SWITCH, DO, WHILE, NEW,
+		READ, EXTENDS, CONTINUE, CASE, MINUS, MUL, DIV, MOD, EQUAL_COMPARATION, 
+		NOT_EQUAL_COMPARATION, GREATER, GREATER_OR_EQUAL, LESS, LESS_OR_EQUAL,
+		AND, OR, PLUS_PLUS, MINUS_MINUS, DOT, TERNARY, COLON, EQUAL;
+
+terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, RETURN, PLUS, COMMA, PRINT, VOID, LSQUARE_BRACKET, RSQUARE_BRACKET;
+terminal Integer NUMBER;
+terminal String IDENT;
+terminal IF, ELSE;
+
+nonterminal Program, VarDeclList, MethodDeclList, VarDecl, Type, MethodsOption, ExtendsOption, MethodDecl, VarList, Variable, 
+			GroupDeclList, GroupDecl, ClassDecl, ConstDecl, ConstList, ConstVariable, ValueOptions, ReturnValue;
+			
+nonterminal FormPars, StatementList, FormalParamList, FormalParamDecl, Statement;
+nonterminal Designator, Expr, Term, Addop, Factor, ActualPars, ActualParamList;
+nonterminal Matched, Unmatched;
+
+Program ::= (Program) PROG IDENT GroupDeclList LBRACE MethodDeclList RBRACE;
+
+GroupDeclList ::= (GroupDeclarations) GroupDeclList GroupDecl
+			  |
+			  (NoGroupDecl) /* epsilon */
+			  ;
+			  
+GroupDecl ::= (GroupDeclarationVars) VarDecl
+			  |
+			  (GroupDeclarationClasses) ClassDecl
+			  |
+			  (GroupDeclarationsConsts) ConstDecl
+			  ;
+
+ClassDecl ::= (ClassDeclClass) CLASS IDENT:className ExtendsOption LBRACE VarDeclList MethodsOption RBRACE;
+
+ExtendsOption ::= (ExtendsClassName) EXTENDS Type:extendsClassType
+				|
+				(NoExtendsOption) /* epsilon */
+				;
+
+MethodsOption ::= (MethodsClassName) LBRACE MethodDeclList RBRACE
+				|
+				(NoMethodsOption) /* epsilon */ 
+				;
+				
+
+ConstDecl ::= (ConstDeclClass) CONST Type:constVarType ConstList SEMI;
+
+ConstList ::= (ConstListClass) ConstList COMMA ConstVariable
+			  |
+			  (ConstListSingle) ConstVariable
+			  ;
+
+ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions;
+
+ValueOptions ::= (ValuesNumber) NUMBER
+				 |
+ 				 (ValuesBoolean) BOOLEAN
+ 				 |
+ 				 (ValuesChar) CHAR
+ 				 ;
+
+VarDeclList ::= (VarDeclListClass) VarDeclList VarDecl
+				|
+				(NoVarDeclList) /* epsilon */
+				;
+
+VarDecl ::= (VarDeclClass) Type:varType VarList SEMI;
+
+VarList ::= (VarListClass) VarList COMMA Variable
+			|
+			(VarListSingle) Variable
+			;
+				
+Variable ::= (VarClassNoArray) IDENT:varName
+		|
+		(VarClassArray) IDENT:varName LSQUARE_BRACKET RSQUARE_BRACKET
+		;
+
+Type ::= (Type) IDENT:typeName;
+
+MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
+				|
+				(NoMethodDecl) /* epsilon */
+				;
+				
+MethodDecl ::= (MethodDecl) ReturnValue IDENT:methName LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE;
+
+ReturnValue ::= (ReturnValueClassNoVoid) Type:retType
+				|
+				(ReturnValueClassVoid) VOID
+				; 
+				
+FormPars ::= (FormParams) FormalParamList
+		  |
+		  (NoFormParam) /* epsilon */
+		  ;
+		  
+FormalParamList ::= (FormalParamDecls) FormalParamList COMMA FormalParamDecl
+				|
+				(SingleFormalParamDecl) FormalParamDecl
+				;
+	
+FormalParamDecl ::= (FormalParamDeclClassNoArray) Type:formalParamType IDENT:formalParamName
+		|
+		(FormalParamDeclClassArray) Type:formalParamType IDENT:formalParamName LSQUARE_BRACKET RSQUARE_BRACKET
+		;
+
+
+
+
+
+
+
+
+
+StatementList ::= (Statements) StatementList Statement
+				|
+				(NoStmt) /* epsilon */
+				;
+				
+Statement ::= (MatchedStmt) Matched
+		   |
+		   (UnmatchedStmt) Unmatched
+		   ; 
+
+Unmatched ::= (UnmatchedIf) IF Expr Statement
+		 	|
+		 	(UnmatchedIfElse) IF Expr Matched ELSE Unmatched
+		 	;
+		 
+
+Matched ::= (Assignment) Designator:dest EQUAL Expr:e SEMI
+		   |
+		   (ErrorStmt) error SEMI:l
+		   {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
+		   |
+		   (PrintStmt) PRINT LPAREN Expr RPAREN SEMI
+		   |
+		   (ReturnExpr) RETURN Expr:t SEMI
+		   |
+		   (ReturnNoExpr) RETURN SEMI
+		   |
+		   (MatchedStatement) IF Expr Matched ELSE Matched
+		   ;
+			
+Expr ::= (AddExpr) Expr:te Addop Term:t
+	 |
+	 (TermExpr) Term:t
+	 ;
+
+Term ::= (Term) Factor:t;
+
+Factor ::= (Const) NUMBER
+		|
+		(Var) Designator:d
+		| 
+		(FuncCall) Designator:func LPAREN ActualPars RPAREN
+		;
+		
+ActualPars ::= (Actuals) ActualParamList
+			|
+			(NoActuals) /* epsilon */
+			;
+		
+ActualParamList ::= (ActualParams) ActualParamList COMMA Expr
+				|
+				(ActualParam) Expr
+				;
+				
+Designator ::= (Designator) IDENT:name;
+
+Addop ::= (Addop) PLUS;
+		
+		
+

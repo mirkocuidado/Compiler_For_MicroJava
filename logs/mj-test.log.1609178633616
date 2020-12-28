@@ -1,0 +1,137 @@
+INFO  19:01:33,106 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  19:01:33,133 - #2 program
+INFO  19:01:33,134 - #17 MJProgram
+INFO  19:01:33,134 - #17 int
+INFO  19:01:33,135 - #17 x
+INFO  19:01:33,135 - #11 ,
+INFO  19:01:33,136 - #17 y
+INFO  19:01:33,136 - #5 ;
+INFO  19:01:33,136 - #3 {
+INFO  19:01:33,136 - #17 int
+INFO  19:01:33,137 - #17 main
+INFO  19:01:33,137 - #6 (
+INFO  19:01:33,137 - #7 )
+INFO  19:01:33,137 - #3 {
+INFO  19:01:33,138 - #12 print
+INFO  19:01:33,138 - #6 (
+INFO  19:01:33,139 - #16 1
+INFO  19:01:33,139 - #7 )
+INFO  19:01:33,140 - #5 ;
+INFO  19:01:33,140 - #17 x
+INFO  19:01:33,140 - #8 =
+INFO  19:01:33,141 - #17 y
+INFO  19:01:33,141 - #10 +
+INFO  19:01:33,141 - #16 5
+INFO  19:01:33,142 - #10 +
+INFO  19:01:33,142 - #16 6
+INFO  19:01:33,142 - #5 ;
+INFO  19:01:33,142 - #12 print
+INFO  19:01:33,142 - #6 (
+INFO  19:01:33,142 - #16 2
+INFO  19:01:33,142 - #7 )
+INFO  19:01:33,142 - #5 ;
+INFO  19:01:33,142 - #4 }
+INFO  19:01:33,142 - #4 }
+INFO  19:01:33,146 - Program(
+ MJProgram
+  VarDeclarations(
+    NoVarDecl(
+    ) [NoVarDecl]
+    VarDeclClass(
+      Type(
+       int
+      ) [Type]
+      VarListClass(
+        VarListSingle(
+          VarClassNoArray(
+           x
+          ) [VarClassNoArray]
+        ) [VarListSingle]
+        VarClassNoArray(
+         y
+        ) [VarClassNoArray]
+      ) [VarListClass]
+    ) [VarDeclClass]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      Type(
+       int
+      ) [Type]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            MatchedStmt(
+              PrintStmt(
+                TermExpr(
+                  Term(
+                    Const(
+                     1
+                    ) [Const]
+                  ) [Term]
+                ) [TermExpr]
+              ) [PrintStmt]
+            ) [MatchedStmt]
+          ) [Statements]
+          MatchedStmt(
+            Assignment(
+              Designator(
+               x
+              ) [Designator]
+              AddExpr(
+                AddExpr(
+                  TermExpr(
+                    Term(
+                      Var(
+                        Designator(
+                         y
+                        ) [Designator]
+                      ) [Var]
+                    ) [Term]
+                  ) [TermExpr]
+                  Addop(
+                  ) [Addop]
+                  Term(
+                    Const(
+                     5
+                    ) [Const]
+                  ) [Term]
+                ) [AddExpr]
+                Addop(
+                ) [Addop]
+                Term(
+                  Const(
+                   6
+                  ) [Const]
+                ) [Term]
+              ) [AddExpr]
+            ) [Assignment]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          PrintStmt(
+            TermExpr(
+              Term(
+                Const(
+                 2
+                ) [Const]
+              ) [Term]
+            ) [TermExpr]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  19:01:33,147 - ===================================
+INFO  19:01:33,151 -  Print count calls = 0
+INFO  19:01:33,151 -  Deklarisanih promenljivih ima = 0
