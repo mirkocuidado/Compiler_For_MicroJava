@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 30/11/2020 1:20:9
+// 30/11/2020 11:33:53
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -11,10 +11,12 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(GroupDeclList GroupDeclList) { }
     public void visit(Matched Matched) { }
     public void visit(TermOptionalList TermOptionalList) { }
+    public void visit(ExprOne ExprOne) { }
     public void visit(DesignatorStatementOptions DesignatorStatementOptions) { }
     public void visit(FormalParamDecl FormalParamDecl) { }
     public void visit(ConditionOptional ConditionOptional) { }
     public void visit(Variable Variable) { }
+    public void visit(ExprNegative ExprNegative) { }
     public void visit(StatementList StatementList) { }
     public void visit(MethodsOption MethodsOption) { }
     public void visit(ValueOptions ValueOptions) { }
@@ -26,6 +28,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(CondTerm CondTerm) { }
     public void visit(VarList VarList) { }
     public void visit(ConstList ConstList) { }
+    public void visit(ExprPositive ExprPositive) { }
     public void visit(Term Term) { }
     public void visit(Condition Condition) { }
     public void visit(MulOp MulOp) { }
@@ -80,8 +83,12 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(TermClass TermClass) { visit(); }
     public void visit(NoExprOptionalListClass NoExprOptionalListClass) { visit(); }
     public void visit(ExprOptionalListClass ExprOptionalListClass) { visit(); }
-    public void visit(ExprSecondOptionClassNoMinus ExprSecondOptionClassNoMinus) { visit(); }
+    public void visit(ClassTwoClass ClassTwoClass) { visit(); }
+    public void visit(ClassOneClass ClassOneClass) { visit(); }
+    public void visit(ExprSecondOptionClassMinus ExprSecondOptionClassMinus) { visit(); }
+    public void visit(NormalExpressionClass NormalExpressionClass) { visit(); }
     public void visit(ExprFirstOptionClassWithMinus ExprFirstOptionClassWithMinus) { visit(); }
+    public void visit(ExprNegativeClass ExprNegativeClass) { visit(); }
     public void visit(NoCondFactOptionalClass NoCondFactOptionalClass) { visit(); }
     public void visit(CondFactOptionalClass CondFactOptionalClass) { visit(); }
     public void visit(CondFactClass CondFactClass) { visit(); }

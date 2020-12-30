@@ -108,6 +108,9 @@ nonterminal Condition Condition;
 nonterminal ConditionOptional ConditionOptional;
 nonterminal DesignatorStatementOptions DesignatorStatementOptions;
 nonterminal SwitchStatementList SwitchStatementList;
+nonterminal ExprNegative ExprNegative;
+nonterminal ExprPositive ExprPositive;
+nonterminal ExprOne ExprOne;
 			
 			
 Program ::= (Program) PROG IDENT:I1 GroupDeclList:G2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(I1, G2, M3); RESULT.setLine(I1left); :};
@@ -304,11 +307,21 @@ CondFactOptional ::= (CondFactOptionalClass) RelOp:R1 Expr:E2 {: RESULT=new Cond
 					(NoCondFactOptionalClass) {: RESULT=new NoCondFactOptionalClass(); :} /* epsion */
 					;		
 		
-Expr ::= (ExprFirstOptionClassWithMinus) MINUS Term:T1 ExprOptionalList:E2 {: RESULT=new ExprFirstOptionClassWithMinus(T1, E2); RESULT.setLine(T1left); :} 
+ExprNegative ::= (ExprNegativeClass) MINUS ExprPositive:E1 {: RESULT=new ExprNegativeClass(E1); RESULT.setLine(E1left); :};
+
+ExprPositive ::= (ExprFirstOptionClassWithMinus) Term:T1 ExprOptionalList:E2 {: RESULT=new ExprFirstOptionClassWithMinus(T1, E2); RESULT.setLine(T1left); :};
+
+
+ExprOne ::= (NormalExpressionClass) ExprPositive:E1 {: RESULT=new NormalExpressionClass(E1); RESULT.setLine(E1left); :}
 		|
-		(ExprSecondOptionClassNoMinus) Term:T1 ExprOptionalList:E2 {: RESULT=new ExprSecondOptionClassNoMinus(T1, E2); RESULT.setLine(T1left); :}
+		(ExprSecondOptionClassMinus) ExprNegative:E1 {: RESULT=new ExprSecondOptionClassMinus(E1); RESULT.setLine(E1left); :}
 		;	
-				
+
+Expr ::= (ClassOneClass) ExprOne:E1 {: RESULT=new ClassOneClass(E1); RESULT.setLine(E1left); :}
+		|
+		(ClassTwoClass) ExprOne:E1 TERNARY ExprOne:E2 COLON ExprOne:E3 {: RESULT=new ClassTwoClass(E1, E2, E3); RESULT.setLine(E1left); :}
+		;
+	
 ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList:E1 AddOp:A2 Term:T3 {: RESULT=new ExprOptionalListClass(E1, A2, T3); RESULT.setLine(E1left); :}
 					|
 					(NoExprOptionalListClass) {: RESULT=new NoExprOptionalListClass(); :} /* epsilon */

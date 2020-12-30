@@ -62,7 +62,7 @@ nonterminal Designator, Expr, Term, AddOp, Factor, ActualPars, ActualParamList;
 nonterminal Matched, Unmatched;
 
 nonterminal DesignatorStatement, OptionalDesignator, AssignOp, RelOp, MulOp, FactorOptional, FactorOptionalSecond, TermOptionalList, ExprOptionalList, CondFact, 
-			CondFactOptional, CondTerm, CondTermOptional, Condition, ConditionOptional, DesignatorStatementOptions, SwitchStatementList;
+			CondFactOptional, CondTerm, CondTermOptional, Condition, ConditionOptional, DesignatorStatementOptions, SwitchStatementList, ExprNegative, ExprPositive, ExprOne;
 			
 			
 Program ::= (Program) PROG IDENT GroupDeclList LBRACE MethodDeclList RBRACE;
@@ -259,11 +259,21 @@ CondFactOptional ::= (CondFactOptionalClass) RelOp Expr
 					(NoCondFactOptionalClass) /* epsion */
 					;		
 		
-Expr ::= (ExprFirstOptionClassWithMinus) MINUS Term ExprOptionalList 
+ExprNegative ::= (ExprNegativeClass) MINUS ExprPositive;
+
+ExprPositive ::= (ExprFirstOptionClassWithMinus) Term ExprOptionalList;
+
+
+ExprOne ::= (NormalExpressionClass) ExprPositive
 		|
-		(ExprSecondOptionClassNoMinus) Term ExprOptionalList
+		(ExprSecondOptionClassMinus) ExprNegative
 		;	
-				
+
+Expr ::= (ClassOneClass) ExprOne
+		|
+		(ClassTwoClass) ExprOne TERNARY ExprOne COLON ExprOne
+		;
+	
 ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList AddOp Term
 					|
 					(NoExprOptionalListClass) /* epsilon */
