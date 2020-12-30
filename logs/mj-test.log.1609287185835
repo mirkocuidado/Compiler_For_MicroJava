@@ -1,0 +1,195 @@
+INFO  01:10:24,780 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  01:10:24,849 - #34 program
+INFO  01:10:24,849 - #48 MJProgram
+INFO  01:10:24,849 - #35 {
+INFO  01:10:24,850 - #44 void
+INFO  01:10:24,850 - #48 main
+INFO  01:10:24,851 - #38 (
+INFO  01:10:24,851 - #39 )
+INFO  01:10:24,852 - #48 int
+INFO  01:10:24,853 - #48 x
+INFO  01:10:24,854 - #42 ,
+INFO  01:10:24,854 - #48 i
+INFO  01:10:24,854 - #37 ;
+INFO  01:10:24,854 - #48 char
+INFO  01:10:24,854 - #48 c
+INFO  01:10:24,855 - #37 ;
+INFO  01:10:24,855 - #35 {
+INFO  01:10:24,855 - #9 do
+INFO  01:10:24,856 - #35 {
+INFO  01:10:24,856 - #48 val
+INFO  01:10:24,856 - #30 .
+INFO  01:10:24,857 - #48 putp
+INFO  01:10:24,866 - #38 (
+ERROR 01:10:24,867 - 
+Sintaksna greska na liniji 8
+INFO  01:10:24,867 - #47 0
+INFO  01:10:24,867 - #42 ,
+INFO  01:10:24,867 - #48 i
+INFO  01:10:24,868 - #39 )
+INFO  01:10:24,868 - #37 ;
+INFO  01:10:24,868 - #48 val
+INFO  01:10:24,869 - #30 .
+INFO  01:10:24,869 - #48 putn
+ERROR 01:10:24,869 - Izvrsen oporavak do ; u liniji 8
+INFO  01:10:24,870 - #38 (
+ERROR 01:10:24,870 - 
+Sintaksna greska na liniji 9
+INFO  01:10:24,870 - #47 0
+INFO  01:10:24,870 - #42 ,
+INFO  01:10:24,870 - #48 i
+INFO  01:10:24,870 - #39 )
+INFO  01:10:24,870 - #37 ;
+INFO  01:10:24,870 - #48 i
+INFO  01:10:24,870 - #28 ++
+INFO  01:10:24,870 - #37 ;
+ERROR 01:10:24,871 - Izvrsen oporavak do ; u liniji 9
+INFO  01:10:24,871 - #36 }
+INFO  01:10:24,872 - #10 while
+INFO  01:10:24,872 - #38 (
+INFO  01:10:24,872 - #48 i
+INFO  01:10:24,872 - #24 <
+INFO  01:10:24,875 - #48 size
+INFO  01:10:24,876 - #39 )
+INFO  01:10:24,878 - #37 ;
+INFO  01:10:24,878 - #36 }
+INFO  01:10:24,878 - #36 }
+INFO  01:10:24,880 - Program(
+ MJProgram
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        VarDeclListClass(
+          NoVarDeclList(
+          ) [NoVarDeclList]
+          VarDeclClass(
+            Type(
+             int
+            ) [Type]
+            VarListClass(
+              VarListSingle(
+                VarClassNoArray(
+                 x
+                ) [VarClassNoArray]
+              ) [VarListSingle]
+              VarClassNoArray(
+               i
+              ) [VarClassNoArray]
+            ) [VarListClass]
+          ) [VarDeclClass]
+        ) [VarDeclListClass]
+        VarDeclClass(
+          Type(
+           char
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             c
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        MatchedStmt(
+          DoWhileStatement(
+            MatchedStmt(
+              StatementStatement(
+                Statements(
+                  Statements(
+                    Statements(
+                      NoStmt(
+                      ) [NoStmt]
+                      MatchedStmt(
+                        ErrorStmt(
+                        ) [ErrorStmt]
+                      ) [MatchedStmt]
+                    ) [Statements]
+                    MatchedStmt(
+                      ErrorStmt(
+                      ) [ErrorStmt]
+                    ) [MatchedStmt]
+                  ) [Statements]
+                  MatchedStmt(
+                    Assignment(
+                      DesignatorStatementClass(
+                        Designator(
+                         i
+                          NoOptionalDesignatorClass(
+                          ) [NoOptionalDesignatorClass]
+                        ) [Designator]
+                        DesignatorStatementPlusPlus(
+                        ) [DesignatorStatementPlusPlus]
+                      ) [DesignatorStatementClass]
+                    ) [Assignment]
+                  ) [MatchedStmt]
+                ) [Statements]
+              ) [StatementStatement]
+            ) [MatchedStmt]
+            ConditionClass(
+              CondTermClass(
+                CondFactClass(
+                  ExprSecondOptionClassNoMinus(
+                    TermClass(
+                      DesignatorClass(
+                        Designator(
+                         i
+                          NoOptionalDesignatorClass(
+                          ) [NoOptionalDesignatorClass]
+                        ) [Designator]
+                        NoFactorOptional(
+                        ) [NoFactorOptional]
+                      ) [DesignatorClass]
+                      NoTermOptionalListClass(
+                      ) [NoTermOptionalListClass]
+                    ) [TermClass]
+                    NoExprOptionalListClass(
+                    ) [NoExprOptionalListClass]
+                  ) [ExprSecondOptionClassNoMinus]
+                  CondFactOptionalClass(
+                    LessOperationClass(
+                    ) [LessOperationClass]
+                    ExprSecondOptionClassNoMinus(
+                      TermClass(
+                        DesignatorClass(
+                          Designator(
+                           size
+                            NoOptionalDesignatorClass(
+                            ) [NoOptionalDesignatorClass]
+                          ) [Designator]
+                          NoFactorOptional(
+                          ) [NoFactorOptional]
+                        ) [DesignatorClass]
+                        NoTermOptionalListClass(
+                        ) [NoTermOptionalListClass]
+                      ) [TermClass]
+                      NoExprOptionalListClass(
+                      ) [NoExprOptionalListClass]
+                    ) [ExprSecondOptionClassNoMinus]
+                  ) [CondFactOptionalClass]
+                ) [CondFactClass]
+                NoCondTermOptionalClass(
+                ) [NoCondTermOptionalClass]
+              ) [CondTermClass]
+              NoConditionOptionalClass(
+              ) [NoConditionOptionalClass]
+            ) [ConditionClass]
+          ) [DoWhileStatement]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  01:10:24,881 - ===================================
+INFO  01:10:24,884 -  Print count calls = 0
+INFO  01:10:24,884 -  Deklarisanih promenljivih ima = 0

@@ -1,0 +1,354 @@
+INFO  00:44:37,383 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:44:37,456 - #34 program
+INFO  00:44:37,456 - #48 MJProgram
+INFO  00:44:37,457 - #35 {
+INFO  00:44:37,457 - #44 void
+INFO  00:44:37,458 - #48 main
+INFO  00:44:37,459 - #38 (
+INFO  00:44:37,459 - #39 )
+INFO  00:44:37,460 - #48 int
+INFO  00:44:37,461 - #48 x
+INFO  00:44:37,462 - #42 ,
+INFO  00:44:37,462 - #48 i
+INFO  00:44:37,462 - #37 ;
+INFO  00:44:37,462 - #48 char
+INFO  00:44:37,463 - #48 c
+INFO  00:44:37,463 - #37 ;
+INFO  00:44:37,463 - #35 {
+INFO  00:44:37,463 - #48 val
+INFO  00:44:37,464 - #33 =
+INFO  00:44:37,466 - #11 new
+INFO  00:44:37,467 - #48 Table
+INFO  00:44:37,468 - #37 ;
+INFO  00:44:37,479 - #48 val
+INFO  00:44:37,480 - #30 .
+INFO  00:44:37,480 - #48 pos
+INFO  00:44:37,480 - #33 =
+INFO  00:44:37,480 - #11 new
+INFO  00:44:37,480 - #48 int
+INFO  00:44:37,480 - #45 [
+INFO  00:44:37,480 - #48 size
+INFO  00:44:37,480 - #46 ]
+INFO  00:44:37,481 - #37 ;
+INFO  00:44:37,481 - #48 val
+INFO  00:44:37,481 - #30 .
+INFO  00:44:37,482 - #48 neg
+INFO  00:44:37,482 - #33 =
+INFO  00:44:37,482 - #11 new
+INFO  00:44:37,482 - #48 int
+INFO  00:44:37,482 - #45 [
+INFO  00:44:37,482 - #48 size
+INFO  00:44:37,482 - #46 ]
+INFO  00:44:37,482 - #37 ;
+INFO  00:44:37,482 - #48 i
+INFO  00:44:37,483 - #33 =
+INFO  00:44:37,483 - #47 0
+INFO  00:44:37,483 - #37 ;
+INFO  00:44:37,483 - #9 do
+INFO  00:44:37,483 - #35 {
+INFO  00:44:37,483 - #48 val
+INFO  00:44:37,483 - #30 .
+INFO  00:44:37,483 - #48 putp
+INFO  00:44:37,484 - #38 (
+ERROR 00:44:37,484 - 
+Sintaksna greska na liniji 13
+INFO  00:44:37,484 - #47 0
+INFO  00:44:37,484 - #42 ,
+INFO  00:44:37,484 - #48 i
+INFO  00:44:37,485 - #39 )
+INFO  00:44:37,485 - #37 ;
+INFO  00:44:37,485 - #48 val
+INFO  00:44:37,485 - #30 .
+INFO  00:44:37,485 - #48 putn
+INFO  00:44:37,485 - #38 (
+INFO  00:44:37,485 - #47 0
+INFO  00:44:37,485 - #42 ,
+INFO  00:44:37,486 - #48 i
+INFO  00:44:37,486 - #39 )
+INFO  00:44:37,486 - #37 ;
+INFO  00:44:37,486 - #48 i
+INFO  00:44:37,486 - #28 ++
+INFO  00:44:37,486 - #37 ;
+INFO  00:44:37,486 - #36 }
+INFO  00:44:37,486 - #10 while
+INFO  00:44:37,486 - #38 (
+ERROR 00:44:37,486 - Izvrsen oporavak do ; u liniji 13
+INFO  00:44:37,488 - #48 i
+INFO  00:44:37,488 - #24 <
+INFO  00:44:37,488 - #48 size
+INFO  00:44:37,490 - #39 )
+INFO  00:44:37,492 - #37 ;
+INFO  00:44:37,492 - #36 }
+INFO  00:44:37,492 - #36 }
+INFO  00:44:37,496 - Program(
+ MJProgram
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        VarDeclListClass(
+          NoVarDeclList(
+          ) [NoVarDeclList]
+          VarDeclClass(
+            Type(
+             int
+            ) [Type]
+            VarListClass(
+              VarListSingle(
+                VarClassNoArray(
+                 x
+                ) [VarClassNoArray]
+              ) [VarListSingle]
+              VarClassNoArray(
+               i
+              ) [VarClassNoArray]
+            ) [VarListClass]
+          ) [VarDeclClass]
+        ) [VarDeclListClass]
+        VarDeclClass(
+          Type(
+           char
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             c
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      Statements(
+        Statements(
+          Statements(
+            Statements(
+              Statements(
+                NoStmt(
+                ) [NoStmt]
+                MatchedStmt(
+                  Assignment(
+                    DesignatorStatementClass(
+                      Designator(
+                       val
+                        NoOptionalDesignatorClass(
+                        ) [NoOptionalDesignatorClass]
+                      ) [Designator]
+                      DesignatorStatementOptionsClassAssignExpression(
+                        AssignOperationClass(
+                        ) [AssignOperationClass]
+                        ExprSecondOptionClassNoMinus(
+                          TermClass(
+                            NewFactorClass(
+                             Table
+                              NoFactorOptionalSecondClass(
+                              ) [NoFactorOptionalSecondClass]
+                            ) [NewFactorClass]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprSecondOptionClassNoMinus]
+                      ) [DesignatorStatementOptionsClassAssignExpression]
+                    ) [DesignatorStatementClass]
+                  ) [Assignment]
+                ) [MatchedStmt]
+              ) [Statements]
+              MatchedStmt(
+                Assignment(
+                  DesignatorStatementClass(
+                    Designator(
+                     val
+                      OptionalDesignatorClass(
+                        NoOptionalDesignatorClass(
+                        ) [NoOptionalDesignatorClass]
+                       pos
+                      ) [OptionalDesignatorClass]
+                    ) [Designator]
+                    DesignatorStatementOptionsClassAssignExpression(
+                      AssignOperationClass(
+                      ) [AssignOperationClass]
+                      ExprSecondOptionClassNoMinus(
+                        TermClass(
+                          NewFactorClass(
+                           int
+                            FactorOptionalSecondClass(
+                              ExprSecondOptionClassNoMinus(
+                                TermClass(
+                                  DesignatorClass(
+                                    Designator(
+                                     size
+                                      NoOptionalDesignatorClass(
+                                      ) [NoOptionalDesignatorClass]
+                                    ) [Designator]
+                                    NoFactorOptional(
+                                    ) [NoFactorOptional]
+                                  ) [DesignatorClass]
+                                  NoTermOptionalListClass(
+                                  ) [NoTermOptionalListClass]
+                                ) [TermClass]
+                                NoExprOptionalListClass(
+                                ) [NoExprOptionalListClass]
+                              ) [ExprSecondOptionClassNoMinus]
+                            ) [FactorOptionalSecondClass]
+                          ) [NewFactorClass]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprSecondOptionClassNoMinus]
+                    ) [DesignatorStatementOptionsClassAssignExpression]
+                  ) [DesignatorStatementClass]
+                ) [Assignment]
+              ) [MatchedStmt]
+            ) [Statements]
+            MatchedStmt(
+              Assignment(
+                DesignatorStatementClass(
+                  Designator(
+                   val
+                    OptionalDesignatorClass(
+                      NoOptionalDesignatorClass(
+                      ) [NoOptionalDesignatorClass]
+                     neg
+                    ) [OptionalDesignatorClass]
+                  ) [Designator]
+                  DesignatorStatementOptionsClassAssignExpression(
+                    AssignOperationClass(
+                    ) [AssignOperationClass]
+                    ExprSecondOptionClassNoMinus(
+                      TermClass(
+                        NewFactorClass(
+                         int
+                          FactorOptionalSecondClass(
+                            ExprSecondOptionClassNoMinus(
+                              TermClass(
+                                DesignatorClass(
+                                  Designator(
+                                   size
+                                    NoOptionalDesignatorClass(
+                                    ) [NoOptionalDesignatorClass]
+                                  ) [Designator]
+                                  NoFactorOptional(
+                                  ) [NoFactorOptional]
+                                ) [DesignatorClass]
+                                NoTermOptionalListClass(
+                                ) [NoTermOptionalListClass]
+                              ) [TermClass]
+                              NoExprOptionalListClass(
+                              ) [NoExprOptionalListClass]
+                            ) [ExprSecondOptionClassNoMinus]
+                          ) [FactorOptionalSecondClass]
+                        ) [NewFactorClass]
+                        NoTermOptionalListClass(
+                        ) [NoTermOptionalListClass]
+                      ) [TermClass]
+                      NoExprOptionalListClass(
+                      ) [NoExprOptionalListClass]
+                    ) [ExprSecondOptionClassNoMinus]
+                  ) [DesignatorStatementOptionsClassAssignExpression]
+                ) [DesignatorStatementClass]
+              ) [Assignment]
+            ) [MatchedStmt]
+          ) [Statements]
+          MatchedStmt(
+            Assignment(
+              DesignatorStatementClass(
+                Designator(
+                 i
+                  NoOptionalDesignatorClass(
+                  ) [NoOptionalDesignatorClass]
+                ) [Designator]
+                DesignatorStatementOptionsClassAssignExpression(
+                  AssignOperationClass(
+                  ) [AssignOperationClass]
+                  ExprSecondOptionClassNoMinus(
+                    TermClass(
+                      NumberConst(
+                       0
+                      ) [NumberConst]
+                      NoTermOptionalListClass(
+                      ) [NoTermOptionalListClass]
+                    ) [TermClass]
+                    NoExprOptionalListClass(
+                    ) [NoExprOptionalListClass]
+                  ) [ExprSecondOptionClassNoMinus]
+                ) [DesignatorStatementOptionsClassAssignExpression]
+              ) [DesignatorStatementClass]
+            ) [Assignment]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          DoWhileStatement(
+            MatchedStmt(
+              StatementStatement(
+                MatchedStmt(
+                  ErrorStmt(
+                  ) [ErrorStmt]
+                ) [MatchedStmt]
+              ) [StatementStatement]
+            ) [MatchedStmt]
+            ConditionClass(
+              CondTermClass(
+                CondFactClass(
+                  ExprSecondOptionClassNoMinus(
+                    TermClass(
+                      DesignatorClass(
+                        Designator(
+                         i
+                          NoOptionalDesignatorClass(
+                          ) [NoOptionalDesignatorClass]
+                        ) [Designator]
+                        NoFactorOptional(
+                        ) [NoFactorOptional]
+                      ) [DesignatorClass]
+                      NoTermOptionalListClass(
+                      ) [NoTermOptionalListClass]
+                    ) [TermClass]
+                    NoExprOptionalListClass(
+                    ) [NoExprOptionalListClass]
+                  ) [ExprSecondOptionClassNoMinus]
+                  CondFactOptionalClass(
+                    LessOperationClass(
+                    ) [LessOperationClass]
+                    ExprSecondOptionClassNoMinus(
+                      TermClass(
+                        DesignatorClass(
+                          Designator(
+                           size
+                            NoOptionalDesignatorClass(
+                            ) [NoOptionalDesignatorClass]
+                          ) [Designator]
+                          NoFactorOptional(
+                          ) [NoFactorOptional]
+                        ) [DesignatorClass]
+                        NoTermOptionalListClass(
+                        ) [NoTermOptionalListClass]
+                      ) [TermClass]
+                      NoExprOptionalListClass(
+                      ) [NoExprOptionalListClass]
+                    ) [ExprSecondOptionClassNoMinus]
+                  ) [CondFactOptionalClass]
+                ) [CondFactClass]
+                NoCondTermOptionalClass(
+                ) [NoCondTermOptionalClass]
+              ) [CondTermClass]
+              NoConditionOptionalClass(
+              ) [NoConditionOptionalClass]
+            ) [ConditionClass]
+          ) [DoWhileStatement]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:44:37,496 - ===================================
+INFO  00:44:37,499 -  Print count calls = 0
+INFO  00:44:37,499 -  Deklarisanih promenljivih ima = 0

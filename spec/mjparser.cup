@@ -55,12 +55,16 @@ terminal String IDENT;
 terminal IF, ELSE;
 
 nonterminal Program, VarDeclList, MethodDeclList, VarDecl, Type, MethodsOption, ExtendsOption, MethodDecl, VarList, Variable, 
-			GroupDeclList, GroupDecl, ClassDecl, ConstDecl, ConstList, ConstVariable, ValueOptions, ReturnValue;
+			GroupDeclList, GroupDecl, ClassDecl, ConstDecl, ConstList, ConstVariable, ValueOptions, ReturnValue, PrintCommaNumber;
 			
 nonterminal FormPars, StatementList, FormalParamList, FormalParamDecl, Statement;
-nonterminal Designator, Expr, Term, Addop, Factor, ActualPars, ActualParamList;
+nonterminal Designator, Expr, Term, AddOp, Factor, ActualPars, ActualParamList;
 nonterminal Matched, Unmatched;
 
+nonterminal DesignatorStatement, OptionalDesignator, AssignOp, RelOp, MulOp, FactorOptional, FactorOptionalSecond, TermOptionalList, ExprOptionalList, CondFact, 
+			CondFactOptional, CondTerm, CondTermOptional, Condition, ConditionOptional, DesignatorStatementOptions, SwitchStatementList;
+			
+			
 Program ::= (Program) PROG IDENT GroupDeclList LBRACE MethodDeclList RBRACE;
 
 GroupDeclList ::= (GroupDeclarations) GroupDeclList GroupDecl
@@ -153,11 +157,6 @@ FormalParamDecl ::= (FormalParamDeclClassNoArray) Type:formalParamType IDENT:for
 
 
 
-
-
-
-
-
 StatementList ::= (Statements) StatementList Statement
 				|
 				(NoStmt) /* epsilon */
@@ -168,39 +167,66 @@ Statement ::= (MatchedStmt) Matched
 		   (UnmatchedStmt) Unmatched
 		   ; 
 
-Unmatched ::= (UnmatchedIf) IF Expr Statement
+Unmatched ::= (UnmatchedIf) IF LPAREN Condition RPAREN Statement
 		 	|
-		 	(UnmatchedIfElse) IF Expr Matched ELSE Unmatched
-		 	;
-		 
+		 	(UnmatchedIfElse) IF LPAREN Condition RPAREN Matched ELSE Unmatched
+		 	; 	
+		 	
+Designator ::= (Designator) IDENT:name OptionalDesignator;
 
-Matched ::= (Assignment) Designator:dest EQUAL Expr:e SEMI
+OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator DOT IDENT:name
+					|
+					(OptionalDesignatorArray) OptionalDesignator LSQUARE_BRACKET Expr RSQUARE_BRACKET
+					|
+					(NoOptionalDesignatorClass) /* epsilon */
+					;
+
+DesignatorStatement ::= (DesignatorStatementClass) Designator DesignatorStatementOptions;
+
+DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOp Expr
+							|
+							(DesignatorStatementActualParameters) LPAREN ActualPars  RPAREN
+							|
+							(DesignatorStatementPlusPlus) PLUS_PLUS
+							|
+							(DesignatorStatementMinusMinus) MINUS_MINUS
+							; 
+							
+Matched ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (ErrorStmt) error SEMI:l
 		   {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
 		   |
-		   (PrintStmt) PRINT LPAREN Expr RPAREN SEMI
+		   (PrintStmt) PRINT LPAREN Expr PrintCommaNumber RPAREN SEMI
 		   |
-		   (ReturnExpr) RETURN Expr:t SEMI
+		   (ReturnExpr) RETURN Expr:t SEMI 
 		   |
 		   (ReturnNoExpr) RETURN SEMI
 		   |
-		   (MatchedStatement) IF Expr Matched ELSE Matched
+		   (BreakClass) BREAK SEMI
+		   |
+		   (ContinueClass) CONTINUE SEMI
+		   |
+		   (ReadClass) READ LPAREN Designator RPAREN SEMI
+		   |
+		   (MatchedStatement) IF LPAREN Condition RPAREN Matched ELSE Matched
+		   |
+		   (DoWhileStatement) DO Statement WHILE LPAREN Condition RPAREN SEMI
+		   |
+		   (SwitchStatement) SWITCH LPAREN Expr RPAREN LBRACE SwitchStatementList RBRACE
+		   |
+		   (StatementStatement) LBRACE StatementList RBRACE
 		   ;
-			
-Expr ::= (AddExpr) Expr:te Addop Term:t
-	 |
-	 (TermExpr) Term:t
-	 ;
 
-Term ::= (Term) Factor:t;
+PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER
+					|
+					(NoCommaNumberClass) /* epsilon */
+					;
 
-Factor ::= (Const) NUMBER
-		|
-		(Var) Designator:d
-		| 
-		(FuncCall) Designator:func LPAREN ActualPars RPAREN
-		;
+SwitchStatementList ::= (SwitchStatementListClass) SwitchStatementList CASE NUMBER COLON Statement
+					|
+					(NoSwitchStatementList) /* epsilon */
+					;
 		
 ActualPars ::= (Actuals) ActualParamList
 			|
@@ -211,10 +237,91 @@ ActualParamList ::= (ActualParams) ActualParamList COMMA Expr
 				|
 				(ActualParam) Expr
 				;
+
+Condition ::= (ConditionClass) CondTerm ConditionOptional;
+
+ConditionOptional ::= (ConditionOptionalClass) ConditionOptional OR CondTerm
+					|
+					(NoConditionOptionalClass) /* epsilon */
+					;		
+		
+CondTerm ::= (CondTermClass) CondFact CondTermOptional;
+
+CondTermOptional ::= (CondTermOptionalClass) CondTermOptional AND CondFact
+					|
+					(NoCondTermOptionalClass) /* epsilon */
+					;
+		
+CondFact ::= (CondFactClass) Expr CondFactOptional;
+
+CondFactOptional ::= (CondFactOptionalClass) RelOp Expr
+					|
+					(NoCondFactOptionalClass) /* epsion */
+					;		
+		
+Expr ::= (ExprFirstOptionClassWithMinus) MINUS Term ExprOptionalList 
+		|
+		(ExprSecondOptionClassNoMinus) Term ExprOptionalList
+		;	
 				
-Designator ::= (Designator) IDENT:name;
+ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList AddOp Term
+					|
+					(NoExprOptionalListClass) /* epsilon */
+					;
+					
+Term ::= (TermClass) Factor TermOptionalList;
 
-Addop ::= (Addop) PLUS;
-		
-		
+TermOptionalList ::= (TermOptionalListClass) TermOptionalList MulOp Factor
+					|
+					(NoTermOptionalListClass) /* epsilon */
+					; 				
+				
+Factor ::= (DesignatorClass) Designator FactorOptional
+			|
+			(NumberConst) NUMBER
+			|
+			(CharConst) CHAR
+			|
+			(BooleanClassConstFactor) BOOLEAN
+			|
+			(NewFactorClass) NEW IDENT:varType FactorOptionalSecond
+			|
+			(ParenFactorClass) LPAREN Expr RPAREN
+			;
 
+FactorOptional ::= (FactorOptionalParams) LPAREN ActualPars RPAREN
+				|
+				(NoFactorOptional) /* epsilon */
+				;
+
+FactorOptionalSecond ::= (FactorOptionalSecondClass) LSQUARE_BRACKET Expr RSQUARE_BRACKET
+				|
+				(NoFactorOptionalSecondClass) /* epsilon */
+				;
+				
+AddOp ::= (PlusOperation) PLUS
+		|
+		(MinusOperation) MINUS
+		;
+		
+AssignOp ::= (AssignOperationClass) EQUAL;
+
+RelOp ::= (RelationOperationClassEqualComparation) EQUAL_COMPARATION 
+		|
+		(RelationOperationClassNotEqualComparation) NOT_EQUAL_COMPARATION
+		|
+		(GreaterOperationClass) GREATER
+		|
+		(LessOperationClass) LESS
+		|
+		(GreaterOrEqualOperationClass) GREATER_OR_EQUAL
+		|
+		(LessOrEqualOperationClass) LESS_OR_EQUAL
+		;
+
+MulOp ::= (MultiplyOperationClass) MUL
+		|
+		(DivideOperationClass) DIV
+		|
+		(ModOperationClass) MOD
+		;

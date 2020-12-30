@@ -1,0 +1,281 @@
+INFO  01:20:22,075 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  01:20:22,150 - #34 program
+INFO  01:20:22,150 - #48 MJProgram
+INFO  01:20:22,150 - #35 {
+INFO  01:20:22,151 - #44 void
+INFO  01:20:22,152 - #48 main
+INFO  01:20:22,153 - #38 (
+INFO  01:20:22,153 - #39 )
+INFO  01:20:22,154 - #48 int
+INFO  01:20:22,155 - #48 x
+INFO  01:20:22,156 - #42 ,
+INFO  01:20:22,156 - #48 i
+INFO  01:20:22,156 - #37 ;
+INFO  01:20:22,157 - #48 char
+INFO  01:20:22,157 - #48 c
+INFO  01:20:22,157 - #37 ;
+INFO  01:20:22,157 - #35 {
+INFO  01:20:22,157 - #9 do
+INFO  01:20:22,158 - #35 {
+INFO  01:20:22,158 - #48 val
+INFO  01:20:22,158 - #30 .
+INFO  01:20:22,159 - #48 putp
+INFO  01:20:22,160 - #38 (
+INFO  01:20:22,161 - #47 0
+INFO  01:20:22,161 - #42 ,
+INFO  01:20:22,163 - #48 i
+INFO  01:20:22,163 - #39 )
+INFO  01:20:22,164 - #37 ;
+INFO  01:20:22,164 - #48 val
+INFO  01:20:22,164 - #30 .
+INFO  01:20:22,164 - #48 putn
+INFO  01:20:22,164 - #38 (
+INFO  01:20:22,164 - #47 0
+INFO  01:20:22,165 - #42 ,
+INFO  01:20:22,165 - #48 i
+INFO  01:20:22,165 - #39 )
+INFO  01:20:22,165 - #37 ;
+INFO  01:20:22,165 - #48 i
+INFO  01:20:22,165 - #28 ++
+INFO  01:20:22,165 - #37 ;
+INFO  01:20:22,166 - #36 }
+INFO  01:20:22,167 - #10 while
+INFO  01:20:22,167 - #38 (
+INFO  01:20:22,167 - #48 i
+INFO  01:20:22,167 - #24 <
+INFO  01:20:22,167 - #48 size
+INFO  01:20:22,169 - #39 )
+INFO  01:20:22,170 - #37 ;
+INFO  01:20:22,170 - #36 }
+INFO  01:20:22,170 - #36 }
+INFO  01:20:22,173 - Program(
+ MJProgram
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        VarDeclListClass(
+          NoVarDeclList(
+          ) [NoVarDeclList]
+          VarDeclClass(
+            Type(
+             int
+            ) [Type]
+            VarListClass(
+              VarListSingle(
+                VarClassNoArray(
+                 x
+                ) [VarClassNoArray]
+              ) [VarListSingle]
+              VarClassNoArray(
+               i
+              ) [VarClassNoArray]
+            ) [VarListClass]
+          ) [VarDeclClass]
+        ) [VarDeclListClass]
+        VarDeclClass(
+          Type(
+           char
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             c
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        MatchedStmt(
+          DoWhileStatement(
+            MatchedStmt(
+              StatementStatement(
+                Statements(
+                  Statements(
+                    Statements(
+                      NoStmt(
+                      ) [NoStmt]
+                      MatchedStmt(
+                        Assignment(
+                          DesignatorStatementClass(
+                            Designator(
+                             val
+                              OptionalDesignatorClass(
+                                NoOptionalDesignatorClass(
+                                ) [NoOptionalDesignatorClass]
+                               putp
+                              ) [OptionalDesignatorClass]
+                            ) [Designator]
+                            DesignatorStatementActualParameters(
+                              Actuals(
+                                ActualParams(
+                                  ActualParam(
+                                    ExprSecondOptionClassNoMinus(
+                                      TermClass(
+                                        NumberConst(
+                                         0
+                                        ) [NumberConst]
+                                        NoTermOptionalListClass(
+                                        ) [NoTermOptionalListClass]
+                                      ) [TermClass]
+                                      NoExprOptionalListClass(
+                                      ) [NoExprOptionalListClass]
+                                    ) [ExprSecondOptionClassNoMinus]
+                                  ) [ActualParam]
+                                  ExprSecondOptionClassNoMinus(
+                                    TermClass(
+                                      DesignatorClass(
+                                        Designator(
+                                         i
+                                          NoOptionalDesignatorClass(
+                                          ) [NoOptionalDesignatorClass]
+                                        ) [Designator]
+                                        NoFactorOptional(
+                                        ) [NoFactorOptional]
+                                      ) [DesignatorClass]
+                                      NoTermOptionalListClass(
+                                      ) [NoTermOptionalListClass]
+                                    ) [TermClass]
+                                    NoExprOptionalListClass(
+                                    ) [NoExprOptionalListClass]
+                                  ) [ExprSecondOptionClassNoMinus]
+                                ) [ActualParams]
+                              ) [Actuals]
+                            ) [DesignatorStatementActualParameters]
+                          ) [DesignatorStatementClass]
+                        ) [Assignment]
+                      ) [MatchedStmt]
+                    ) [Statements]
+                    MatchedStmt(
+                      Assignment(
+                        DesignatorStatementClass(
+                          Designator(
+                           val
+                            OptionalDesignatorClass(
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                             putn
+                            ) [OptionalDesignatorClass]
+                          ) [Designator]
+                          DesignatorStatementActualParameters(
+                            Actuals(
+                              ActualParams(
+                                ActualParam(
+                                  ExprSecondOptionClassNoMinus(
+                                    TermClass(
+                                      NumberConst(
+                                       0
+                                      ) [NumberConst]
+                                      NoTermOptionalListClass(
+                                      ) [NoTermOptionalListClass]
+                                    ) [TermClass]
+                                    NoExprOptionalListClass(
+                                    ) [NoExprOptionalListClass]
+                                  ) [ExprSecondOptionClassNoMinus]
+                                ) [ActualParam]
+                                ExprSecondOptionClassNoMinus(
+                                  TermClass(
+                                    DesignatorClass(
+                                      Designator(
+                                       i
+                                        NoOptionalDesignatorClass(
+                                        ) [NoOptionalDesignatorClass]
+                                      ) [Designator]
+                                      NoFactorOptional(
+                                      ) [NoFactorOptional]
+                                    ) [DesignatorClass]
+                                    NoTermOptionalListClass(
+                                    ) [NoTermOptionalListClass]
+                                  ) [TermClass]
+                                  NoExprOptionalListClass(
+                                  ) [NoExprOptionalListClass]
+                                ) [ExprSecondOptionClassNoMinus]
+                              ) [ActualParams]
+                            ) [Actuals]
+                          ) [DesignatorStatementActualParameters]
+                        ) [DesignatorStatementClass]
+                      ) [Assignment]
+                    ) [MatchedStmt]
+                  ) [Statements]
+                  MatchedStmt(
+                    Assignment(
+                      DesignatorStatementClass(
+                        Designator(
+                         i
+                          NoOptionalDesignatorClass(
+                          ) [NoOptionalDesignatorClass]
+                        ) [Designator]
+                        DesignatorStatementPlusPlus(
+                        ) [DesignatorStatementPlusPlus]
+                      ) [DesignatorStatementClass]
+                    ) [Assignment]
+                  ) [MatchedStmt]
+                ) [Statements]
+              ) [StatementStatement]
+            ) [MatchedStmt]
+            ConditionClass(
+              CondTermClass(
+                CondFactClass(
+                  ExprSecondOptionClassNoMinus(
+                    TermClass(
+                      DesignatorClass(
+                        Designator(
+                         i
+                          NoOptionalDesignatorClass(
+                          ) [NoOptionalDesignatorClass]
+                        ) [Designator]
+                        NoFactorOptional(
+                        ) [NoFactorOptional]
+                      ) [DesignatorClass]
+                      NoTermOptionalListClass(
+                      ) [NoTermOptionalListClass]
+                    ) [TermClass]
+                    NoExprOptionalListClass(
+                    ) [NoExprOptionalListClass]
+                  ) [ExprSecondOptionClassNoMinus]
+                  CondFactOptionalClass(
+                    LessOperationClass(
+                    ) [LessOperationClass]
+                    ExprSecondOptionClassNoMinus(
+                      TermClass(
+                        DesignatorClass(
+                          Designator(
+                           size
+                            NoOptionalDesignatorClass(
+                            ) [NoOptionalDesignatorClass]
+                          ) [Designator]
+                          NoFactorOptional(
+                          ) [NoFactorOptional]
+                        ) [DesignatorClass]
+                        NoTermOptionalListClass(
+                        ) [NoTermOptionalListClass]
+                      ) [TermClass]
+                      NoExprOptionalListClass(
+                      ) [NoExprOptionalListClass]
+                    ) [ExprSecondOptionClassNoMinus]
+                  ) [CondFactOptionalClass]
+                ) [CondFactClass]
+                NoCondTermOptionalClass(
+                ) [NoCondTermOptionalClass]
+              ) [CondTermClass]
+              NoConditionOptionalClass(
+              ) [NoConditionOptionalClass]
+            ) [ConditionClass]
+          ) [DoWhileStatement]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  01:20:22,175 - ===================================
+INFO  01:20:22,177 -  Print count calls = 0
+INFO  01:20:22,177 -  Deklarisanih promenljivih ima = 0

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 29/11/2020 0:2:0
+// 30/11/2020 1:20:9
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,10 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class PrintStmt extends Matched {
 
     private Expr Expr;
+    private PrintCommaNumber PrintCommaNumber;
 
-    public PrintStmt (Expr Expr) {
+    public PrintStmt (Expr Expr, PrintCommaNumber PrintCommaNumber) {
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
+        this.PrintCommaNumber=PrintCommaNumber;
+        if(PrintCommaNumber!=null) PrintCommaNumber.setParent(this);
     }
 
     public Expr getExpr() {
@@ -22,21 +25,32 @@ public class PrintStmt extends Matched {
         this.Expr=Expr;
     }
 
+    public PrintCommaNumber getPrintCommaNumber() {
+        return PrintCommaNumber;
+    }
+
+    public void setPrintCommaNumber(PrintCommaNumber PrintCommaNumber) {
+        this.PrintCommaNumber=PrintCommaNumber;
+    }
+
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 
     public void childrenAccept(Visitor visitor) {
         if(Expr!=null) Expr.accept(visitor);
+        if(PrintCommaNumber!=null) PrintCommaNumber.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
+        if(PrintCommaNumber!=null) PrintCommaNumber.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Expr!=null) Expr.traverseBottomUp(visitor);
+        if(PrintCommaNumber!=null) PrintCommaNumber.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -47,6 +61,12 @@ public class PrintStmt extends Matched {
 
         if(Expr!=null)
             buffer.append(Expr.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(PrintCommaNumber!=null)
+            buffer.append(PrintCommaNumber.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
