@@ -1,0 +1,146 @@
+INFO  00:38:28,606 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:38:28,661 - #34 program
+INFO  00:38:28,661 - #48 MJProgram
+INFO  00:38:28,661 - #48 int
+INFO  00:38:28,662 - #37 ;
+ERROR 00:38:28,663 - 
+Sintaksna greska na liniji 2
+INFO  00:38:28,663 - #48 in
+INFO  00:38:28,663 - #48 t
+INFO  00:38:28,663 - #48 a
+ERROR 00:38:28,663 - Izvrsen oporavak do ; u liniji 2
+ERROR 00:38:28,665 - 
+Sintaksna greska na liniji 3
+INFO  00:38:28,665 - #42 ,
+INFO  00:38:28,665 - #48 b
+INFO  00:38:28,665 - #42 ,
+INFO  00:38:28,665 - #48 c
+ERROR 00:38:28,665 - Izvrsen oporavak do , u liniji 3
+INFO  00:38:28,666 - #37 ;
+INFO  00:38:28,666 - #48 int
+INFO  00:38:28,666 - #48 a
+INFO  00:38:28,667 - #42 ,
+INFO  00:38:28,667 - #48 x
+INFO  00:38:28,667 - #42 ,
+INFO  00:38:28,667 - #48 d
+INFO  00:38:28,667 - #48 d
+ERROR 00:38:28,667 - 
+Sintaksna greska na liniji 4
+INFO  00:38:28,667 - #42 ,
+INFO  00:38:28,667 - #48 b
+INFO  00:38:28,667 - #42 ,
+INFO  00:38:28,667 - #48 c
+ERROR 00:38:28,667 - Izvrsen oporavak do , u liniji 4
+INFO  00:38:28,667 - #37 ;
+INFO  00:38:28,667 - #35 {
+INFO  00:38:28,667 - #44 void
+INFO  00:38:28,668 - #48 main
+INFO  00:38:28,669 - #38 (
+INFO  00:38:28,670 - #48 int
+INFO  00:38:28,670 - #48 a
+INFO  00:38:28,670 - #42 ,
+INFO  00:38:28,670 - #48 int
+INFO  00:38:28,670 - #48 b
+INFO  00:38:28,670 - #42 ,
+INFO  00:38:28,670 - #48 char
+INFO  00:38:28,670 - #48 c
+INFO  00:38:28,670 - #42 ,
+INFO  00:38:28,670 - #48 int
+INFO  00:38:28,670 - #48 d
+INFO  00:38:28,671 - #39 )
+INFO  00:38:28,671 - #35 {
+INFO  00:38:28,671 - #36 }
+INFO  00:38:28,671 - #36 }
+INFO  00:38:28,673 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    VarDeclarations(
+      VarDeclarations(
+        NoVarDecl(
+        ) [NoVarDecl]
+        ErrorVarDeclTwo(
+        ) [ErrorVarDeclTwo]
+      ) [VarDeclarations]
+      VariablesDecl(
+        Type(
+         in
+        ) [Type]
+        VarsIdent(
+          SingleVarIdentError(
+          ) [SingleVarIdentError]
+          VarIdent(
+           b
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         c
+        ) [VarIdent]
+      ) [VariablesDecl]
+    ) [VarDeclarations]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        SingleVarIdentError(
+        ) [SingleVarIdentError]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      FormParams(
+        FormalParamDecls(
+          FormalParamDecls(
+            FormalParamDecls(
+              SingleFormalParamDecl(
+                FormalParamDeclClassNoArray(
+                  Type(
+                   int
+                  ) [Type]
+                 a
+                ) [FormalParamDeclClassNoArray]
+              ) [SingleFormalParamDecl]
+              FormalParamDeclClassNoArray(
+                Type(
+                 int
+                ) [Type]
+               b
+              ) [FormalParamDeclClassNoArray]
+            ) [FormalParamDecls]
+            FormalParamDeclClassNoArray(
+              Type(
+               char
+              ) [Type]
+             c
+            ) [FormalParamDeclClassNoArray]
+          ) [FormalParamDecls]
+          FormalParamDeclClassNoArray(
+            Type(
+             int
+            ) [Type]
+           d
+          ) [FormalParamDeclClassNoArray]
+        ) [FormalParamDecls]
+      ) [FormParams]
+      NoVarDecl(
+      ) [NoVarDecl]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:38:28,674 - ===================================

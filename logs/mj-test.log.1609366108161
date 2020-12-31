@@ -1,0 +1,102 @@
+INFO  23:08:12,499 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  23:08:12,557 - #34 program
+INFO  23:08:12,557 - #48 MJProgram
+INFO  23:08:12,557 - #48 int
+INFO  23:08:12,559 - #48 a
+INFO  23:08:12,560 - #42 ,
+INFO  23:08:12,560 - #48 x
+INFO  23:08:12,560 - #42 ,
+INFO  23:08:12,560 - #48 d
+INFO  23:08:12,560 - #42 ,
+INFO  23:08:12,561 - #48 b
+INFO  23:08:12,561 - #42 ,
+INFO  23:08:12,561 - #48 c
+INFO  23:08:12,561 - #37 ;
+INFO  23:08:12,561 - #35 {
+INFO  23:08:12,561 - #44 void
+INFO  23:08:12,562 - #48 main
+INFO  23:08:12,563 - #38 (
+INFO  23:08:12,563 - #39 )
+INFO  23:08:12,564 - #35 {
+INFO  23:08:12,564 - #48 z
+INFO  23:08:12,565 - #33 =
+INFO  23:08:12,576 - #37 ;
+ERROR 23:08:12,576 - 
+Sintaksna greska na liniji 7
+INFO  23:08:12,576 - #43 print
+INFO  23:08:12,577 - #38 (
+INFO  23:08:12,577 - #47 2
+ERROR 23:08:12,578 - Izvrsen oporavak do ; u liniji 7
+INFO  23:08:12,579 - #37 ;
+ERROR 23:08:12,581 - 
+Sintaksna greska na liniji 9
+INFO  23:08:12,581 - #36 }
+INFO  23:08:12,581 - #36 }
+ERROR 23:08:12,582 - Izvrsen oporavak do ; u liniji 9
+INFO  23:08:12,583 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    NoVarDecl(
+    ) [NoVarDecl]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        VarsIdent(
+          VarsIdent(
+            SingleVarIdent(
+              VarIdent(
+               a
+              ) [VarIdent]
+            ) [SingleVarIdent]
+            VarIdent(
+             x
+            ) [VarIdent]
+          ) [VarsIdent]
+          VarIdent(
+           d
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          MatchedStmt(
+            ErrorStmt(
+            ) [ErrorStmt]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          ErrorStmt(
+          ) [ErrorStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  23:08:12,584 - ===================================
+INFO  23:08:12,586 -  Print count calls = 0
+INFO  23:08:12,586 -  Deklarisanih promenljivih ima = 0

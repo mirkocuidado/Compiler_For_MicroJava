@@ -1,0 +1,78 @@
+INFO  00:25:50,226 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:25:50,282 - #34 program
+INFO  00:25:50,282 - #48 MJProgram
+INFO  00:25:50,282 - #35 {
+INFO  00:25:50,283 - #44 void
+INFO  00:25:50,284 - #48 main
+INFO  00:25:50,285 - #38 (
+INFO  00:25:50,285 - #48 int
+INFO  00:25:50,285 - #48 a
+INFO  00:25:50,286 - #42 ,
+INFO  00:25:50,286 - #48 int
+INFO  00:25:50,286 - #48 b
+INFO  00:25:50,286 - #42 ,
+INFO  00:25:50,286 - #48 char
+INFO  00:25:50,286 - #48 c
+INFO  00:25:50,286 - #39 )
+INFO  00:25:50,287 - #35 {
+INFO  00:25:50,287 - #49 if
+INFO  00:25:50,287 - #38 (
+INFO  00:25:50,288 - #39 )
+ERROR 00:25:50,288 - 
+Sintaksna greska na liniji 5
+INFO  00:25:50,288 - #36 }
+INFO  00:25:50,288 - #36 }
+ERROR 00:25:50,289 - Izvrsen oporavak do ) u liniji 5
+INFO  00:25:50,291 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  NoVarDecl(
+  ) [NoVarDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      FormParams(
+        FormalParamDecls(
+          FormalParamDecls(
+            SingleFormalParamDecl(
+              FormalParamDeclClassNoArray(
+                Type(
+                 int
+                ) [Type]
+               a
+              ) [FormalParamDeclClassNoArray]
+            ) [SingleFormalParamDecl]
+            FormalParamDeclClassNoArray(
+              Type(
+               int
+              ) [Type]
+             b
+            ) [FormalParamDeclClassNoArray]
+          ) [FormalParamDecls]
+          FormalParamDeclClassNoArray(
+            Type(
+             char
+            ) [Type]
+           c
+          ) [FormalParamDeclClassNoArray]
+        ) [FormalParamDecls]
+      ) [FormParams]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        UnmatchedStmt(
+          UnmatchedIfError(
+          ) [UnmatchedIfError]
+        ) [UnmatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:25:50,291 - ===================================

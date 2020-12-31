@@ -1,0 +1,159 @@
+INFO  00:38:10,171 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:38:10,276 - #34 program
+INFO  00:38:10,277 - #48 MJProgram
+INFO  00:38:10,277 - #48 int
+INFO  00:38:10,282 - #37 ;
+ERROR 00:38:10,282 - 
+Sintaksna greska na liniji 2
+INFO  00:38:10,282 - #48 in
+INFO  00:38:10,282 - #48 t
+INFO  00:38:10,282 - #37 ;
+ERROR 00:38:10,283 - Izvrsen oporavak do ; u liniji 2
+INFO  00:38:10,287 - #48 in
+INFO  00:38:10,287 - #48 t
+INFO  00:38:10,287 - #48 a
+ERROR 00:38:10,287 - 
+Sintaksna greska na liniji 4
+INFO  00:38:10,287 - #42 ,
+INFO  00:38:10,287 - #48 b
+INFO  00:38:10,287 - #42 ,
+INFO  00:38:10,287 - #48 c
+ERROR 00:38:10,287 - Izvrsen oporavak do , u liniji 4
+INFO  00:38:10,298 - #37 ;
+INFO  00:38:10,298 - #48 int
+INFO  00:38:10,298 - #48 a
+INFO  00:38:10,298 - #42 ,
+INFO  00:38:10,299 - #48 x
+INFO  00:38:10,299 - #42 ,
+INFO  00:38:10,299 - #48 d
+INFO  00:38:10,299 - #48 d
+ERROR 00:38:10,299 - 
+Sintaksna greska na liniji 5
+INFO  00:38:10,299 - #42 ,
+INFO  00:38:10,299 - #48 b
+INFO  00:38:10,299 - #42 ,
+INFO  00:38:10,299 - #48 c
+ERROR 00:38:10,299 - Izvrsen oporavak do , u liniji 5
+INFO  00:38:10,299 - #37 ;
+INFO  00:38:10,299 - #35 {
+INFO  00:38:10,300 - #44 void
+INFO  00:38:10,301 - #48 main
+INFO  00:38:10,301 - #38 (
+INFO  00:38:10,301 - #48 int
+INFO  00:38:10,301 - #48 a
+INFO  00:38:10,301 - #42 ,
+INFO  00:38:10,302 - #48 int
+INFO  00:38:10,302 - #48 b
+INFO  00:38:10,302 - #42 ,
+INFO  00:38:10,302 - #48 char
+INFO  00:38:10,302 - #48 c
+INFO  00:38:10,302 - #42 ,
+INFO  00:38:10,302 - #48 int
+INFO  00:38:10,302 - #48 d
+INFO  00:38:10,302 - #39 )
+INFO  00:38:10,303 - #35 {
+INFO  00:38:10,303 - #36 }
+INFO  00:38:10,303 - #36 }
+INFO  00:38:10,308 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    VarDeclarations(
+      VarDeclarations(
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          ErrorVarDeclTwo(
+          ) [ErrorVarDeclTwo]
+        ) [VarDeclarations]
+        VariableDecl(
+          Type(
+           in
+          ) [Type]
+          VarIdent(
+           t
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      VariablesDecl(
+        Type(
+         in
+        ) [Type]
+        VarsIdent(
+          SingleVarIdentError(
+          ) [SingleVarIdentError]
+          VarIdent(
+           b
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         c
+        ) [VarIdent]
+      ) [VariablesDecl]
+    ) [VarDeclarations]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        SingleVarIdentError(
+        ) [SingleVarIdentError]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      FormParams(
+        FormalParamDecls(
+          FormalParamDecls(
+            FormalParamDecls(
+              SingleFormalParamDecl(
+                FormalParamDeclClassNoArray(
+                  Type(
+                   int
+                  ) [Type]
+                 a
+                ) [FormalParamDeclClassNoArray]
+              ) [SingleFormalParamDecl]
+              FormalParamDeclClassNoArray(
+                Type(
+                 int
+                ) [Type]
+               b
+              ) [FormalParamDeclClassNoArray]
+            ) [FormalParamDecls]
+            FormalParamDeclClassNoArray(
+              Type(
+               char
+              ) [Type]
+             c
+            ) [FormalParamDeclClassNoArray]
+          ) [FormalParamDecls]
+          FormalParamDeclClassNoArray(
+            Type(
+             int
+            ) [Type]
+           d
+          ) [FormalParamDeclClassNoArray]
+        ) [FormalParamDecls]
+      ) [FormParams]
+      NoVarDecl(
+      ) [NoVarDecl]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:38:10,309 - ===================================

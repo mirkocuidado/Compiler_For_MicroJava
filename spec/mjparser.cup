@@ -1,5 +1,3 @@
-
-
 package rs.ac.bg.etf.pp1;
 
 import java_cup.runtime.*;
@@ -63,7 +61,10 @@ nonterminal Matched, Unmatched;
 
 nonterminal DesignatorStatement, OptionalDesignator, AssignOp, RelOp, MulOp, FactorOptional, FactorOptionalSecond, TermOptionalList, ExprOptionalList, CondFact, 
 			CondFactOptional, CondTerm, CondTermOptional, Condition, ConditionOptional, DesignatorStatementOptions, SwitchStatementList, ExprNegative, ExprPositive, ExprOne;
-			
+
+nonterminal PotentialError, OptionalElse;		
+	
+precedence left ELSE;
 			
 Program ::= (Program) PROG IDENT GroupDeclList LBRACE MethodDeclList RBRACE;
 
@@ -113,11 +114,22 @@ VarDeclList ::= (VarDeclListClass) VarDeclList VarDecl
 				(NoVarDeclList) /* epsilon */
 				;
 
-VarDecl ::= (VarDeclClass) Type:varType VarList SEMI;
+VarDecl ::= (VarDeclClass) Type:varType VarList SEMI
+			|
+			(VarDeclYesError) error:e SEMI
+				{:
+					parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration Semi", null);
+				:}
+			;
 
 VarList ::= (VarListClass) VarList COMMA Variable
 			|
 			(VarListSingle) Variable
+			|
+			(ErrorVarList) error:e
+			{:
+				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration Comma", null);
+			:}
 			;
 				
 Variable ::= (VarClassNoArray) IDENT:varName
@@ -152,25 +164,17 @@ FormalParamList ::= (FormalParamDecls) FormalParamList COMMA FormalParamDecl
 FormalParamDecl ::= (FormalParamDeclClassNoArray) Type:formalParamType IDENT:formalParamName
 		|
 		(FormalParamDeclClassArray) Type:formalParamType IDENT:formalParamName LSQUARE_BRACKET RSQUARE_BRACKET
+		|
+		(FormParYesError) error:error
+		{:
+			parser.report_error("Successful error recovery by parser on line " + errorleft + " -> Formal function parameter", null);
+		:}
 		;
-
-
-
 
 StatementList ::= (Statements) StatementList Statement
 				|
 				(NoStmt) /* epsilon */
 				;
-				
-Statement ::= (MatchedStmt) Matched
-		   |
-		   (UnmatchedStmt) Unmatched
-		   ; 
-
-Unmatched ::= (UnmatchedIf) IF LPAREN Condition RPAREN Statement
-		 	|
-		 	(UnmatchedIfElse) IF LPAREN Condition RPAREN Matched ELSE Unmatched
-		 	; 	
 		 	
 Designator ::= (Designator) IDENT:name OptionalDesignator;
 
@@ -191,8 +195,9 @@ DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression)
 							|
 							(DesignatorStatementMinusMinus) MINUS_MINUS
 							; 
-							
-Matched ::= (Assignment) DesignatorStatement SEMI
+
+
+Statement ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (ErrorStmt) error SEMI:l
 		   {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
@@ -209,7 +214,7 @@ Matched ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (ReadClass) READ LPAREN Designator RPAREN SEMI
 		   |
-		   (MatchedStatement) IF LPAREN Condition RPAREN Matched ELSE Matched
+		   (IfStatement) IF LPAREN PotentialError RPAREN Statement OptionalElse
 		   |
 		   (DoWhileStatement) DO Statement WHILE LPAREN Condition RPAREN SEMI
 		   |
@@ -217,6 +222,24 @@ Matched ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (StatementStatement) LBRACE StatementList RBRACE
 		   ;
+
+PotentialError ::=
+		(IfConditionNoError) Condition
+		|
+		(IfConditionYesError) error:error
+		{:
+			parser.report_error("Successful error recovery by parser on line " + errorleft + " -> If Statement Condition", null);
+		:}
+		;
+
+OptionalElse ::=
+		(YesOptionalStatement) ELSE Statement
+		|
+		(NoOptionalStatement) /* epsilon */
+		;
+
+
+
 
 PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER
 					|

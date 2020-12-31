@@ -1,0 +1,141 @@
+INFO  01:08:26,798 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  01:08:26,868 - #34 program
+INFO  01:08:26,868 - #48 MJProgram
+INFO  01:08:26,868 - #48 int
+INFO  01:08:26,869 - #37 ;
+ERROR 01:08:26,869 - 
+Sintaksna greska na liniji 2
+INFO  01:08:26,870 - #48 int
+INFO  01:08:26,870 - #48 t
+INFO  01:08:26,870 - #48 a
+ERROR 01:08:26,870 - Successful error recovery by parser on line 8 -> Variable Declaration Semi
+ERROR 01:08:26,872 - 
+Sintaksna greska na liniji 3
+INFO  01:08:26,872 - #42 ,
+INFO  01:08:26,872 - #48 b
+INFO  01:08:26,872 - #42 ,
+INFO  01:08:26,873 - #48 c
+ERROR 01:08:26,873 - Successful error recovery by parser on line 3 -> Variable Declaration Comma
+INFO  01:08:26,874 - #37 ;
+INFO  01:08:26,874 - #48 int
+INFO  01:08:26,874 - #48 a
+INFO  01:08:26,874 - #42 ,
+INFO  01:08:26,875 - #48 x
+INFO  01:08:26,875 - #42 ,
+INFO  01:08:26,875 - #48 d
+INFO  01:08:26,875 - #48 d
+ERROR 01:08:26,875 - 
+Sintaksna greska na liniji 4
+INFO  01:08:26,875 - #42 ,
+INFO  01:08:26,875 - #48 b
+INFO  01:08:26,875 - #42 ,
+INFO  01:08:26,875 - #48 c
+ERROR 01:08:26,875 - Successful error recovery by parser on line 4 -> Variable Declaration Comma
+INFO  01:08:26,876 - #37 ;
+INFO  01:08:26,876 - #35 {
+INFO  01:08:26,876 - #44 void
+INFO  01:08:26,877 - #48 main
+INFO  01:08:26,877 - #38 (
+INFO  01:08:26,877 - #39 )
+INFO  01:08:26,878 - #35 {
+INFO  01:08:26,879 - #49 if
+INFO  01:08:26,880 - #38 (
+INFO  01:08:26,880 - #48 a
+INFO  01:08:26,880 - #20 ==
+INFO  01:08:26,885 - #48 b
+INFO  01:08:26,886 - #26 &&
+INFO  01:08:26,887 - #48 c
+INFO  01:08:26,887 - #20 ==
+INFO  01:08:26,888 - #48 d
+INFO  01:08:26,888 - #27 ||
+INFO  01:08:26,889 - #48 p
+INFO  01:08:26,889 - #20 ==
+INFO  01:08:26,889 - #39 )
+ERROR 01:08:26,889 - 
+Sintaksna greska na liniji 9
+INFO  01:08:26,889 - #35 {
+INFO  01:08:26,889 - #36 }
+INFO  01:08:26,889 - #36 }
+ERROR 01:08:26,889 - Successful error recovery by parser on line 9 -> If Statement Condition
+INFO  01:08:26,891 - #36 }
+INFO  01:08:26,893 - Program(
+ MJProgram
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        NoGroupDecl(
+        ) [NoGroupDecl]
+        GroupDeclarationVars(
+          VarDeclYesError(
+          ) [VarDeclYesError]
+        ) [GroupDeclarationVars]
+      ) [GroupDeclarations]
+      GroupDeclarationVars(
+        VarDeclClass(
+          Type(
+           int
+          ) [Type]
+          VarListClass(
+            VarListClass(
+              ErrorVarList(
+              ) [ErrorVarList]
+              VarClassNoArray(
+               b
+              ) [VarClassNoArray]
+            ) [VarListClass]
+            VarClassNoArray(
+             c
+            ) [VarClassNoArray]
+          ) [VarListClass]
+        ) [VarDeclClass]
+      ) [GroupDeclarationVars]
+    ) [GroupDeclarations]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            ErrorVarList(
+            ) [ErrorVarList]
+            VarClassNoArray(
+             b
+            ) [VarClassNoArray]
+          ) [VarListClass]
+          VarClassNoArray(
+           c
+          ) [VarClassNoArray]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        IfStatement(
+          IfConditionYesError(
+          ) [IfConditionYesError]
+          StatementStatement(
+            NoStmt(
+            ) [NoStmt]
+          ) [StatementStatement]
+          NoOptionalStatement(
+          ) [NoOptionalStatement]
+        ) [IfStatement]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  01:08:26,893 - ===================================

@@ -1,0 +1,95 @@
+INFO  00:33:20,068 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:33:20,122 - #34 program
+INFO  00:33:20,122 - #48 MJProgram
+INFO  00:33:20,122 - #35 {
+INFO  00:33:20,123 - #44 void
+INFO  00:33:20,124 - #48 main
+INFO  00:33:20,125 - #38 (
+INFO  00:33:20,125 - #48 int
+INFO  00:33:20,125 - #48 a
+INFO  00:33:20,126 - #42 ,
+INFO  00:33:20,126 - #48 int
+INFO  00:33:20,126 - #48 b
+INFO  00:33:20,126 - #42 ,
+INFO  00:33:20,127 - #48 char
+INFO  00:33:20,127 - #48 c
+INFO  00:33:20,127 - #42 ,
+INFO  00:33:20,127 - #48 int
+INFO  00:33:20,127 - #48 d
+INFO  00:33:20,127 - #39 )
+INFO  00:33:20,127 - #35 {
+INFO  00:33:20,127 - #49 if
+INFO  00:33:20,128 - #38 (
+INFO  00:33:20,138 - #48 a
+INFO  00:33:20,138 - #27 ||
+INFO  00:33:20,143 - #48 b
+INFO  00:33:20,143 - #26 &&
+INFO  00:33:20,143 - #48 c
+INFO  00:33:20,143 - #27 ||
+INFO  00:33:20,143 - #39 )
+ERROR 00:33:20,143 - 
+Sintaksna greska na liniji 5
+INFO  00:33:20,143 - #36 }
+INFO  00:33:20,143 - #36 }
+ERROR 00:33:20,144 - Izvrsen oporavak do ) u liniji 5
+INFO  00:33:20,146 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  NoVarDecl(
+  ) [NoVarDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      FormParams(
+        FormalParamDecls(
+          FormalParamDecls(
+            FormalParamDecls(
+              SingleFormalParamDecl(
+                FormalParamDeclClassNoArray(
+                  Type(
+                   int
+                  ) [Type]
+                 a
+                ) [FormalParamDeclClassNoArray]
+              ) [SingleFormalParamDecl]
+              FormalParamDeclClassNoArray(
+                Type(
+                 int
+                ) [Type]
+               b
+              ) [FormalParamDeclClassNoArray]
+            ) [FormalParamDecls]
+            FormalParamDeclClassNoArray(
+              Type(
+               char
+              ) [Type]
+             c
+            ) [FormalParamDeclClassNoArray]
+          ) [FormalParamDecls]
+          FormalParamDeclClassNoArray(
+            Type(
+             int
+            ) [Type]
+           d
+          ) [FormalParamDeclClassNoArray]
+        ) [FormalParamDecls]
+      ) [FormParams]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        UnmatchedStmt(
+          UnmatchedIfError(
+          ) [UnmatchedIfError]
+        ) [UnmatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:33:20,146 - ===================================

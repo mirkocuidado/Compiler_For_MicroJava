@@ -1,11 +1,11 @@
 // generated with ast extension for cup
 // version 0.8
-// 30/11/2020 11:33:53
+// 31/11/2020 1:5:7
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class DoWhileStatement extends Matched {
+public class DoWhileStatement extends Statement {
 
     private Statement Statement;
     private Condition Condition;

@@ -1,0 +1,89 @@
+INFO  23:07:43,695 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  23:07:43,754 - #34 program
+INFO  23:07:43,754 - #48 MJProgram
+INFO  23:07:43,754 - #48 int
+INFO  23:07:43,756 - #48 a
+INFO  23:07:43,757 - #42 ,
+INFO  23:07:43,757 - #48 x
+INFO  23:07:43,757 - #42 ,
+INFO  23:07:43,757 - #48 d
+INFO  23:07:43,757 - #42 ,
+INFO  23:07:43,757 - #48 b
+INFO  23:07:43,757 - #42 ,
+INFO  23:07:43,758 - #48 c
+INFO  23:07:43,758 - #37 ;
+INFO  23:07:43,758 - #35 {
+INFO  23:07:43,758 - #44 void
+INFO  23:07:43,759 - #48 main
+INFO  23:07:43,760 - #38 (
+INFO  23:07:43,760 - #39 )
+INFO  23:07:43,761 - #35 {
+INFO  23:07:43,761 - #48 z
+INFO  23:07:43,762 - #33 =
+INFO  23:07:43,772 - #37 ;
+ERROR 23:07:43,772 - 
+Sintaksna greska na liniji 7
+INFO  23:07:43,772 - #36 }
+INFO  23:07:43,772 - #36 }
+ERROR 23:07:43,773 - Izvrsen oporavak do ; u liniji 7
+INFO  23:07:43,776 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    NoVarDecl(
+    ) [NoVarDecl]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        VarsIdent(
+          VarsIdent(
+            SingleVarIdent(
+              VarIdent(
+               a
+              ) [VarIdent]
+            ) [SingleVarIdent]
+            VarIdent(
+             x
+            ) [VarIdent]
+          ) [VarsIdent]
+          VarIdent(
+           d
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        MatchedStmt(
+          ErrorStmt(
+          ) [ErrorStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  23:07:43,776 - ===================================
+INFO  23:07:43,778 -  Print count calls = 0
+INFO  23:07:43,778 -  Deklarisanih promenljivih ima = 0

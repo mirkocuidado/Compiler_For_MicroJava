@@ -1,0 +1,154 @@
+INFO  00:48:29,100 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:48:29,152 - #34 program
+INFO  00:48:29,152 - #48 MJProgram
+INFO  00:48:29,152 - #48 int
+INFO  00:48:29,153 - #37 ;
+ERROR 00:48:29,153 - 
+Sintaksna greska na liniji 2
+INFO  00:48:29,153 - #48 in
+INFO  00:48:29,153 - #48 t
+INFO  00:48:29,153 - #48 a
+ERROR 00:48:29,154 - Successful error recovery by parser on line 8 -> Variable Declaration
+ERROR 00:48:29,158 - 
+Sintaksna greska na liniji 3
+INFO  00:48:29,158 - #42 ,
+INFO  00:48:29,158 - #48 b
+INFO  00:48:29,158 - #42 ,
+INFO  00:48:29,158 - #48 c
+ERROR 00:48:29,158 - Successful error recovery by parser on line 3 -> Variable Declaration Comma
+INFO  00:48:29,161 - #37 ;
+INFO  00:48:29,161 - #48 int
+INFO  00:48:29,162 - #48 a
+INFO  00:48:29,162 - #42 ,
+INFO  00:48:29,162 - #48 x
+INFO  00:48:29,162 - #42 ,
+INFO  00:48:29,162 - #48 d
+INFO  00:48:29,162 - #48 d
+ERROR 00:48:29,162 - 
+Sintaksna greska na liniji 4
+INFO  00:48:29,162 - #42 ,
+INFO  00:48:29,162 - #48 b
+INFO  00:48:29,162 - #42 ,
+INFO  00:48:29,162 - #48 c
+ERROR 00:48:29,162 - Successful error recovery by parser on line 4 -> Variable Declaration Comma
+INFO  00:48:29,162 - #37 ;
+INFO  00:48:29,162 - #35 {
+INFO  00:48:29,163 - #44 void
+INFO  00:48:29,163 - #48 main
+INFO  00:48:29,164 - #38 (
+INFO  00:48:29,164 - #48 int
+INFO  00:48:29,164 - #48 a
+INFO  00:48:29,164 - #42 ,
+INFO  00:48:29,164 - #48 int
+INFO  00:48:29,164 - #48 b
+INFO  00:48:29,164 - #42 ,
+INFO  00:48:29,164 - #48 char
+INFO  00:48:29,164 - #48 c
+INFO  00:48:29,165 - #42 ,
+INFO  00:48:29,165 - #48 int
+INFO  00:48:29,165 - #48 d
+INFO  00:48:29,165 - #39 )
+INFO  00:48:29,165 - #35 {
+INFO  00:48:29,166 - #36 }
+INFO  00:48:29,166 - #36 }
+INFO  00:48:29,168 - Program(
+ MJProgram
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        NoGroupDecl(
+        ) [NoGroupDecl]
+        GroupDeclarationVars(
+          VarDeclYesError(
+          ) [VarDeclYesError]
+        ) [GroupDeclarationVars]
+      ) [GroupDeclarations]
+      GroupDeclarationVars(
+        VarDeclClass(
+          Type(
+           in
+          ) [Type]
+          VarListClass(
+            VarListClass(
+              ErrorVarList(
+              ) [ErrorVarList]
+              VarClassNoArray(
+               b
+              ) [VarClassNoArray]
+            ) [VarListClass]
+            VarClassNoArray(
+             c
+            ) [VarClassNoArray]
+          ) [VarListClass]
+        ) [VarDeclClass]
+      ) [GroupDeclarationVars]
+    ) [GroupDeclarations]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            ErrorVarList(
+            ) [ErrorVarList]
+            VarClassNoArray(
+             b
+            ) [VarClassNoArray]
+          ) [VarListClass]
+          VarClassNoArray(
+           c
+          ) [VarClassNoArray]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      FormParams(
+        FormalParamDecls(
+          FormalParamDecls(
+            FormalParamDecls(
+              SingleFormalParamDecl(
+                FormalParamDeclClassNoArray(
+                  Type(
+                   int
+                  ) [Type]
+                 a
+                ) [FormalParamDeclClassNoArray]
+              ) [SingleFormalParamDecl]
+              FormalParamDeclClassNoArray(
+                Type(
+                 int
+                ) [Type]
+               b
+              ) [FormalParamDeclClassNoArray]
+            ) [FormalParamDecls]
+            FormalParamDeclClassNoArray(
+              Type(
+               char
+              ) [Type]
+             c
+            ) [FormalParamDeclClassNoArray]
+          ) [FormalParamDecls]
+          FormalParamDeclClassNoArray(
+            Type(
+             int
+            ) [Type]
+           d
+          ) [FormalParamDeclClassNoArray]
+        ) [FormalParamDecls]
+      ) [FormParams]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:48:29,169 - ===================================

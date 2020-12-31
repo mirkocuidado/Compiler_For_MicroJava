@@ -1,0 +1,475 @@
+INFO  00:12:08,991 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:12:09,045 - #34 program
+INFO  00:12:09,045 - #48 MJProgram
+INFO  00:12:09,046 - #35 {
+INFO  00:12:09,047 - #44 void
+INFO  00:12:09,048 - #48 main
+INFO  00:12:09,048 - #38 (
+INFO  00:12:09,049 - #39 )
+INFO  00:12:09,049 - #35 {
+INFO  00:12:09,049 - #49 if
+INFO  00:12:09,050 - #38 (
+INFO  00:12:09,050 - #47 0
+INFO  00:12:09,050 - #25 <=
+INFO  00:12:09,052 - #48 x
+INFO  00:12:09,052 - #26 &&
+INFO  00:12:09,055 - #48 x
+INFO  00:12:09,055 - #24 <
+INFO  00:12:09,055 - #48 size
+INFO  00:12:09,056 - #39 )
+INFO  00:12:09,056 - #35 {
+INFO  00:12:09,057 - #48 val
+INFO  00:12:09,057 - #30 .
+INFO  00:12:09,057 - #48 putp
+INFO  00:12:09,057 - #38 (
+INFO  00:12:09,057 - #48 val
+INFO  00:12:09,057 - #30 .
+INFO  00:12:09,057 - #48 getp
+INFO  00:12:09,057 - #38 (
+INFO  00:12:09,057 - #48 x
+INFO  00:12:09,057 - #39 )
+INFO  00:12:09,058 - #41 +
+INFO  00:12:09,058 - #47 1
+INFO  00:12:09,059 - #39 )
+INFO  00:12:09,059 - #37 ;
+INFO  00:12:09,059 - #36 }
+INFO  00:12:09,060 - #50 else
+INFO  00:12:09,060 - #49 if
+INFO  00:12:09,060 - #38 (
+INFO  00:12:09,060 - #16 -
+INFO  00:12:09,060 - #48 size
+INFO  00:12:09,060 - #24 <
+INFO  00:12:09,060 - #48 x
+INFO  00:12:09,060 - #26 &&
+INFO  00:12:09,061 - #48 x
+INFO  00:12:09,061 - #24 <
+INFO  00:12:09,061 - #47 0
+INFO  00:12:09,061 - #39 )
+INFO  00:12:09,061 - #35 {
+INFO  00:12:09,061 - #48 val
+INFO  00:12:09,061 - #30 .
+INFO  00:12:09,061 - #48 putn
+INFO  00:12:09,061 - #38 (
+INFO  00:12:09,061 - #48 val
+INFO  00:12:09,061 - #30 .
+INFO  00:12:09,061 - #48 getn
+INFO  00:12:09,061 - #38 (
+INFO  00:12:09,061 - #16 -
+INFO  00:12:09,061 - #48 x
+INFO  00:12:09,061 - #39 )
+INFO  00:12:09,062 - #41 +
+INFO  00:12:09,062 - #47 1
+INFO  00:12:09,062 - #39 )
+INFO  00:12:09,062 - #37 ;
+INFO  00:12:09,062 - #36 }
+INFO  00:12:09,062 - #36 }
+INFO  00:12:09,062 - #36 }
+INFO  00:12:09,065 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  NoVarDecl(
+  ) [NoVarDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        UnmatchedStmt(
+          UnmatchedIfElse(
+            ConditionClass(
+              CondTermClass(
+                CondFactClass(
+                  ExprOneClass(
+                    PositiveExpressionClass(
+                      ExprWithNoMinusClass(
+                        TermClass(
+                          NumberConst(
+                           0
+                          ) [NumberConst]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprWithNoMinusClass]
+                    ) [PositiveExpressionClass]
+                  ) [ExprOneClass]
+                  CondFactOptionalClass(
+                    LessOrEqualOperation(
+                    ) [LessOrEqualOperation]
+                    ExprOneClass(
+                      PositiveExpressionClass(
+                        ExprWithNoMinusClass(
+                          TermClass(
+                            DesignatorClass(
+                              Designator(
+                               x
+                                NoOptionalDesignatorClass(
+                                ) [NoOptionalDesignatorClass]
+                              ) [Designator]
+                              NoFactorOptionalClass(
+                              ) [NoFactorOptionalClass]
+                            ) [DesignatorClass]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprWithNoMinusClass]
+                      ) [PositiveExpressionClass]
+                    ) [ExprOneClass]
+                  ) [CondFactOptionalClass]
+                ) [CondFactClass]
+                CondTermOptionalClass(
+                  NoCondTermOptionalClass(
+                  ) [NoCondTermOptionalClass]
+                  CondFactClass(
+                    ExprOneClass(
+                      PositiveExpressionClass(
+                        ExprWithNoMinusClass(
+                          TermClass(
+                            DesignatorClass(
+                              Designator(
+                               x
+                                NoOptionalDesignatorClass(
+                                ) [NoOptionalDesignatorClass]
+                              ) [Designator]
+                              NoFactorOptionalClass(
+                              ) [NoFactorOptionalClass]
+                            ) [DesignatorClass]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprWithNoMinusClass]
+                      ) [PositiveExpressionClass]
+                    ) [ExprOneClass]
+                    CondFactOptionalClass(
+                      LessOperation(
+                      ) [LessOperation]
+                      ExprOneClass(
+                        PositiveExpressionClass(
+                          ExprWithNoMinusClass(
+                            TermClass(
+                              DesignatorClass(
+                                Designator(
+                                 size
+                                  NoOptionalDesignatorClass(
+                                  ) [NoOptionalDesignatorClass]
+                                ) [Designator]
+                                NoFactorOptionalClass(
+                                ) [NoFactorOptionalClass]
+                              ) [DesignatorClass]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprWithNoMinusClass]
+                        ) [PositiveExpressionClass]
+                      ) [ExprOneClass]
+                    ) [CondFactOptionalClass]
+                  ) [CondFactClass]
+                ) [CondTermOptionalClass]
+              ) [CondTermClass]
+              NoConditionOptionalClass(
+              ) [NoConditionOptionalClass]
+            ) [ConditionClass]
+            StatementStatement(
+              Statements(
+                NoStmt(
+                ) [NoStmt]
+                MatchedStmt(
+                  Assignment(
+                    DesignatorStatementClass(
+                      Designator(
+                       val
+                        OptionalDesignatorClass(
+                          NoOptionalDesignatorClass(
+                          ) [NoOptionalDesignatorClass]
+                         putp
+                        ) [OptionalDesignatorClass]
+                      ) [Designator]
+                      DesignatorStatementActualParameters(
+                        Actuals(
+                          ActualParam(
+                            ExprOneClass(
+                              PositiveExpressionClass(
+                                ExprWithNoMinusClass(
+                                  TermClass(
+                                    DesignatorClass(
+                                      Designator(
+                                       val
+                                        OptionalDesignatorClass(
+                                          NoOptionalDesignatorClass(
+                                          ) [NoOptionalDesignatorClass]
+                                         getp
+                                        ) [OptionalDesignatorClass]
+                                      ) [Designator]
+                                      FactorOptionalClass(
+                                        Actuals(
+                                          ActualParam(
+                                            ExprOneClass(
+                                              PositiveExpressionClass(
+                                                ExprWithNoMinusClass(
+                                                  TermClass(
+                                                    DesignatorClass(
+                                                      Designator(
+                                                       x
+                                                        NoOptionalDesignatorClass(
+                                                        ) [NoOptionalDesignatorClass]
+                                                      ) [Designator]
+                                                      NoFactorOptionalClass(
+                                                      ) [NoFactorOptionalClass]
+                                                    ) [DesignatorClass]
+                                                    NoTermOptionalListClass(
+                                                    ) [NoTermOptionalListClass]
+                                                  ) [TermClass]
+                                                  NoExprOptionalListClass(
+                                                  ) [NoExprOptionalListClass]
+                                                ) [ExprWithNoMinusClass]
+                                              ) [PositiveExpressionClass]
+                                            ) [ExprOneClass]
+                                          ) [ActualParam]
+                                        ) [Actuals]
+                                      ) [FactorOptionalClass]
+                                    ) [DesignatorClass]
+                                    NoTermOptionalListClass(
+                                    ) [NoTermOptionalListClass]
+                                  ) [TermClass]
+                                  ExprOptionalListClass(
+                                    NoExprOptionalListClass(
+                                    ) [NoExprOptionalListClass]
+                                    PlusOperation(
+                                    ) [PlusOperation]
+                                    TermClass(
+                                      NumberConst(
+                                       1
+                                      ) [NumberConst]
+                                      NoTermOptionalListClass(
+                                      ) [NoTermOptionalListClass]
+                                    ) [TermClass]
+                                  ) [ExprOptionalListClass]
+                                ) [ExprWithNoMinusClass]
+                              ) [PositiveExpressionClass]
+                            ) [ExprOneClass]
+                          ) [ActualParam]
+                        ) [Actuals]
+                      ) [DesignatorStatementActualParameters]
+                    ) [DesignatorStatementClass]
+                  ) [Assignment]
+                ) [MatchedStmt]
+              ) [Statements]
+            ) [StatementStatement]
+            UnmatchedIf(
+              ConditionClass(
+                CondTermClass(
+                  CondFactClass(
+                    ExprOneClass(
+                      NegativeExpressionClass(
+                        ExprWithMinusClass(
+                          ExprWithNoMinusClass(
+                            TermClass(
+                              DesignatorClass(
+                                Designator(
+                                 size
+                                  NoOptionalDesignatorClass(
+                                  ) [NoOptionalDesignatorClass]
+                                ) [Designator]
+                                NoFactorOptionalClass(
+                                ) [NoFactorOptionalClass]
+                              ) [DesignatorClass]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprWithNoMinusClass]
+                        ) [ExprWithMinusClass]
+                      ) [NegativeExpressionClass]
+                    ) [ExprOneClass]
+                    CondFactOptionalClass(
+                      LessOperation(
+                      ) [LessOperation]
+                      ExprOneClass(
+                        PositiveExpressionClass(
+                          ExprWithNoMinusClass(
+                            TermClass(
+                              DesignatorClass(
+                                Designator(
+                                 x
+                                  NoOptionalDesignatorClass(
+                                  ) [NoOptionalDesignatorClass]
+                                ) [Designator]
+                                NoFactorOptionalClass(
+                                ) [NoFactorOptionalClass]
+                              ) [DesignatorClass]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprWithNoMinusClass]
+                        ) [PositiveExpressionClass]
+                      ) [ExprOneClass]
+                    ) [CondFactOptionalClass]
+                  ) [CondFactClass]
+                  CondTermOptionalClass(
+                    NoCondTermOptionalClass(
+                    ) [NoCondTermOptionalClass]
+                    CondFactClass(
+                      ExprOneClass(
+                        PositiveExpressionClass(
+                          ExprWithNoMinusClass(
+                            TermClass(
+                              DesignatorClass(
+                                Designator(
+                                 x
+                                  NoOptionalDesignatorClass(
+                                  ) [NoOptionalDesignatorClass]
+                                ) [Designator]
+                                NoFactorOptionalClass(
+                                ) [NoFactorOptionalClass]
+                              ) [DesignatorClass]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprWithNoMinusClass]
+                        ) [PositiveExpressionClass]
+                      ) [ExprOneClass]
+                      CondFactOptionalClass(
+                        LessOperation(
+                        ) [LessOperation]
+                        ExprOneClass(
+                          PositiveExpressionClass(
+                            ExprWithNoMinusClass(
+                              TermClass(
+                                NumberConst(
+                                 0
+                                ) [NumberConst]
+                                NoTermOptionalListClass(
+                                ) [NoTermOptionalListClass]
+                              ) [TermClass]
+                              NoExprOptionalListClass(
+                              ) [NoExprOptionalListClass]
+                            ) [ExprWithNoMinusClass]
+                          ) [PositiveExpressionClass]
+                        ) [ExprOneClass]
+                      ) [CondFactOptionalClass]
+                    ) [CondFactClass]
+                  ) [CondTermOptionalClass]
+                ) [CondTermClass]
+                NoConditionOptionalClass(
+                ) [NoConditionOptionalClass]
+              ) [ConditionClass]
+              MatchedStmt(
+                StatementStatement(
+                  Statements(
+                    NoStmt(
+                    ) [NoStmt]
+                    MatchedStmt(
+                      Assignment(
+                        DesignatorStatementClass(
+                          Designator(
+                           val
+                            OptionalDesignatorClass(
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                             putn
+                            ) [OptionalDesignatorClass]
+                          ) [Designator]
+                          DesignatorStatementActualParameters(
+                            Actuals(
+                              ActualParam(
+                                ExprOneClass(
+                                  PositiveExpressionClass(
+                                    ExprWithNoMinusClass(
+                                      TermClass(
+                                        DesignatorClass(
+                                          Designator(
+                                           val
+                                            OptionalDesignatorClass(
+                                              NoOptionalDesignatorClass(
+                                              ) [NoOptionalDesignatorClass]
+                                             getn
+                                            ) [OptionalDesignatorClass]
+                                          ) [Designator]
+                                          FactorOptionalClass(
+                                            Actuals(
+                                              ActualParam(
+                                                ExprOneClass(
+                                                  NegativeExpressionClass(
+                                                    ExprWithMinusClass(
+                                                      ExprWithNoMinusClass(
+                                                        TermClass(
+                                                          DesignatorClass(
+                                                            Designator(
+                                                             x
+                                                              NoOptionalDesignatorClass(
+                                                              ) [NoOptionalDesignatorClass]
+                                                            ) [Designator]
+                                                            NoFactorOptionalClass(
+                                                            ) [NoFactorOptionalClass]
+                                                          ) [DesignatorClass]
+                                                          NoTermOptionalListClass(
+                                                          ) [NoTermOptionalListClass]
+                                                        ) [TermClass]
+                                                        NoExprOptionalListClass(
+                                                        ) [NoExprOptionalListClass]
+                                                      ) [ExprWithNoMinusClass]
+                                                    ) [ExprWithMinusClass]
+                                                  ) [NegativeExpressionClass]
+                                                ) [ExprOneClass]
+                                              ) [ActualParam]
+                                            ) [Actuals]
+                                          ) [FactorOptionalClass]
+                                        ) [DesignatorClass]
+                                        NoTermOptionalListClass(
+                                        ) [NoTermOptionalListClass]
+                                      ) [TermClass]
+                                      ExprOptionalListClass(
+                                        NoExprOptionalListClass(
+                                        ) [NoExprOptionalListClass]
+                                        PlusOperation(
+                                        ) [PlusOperation]
+                                        TermClass(
+                                          NumberConst(
+                                           1
+                                          ) [NumberConst]
+                                          NoTermOptionalListClass(
+                                          ) [NoTermOptionalListClass]
+                                        ) [TermClass]
+                                      ) [ExprOptionalListClass]
+                                    ) [ExprWithNoMinusClass]
+                                  ) [PositiveExpressionClass]
+                                ) [ExprOneClass]
+                              ) [ActualParam]
+                            ) [Actuals]
+                          ) [DesignatorStatementActualParameters]
+                        ) [DesignatorStatementClass]
+                      ) [Assignment]
+                    ) [MatchedStmt]
+                  ) [Statements]
+                ) [StatementStatement]
+              ) [MatchedStmt]
+            ) [UnmatchedIf]
+          ) [UnmatchedIfElse]
+        ) [UnmatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:12:09,068 - ===================================

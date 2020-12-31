@@ -1,0 +1,159 @@
+INFO  23:27:32,397 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  23:27:32,458 - #34 program
+INFO  23:27:32,458 - #48 MJProgram
+INFO  23:27:32,458 - #48 int
+INFO  23:27:32,459 - #37 ;
+ERROR 23:27:32,460 - 
+Sintaksna greska na liniji 2
+INFO  23:27:32,460 - #48 in
+INFO  23:27:32,460 - #48 t
+INFO  23:27:32,460 - #37 ;
+ERROR 23:27:32,461 - Izvrsen oporavak do ; u liniji 2
+INFO  23:27:32,462 - #48 in
+INFO  23:27:32,462 - #48 t
+INFO  23:27:32,462 - #48 a
+ERROR 23:27:32,462 - 
+Sintaksna greska na liniji 4
+INFO  23:27:32,463 - #42 ,
+INFO  23:27:32,463 - #48 b
+INFO  23:27:32,463 - #42 ,
+INFO  23:27:32,463 - #48 c
+ERROR 23:27:32,463 - Izvrsen oporavak do , u liniji 4
+INFO  23:27:32,473 - #37 ;
+INFO  23:27:32,473 - #48 int
+INFO  23:27:32,473 - #48 a
+INFO  23:27:32,474 - #42 ,
+INFO  23:27:32,474 - #48 x
+INFO  23:27:32,474 - #42 ,
+INFO  23:27:32,474 - #48 d
+INFO  23:27:32,474 - #48 d
+ERROR 23:27:32,474 - 
+Sintaksna greska na liniji 5
+INFO  23:27:32,474 - #42 ,
+INFO  23:27:32,475 - #48 b
+INFO  23:27:32,475 - #42 ,
+INFO  23:27:32,475 - #48 c
+ERROR 23:27:32,475 - Izvrsen oporavak do , u liniji 5
+INFO  23:27:32,475 - #37 ;
+INFO  23:27:32,475 - #35 {
+INFO  23:27:32,475 - #44 void
+INFO  23:27:32,476 - #48 main
+INFO  23:27:32,477 - #38 (
+INFO  23:27:32,477 - #39 )
+INFO  23:27:32,478 - #48 int
+INFO  23:27:32,479 - #48 a
+INFO  23:27:32,479 - #37 ;
+INFO  23:27:32,479 - #35 {
+INFO  23:27:32,479 - #43 print
+INFO  23:27:32,480 - #38 (
+INFO  23:27:32,480 - #47 2
+INFO  23:27:32,480 - #39 )
+INFO  23:27:32,483 - #37 ;
+INFO  23:27:32,483 - #36 }
+INFO  23:27:32,483 - #36 }
+INFO  23:27:32,485 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    VarDeclarations(
+      VarDeclarations(
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          ErrorVarDeclTwo(
+          ) [ErrorVarDeclTwo]
+        ) [VarDeclarations]
+        VariableDecl(
+          Type(
+           in
+          ) [Type]
+          VarIdent(
+           t
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      VariablesDecl(
+        Type(
+         in
+        ) [Type]
+        VarsIdent(
+          SingleVarIdentError(
+          ) [SingleVarIdentError]
+          VarIdent(
+           b
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         c
+        ) [VarIdent]
+      ) [VariablesDecl]
+    ) [VarDeclarations]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        SingleVarIdentError(
+        ) [SingleVarIdentError]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclarations(
+        NoVarDecl(
+        ) [NoVarDecl]
+        VariableDecl(
+          Type(
+           int
+          ) [Type]
+          VarIdent(
+           a
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        MatchedStmt(
+          PrintStmt(
+            ExprOneClass(
+              PositiveExpressionClass(
+                ExprWithNoMinusClass(
+                  TermClass(
+                    NumberConst(
+                     2
+                    ) [NumberConst]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprWithNoMinusClass]
+              ) [PositiveExpressionClass]
+            ) [ExprOneClass]
+            NoCommaNumberClass(
+            ) [NoCommaNumberClass]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  23:27:32,486 - ===================================
+INFO  23:27:32,488 -  Print count calls = 0
+INFO  23:27:32,488 -  Deklarisanih promenljivih ima = 0

@@ -1,0 +1,231 @@
+INFO  23:38:41,248 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  23:38:41,311 - #34 program
+INFO  23:38:41,312 - #48 MJProgram
+INFO  23:38:41,312 - #48 int
+INFO  23:38:41,313 - #37 ;
+ERROR 23:38:41,313 - 
+Sintaksna greska na liniji 2
+INFO  23:38:41,313 - #48 in
+INFO  23:38:41,313 - #48 t
+INFO  23:38:41,313 - #37 ;
+ERROR 23:38:41,314 - Izvrsen oporavak do ; u liniji 2
+INFO  23:38:41,315 - #48 in
+INFO  23:38:41,316 - #48 t
+INFO  23:38:41,316 - #48 a
+ERROR 23:38:41,316 - 
+Sintaksna greska na liniji 4
+INFO  23:38:41,316 - #42 ,
+INFO  23:38:41,316 - #48 b
+INFO  23:38:41,316 - #42 ,
+INFO  23:38:41,316 - #48 c
+ERROR 23:38:41,316 - Izvrsen oporavak do , u liniji 4
+INFO  23:38:41,326 - #37 ;
+INFO  23:38:41,326 - #48 int
+INFO  23:38:41,326 - #48 a
+INFO  23:38:41,326 - #42 ,
+INFO  23:38:41,326 - #48 x
+INFO  23:38:41,326 - #42 ,
+INFO  23:38:41,326 - #48 d
+INFO  23:38:41,326 - #48 d
+ERROR 23:38:41,327 - 
+Sintaksna greska na liniji 5
+INFO  23:38:41,327 - #42 ,
+INFO  23:38:41,327 - #48 b
+INFO  23:38:41,327 - #42 ,
+INFO  23:38:41,327 - #48 c
+ERROR 23:38:41,327 - Izvrsen oporavak do , u liniji 5
+INFO  23:38:41,327 - #37 ;
+INFO  23:38:41,327 - #35 {
+INFO  23:38:41,327 - #44 void
+INFO  23:38:41,328 - #48 main
+INFO  23:38:41,329 - #38 (
+INFO  23:38:41,329 - #39 )
+INFO  23:38:41,330 - #48 int
+INFO  23:38:41,330 - #48 a
+INFO  23:38:41,330 - #37 ;
+INFO  23:38:41,330 - #35 {
+INFO  23:38:41,330 - #49 if
+INFO  23:38:41,331 - #38 (
+INFO  23:38:41,331 - #48 a
+INFO  23:38:41,331 - #27 ||
+INFO  23:38:41,337 - #48 b
+INFO  23:38:41,337 - #39 )
+INFO  23:38:41,337 - #43 print
+INFO  23:38:41,338 - #38 (
+INFO  23:38:41,338 - #47 2
+INFO  23:38:41,338 - #39 )
+INFO  23:38:41,338 - #37 ;
+INFO  23:38:41,339 - #36 }
+INFO  23:38:41,339 - #36 }
+INFO  23:38:41,341 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    VarDeclarations(
+      VarDeclarations(
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          ErrorVarDeclTwo(
+          ) [ErrorVarDeclTwo]
+        ) [VarDeclarations]
+        VariableDecl(
+          Type(
+           in
+          ) [Type]
+          VarIdent(
+           t
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      VariablesDecl(
+        Type(
+         in
+        ) [Type]
+        VarsIdent(
+          SingleVarIdentError(
+          ) [SingleVarIdentError]
+          VarIdent(
+           b
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         c
+        ) [VarIdent]
+      ) [VariablesDecl]
+    ) [VarDeclarations]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        SingleVarIdentError(
+        ) [SingleVarIdentError]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclarations(
+        NoVarDecl(
+        ) [NoVarDecl]
+        VariableDecl(
+          Type(
+           int
+          ) [Type]
+          VarIdent(
+           a
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        UnmatchedStmt(
+          UnmatchedIf(
+            ConditionClass(
+              CondTermClass(
+                CondFactClass(
+                  ExprOneClass(
+                    PositiveExpressionClass(
+                      ExprWithNoMinusClass(
+                        TermClass(
+                          DesignatorClass(
+                            Designator(
+                             a
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                            ) [Designator]
+                            NoFactorOptionalClass(
+                            ) [NoFactorOptionalClass]
+                          ) [DesignatorClass]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprWithNoMinusClass]
+                    ) [PositiveExpressionClass]
+                  ) [ExprOneClass]
+                  NoCondFactOptionalClass(
+                  ) [NoCondFactOptionalClass]
+                ) [CondFactClass]
+                NoCondTermOptionalClass(
+                ) [NoCondTermOptionalClass]
+              ) [CondTermClass]
+              ConditionOptionalClass(
+                NoConditionOptionalClass(
+                ) [NoConditionOptionalClass]
+                CondTermClass(
+                  CondFactClass(
+                    ExprOneClass(
+                      PositiveExpressionClass(
+                        ExprWithNoMinusClass(
+                          TermClass(
+                            DesignatorClass(
+                              Designator(
+                               b
+                                NoOptionalDesignatorClass(
+                                ) [NoOptionalDesignatorClass]
+                              ) [Designator]
+                              NoFactorOptionalClass(
+                              ) [NoFactorOptionalClass]
+                            ) [DesignatorClass]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprWithNoMinusClass]
+                      ) [PositiveExpressionClass]
+                    ) [ExprOneClass]
+                    NoCondFactOptionalClass(
+                    ) [NoCondFactOptionalClass]
+                  ) [CondFactClass]
+                  NoCondTermOptionalClass(
+                  ) [NoCondTermOptionalClass]
+                ) [CondTermClass]
+              ) [ConditionOptionalClass]
+            ) [ConditionClass]
+            MatchedStmt(
+              PrintStmt(
+                ExprOneClass(
+                  PositiveExpressionClass(
+                    ExprWithNoMinusClass(
+                      TermClass(
+                        NumberConst(
+                         2
+                        ) [NumberConst]
+                        NoTermOptionalListClass(
+                        ) [NoTermOptionalListClass]
+                      ) [TermClass]
+                      NoExprOptionalListClass(
+                      ) [NoExprOptionalListClass]
+                    ) [ExprWithNoMinusClass]
+                  ) [PositiveExpressionClass]
+                ) [ExprOneClass]
+                NoCommaNumberClass(
+                ) [NoCommaNumberClass]
+              ) [PrintStmt]
+            ) [MatchedStmt]
+          ) [UnmatchedIf]
+        ) [UnmatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  23:38:41,342 - ===================================

@@ -1,11 +1,11 @@
 // generated with ast extension for cup
 // version 0.8
-// 30/11/2020 11:33:53
+// 31/11/2020 1:5:7
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class SwitchStatement extends Matched {
+public class SwitchStatement extends Statement {
 
     private Expr Expr;
     private SwitchStatementList SwitchStatementList;

@@ -1,0 +1,171 @@
+INFO  23:43:23,449 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  23:43:23,511 - #34 program
+INFO  23:43:23,511 - #48 MJProgram
+INFO  23:43:23,512 - #48 int
+INFO  23:43:23,513 - #37 ;
+ERROR 23:43:23,513 - 
+Sintaksna greska na liniji 2
+INFO  23:43:23,513 - #48 in
+INFO  23:43:23,513 - #48 t
+INFO  23:43:23,513 - #37 ;
+ERROR 23:43:23,514 - Izvrsen oporavak do ; u liniji 2
+INFO  23:43:23,515 - #48 in
+INFO  23:43:23,515 - #48 t
+INFO  23:43:23,516 - #48 a
+ERROR 23:43:23,516 - 
+Sintaksna greska na liniji 4
+INFO  23:43:23,516 - #42 ,
+INFO  23:43:23,516 - #48 b
+INFO  23:43:23,516 - #42 ,
+INFO  23:43:23,516 - #48 c
+ERROR 23:43:23,516 - Izvrsen oporavak do , u liniji 4
+INFO  23:43:23,526 - #37 ;
+INFO  23:43:23,526 - #48 int
+INFO  23:43:23,526 - #48 a
+INFO  23:43:23,526 - #42 ,
+INFO  23:43:23,526 - #48 x
+INFO  23:43:23,527 - #42 ,
+INFO  23:43:23,527 - #48 d
+INFO  23:43:23,527 - #48 d
+ERROR 23:43:23,527 - 
+Sintaksna greska na liniji 5
+INFO  23:43:23,527 - #42 ,
+INFO  23:43:23,527 - #48 b
+INFO  23:43:23,527 - #42 ,
+INFO  23:43:23,527 - #48 c
+ERROR 23:43:23,527 - Izvrsen oporavak do , u liniji 5
+INFO  23:43:23,528 - #37 ;
+INFO  23:43:23,528 - #35 {
+INFO  23:43:23,528 - #44 void
+INFO  23:43:23,529 - #48 main
+INFO  23:43:23,529 - #38 (
+INFO  23:43:23,529 - #39 )
+INFO  23:43:23,530 - #48 int
+INFO  23:43:23,530 - #48 a
+INFO  23:43:23,530 - #37 ;
+INFO  23:43:23,530 - #35 {
+INFO  23:43:23,531 - #49 if
+INFO  23:43:23,531 - #38 (
+INFO  23:43:23,531 - #48 a
+INFO  23:43:23,531 - #27 ||
+INFO  23:43:23,536 - #39 )
+ERROR 23:43:23,536 - 
+Sintaksna greska na liniji 12
+INFO  23:43:23,536 - #43 print
+INFO  23:43:23,536 - #38 (
+INFO  23:43:23,536 - #47 2
+ERROR 23:43:23,536 - Izvrsen oporavak do ; u liniji 12
+INFO  23:43:23,537 - #39 )
+INFO  23:43:23,538 - #37 ;
+INFO  23:43:23,538 - #36 }
+INFO  23:43:23,538 - #36 }
+INFO  23:43:23,540 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    VarDeclarations(
+      VarDeclarations(
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          ErrorVarDeclTwo(
+          ) [ErrorVarDeclTwo]
+        ) [VarDeclarations]
+        VariableDecl(
+          Type(
+           in
+          ) [Type]
+          VarIdent(
+           t
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      VariablesDecl(
+        Type(
+         in
+        ) [Type]
+        VarsIdent(
+          SingleVarIdentError(
+          ) [SingleVarIdentError]
+          VarIdent(
+           b
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         c
+        ) [VarIdent]
+      ) [VariablesDecl]
+    ) [VarDeclarations]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        SingleVarIdentError(
+        ) [SingleVarIdentError]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclarations(
+        NoVarDecl(
+        ) [NoVarDecl]
+        VariableDecl(
+          Type(
+           int
+          ) [Type]
+          VarIdent(
+           a
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      Statements(
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          MatchedStmt(
+            ErrorStmt(
+            ) [ErrorStmt]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          PrintStmt(
+            ExprOneClass(
+              PositiveExpressionClass(
+                ExprWithNoMinusClass(
+                  TermClass(
+                    NumberConst(
+                     2
+                    ) [NumberConst]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprWithNoMinusClass]
+              ) [PositiveExpressionClass]
+            ) [ExprOneClass]
+            NoCommaNumberClass(
+            ) [NoCommaNumberClass]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  23:43:23,541 - ===================================

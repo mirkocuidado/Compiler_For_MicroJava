@@ -1,0 +1,46 @@
+INFO  00:20:40,361 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:20:40,415 - #34 program
+INFO  00:20:40,415 - #48 MJProgram
+INFO  00:20:40,416 - #35 {
+INFO  00:20:40,417 - #44 void
+INFO  00:20:40,417 - #48 main
+INFO  00:20:40,418 - #38 (
+INFO  00:20:40,418 - #39 )
+INFO  00:20:40,419 - #35 {
+INFO  00:20:40,419 - #49 if
+INFO  00:20:40,420 - #38 (
+INFO  00:20:40,420 - #39 )
+ERROR 00:20:40,420 - 
+Sintaksna greska na liniji 5
+INFO  00:20:40,420 - #36 }
+INFO  00:20:40,420 - #36 }
+ERROR 00:20:40,421 - Izvrsen oporavak do ) u liniji 5
+INFO  00:20:40,423 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  NoVarDecl(
+  ) [NoVarDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        UnmatchedStmt(
+          UnmatchedIfError(
+          ) [UnmatchedIfError]
+        ) [UnmatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:20:40,423 - ===================================

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 30/11/2020 11:33:53
+// 31/11/2020 1:5:7
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -32,6 +32,7 @@ public interface Visitor {
     public void visit(Term Term);
     public void visit(Condition Condition);
     public void visit(MulOp MulOp);
+    public void visit(PotentialError PotentialError);
     public void visit(OptionalDesignator OptionalDesignator);
     public void visit(RelOp RelOp);
     public void visit(AssignOp AssignOp);
@@ -56,6 +57,7 @@ public interface Visitor {
     public void visit(GroupDecl GroupDecl);
     public void visit(ReturnValue ReturnValue);
     public void visit(FormPars FormPars);
+    public void visit(OptionalElse OptionalElse);
     public void visit(ModOperationClass ModOperationClass);
     public void visit(DivideOperationClass DivideOperationClass);
     public void visit(MultiplyOperationClass MultiplyOperationClass);
@@ -106,10 +108,14 @@ public interface Visitor {
     public void visit(SwitchStatementListClass SwitchStatementListClass);
     public void visit(NoCommaNumberClass NoCommaNumberClass);
     public void visit(CommaNumberClass CommaNumberClass);
+    public void visit(NoOptionalStatement NoOptionalStatement);
+    public void visit(YesOptionalStatement YesOptionalStatement);
+    public void visit(IfConditionYesError IfConditionYesError);
+    public void visit(IfConditionNoError IfConditionNoError);
     public void visit(StatementStatement StatementStatement);
     public void visit(SwitchStatement SwitchStatement);
     public void visit(DoWhileStatement DoWhileStatement);
-    public void visit(MatchedStatement MatchedStatement);
+    public void visit(IfStatement IfStatement);
     public void visit(ReadClass ReadClass);
     public void visit(ContinueClass ContinueClass);
     public void visit(BreakClass BreakClass);
@@ -127,12 +133,9 @@ public interface Visitor {
     public void visit(OptionalDesignatorArray OptionalDesignatorArray);
     public void visit(OptionalDesignatorClass OptionalDesignatorClass);
     public void visit(Designator Designator);
-    public void visit(UnmatchedIfElse UnmatchedIfElse);
-    public void visit(UnmatchedIf UnmatchedIf);
-    public void visit(UnmatchedStmt UnmatchedStmt);
-    public void visit(MatchedStmt MatchedStmt);
     public void visit(NoStmt NoStmt);
     public void visit(Statements Statements);
+    public void visit(FormParYesError FormParYesError);
     public void visit(FormalParamDeclClassArray FormalParamDeclClassArray);
     public void visit(FormalParamDeclClassNoArray FormalParamDeclClassNoArray);
     public void visit(SingleFormalParamDecl SingleFormalParamDecl);
@@ -147,8 +150,10 @@ public interface Visitor {
     public void visit(Type Type);
     public void visit(VarClassArray VarClassArray);
     public void visit(VarClassNoArray VarClassNoArray);
+    public void visit(ErrorVarList ErrorVarList);
     public void visit(VarListSingle VarListSingle);
     public void visit(VarListClass VarListClass);
+    public void visit(VarDeclYesError VarDeclYesError);
     public void visit(VarDeclClass VarDeclClass);
     public void visit(NoVarDeclList NoVarDeclList);
     public void visit(VarDeclListClass VarDeclListClass);

@@ -1,0 +1,65 @@
+INFO  20:51:52,001 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  20:51:52,099 - #34 program
+INFO  20:51:52,100 - #48 MJProgram
+INFO  20:51:52,100 - #48 int
+INFO  20:51:52,102 - #48 a
+INFO  20:51:52,103 - #42 ,
+INFO  20:51:52,103 - #48 b
+INFO  20:51:52,103 - #42 ,
+INFO  20:51:52,103 - #48 c
+INFO  20:51:52,104 - #37 ;
+INFO  20:51:52,104 - #35 {
+INFO  20:51:52,104 - #44 void
+INFO  20:51:52,105 - #48 main
+INFO  20:51:52,105 - #38 (
+INFO  20:51:52,105 - #39 )
+INFO  20:51:52,106 - #35 {
+INFO  20:51:52,108 - #36 }
+INFO  20:51:52,109 - #36 }
+INFO  20:51:52,111 - Program(
+ MJProgram
+  ProgramVariables(
+    NoProgramVariables(
+    ) [NoProgramVariables]
+    ProgramVariablesClass(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            VarListSingleClass(
+              VarClassNoArrayClass(
+               a
+              ) [VarClassNoArrayClass]
+            ) [VarListSingleClass]
+            VarClassNoArrayClass(
+             b
+            ) [VarClassNoArrayClass]
+          ) [VarListClass]
+          VarClassNoArrayClass(
+           c
+          ) [VarClassNoArrayClass]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [ProgramVariablesClass]
+  ) [ProgramVariables]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclListClass(
+      ) [NoVarDeclListClass]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  20:51:52,112 - ===================================
+INFO  20:51:52,116 -  Print count calls = 0
+INFO  20:51:52,116 -  Deklarisanih promenljivih ima = 0

@@ -1,0 +1,49 @@
+INFO  21:03:45,243 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  21:03:45,356 - #34 program
+INFO  21:03:45,356 - #48 MJProgram
+INFO  21:03:45,356 - #48 int
+INFO  21:03:45,358 - #48 a
+INFO  21:03:45,359 - #42 ,
+INFO  21:03:45,360 - #48 b
+INFO  21:03:45,360 - #42 ,
+INFO  21:03:45,360 - #37 ;
+ERROR 21:03:45,360 - 
+Sintaksna greska na liniji 2
+INFO  21:03:45,360 - #35 {
+INFO  21:03:45,361 - #44 void
+INFO  21:03:45,361 - #48 main
+ERROR 21:03:45,361 - Successful error recovery by parser on line 8 -> Variable Declaration
+INFO  21:03:45,366 - #38 (
+INFO  21:03:45,366 - #39 )
+INFO  21:03:45,366 - #35 {
+INFO  21:03:45,369 - #36 }
+INFO  21:03:45,370 - #36 }
+INFO  21:03:45,372 - Program(
+ MJProgram
+  ProgramVariables(
+    NoProgramVariables(
+    ) [NoProgramVariables]
+    ProgramVariablesClass(
+      VarDeclYesError(
+      ) [VarDeclYesError]
+    ) [ProgramVariablesClass]
+  ) [ProgramVariables]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclListClass(
+      ) [NoVarDeclListClass]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  21:03:45,372 - ===================================
+INFO  21:03:45,377 -  Print count calls = 0
+INFO  21:03:45,377 -  Deklarisanih promenljivih ima = 0

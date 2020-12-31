@@ -1,0 +1,78 @@
+INFO  23:04:34,805 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  23:04:34,925 - #34 program
+INFO  23:04:34,925 - #48 MJProgram
+INFO  23:04:34,925 - #48 in
+INFO  23:04:34,929 - #48 t
+INFO  23:04:34,930 - #48 a
+ERROR 23:04:34,930 - 
+Sintaksna greska na liniji 2
+INFO  23:04:34,930 - #42 ,
+INFO  23:04:34,930 - #48 x
+INFO  23:04:34,930 - #42 ,
+INFO  23:04:34,931 - #48 d
+ERROR 23:04:34,931 - Izvrsen oporavak do , u liniji 2
+INFO  23:04:34,934 - #42 ,
+INFO  23:04:34,934 - #48 b
+INFO  23:04:34,934 - #42 ,
+INFO  23:04:34,934 - #48 c
+INFO  23:04:34,935 - #37 ;
+INFO  23:04:34,935 - #35 {
+INFO  23:04:34,935 - #44 void
+INFO  23:04:34,936 - #48 main
+INFO  23:04:34,937 - #38 (
+INFO  23:04:34,945 - #39 )
+INFO  23:04:34,946 - #35 {
+INFO  23:04:34,946 - #36 }
+INFO  23:04:34,947 - #36 }
+INFO  23:04:34,951 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    NoVarDecl(
+    ) [NoVarDecl]
+    VariablesDecl(
+      Type(
+       in
+      ) [Type]
+      VarsIdent(
+        VarsIdent(
+          VarsIdent(
+            SingleVarIdentError(
+            ) [SingleVarIdentError]
+            VarIdent(
+             x
+            ) [VarIdent]
+          ) [VarsIdent]
+          VarIdent(
+           d
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  23:04:34,951 - ===================================
+INFO  23:04:34,955 -  Print count calls = 0
+INFO  23:04:34,956 -  Deklarisanih promenljivih ima = 0

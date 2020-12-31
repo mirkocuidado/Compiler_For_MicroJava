@@ -1,0 +1,146 @@
+INFO  23:20:21,713 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  23:20:21,774 - #34 program
+INFO  23:20:21,775 - #48 MJProgram
+INFO  23:20:21,775 - #48 int
+INFO  23:20:21,776 - #37 ;
+ERROR 23:20:21,776 - 
+Sintaksna greska na liniji 2
+INFO  23:20:21,776 - #48 in
+INFO  23:20:21,777 - #48 t
+INFO  23:20:21,777 - #37 ;
+ERROR 23:20:21,777 - Izvrsen oporavak do ; u liniji 2
+INFO  23:20:21,779 - #48 in
+INFO  23:20:21,779 - #48 t
+INFO  23:20:21,779 - #48 a
+ERROR 23:20:21,779 - 
+Sintaksna greska na liniji 4
+INFO  23:20:21,779 - #42 ,
+INFO  23:20:21,779 - #48 b
+INFO  23:20:21,779 - #42 ,
+INFO  23:20:21,779 - #48 c
+ERROR 23:20:21,780 - Izvrsen oporavak do , u liniji 4
+INFO  23:20:21,781 - #37 ;
+INFO  23:20:21,781 - #48 int
+INFO  23:20:21,781 - #48 a
+INFO  23:20:21,781 - #42 ,
+INFO  23:20:21,781 - #48 x
+INFO  23:20:21,782 - #42 ,
+INFO  23:20:21,782 - #48 d
+INFO  23:20:21,782 - #48 d
+ERROR 23:20:21,782 - 
+Sintaksna greska na liniji 5
+INFO  23:20:21,782 - #42 ,
+INFO  23:20:21,782 - #48 b
+INFO  23:20:21,782 - #42 ,
+INFO  23:20:21,782 - #48 c
+ERROR 23:20:21,782 - Izvrsen oporavak do , u liniji 5
+INFO  23:20:21,783 - #37 ;
+INFO  23:20:21,783 - #35 {
+INFO  23:20:21,783 - #44 void
+INFO  23:20:21,783 - #48 main
+INFO  23:20:21,784 - #38 (
+INFO  23:20:21,784 - #39 )
+INFO  23:20:21,785 - #35 {
+INFO  23:20:21,785 - #48 z
+INFO  23:20:21,786 - #33 =
+INFO  23:20:21,787 - #37 ;
+ERROR 23:20:21,787 - 
+Sintaksna greska na liniji 10
+INFO  23:20:21,787 - #43 print
+INFO  23:20:21,787 - #38 (
+INFO  23:20:21,788 - #47 2
+ERROR 23:20:21,788 - Izvrsen oporavak do ; u liniji 10
+INFO  23:20:21,788 - #48 eatmyass
+ERROR 23:20:21,789 - 
+Sintaksna greska na liniji 14
+INFO  23:20:21,789 - #38 (
+INFO  23:20:21,789 - #39 )
+INFO  23:20:21,789 - #37 ;
+INFO  23:20:21,789 - #36 }
+INFO  23:20:21,789 - #36 }
+ERROR 23:20:21,789 - Izvrsen oporavak do ; u liniji 12
+INFO  23:20:21,791 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    VarDeclarations(
+      VarDeclarations(
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          ErrorVarDeclTwo(
+          ) [ErrorVarDeclTwo]
+        ) [VarDeclarations]
+        VariableDecl(
+          Type(
+           in
+          ) [Type]
+          VarIdent(
+           t
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      VariablesDecl(
+        Type(
+         in
+        ) [Type]
+        VarsIdent(
+          SingleVarIdentError(
+          ) [SingleVarIdentError]
+          VarIdent(
+           b
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         c
+        ) [VarIdent]
+      ) [VariablesDecl]
+    ) [VarDeclarations]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        SingleVarIdentError(
+        ) [SingleVarIdentError]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          MatchedStmt(
+            ErrorStmt(
+            ) [ErrorStmt]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          ErrorStmt(
+          ) [ErrorStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  23:20:21,791 - ===================================
+INFO  23:20:21,793 -  Print count calls = 0
+INFO  23:20:21,793 -  Deklarisanih promenljivih ima = 0

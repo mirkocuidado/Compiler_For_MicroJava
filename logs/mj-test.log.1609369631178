@@ -1,0 +1,84 @@
+INFO  00:06:12,333 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:06:12,384 - #34 program
+INFO  00:06:12,384 - #48 MJProgram
+INFO  00:06:12,384 - #35 {
+INFO  00:06:12,385 - #44 void
+INFO  00:06:12,386 - #48 main
+INFO  00:06:12,386 - #38 (
+INFO  00:06:12,386 - #39 )
+INFO  00:06:12,387 - #35 {
+INFO  00:06:12,387 - #49 if
+INFO  00:06:12,388 - #38 (
+INFO  00:06:12,388 - #48 a
+INFO  00:06:12,388 - #27 ||
+INFO  00:06:12,392 - #39 )
+ERROR 00:06:12,392 - 
+Sintaksna greska na liniji 5
+INFO  00:06:12,392 - #48 a
+INFO  00:06:12,392 - #33 =
+INFO  00:06:12,392 - #47 1
+ERROR 00:06:12,393 - Izvrsen oporavak do ; u liniji 5
+INFO  00:06:12,394 - #37 ;
+INFO  00:06:12,395 - #36 }
+INFO  00:06:12,399 - #36 }
+INFO  00:06:12,401 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  NoVarDecl(
+  ) [NoVarDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          UnmatchedStmt(
+            UnmatchedIfError(
+            ) [UnmatchedIfError]
+          ) [UnmatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          Assignment(
+            DesignatorStatementClass(
+              Designator(
+               a
+                NoOptionalDesignatorClass(
+                ) [NoOptionalDesignatorClass]
+              ) [Designator]
+              DesignatorStatementOptionsClassAssignExpression(
+                AssignOperation(
+                ) [AssignOperation]
+                ExprOneClass(
+                  PositiveExpressionClass(
+                    ExprWithNoMinusClass(
+                      TermClass(
+                        NumberConst(
+                         1
+                        ) [NumberConst]
+                        NoTermOptionalListClass(
+                        ) [NoTermOptionalListClass]
+                      ) [TermClass]
+                      NoExprOptionalListClass(
+                      ) [NoExprOptionalListClass]
+                    ) [ExprWithNoMinusClass]
+                  ) [PositiveExpressionClass]
+                ) [ExprOneClass]
+              ) [DesignatorStatementOptionsClassAssignExpression]
+            ) [DesignatorStatementClass]
+          ) [Assignment]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:06:12,401 - ===================================

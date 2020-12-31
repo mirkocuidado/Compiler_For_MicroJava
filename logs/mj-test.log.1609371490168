@@ -1,0 +1,169 @@
+INFO  00:36:54,162 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:36:54,219 - #34 program
+INFO  00:36:54,219 - #48 MJProgram
+INFO  00:36:54,219 - #48 int
+INFO  00:36:54,220 - #37 ;
+ERROR 00:36:54,220 - 
+Sintaksna greska na liniji 2
+INFO  00:36:54,220 - #48 in
+INFO  00:36:54,221 - #48 t
+INFO  00:36:54,221 - #37 ;
+ERROR 00:36:54,221 - Izvrsen oporavak do ; u liniji 2
+INFO  00:36:54,222 - #48 in
+INFO  00:36:54,223 - #48 t
+INFO  00:36:54,223 - #48 a
+ERROR 00:36:54,223 - 
+Sintaksna greska na liniji 4
+INFO  00:36:54,223 - #42 ,
+INFO  00:36:54,223 - #48 b
+INFO  00:36:54,223 - #42 ,
+ERROR 00:36:54,223 - Izvrsen oporavak do , u liniji 4
+INFO  00:36:54,224 - #48 c
+INFO  00:36:54,234 - #37 ;
+INFO  00:36:54,234 - #48 int
+INFO  00:36:54,234 - #48 a
+INFO  00:36:54,234 - #42 ,
+INFO  00:36:54,234 - #48 x
+INFO  00:36:54,234 - #42 ,
+INFO  00:36:54,235 - #48 d
+INFO  00:36:54,235 - #48 d
+ERROR 00:36:54,235 - 
+Sintaksna greska na liniji 5
+INFO  00:36:54,235 - #42 ,
+INFO  00:36:54,235 - #48 b
+INFO  00:36:54,235 - #42 ,
+ERROR 00:36:54,235 - Izvrsen oporavak do , u liniji 5
+INFO  00:36:54,235 - #48 c
+INFO  00:36:54,235 - #37 ;
+INFO  00:36:54,235 - #35 {
+INFO  00:36:54,235 - #44 void
+INFO  00:36:54,236 - #48 main
+INFO  00:36:54,237 - #38 (
+INFO  00:36:54,237 - #48 int
+INFO  00:36:54,237 - #48 a
+INFO  00:36:54,237 - #42 ,
+INFO  00:36:54,237 - #48 int
+INFO  00:36:54,237 - #48 b
+INFO  00:36:54,237 - #42 ,
+INFO  00:36:54,238 - #48 char
+INFO  00:36:54,238 - #48 c
+INFO  00:36:54,238 - #42 ,
+INFO  00:36:54,238 - #48 int
+INFO  00:36:54,238 - #48 d
+INFO  00:36:54,238 - #39 )
+INFO  00:36:54,238 - #35 {
+INFO  00:36:54,238 - #36 }
+INFO  00:36:54,239 - #36 }
+INFO  00:36:54,241 - Program(
+ MJProgram
+  NoProgramVariables(
+  ) [NoProgramVariables]
+  VarDeclarations(
+    VarDeclarations(
+      VarDeclarations(
+        VarDeclarations(
+          NoVarDecl(
+          ) [NoVarDecl]
+          ErrorVarDeclTwo(
+          ) [ErrorVarDeclTwo]
+        ) [VarDeclarations]
+        VariableDecl(
+          Type(
+           in
+          ) [Type]
+          VarIdent(
+           t
+          ) [VarIdent]
+        ) [VariableDecl]
+      ) [VarDeclarations]
+      VariablesDecl(
+        Type(
+         in
+        ) [Type]
+        VarsIdent(
+          VarsIdent(
+            SingleVarIdentError(
+            ) [SingleVarIdentError]
+            VarIdent(
+             a
+            ) [VarIdent]
+          ) [VarsIdent]
+          VarIdent(
+           b
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         c
+        ) [VarIdent]
+      ) [VariablesDecl]
+    ) [VarDeclarations]
+    VariablesDecl(
+      Type(
+       int
+      ) [Type]
+      VarsIdent(
+        VarsIdent(
+          SingleVarIdentError(
+          ) [SingleVarIdentError]
+          VarIdent(
+           d
+          ) [VarIdent]
+        ) [VarsIdent]
+        VarIdent(
+         b
+        ) [VarIdent]
+      ) [VarsIdent]
+      VarIdent(
+       c
+      ) [VarIdent]
+    ) [VariablesDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      FormParams(
+        FormalParamDecls(
+          FormalParamDecls(
+            FormalParamDecls(
+              SingleFormalParamDecl(
+                FormalParamDeclClassNoArray(
+                  Type(
+                   int
+                  ) [Type]
+                 a
+                ) [FormalParamDeclClassNoArray]
+              ) [SingleFormalParamDecl]
+              FormalParamDeclClassNoArray(
+                Type(
+                 int
+                ) [Type]
+               b
+              ) [FormalParamDeclClassNoArray]
+            ) [FormalParamDecls]
+            FormalParamDeclClassNoArray(
+              Type(
+               char
+              ) [Type]
+             c
+            ) [FormalParamDeclClassNoArray]
+          ) [FormalParamDecls]
+          FormalParamDeclClassNoArray(
+            Type(
+             int
+            ) [Type]
+           d
+          ) [FormalParamDeclClassNoArray]
+        ) [FormalParamDecls]
+      ) [FormParams]
+      NoVarDecl(
+      ) [NoVarDecl]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:36:54,241 - ===================================
