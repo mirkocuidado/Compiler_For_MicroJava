@@ -8,6 +8,7 @@ parser code {:
 
 	Logger log = Logger.getLogger(getClass());
    
+   boolean greska=false; // da li je prijavljena greska u toku prevodjenja
    
     // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
      
@@ -25,6 +26,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    	greska = true;
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left);
@@ -42,6 +44,8 @@ scan with {:
 	return s;
 :}
 
+init with {: greska=false; :};
+
 terminal CHAR, BOOLEAN, BREAK, CLASS, ENUM, CONST, SWITCH, DO, WHILE, NEW,
 		READ, EXTENDS, CONTINUE, CASE, MINUS, MUL, DIV, MOD, EQUAL_COMPARATION, 
 		NOT_EQUAL_COMPARATION, GREATER, GREATER_OR_EQUAL, LESS, LESS_OR_EQUAL,
@@ -53,6 +57,7 @@ terminal String IDENT;
 terminal IF, ELSE;
 
 nonterminal Program Program;
+nonterminal ProgramName ProgramName;
 nonterminal VarDeclList VarDeclList;
 nonterminal MethodDeclList MethodDeclList;
 nonterminal VarDecl VarDecl;
@@ -115,7 +120,9 @@ nonterminal OptionalElse OptionalElse;
 	
 precedence left ELSE;
 			
-Program ::= (Program) PROG IDENT:I1 GroupDeclList:G2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(I1, G2, M3); RESULT.setLine(I1left); :};
+Program ::= (Program) PROG ProgramName:P1 GroupDeclList:G2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, G2, M3); RESULT.setLine(P1left); :};
+
+ProgramName ::= (ProgramName) IDENT:programName {: RESULT=new ProgramName(programName); RESULT.setLine(programNameleft); :};
 
 GroupDeclList ::= (GroupDeclarations) GroupDeclList:G1 GroupDecl:G2 {: RESULT=new GroupDeclarations(G1, G2); RESULT.setLine(G1left); :}
 			  |
@@ -142,14 +149,25 @@ MethodsOption ::= (MethodsClassName) LBRACE MethodDeclList:M1 RBRACE {: RESULT=n
 				;
 				
 
-ConstDecl ::= (ConstDeclClass) CONST Type:constVarType ConstList:C1 SEMI {: RESULT=new ConstDeclClass(constVarType, C1); RESULT.setLine(constVarTypeleft); :};
+ConstDecl ::= (ConstDeclClass) CONST Type:constVarType ConstList:C1 SEMI {: RESULT=new ConstDeclClass(constVarType, C1); RESULT.setLine(constVarTypeleft); :}
+				|
+			(ConstDeclYesError) CONST error:e SEMI /* za primer -> int ; */
+				{:
+					parser.report_error("Successful error recovery by parser on line " + eleft + " -> Const Declaration Semi", null);
+				:} {: RESULT=new ConstDeclYesError(); :};
 
 ConstList ::= (ConstListClass) ConstList:C1 COMMA ConstVariable:C2 {: RESULT=new ConstListClass(C1, C2); RESULT.setLine(C1left); :}
 			  |
 			  (ConstListSingle) ConstVariable:C1 {: RESULT=new ConstListSingle(C1); RESULT.setLine(C1left); :}
 			  ;
 
-ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions:V1 {: RESULT=new ConstListNoArray(constVarName, V1); RESULT.setLine(constVarNameleft); :};
+ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions:V1 {: RESULT=new ConstListNoArray(constVarName, V1); RESULT.setLine(constVarNameleft); :}
+			|
+			(ErrorConstVariableList) error:e /* za primer -> int a b, c, d, e f , g, po k; */
+			{:
+				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Const Declaration", null);
+			:} {: RESULT=new ErrorConstVariableList(); :}
+		;
 
 ValueOptions ::= (ValuesNumber) NUMBER:N1 {: RESULT=new ValuesNumber(N1); RESULT.setLine(N1left); :}
 				 |
@@ -165,7 +183,7 @@ VarDeclList ::= (VarDeclListClass) VarDeclList:V1 VarDecl:V2 {: RESULT=new VarDe
 
 VarDecl ::= (VarDeclClass) Type:varType VarList:V1 SEMI {: RESULT=new VarDeclClass(varType, V1); RESULT.setLine(varTypeleft); :}
 			|
-			(VarDeclYesError) error:e SEMI
+			(VarDeclYesError) error:e SEMI /* za primer -> int ; */
 				{:
 					parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration Semi", null);
 				:} {: RESULT=new VarDeclYesError(); :}
@@ -174,16 +192,17 @@ VarDecl ::= (VarDeclClass) Type:varType VarList:V1 SEMI {: RESULT=new VarDeclCla
 VarList ::= (VarListClass) VarList:V1 COMMA Variable:V2 {: RESULT=new VarListClass(V1, V2); RESULT.setLine(V1left); :}
 			|
 			(VarListSingle) Variable:V1 {: RESULT=new VarListSingle(V1); RESULT.setLine(V1left); :}
-			|
-			(ErrorVarList) error:e
-			{:
-				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration Comma", null);
-			:} {: RESULT=new ErrorVarList(); :}
+			
 			;
 				
 Variable ::= (VarClassNoArray) IDENT:varName {: RESULT=new VarClassNoArray(varName); RESULT.setLine(varNameleft); :}
 		|
 		(VarClassArray) IDENT:varName LSQUARE_BRACKET RSQUARE_BRACKET {: RESULT=new VarClassArray(varName); RESULT.setLine(varNameleft); :}
+		|
+			(ErrorVariable) error:e /* za primer -> int a b, c, d, e f , g, po k; */
+			{:
+				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration", null);
+			:} {: RESULT=new ErrorVariable(); :}
 		;
 
 Type ::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(typeNameleft); :};
@@ -263,7 +282,7 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   |
 		   (ReadClass) READ LPAREN Designator:D1 RPAREN SEMI {: RESULT=new ReadClass(D1); RESULT.setLine(D1left); :}
 		   |
-		   (IfStatement) IF LPAREN PotentialError:P1 RPAREN Statement:S2 OptionalElse:O3 {: RESULT=new IfStatement(P1, S2, O3); RESULT.setLine(P1left); :}
+		   (IfStatement) IF LPAREN PotentialError:P1 RPAREN Statement:S2 OptionalElse:O3 {: RESULT=new IfStatement(P1, S2, O3); RESULT.setLine(P1left); :} /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
 		   |
 		   (DoWhileStatement) DO Statement:S1 WHILE LPAREN Condition:C2 RPAREN SEMI {: RESULT=new DoWhileStatement(S1, C2); RESULT.setLine(S1left); :}
 		   |
@@ -273,22 +292,13 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   ;
 
 PotentialError ::=
-		(IfConditionNoError) Condition:C1 {: RESULT=new IfConditionNoError(C1); RESULT.setLine(C1left); :}
-		|
-		(IfConditionYesError) error:error
-		{:
-			parser.report_error("Successful error recovery by parser on line " + errorleft + " -> If Statement Condition", null);
-		:} {: RESULT=new IfConditionYesError(); :}
-		;
+		(IfConditionNoError) Condition:C1 {: RESULT=new IfConditionNoError(C1); RESULT.setLine(C1left); :};
 
 OptionalElse ::=
 		(YesOptionalStatement) ELSE Statement:S1 {: RESULT=new YesOptionalStatement(S1); RESULT.setLine(S1left); :}
 		|
 		(NoOptionalStatement) {: RESULT=new NoOptionalStatement(); :} /* epsilon */
 		;
-
-
-
 
 PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER:N1 {: RESULT=new CommaNumberClass(N1); RESULT.setLine(N1left); :}
 					|
@@ -310,11 +320,17 @@ ActualParamList ::= (ActualParams) ActualParamList:A1 COMMA Expr:E2 {: RESULT=ne
 				(ActualParam) Expr:E1 {: RESULT=new ActualParam(E1); RESULT.setLine(E1left); :}
 				;
 
-Condition ::= (ConditionClass) CondTerm:C1 ConditionOptional:C2 {: RESULT=new ConditionClass(C1, C2); RESULT.setLine(C1left); :};
-
+Condition ::= (ConditionClass) CondTerm:C1 ConditionOptional:C2 {: RESULT=new ConditionClass(C1, C2); RESULT.setLine(C1left); :}
+					|
+					(IfConditionYesErrorTwo) error:error /* greska koja brise sve iz zagrada za if; */
+					{:
+						parser.report_error("Successful error recovery by parser on line " + errorleft + " -> ConditionOptional", null);
+					:} {: RESULT=new IfConditionYesErrorTwo(); :}
+					;		
+		
 ConditionOptional ::= (ConditionOptionalClass) ConditionOptional:C1 OR CondTerm:C2 {: RESULT=new ConditionOptionalClass(C1, C2); RESULT.setLine(C1left); :}
 					|
-					(NoConditionOptionalClass) {: RESULT=new NoConditionOptionalClass(); :} /* epsilon */
+					(NoConditionOptionalClass) {: RESULT=new NoConditionOptionalClass(); :} /* epsilon */	
 					;		
 		
 CondTerm ::= (CondTermClass) CondFact:C1 CondTermOptional:C2 {: RESULT=new CondTermClass(C1, C2); RESULT.setLine(C1left); :};
@@ -329,7 +345,7 @@ CondFact ::= (CondFactClass) Expr:E1 CondFactOptional:C2 {: RESULT=new CondFactC
 CondFactOptional ::= (CondFactOptionalClass) RelOp:R1 Expr:E2 {: RESULT=new CondFactOptionalClass(R1, E2); RESULT.setLine(R1left); :}
 					|
 					(NoCondFactOptionalClass) {: RESULT=new NoCondFactOptionalClass(); :} /* epsion */
-					;		
+					;	
 		
 ExprNegative ::= (ExprNegativeClass) MINUS ExprPositive:E1 {: RESULT=new ExprNegativeClass(E1); RESULT.setLine(E1left); :};
 

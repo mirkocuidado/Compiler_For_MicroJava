@@ -1,0 +1,68 @@
+INFO  00:09:14,511 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:09:14,577 - #34 program
+INFO  00:09:14,577 - #48 MJProgram
+INFO  00:09:14,578 - #48 int
+INFO  00:09:14,580 - #48 a
+INFO  00:09:14,581 - #42 ,
+INFO  00:09:14,581 - #48 b
+INFO  00:09:14,581 - #42 ,
+INFO  00:09:14,581 - #48 c
+INFO  00:09:14,582 - #48 d
+ERROR 00:09:14,582 - 
+Sintaksna greska na liniji 3
+INFO  00:09:14,582 - #37 ;
+INFO  00:09:14,582 - #35 {
+INFO  00:09:14,582 - #44 void
+INFO  00:09:14,583 - #48 main
+ERROR 00:09:14,583 - Successful error recovery by parser on line 3 -> Variable Declaration Comma
+INFO  00:09:14,585 - #38 (
+INFO  00:09:14,585 - #39 )
+INFO  00:09:14,586 - #35 {
+INFO  00:09:14,587 - #36 }
+INFO  00:09:14,588 - #36 }
+INFO  00:09:14,592 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    NoGroupDecl(
+    ) [NoGroupDecl]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            VarListSingle(
+              VarClassNoArray(
+               a
+              ) [VarClassNoArray]
+            ) [VarListSingle]
+            VarClassNoArray(
+             b
+            ) [VarClassNoArray]
+          ) [VarListClass]
+          ErrorVarList(
+          ) [ErrorVarList]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:09:14,592 - ===================================

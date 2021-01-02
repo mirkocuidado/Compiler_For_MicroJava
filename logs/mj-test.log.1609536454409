@@ -1,0 +1,75 @@
+INFO  22:27:03,330 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  22:27:03,404 - #34 program
+INFO  22:27:03,404 - #48 MJProgram
+INFO  22:27:03,405 - #48 int
+INFO  22:27:03,406 - #37 ;
+ERROR 22:27:03,406 - 
+Sintaksna greska na liniji 2
+INFO  22:27:03,407 - #48 int
+INFO  22:27:03,407 - #48 t
+INFO  22:27:03,407 - #48 a
+ERROR 22:27:03,408 - Successful error recovery by parser on line 8 -> Variable Declaration Semi
+ERROR 22:27:03,409 - 
+Sintaksna greska na liniji 3
+INFO  22:27:03,410 - #42 ,
+INFO  22:27:03,410 - #48 b
+INFO  22:27:03,410 - #42 ,
+INFO  22:27:03,410 - #48 c
+ERROR 22:27:03,410 - Successful error recovery by parser on line 3 -> Variable Declaration Comma
+INFO  22:27:03,420 - #37 ;
+INFO  22:27:03,420 - #35 {
+INFO  22:27:03,421 - #44 void
+INFO  22:27:03,422 - #48 main
+INFO  22:27:03,424 - #38 (
+INFO  22:27:03,424 - #39 )
+INFO  22:27:03,425 - #35 {
+INFO  22:27:03,426 - #36 }
+INFO  22:27:03,427 - #36 }
+INFO  22:27:03,429 - Program(
+ MJProgram
+  GroupDeclarations(
+    GroupDeclarations(
+      NoGroupDecl(
+      ) [NoGroupDecl]
+      GroupDeclarationVars(
+        VarDeclYesError(
+        ) [VarDeclYesError]
+      ) [GroupDeclarationVars]
+    ) [GroupDeclarations]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            ErrorVarList(
+            ) [ErrorVarList]
+            VarClassNoArray(
+             b
+            ) [VarClassNoArray]
+          ) [VarListClass]
+          VarClassNoArray(
+           c
+          ) [VarClassNoArray]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  22:27:03,429 - ===================================

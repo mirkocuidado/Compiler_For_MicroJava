@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2020 1:5:7
+// 2/0/2021 1:31:19
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -99,6 +99,7 @@ public interface Visitor {
     public void visit(CondTermClass CondTermClass);
     public void visit(NoConditionOptionalClass NoConditionOptionalClass);
     public void visit(ConditionOptionalClass ConditionOptionalClass);
+    public void visit(IfConditionYesErrorTwo IfConditionYesErrorTwo);
     public void visit(ConditionClass ConditionClass);
     public void visit(ActualParam ActualParam);
     public void visit(ActualParams ActualParams);
@@ -110,7 +111,6 @@ public interface Visitor {
     public void visit(CommaNumberClass CommaNumberClass);
     public void visit(NoOptionalStatement NoOptionalStatement);
     public void visit(YesOptionalStatement YesOptionalStatement);
-    public void visit(IfConditionYesError IfConditionYesError);
     public void visit(IfConditionNoError IfConditionNoError);
     public void visit(StatementStatement StatementStatement);
     public void visit(SwitchStatement SwitchStatement);
@@ -148,9 +148,9 @@ public interface Visitor {
     public void visit(NoMethodDecl NoMethodDecl);
     public void visit(MethodDeclarations MethodDeclarations);
     public void visit(Type Type);
+    public void visit(ErrorVariable ErrorVariable);
     public void visit(VarClassArray VarClassArray);
     public void visit(VarClassNoArray VarClassNoArray);
-    public void visit(ErrorVarList ErrorVarList);
     public void visit(VarListSingle VarListSingle);
     public void visit(VarListClass VarListClass);
     public void visit(VarDeclYesError VarDeclYesError);
@@ -160,9 +160,11 @@ public interface Visitor {
     public void visit(ValuesChar ValuesChar);
     public void visit(ValuesBoolean ValuesBoolean);
     public void visit(ValuesNumber ValuesNumber);
+    public void visit(ErrorConstVariableList ErrorConstVariableList);
     public void visit(ConstListNoArray ConstListNoArray);
     public void visit(ConstListSingle ConstListSingle);
     public void visit(ConstListClass ConstListClass);
+    public void visit(ConstDeclYesError ConstDeclYesError);
     public void visit(ConstDeclClass ConstDeclClass);
     public void visit(NoMethodsOption NoMethodsOption);
     public void visit(MethodsClassName MethodsClassName);
@@ -174,6 +176,7 @@ public interface Visitor {
     public void visit(GroupDeclarationVars GroupDeclarationVars);
     public void visit(NoGroupDecl NoGroupDecl);
     public void visit(GroupDeclarations GroupDeclarations);
+    public void visit(ProgramName ProgramName);
     public void visit(Program Program);
 
 }

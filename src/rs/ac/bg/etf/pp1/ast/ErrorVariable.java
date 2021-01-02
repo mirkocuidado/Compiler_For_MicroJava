@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2020 1:5:7
+// 2/0/2021 1:31:18
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class ErrorVarList extends VarList {
+public class ErrorVariable extends Variable {
 
-    public ErrorVarList () {
+    public ErrorVariable () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class ErrorVarList extends VarList {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("ErrorVarList(\n");
+        buffer.append("ErrorVariable(\n");
 
         buffer.append(tab);
-        buffer.append(") [ErrorVarList]");
+        buffer.append(") [ErrorVariable]");
         return buffer.toString();
     }
 }

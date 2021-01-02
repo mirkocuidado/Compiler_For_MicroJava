@@ -1,0 +1,152 @@
+INFO  00:19:33,307 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:19:33,381 - #34 program
+INFO  00:19:33,381 - #48 MJProgram
+INFO  00:19:33,381 - #35 {
+INFO  00:19:33,382 - #44 void
+INFO  00:19:33,383 - #48 main
+INFO  00:19:33,384 - #38 (
+INFO  00:19:33,385 - #39 )
+INFO  00:19:33,385 - #35 {
+INFO  00:19:33,386 - #49 if
+INFO  00:19:33,387 - #38 (
+INFO  00:19:33,388 - #48 a
+INFO  00:19:33,388 - #23 >=
+INFO  00:19:33,392 - #47 5
+INFO  00:19:33,393 - #26 &&
+INFO  00:19:33,395 - #48 c
+INFO  00:19:33,395 - #25 <=
+INFO  00:19:33,395 - #47 4
+INFO  00:19:33,396 - #27 ||
+INFO  00:19:33,396 - #48 d
+INFO  00:19:33,396 - #20 ==
+INFO  00:19:33,396 - #47 3
+INFO  00:19:33,404 - #26 &&
+ERROR 00:19:33,405 - 
+Sintaksna greska na liniji 6
+INFO  00:19:33,405 - #48 b
+INFO  00:19:33,405 - #20 ==
+INFO  00:19:33,405 - #39 )
+INFO  00:19:33,406 - #35 {
+INFO  00:19:33,406 - #48 zzz
+INFO  00:19:33,406 - #33 =
+ERROR 00:19:33,406 - Successful error recovery by parser on line 6 -> ConditionOptional
+INFO  00:19:33,407 - #47 43
+INFO  00:19:33,408 - #37 ;
+INFO  00:19:33,408 - #36 }
+INFO  00:19:33,408 - #36 }
+INFO  00:19:33,409 - #36 }
+INFO  00:19:33,412 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        IfStatement(
+          IfConditionNoError(
+            ConditionClass(
+              CondTermClass(
+                CondFactClass(
+                  ClassOneClass(
+                    NormalExpressionClass(
+                      ExprFirstOptionClassWithMinus(
+                        TermClass(
+                          DesignatorClass(
+                            Designator(
+                             a
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                            ) [Designator]
+                            NoFactorOptional(
+                            ) [NoFactorOptional]
+                          ) [DesignatorClass]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprFirstOptionClassWithMinus]
+                    ) [NormalExpressionClass]
+                  ) [ClassOneClass]
+                  CondFactOptionalClass(
+                    GreaterOrEqualOperationClass(
+                    ) [GreaterOrEqualOperationClass]
+                    ClassOneClass(
+                      NormalExpressionClass(
+                        ExprFirstOptionClassWithMinus(
+                          TermClass(
+                            NumberConst(
+                             5
+                            ) [NumberConst]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprFirstOptionClassWithMinus]
+                      ) [NormalExpressionClass]
+                    ) [ClassOneClass]
+                  ) [CondFactOptionalClass]
+                ) [CondFactClass]
+                NoCondTermOptionalClass(
+                ) [NoCondTermOptionalClass]
+              ) [CondTermClass]
+              IfConditionYesError(
+              ) [IfConditionYesError]
+            ) [ConditionClass]
+          ) [IfConditionNoError]
+          StatementStatement(
+            Statements(
+              NoStmt(
+              ) [NoStmt]
+              Assignment(
+                DesignatorStatementClass(
+                  Designator(
+                   zzz
+                    NoOptionalDesignatorClass(
+                    ) [NoOptionalDesignatorClass]
+                  ) [Designator]
+                  DesignatorStatementOptionsClassAssignExpression(
+                    AssignOperationClass(
+                    ) [AssignOperationClass]
+                    ClassOneClass(
+                      NormalExpressionClass(
+                        ExprFirstOptionClassWithMinus(
+                          TermClass(
+                            NumberConst(
+                             43
+                            ) [NumberConst]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprFirstOptionClassWithMinus]
+                      ) [NormalExpressionClass]
+                    ) [ClassOneClass]
+                  ) [DesignatorStatementOptionsClassAssignExpression]
+                ) [DesignatorStatementClass]
+              ) [Assignment]
+            ) [Statements]
+          ) [StatementStatement]
+          NoOptionalStatement(
+          ) [NoOptionalStatement]
+        ) [IfStatement]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:19:33,413 - ===================================

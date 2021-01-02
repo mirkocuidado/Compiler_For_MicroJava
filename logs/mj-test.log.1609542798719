@@ -1,0 +1,82 @@
+INFO  00:11:50,198 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:11:50,270 - #34 program
+INFO  00:11:50,270 - #48 MJProgram
+INFO  00:11:50,270 - #48 int
+INFO  00:11:50,273 - #48 a
+INFO  00:11:50,273 - #42 ,
+INFO  00:11:50,274 - #48 b
+INFO  00:11:50,274 - #42 ,
+INFO  00:11:50,274 - #48 c
+INFO  00:11:50,274 - #48 d
+ERROR 00:11:50,274 - 
+Sintaksna greska na liniji 3
+INFO  00:11:50,274 - #42 ,
+INFO  00:11:50,274 - #48 e
+INFO  00:11:50,274 - #42 ,
+INFO  00:11:50,275 - #48 f
+ERROR 00:11:50,275 - Successful error recovery by parser on line 3 -> Variable Declaration Comma
+INFO  00:11:50,278 - #37 ;
+INFO  00:11:50,278 - #35 {
+INFO  00:11:50,278 - #44 void
+INFO  00:11:50,279 - #48 main
+INFO  00:11:50,280 - #38 (
+INFO  00:11:50,280 - #39 )
+INFO  00:11:50,281 - #35 {
+INFO  00:11:50,282 - #36 }
+INFO  00:11:50,282 - #36 }
+INFO  00:11:50,286 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    NoGroupDecl(
+    ) [NoGroupDecl]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            VarListClass(
+              VarListClass(
+                VarListSingle(
+                  VarClassNoArray(
+                   a
+                  ) [VarClassNoArray]
+                ) [VarListSingle]
+                VarClassNoArray(
+                 b
+                ) [VarClassNoArray]
+              ) [VarListClass]
+              ErrorVarList(
+              ) [ErrorVarList]
+            ) [VarListClass]
+            VarClassNoArray(
+             e
+            ) [VarClassNoArray]
+          ) [VarListClass]
+          VarClassNoArray(
+           f
+          ) [VarClassNoArray]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:11:50,286 - ===================================

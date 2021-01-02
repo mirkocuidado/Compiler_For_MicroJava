@@ -1,0 +1,107 @@
+INFO  00:36:56,296 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:36:56,368 - #34 program
+INFO  00:36:56,369 - #48 MJProgram
+INFO  00:36:56,369 - #35 {
+INFO  00:36:56,370 - #44 void
+INFO  00:36:56,371 - #48 main
+INFO  00:36:56,372 - #38 (
+INFO  00:36:56,372 - #39 )
+INFO  00:36:56,372 - #35 {
+INFO  00:36:56,373 - #49 if
+INFO  00:36:56,374 - #38 (
+INFO  00:36:56,374 - #48 a
+INFO  00:36:56,375 - #20 ==
+INFO  00:36:56,378 - #47 3
+INFO  00:36:56,379 - #26 &&
+INFO  00:36:56,381 - #48 b
+INFO  00:36:56,381 - #20 ==
+INFO  00:36:56,382 - #27 ||
+ERROR 00:36:56,382 - 
+Sintaksna greska na liniji 6
+INFO  00:36:56,382 - #48 c
+INFO  00:36:56,382 - #20 ==
+INFO  00:36:56,391 - #47 4
+INFO  00:36:56,391 - #27 ||
+INFO  00:36:56,392 - #48 d
+INFO  00:36:56,392 - #20 ==
+INFO  00:36:56,392 - #47 5
+INFO  00:36:56,392 - #39 )
+INFO  00:36:56,392 - #35 {
+INFO  00:36:56,392 - #48 zzz
+INFO  00:36:56,392 - #48 z
+ERROR 00:36:56,392 - Successful error recovery by parser on line 6 -> ConditionOptional
+ERROR 00:36:56,393 - 
+Sintaksna greska na liniji 7
+INFO  00:36:56,393 - #33 =
+INFO  00:36:56,393 - #47 4343
+INFO  00:36:56,393 - #37 ;
+INFO  00:36:56,393 - #48 zz
+INFO  00:36:56,394 - #33 =
+INFO  00:36:56,394 - #47 43
+ERROR 00:36:56,394 - Izvrsen oporavak do ; u liniji 7
+INFO  00:36:56,395 - #47 43
+ERROR 00:36:56,396 - 
+Sintaksna greska na liniji 8
+INFO  00:36:56,396 - #37 ;
+INFO  00:36:56,396 - #48 zz
+INFO  00:36:56,396 - #33 =
+INFO  00:36:56,396 - #47 31
+ERROR 00:36:56,396 - Izvrsen oporavak do ; u liniji 8
+INFO  00:36:56,396 - #48 a
+ERROR 00:36:56,396 - 
+Sintaksna greska na liniji 9
+INFO  00:36:56,396 - #47 324
+INFO  00:36:56,396 - #37 ;
+INFO  00:36:56,396 - #36 }
+INFO  00:36:56,396 - #36 }
+INFO  00:36:56,396 - #36 }
+ERROR 00:36:56,397 - Izvrsen oporavak do ; u liniji 9
+INFO  00:36:56,400 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        IfStatement(
+          IfConditionNoError(
+            IfConditionYesErrorTwo(
+            ) [IfConditionYesErrorTwo]
+          ) [IfConditionNoError]
+          StatementStatement(
+            Statements(
+              Statements(
+                Statements(
+                  NoStmt(
+                  ) [NoStmt]
+                  ErrorStmt(
+                  ) [ErrorStmt]
+                ) [Statements]
+                ErrorStmt(
+                ) [ErrorStmt]
+              ) [Statements]
+              ErrorStmt(
+              ) [ErrorStmt]
+            ) [Statements]
+          ) [StatementStatement]
+          NoOptionalStatement(
+          ) [NoOptionalStatement]
+        ) [IfStatement]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:36:56,400 - ===================================

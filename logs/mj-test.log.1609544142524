@@ -1,0 +1,82 @@
+INFO  00:35:25,012 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:35:25,084 - #34 program
+INFO  00:35:25,084 - #48 MJProgram
+INFO  00:35:25,084 - #35 {
+INFO  00:35:25,086 - #44 void
+INFO  00:35:25,086 - #48 main
+INFO  00:35:25,087 - #38 (
+INFO  00:35:25,087 - #39 )
+INFO  00:35:25,088 - #35 {
+INFO  00:35:25,089 - #49 if
+INFO  00:35:25,090 - #38 (
+INFO  00:35:25,090 - #48 a
+INFO  00:35:25,090 - #20 ==
+INFO  00:35:25,095 - #47 3
+INFO  00:35:25,096 - #26 &&
+INFO  00:35:25,097 - #48 b
+INFO  00:35:25,097 - #20 ==
+INFO  00:35:25,098 - #27 ||
+ERROR 00:35:25,098 - 
+Sintaksna greska na liniji 6
+INFO  00:35:25,098 - #48 c
+INFO  00:35:25,098 - #20 ==
+INFO  00:35:25,107 - #47 4
+INFO  00:35:25,108 - #27 ||
+INFO  00:35:25,108 - #48 d
+INFO  00:35:25,108 - #20 ==
+INFO  00:35:25,108 - #47 5
+INFO  00:35:25,108 - #39 )
+INFO  00:35:25,108 - #35 {
+INFO  00:35:25,108 - #48 zzz
+INFO  00:35:25,108 - #48 z
+ERROR 00:35:25,109 - Successful error recovery by parser on line 6 -> ConditionOptional
+ERROR 00:35:25,110 - 
+Sintaksna greska na liniji 7
+INFO  00:35:25,110 - #33 =
+INFO  00:35:25,110 - #47 43
+INFO  00:35:25,110 - #37 ;
+INFO  00:35:25,110 - #36 }
+INFO  00:35:25,110 - #36 }
+INFO  00:35:25,110 - #36 }
+ERROR 00:35:25,110 - Izvrsen oporavak do ; u liniji 7
+INFO  00:35:25,113 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        IfStatement(
+          IfConditionNoError(
+            IfConditionYesErrorTwo(
+            ) [IfConditionYesErrorTwo]
+          ) [IfConditionNoError]
+          StatementStatement(
+            Statements(
+              NoStmt(
+              ) [NoStmt]
+              ErrorStmt(
+              ) [ErrorStmt]
+            ) [Statements]
+          ) [StatementStatement]
+          NoOptionalStatement(
+          ) [NoOptionalStatement]
+        ) [IfStatement]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:35:25,113 - ===================================

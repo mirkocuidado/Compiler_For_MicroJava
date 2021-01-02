@@ -1,0 +1,45 @@
+INFO  00:00:00,961 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:00:01,016 - #34 program
+INFO  00:00:01,016 - #48 MJProgram
+INFO  00:00:01,016 - #48 int
+INFO  00:00:01,017 - #37 ;
+ERROR 00:00:01,017 - 
+Sintaksna greska na liniji 3
+INFO  00:00:01,017 - #35 {
+INFO  00:00:01,017 - #44 void
+INFO  00:00:01,017 - #48 main
+ERROR 00:00:01,018 - Successful error recovery by parser on line 8 -> Variable Declaration Semi
+INFO  00:00:01,020 - #38 (
+INFO  00:00:01,020 - #39 )
+INFO  00:00:01,021 - #35 {
+INFO  00:00:01,022 - #36 }
+INFO  00:00:01,022 - #36 }
+INFO  00:00:01,024 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    NoGroupDecl(
+    ) [NoGroupDecl]
+    GroupDeclarationVars(
+      VarDeclYesError(
+      ) [VarDeclYesError]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:00:01,025 - ===================================

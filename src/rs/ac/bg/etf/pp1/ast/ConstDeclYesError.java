@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 31/11/2020 1:5:7
+// 2/0/2021 1:31:18
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class IfConditionYesError extends PotentialError {
+public class ConstDeclYesError extends ConstDecl {
 
-    public IfConditionYesError () {
+    public ConstDeclYesError () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class IfConditionYesError extends PotentialError {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("IfConditionYesError(\n");
+        buffer.append("ConstDeclYesError(\n");
 
         buffer.append(tab);
-        buffer.append(") [IfConditionYesError]");
+        buffer.append(") [ConstDeclYesError]");
         return buffer.toString();
     }
 }

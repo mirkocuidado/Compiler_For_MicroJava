@@ -1,118 +1,128 @@
-INFO  01:10:05,960 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
-INFO  01:10:06,020 - #34 program
-INFO  01:10:06,021 - #48 MJProgram
-INFO  01:10:06,021 - #48 int
-INFO  01:10:06,021 - #37 ;
-ERROR 01:10:06,021 - 
+INFO  01:32:39,146 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  01:32:39,216 - #34 program
+INFO  01:32:39,216 - #48 MJProgram
+INFO  01:32:39,217 - #7 const
+INFO  01:32:39,218 - #37 ;
+ERROR 01:32:39,218 - 
 Sintaksna greska na liniji 2
-INFO  01:10:06,022 - #48 int
-INFO  01:10:06,022 - #48 t
-INFO  01:10:06,022 - #48 a
-ERROR 01:10:06,022 - Successful error recovery by parser on line 8 -> Variable Declaration Semi
-ERROR 01:10:06,024 - 
+INFO  01:32:39,219 - #7 const
+INFO  01:32:39,219 - #48 int
+INFO  01:32:39,219 - #48 a
+ERROR 01:32:39,220 - Successful error recovery by parser on line 2 -> Const Declaration Semi
+INFO  01:32:39,221 - #33 =
+INFO  01:32:39,222 - #47 3
+INFO  01:32:39,222 - #42 ,
+INFO  01:32:39,222 - #48 b
+INFO  01:32:39,222 - #33 =
+INFO  01:32:39,222 - #47 4
+INFO  01:32:39,222 - #42 ,
+INFO  01:32:39,223 - #48 c
+INFO  01:32:39,223 - #33 =
+INFO  01:32:39,233 - #37 ;
+ERROR 01:32:39,233 - 
 Sintaksna greska na liniji 3
-INFO  01:10:06,024 - #42 ,
-INFO  01:10:06,024 - #48 b
-INFO  01:10:06,024 - #42 ,
-INFO  01:10:06,024 - #48 c
-ERROR 01:10:06,024 - Successful error recovery by parser on line 3 -> Variable Declaration Comma
-INFO  01:10:06,025 - #37 ;
-INFO  01:10:06,025 - #48 int
-INFO  01:10:06,025 - #48 a
-INFO  01:10:06,025 - #42 ,
-INFO  01:10:06,026 - #48 x
-INFO  01:10:06,026 - #42 ,
-INFO  01:10:06,026 - #48 d
-INFO  01:10:06,026 - #48 d
-ERROR 01:10:06,026 - 
+INFO  01:32:39,233 - #7 const
+INFO  01:32:39,233 - #48 int
+INFO  01:32:39,233 - #48 a
+ERROR 01:32:39,233 - Successful error recovery by parser on line 3 -> Const Declaration
+INFO  01:32:39,234 - #37 ;
+ERROR 01:32:39,235 - 
 Sintaksna greska na liniji 4
-INFO  01:10:06,026 - #42 ,
-INFO  01:10:06,026 - #48 b
-INFO  01:10:06,026 - #42 ,
-INFO  01:10:06,026 - #48 c
-ERROR 01:10:06,026 - Successful error recovery by parser on line 4 -> Variable Declaration Comma
-INFO  01:10:06,026 - #37 ;
-INFO  01:10:06,026 - #35 {
-INFO  01:10:06,026 - #44 void
-INFO  01:10:06,027 - #48 main
-INFO  01:10:06,028 - #38 (
-INFO  01:10:06,028 - #39 )
-INFO  01:10:06,029 - #35 {
-INFO  01:10:06,029 - #49 if
-INFO  01:10:06,030 - #38 (
-INFO  01:10:06,030 - #48 a
-INFO  01:10:06,030 - #20 ==
-INFO  01:10:06,033 - #48 b
-INFO  01:10:06,034 - #26 &&
-INFO  01:10:06,034 - #48 c
-INFO  01:10:06,034 - #20 ==
-INFO  01:10:06,035 - #48 d
-INFO  01:10:06,035 - #27 ||
-INFO  01:10:06,035 - #48 p
-INFO  01:10:06,036 - #20 ==
-INFO  01:10:06,036 - #39 )
-ERROR 01:10:06,036 - 
-Sintaksna greska na liniji 9
-INFO  01:10:06,036 - #35 {
-INFO  01:10:06,036 - #48 z
-INFO  01:10:06,036 - #33 =
-ERROR 01:10:06,036 - Successful error recovery by parser on line 9 -> If Statement Condition
-INFO  01:10:06,037 - #47 2
-INFO  01:10:06,038 - #37 ;
-INFO  01:10:06,038 - #36 }
-INFO  01:10:06,038 - #36 }
-INFO  01:10:06,039 - #36 }
-INFO  01:10:06,041 - Program(
- MJProgram
+INFO  01:32:39,235 - #35 {
+INFO  01:32:39,235 - #44 void
+INFO  01:32:39,235 - #48 main
+ERROR 01:32:39,235 - Successful error recovery by parser on line 4 -> Const Declaration
+INFO  01:32:39,236 - #38 (
+INFO  01:32:39,237 - #39 )
+INFO  01:32:39,237 - #35 {
+INFO  01:32:39,238 - #49 if
+INFO  01:32:39,239 - #38 (
+INFO  01:32:39,239 - #48 a
+INFO  01:32:39,239 - #20 ==
+INFO  01:32:39,243 - #47 3
+INFO  01:32:39,244 - #26 &&
+INFO  01:32:39,245 - #48 b
+INFO  01:32:39,245 - #20 ==
+INFO  01:32:39,246 - #26 &&
+ERROR 01:32:39,246 - 
+Sintaksna greska na liniji 8
+INFO  01:32:39,246 - #48 c
+INFO  01:32:39,246 - #20 ==
+INFO  01:32:39,246 - #47 4
+INFO  01:32:39,246 - #26 &&
+INFO  01:32:39,246 - #48 d
+INFO  01:32:39,246 - #20 ==
+INFO  01:32:39,246 - #47 5
+INFO  01:32:39,246 - #39 )
+INFO  01:32:39,246 - #35 {
+INFO  01:32:39,246 - #48 zzz
+INFO  01:32:39,246 - #33 =
+ERROR 01:32:39,247 - Successful error recovery by parser on line 8 -> ConditionOptional
+INFO  01:32:39,247 - #47 0
+INFO  01:32:39,249 - #37 ;
+INFO  01:32:39,249 - #36 }
+INFO  01:32:39,249 - #50 else
+INFO  01:32:39,249 - #35 {
+INFO  01:32:39,249 - #48 zzz
+INFO  01:32:39,250 - #33 =
+INFO  01:32:39,250 - #47 1
+INFO  01:32:39,250 - #37 ;
+INFO  01:32:39,250 - #36 }
+INFO  01:32:39,250 - #36 }
+INFO  01:32:39,250 - #36 }
+INFO  01:32:39,253 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
   GroupDeclarations(
     GroupDeclarations(
       GroupDeclarations(
         NoGroupDecl(
         ) [NoGroupDecl]
-        GroupDeclarationVars(
-          VarDeclYesError(
-          ) [VarDeclYesError]
-        ) [GroupDeclarationVars]
+        GroupDeclarationsConsts(
+          ConstDeclYesError(
+          ) [ConstDeclYesError]
+        ) [GroupDeclarationsConsts]
       ) [GroupDeclarations]
-      GroupDeclarationVars(
-        VarDeclClass(
+      GroupDeclarationsConsts(
+        ConstDeclClass(
           Type(
            int
           ) [Type]
-          VarListClass(
-            VarListClass(
-              ErrorVarList(
-              ) [ErrorVarList]
-              VarClassNoArray(
+          ConstListClass(
+            ConstListClass(
+              ConstListSingle(
+                ConstListNoArray(
+                 a
+                  ValuesNumber(
+                   3
+                  ) [ValuesNumber]
+                ) [ConstListNoArray]
+              ) [ConstListSingle]
+              ConstListNoArray(
                b
-              ) [VarClassNoArray]
-            ) [VarListClass]
-            VarClassNoArray(
-             c
-            ) [VarClassNoArray]
-          ) [VarListClass]
-        ) [VarDeclClass]
-      ) [GroupDeclarationVars]
+                ValuesNumber(
+                 4
+                ) [ValuesNumber]
+              ) [ConstListNoArray]
+            ) [ConstListClass]
+            ErrorConstVariableList(
+            ) [ErrorConstVariableList]
+          ) [ConstListClass]
+        ) [ConstDeclClass]
+      ) [GroupDeclarationsConsts]
     ) [GroupDeclarations]
-    GroupDeclarationVars(
-      VarDeclClass(
+    GroupDeclarationsConsts(
+      ConstDeclClass(
         Type(
          int
         ) [Type]
-        VarListClass(
-          VarListClass(
-            ErrorVarList(
-            ) [ErrorVarList]
-            VarClassNoArray(
-             b
-            ) [VarClassNoArray]
-          ) [VarListClass]
-          VarClassNoArray(
-           c
-          ) [VarClassNoArray]
-        ) [VarListClass]
-      ) [VarDeclClass]
-    ) [GroupDeclarationVars]
+        ConstListSingle(
+          ErrorConstVariableList(
+          ) [ErrorConstVariableList]
+        ) [ConstListSingle]
+      ) [ConstDeclClass]
+    ) [GroupDeclarationsConsts]
   ) [GroupDeclarations]
   MethodDeclarations(
     NoMethodDecl(
@@ -129,8 +139,10 @@ INFO  01:10:06,041 - Program(
         NoStmt(
         ) [NoStmt]
         IfStatement(
-          IfConditionYesError(
-          ) [IfConditionYesError]
+          IfConditionNoError(
+            IfConditionYesErrorTwo(
+            ) [IfConditionYesErrorTwo]
+          ) [IfConditionNoError]
           StatementStatement(
             Statements(
               NoStmt(
@@ -138,7 +150,7 @@ INFO  01:10:06,041 - Program(
               Assignment(
                 DesignatorStatementClass(
                   Designator(
-                   z
+                   zzz
                     NoOptionalDesignatorClass(
                     ) [NoOptionalDesignatorClass]
                   ) [Designator]
@@ -150,7 +162,7 @@ INFO  01:10:06,041 - Program(
                         ExprFirstOptionClassWithMinus(
                           TermClass(
                             NumberConst(
-                             2
+                             0
                             ) [NumberConst]
                             NoTermOptionalListClass(
                             ) [NoTermOptionalListClass]
@@ -165,11 +177,45 @@ INFO  01:10:06,041 - Program(
               ) [Assignment]
             ) [Statements]
           ) [StatementStatement]
-          NoOptionalStatement(
-          ) [NoOptionalStatement]
+          YesOptionalStatement(
+            StatementStatement(
+              Statements(
+                NoStmt(
+                ) [NoStmt]
+                Assignment(
+                  DesignatorStatementClass(
+                    Designator(
+                     zzz
+                      NoOptionalDesignatorClass(
+                      ) [NoOptionalDesignatorClass]
+                    ) [Designator]
+                    DesignatorStatementOptionsClassAssignExpression(
+                      AssignOperationClass(
+                      ) [AssignOperationClass]
+                      ClassOneClass(
+                        NormalExpressionClass(
+                          ExprFirstOptionClassWithMinus(
+                            TermClass(
+                              NumberConst(
+                               1
+                              ) [NumberConst]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprFirstOptionClassWithMinus]
+                        ) [NormalExpressionClass]
+                      ) [ClassOneClass]
+                    ) [DesignatorStatementOptionsClassAssignExpression]
+                  ) [DesignatorStatementClass]
+                ) [Assignment]
+              ) [Statements]
+            ) [StatementStatement]
+          ) [YesOptionalStatement]
         ) [IfStatement]
       ) [Statements]
     ) [MethodDecl]
   ) [MethodDeclarations]
 ) [Program]
-INFO  01:10:06,041 - ===================================
+INFO  01:32:39,253 - ===================================

@@ -1,0 +1,286 @@
+INFO  01:31:32,505 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  01:31:32,575 - #34 program
+INFO  01:31:32,575 - #48 MJProgram
+INFO  01:31:32,575 - #7 const
+INFO  01:31:32,577 - #37 ;
+ERROR 01:31:32,577 - 
+Sintaksna greska na liniji 2
+INFO  01:31:32,577 - #48 int
+INFO  01:31:32,578 - #37 ;
+INFO  01:31:32,578 - #48 int
+INFO  01:31:32,579 - #48 a
+INFO  01:31:32,579 - #48 b
+ERROR 01:31:32,579 - Successful error recovery by parser on line 2 -> Const Declaration Semi
+ERROR 01:31:32,582 - 
+Sintaksna greska na liniji 4
+INFO  01:31:32,582 - #42 ,
+INFO  01:31:32,582 - #48 c
+INFO  01:31:32,582 - #42 ,
+INFO  01:31:32,582 - #48 d
+ERROR 01:31:32,582 - Successful error recovery by parser on line 4 -> Variable Declaration
+INFO  01:31:32,592 - #45 [
+INFO  01:31:32,592 - #46 ]
+INFO  01:31:32,592 - #42 ,
+INFO  01:31:32,592 - #48 e
+INFO  01:31:32,592 - #48 f
+ERROR 01:31:32,592 - 
+Sintaksna greska na liniji 4
+INFO  01:31:32,592 - #42 ,
+INFO  01:31:32,592 - #48 g
+INFO  01:31:32,592 - #42 ,
+INFO  01:31:32,593 - #48 po
+ERROR 01:31:32,593 - Successful error recovery by parser on line 4 -> Variable Declaration
+INFO  01:31:32,593 - #48 k
+ERROR 01:31:32,593 - 
+Sintaksna greska na liniji 4
+INFO  01:31:32,593 - #37 ;
+INFO  01:31:32,593 - #7 const
+INFO  01:31:32,593 - #48 int
+INFO  01:31:32,593 - #48 a
+ERROR 01:31:32,593 - Successful error recovery by parser on line 4 -> Variable Declaration
+INFO  01:31:32,594 - #33 =
+INFO  01:31:32,594 - #47 3
+INFO  01:31:32,594 - #42 ,
+INFO  01:31:32,594 - #48 b
+INFO  01:31:32,595 - #33 =
+INFO  01:31:32,595 - #47 4
+INFO  01:31:32,595 - #42 ,
+INFO  01:31:32,595 - #48 c
+INFO  01:31:32,595 - #33 =
+INFO  01:31:32,595 - #37 ;
+ERROR 01:31:32,595 - 
+Sintaksna greska na liniji 5
+INFO  01:31:32,595 - #7 const
+INFO  01:31:32,595 - #48 int
+INFO  01:31:32,595 - #48 a
+ERROR 01:31:32,595 - Successful error recovery by parser on line 5 -> Const Declaration
+INFO  01:31:32,597 - #37 ;
+ERROR 01:31:32,597 - 
+Sintaksna greska na liniji 6
+INFO  01:31:32,597 - #35 {
+INFO  01:31:32,597 - #44 void
+INFO  01:31:32,597 - #48 main
+ERROR 01:31:32,597 - Successful error recovery by parser on line 6 -> Const Declaration
+INFO  01:31:32,599 - #38 (
+INFO  01:31:32,599 - #39 )
+INFO  01:31:32,600 - #35 {
+INFO  01:31:32,601 - #49 if
+INFO  01:31:32,602 - #38 (
+INFO  01:31:32,602 - #48 a
+INFO  01:31:32,602 - #20 ==
+INFO  01:31:32,606 - #47 3
+INFO  01:31:32,607 - #26 &&
+INFO  01:31:32,607 - #48 b
+INFO  01:31:32,607 - #20 ==
+INFO  01:31:32,608 - #26 &&
+ERROR 01:31:32,608 - 
+Sintaksna greska na liniji 10
+INFO  01:31:32,608 - #48 c
+INFO  01:31:32,608 - #20 ==
+INFO  01:31:32,608 - #47 4
+INFO  01:31:32,608 - #26 &&
+INFO  01:31:32,608 - #48 d
+INFO  01:31:32,608 - #20 ==
+INFO  01:31:32,608 - #47 5
+INFO  01:31:32,608 - #39 )
+INFO  01:31:32,608 - #35 {
+INFO  01:31:32,608 - #48 zzz
+INFO  01:31:32,608 - #33 =
+ERROR 01:31:32,608 - Successful error recovery by parser on line 10 -> ConditionOptional
+INFO  01:31:32,609 - #47 0
+INFO  01:31:32,610 - #37 ;
+INFO  01:31:32,610 - #36 }
+INFO  01:31:32,611 - #50 else
+INFO  01:31:32,611 - #35 {
+INFO  01:31:32,611 - #48 zzz
+INFO  01:31:32,611 - #33 =
+INFO  01:31:32,611 - #47 1
+INFO  01:31:32,611 - #37 ;
+INFO  01:31:32,611 - #36 }
+INFO  01:31:32,611 - #36 }
+INFO  01:31:32,611 - #36 }
+INFO  01:31:32,614 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        GroupDeclarations(
+          NoGroupDecl(
+          ) [NoGroupDecl]
+          GroupDeclarationsConsts(
+            ConstDeclYesError(
+            ) [ConstDeclYesError]
+          ) [GroupDeclarationsConsts]
+        ) [GroupDeclarations]
+        GroupDeclarationVars(
+          VarDeclClass(
+            Type(
+             int
+            ) [Type]
+            VarListClass(
+              VarListClass(
+                VarListClass(
+                  VarListClass(
+                    VarListClass(
+                      VarListSingle(
+                        ErrorVariable(
+                        ) [ErrorVariable]
+                      ) [VarListSingle]
+                      VarClassNoArray(
+                       c
+                      ) [VarClassNoArray]
+                    ) [VarListClass]
+                    VarClassArray(
+                     d
+                    ) [VarClassArray]
+                  ) [VarListClass]
+                  ErrorVariable(
+                  ) [ErrorVariable]
+                ) [VarListClass]
+                VarClassNoArray(
+                 g
+                ) [VarClassNoArray]
+              ) [VarListClass]
+              ErrorVariable(
+              ) [ErrorVariable]
+            ) [VarListClass]
+          ) [VarDeclClass]
+        ) [GroupDeclarationVars]
+      ) [GroupDeclarations]
+      GroupDeclarationsConsts(
+        ConstDeclClass(
+          Type(
+           int
+          ) [Type]
+          ConstListClass(
+            ConstListClass(
+              ConstListSingle(
+                ConstListNoArray(
+                 a
+                  ValuesNumber(
+                   3
+                  ) [ValuesNumber]
+                ) [ConstListNoArray]
+              ) [ConstListSingle]
+              ConstListNoArray(
+               b
+                ValuesNumber(
+                 4
+                ) [ValuesNumber]
+              ) [ConstListNoArray]
+            ) [ConstListClass]
+            ErrorConstVariableList(
+            ) [ErrorConstVariableList]
+          ) [ConstListClass]
+        ) [ConstDeclClass]
+      ) [GroupDeclarationsConsts]
+    ) [GroupDeclarations]
+    GroupDeclarationsConsts(
+      ConstDeclClass(
+        Type(
+         int
+        ) [Type]
+        ConstListSingle(
+          ErrorConstVariableList(
+          ) [ErrorConstVariableList]
+        ) [ConstListSingle]
+      ) [ConstDeclClass]
+    ) [GroupDeclarationsConsts]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        IfStatement(
+          IfConditionNoError(
+            IfConditionYesErrorTwo(
+            ) [IfConditionYesErrorTwo]
+          ) [IfConditionNoError]
+          StatementStatement(
+            Statements(
+              NoStmt(
+              ) [NoStmt]
+              Assignment(
+                DesignatorStatementClass(
+                  Designator(
+                   zzz
+                    NoOptionalDesignatorClass(
+                    ) [NoOptionalDesignatorClass]
+                  ) [Designator]
+                  DesignatorStatementOptionsClassAssignExpression(
+                    AssignOperationClass(
+                    ) [AssignOperationClass]
+                    ClassOneClass(
+                      NormalExpressionClass(
+                        ExprFirstOptionClassWithMinus(
+                          TermClass(
+                            NumberConst(
+                             0
+                            ) [NumberConst]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprFirstOptionClassWithMinus]
+                      ) [NormalExpressionClass]
+                    ) [ClassOneClass]
+                  ) [DesignatorStatementOptionsClassAssignExpression]
+                ) [DesignatorStatementClass]
+              ) [Assignment]
+            ) [Statements]
+          ) [StatementStatement]
+          YesOptionalStatement(
+            StatementStatement(
+              Statements(
+                NoStmt(
+                ) [NoStmt]
+                Assignment(
+                  DesignatorStatementClass(
+                    Designator(
+                     zzz
+                      NoOptionalDesignatorClass(
+                      ) [NoOptionalDesignatorClass]
+                    ) [Designator]
+                    DesignatorStatementOptionsClassAssignExpression(
+                      AssignOperationClass(
+                      ) [AssignOperationClass]
+                      ClassOneClass(
+                        NormalExpressionClass(
+                          ExprFirstOptionClassWithMinus(
+                            TermClass(
+                              NumberConst(
+                               1
+                              ) [NumberConst]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprFirstOptionClassWithMinus]
+                        ) [NormalExpressionClass]
+                      ) [ClassOneClass]
+                    ) [DesignatorStatementOptionsClassAssignExpression]
+                  ) [DesignatorStatementClass]
+                ) [Assignment]
+              ) [Statements]
+            ) [StatementStatement]
+          ) [YesOptionalStatement]
+        ) [IfStatement]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  01:31:32,615 - ===================================

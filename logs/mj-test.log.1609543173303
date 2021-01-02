@@ -1,0 +1,154 @@
+INFO  00:15:23,611 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:15:23,701 - #34 program
+INFO  00:15:23,701 - #48 MJProgram
+INFO  00:15:23,701 - #48 int
+INFO  00:15:23,703 - #37 ;
+ERROR 00:15:23,703 - 
+Sintaksna greska na liniji 3
+INFO  00:15:23,703 - #48 int
+INFO  00:15:23,704 - #48 a
+INFO  00:15:23,704 - #48 b
+ERROR 00:15:23,705 - Successful error recovery by parser on line 8 -> Variable Declaration Semi
+ERROR 00:15:23,708 - 
+Sintaksna greska na liniji 4
+INFO  00:15:23,708 - #42 ,
+INFO  00:15:23,708 - #48 c
+INFO  00:15:23,708 - #42 ,
+INFO  00:15:23,709 - #48 d
+ERROR 00:15:23,709 - Successful error recovery by parser on line 4 -> Variable Declaration Comma
+INFO  00:15:23,718 - #42 ,
+INFO  00:15:23,718 - #48 e
+INFO  00:15:23,718 - #48 f
+ERROR 00:15:23,718 - 
+Sintaksna greska na liniji 4
+INFO  00:15:23,718 - #42 ,
+INFO  00:15:23,719 - #48 g
+INFO  00:15:23,719 - #42 ,
+INFO  00:15:23,719 - #48 po
+ERROR 00:15:23,719 - Successful error recovery by parser on line 4 -> Variable Declaration Comma
+INFO  00:15:23,719 - #48 k
+ERROR 00:15:23,719 - 
+Sintaksna greska na liniji 4
+INFO  00:15:23,719 - #37 ;
+INFO  00:15:23,719 - #48 int
+INFO  00:15:23,719 - #48 a
+INFO  00:15:23,720 - #42 ,
+ERROR 00:15:23,720 - Successful error recovery by parser on line 4 -> Variable Declaration Comma
+INFO  00:15:23,720 - #48 b
+INFO  00:15:23,720 - #42 ,
+INFO  00:15:23,720 - #48 c
+INFO  00:15:23,720 - #48 d
+ERROR 00:15:23,721 - 
+Sintaksna greska na liniji 5
+INFO  00:15:23,721 - #42 ,
+INFO  00:15:23,721 - #48 e
+INFO  00:15:23,721 - #42 ,
+INFO  00:15:23,721 - #48 f
+ERROR 00:15:23,721 - Successful error recovery by parser on line 5 -> Variable Declaration Comma
+INFO  00:15:23,721 - #37 ;
+INFO  00:15:23,721 - #35 {
+INFO  00:15:23,722 - #44 void
+INFO  00:15:23,723 - #48 main
+INFO  00:15:23,724 - #38 (
+INFO  00:15:23,724 - #39 )
+INFO  00:15:23,724 - #35 {
+INFO  00:15:23,725 - #36 }
+INFO  00:15:23,726 - #36 }
+INFO  00:15:23,728 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        NoGroupDecl(
+        ) [NoGroupDecl]
+        GroupDeclarationVars(
+          VarDeclYesError(
+          ) [VarDeclYesError]
+        ) [GroupDeclarationVars]
+      ) [GroupDeclarations]
+      GroupDeclarationVars(
+        VarDeclClass(
+          Type(
+           int
+          ) [Type]
+          VarListClass(
+            VarListClass(
+              VarListClass(
+                VarListClass(
+                  VarListClass(
+                    VarListSingle(
+                      ErrorVarList(
+                      ) [ErrorVarList]
+                    ) [VarListSingle]
+                    VarClassNoArray(
+                     c
+                    ) [VarClassNoArray]
+                  ) [VarListClass]
+                  VarClassNoArray(
+                   d
+                  ) [VarClassNoArray]
+                ) [VarListClass]
+                ErrorVarList(
+                ) [ErrorVarList]
+              ) [VarListClass]
+              VarClassNoArray(
+               g
+              ) [VarClassNoArray]
+            ) [VarListClass]
+            ErrorVarList(
+            ) [ErrorVarList]
+          ) [VarListClass]
+        ) [VarDeclClass]
+      ) [GroupDeclarationVars]
+    ) [GroupDeclarations]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            VarListClass(
+              VarListClass(
+                VarListSingle(
+                  VarClassNoArray(
+                   a
+                  ) [VarClassNoArray]
+                ) [VarListSingle]
+                VarClassNoArray(
+                 b
+                ) [VarClassNoArray]
+              ) [VarListClass]
+              ErrorVarList(
+              ) [ErrorVarList]
+            ) [VarListClass]
+            VarClassNoArray(
+             e
+            ) [VarClassNoArray]
+          ) [VarListClass]
+          VarClassNoArray(
+           f
+          ) [VarClassNoArray]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:15:23,729 - ===================================

@@ -8,6 +8,7 @@ parser code {:
 
 	Logger log = Logger.getLogger(getClass());
    
+   boolean greska=false; // da li je prijavljena greska u toku prevodjenja
    
     // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
      
@@ -25,6 +26,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    	greska = true;
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left);
@@ -42,6 +44,8 @@ scan with {:
 	return s;
 :}
 
+init with {: greska=false; :};
+
 terminal CHAR, BOOLEAN, BREAK, CLASS, ENUM, CONST, SWITCH, DO, WHILE, NEW,
 		READ, EXTENDS, CONTINUE, CASE, MINUS, MUL, DIV, MOD, EQUAL_COMPARATION, 
 		NOT_EQUAL_COMPARATION, GREATER, GREATER_OR_EQUAL, LESS, LESS_OR_EQUAL,
@@ -52,7 +56,7 @@ terminal Integer NUMBER;
 terminal String IDENT;
 terminal IF, ELSE;
 
-nonterminal Program, VarDeclList, MethodDeclList, VarDecl, Type, MethodsOption, ExtendsOption, MethodDecl, VarList, Variable, 
+nonterminal Program, ProgramName, VarDeclList, MethodDeclList, VarDecl, Type, MethodsOption, ExtendsOption, MethodDecl, VarList, Variable, 
 			GroupDeclList, GroupDecl, ClassDecl, ConstDecl, ConstList, ConstVariable, ValueOptions, ReturnValue, PrintCommaNumber;
 			
 nonterminal FormPars, StatementList, FormalParamList, FormalParamDecl, Statement;
@@ -66,7 +70,9 @@ nonterminal PotentialError, OptionalElse;
 	
 precedence left ELSE;
 			
-Program ::= (Program) PROG IDENT GroupDeclList LBRACE MethodDeclList RBRACE;
+Program ::= (Program) PROG ProgramName GroupDeclList LBRACE MethodDeclList RBRACE;
+
+ProgramName ::= (ProgramName) IDENT:programName;
 
 GroupDeclList ::= (GroupDeclarations) GroupDeclList GroupDecl
 			  |
@@ -93,14 +99,25 @@ MethodsOption ::= (MethodsClassName) LBRACE MethodDeclList RBRACE
 				;
 				
 
-ConstDecl ::= (ConstDeclClass) CONST Type:constVarType ConstList SEMI;
+ConstDecl ::= (ConstDeclClass) CONST Type:constVarType ConstList SEMI
+				|
+			(ConstDeclYesError) CONST error:e SEMI /* za primer -> int ; */
+				{:
+					parser.report_error("Successful error recovery by parser on line " + eleft + " -> Const Declaration Semi", null);
+				:};
 
 ConstList ::= (ConstListClass) ConstList COMMA ConstVariable
 			  |
 			  (ConstListSingle) ConstVariable
 			  ;
 
-ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions;
+ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions
+			|
+			(ErrorConstVariableList) error:e /* za primer -> int a b, c, d, e f , g, po k; */
+			{:
+				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Const Declaration", null);
+			:}
+		;
 
 ValueOptions ::= (ValuesNumber) NUMBER
 				 |
@@ -116,7 +133,7 @@ VarDeclList ::= (VarDeclListClass) VarDeclList VarDecl
 
 VarDecl ::= (VarDeclClass) Type:varType VarList SEMI
 			|
-			(VarDeclYesError) error:e SEMI
+			(VarDeclYesError) error:e SEMI /* za primer -> int ; */
 				{:
 					parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration Semi", null);
 				:}
@@ -125,16 +142,17 @@ VarDecl ::= (VarDeclClass) Type:varType VarList SEMI
 VarList ::= (VarListClass) VarList COMMA Variable
 			|
 			(VarListSingle) Variable
-			|
-			(ErrorVarList) error:e
-			{:
-				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration Comma", null);
-			:}
+			
 			;
 				
 Variable ::= (VarClassNoArray) IDENT:varName
 		|
 		(VarClassArray) IDENT:varName LSQUARE_BRACKET RSQUARE_BRACKET
+		|
+			(ErrorVariable) error:e /* za primer -> int a b, c, d, e f , g, po k; */
+			{:
+				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration", null);
+			:}
 		;
 
 Type ::= (Type) IDENT:typeName;
@@ -214,7 +232,7 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (ReadClass) READ LPAREN Designator RPAREN SEMI
 		   |
-		   (IfStatement) IF LPAREN PotentialError RPAREN Statement OptionalElse
+		   (IfStatement) IF LPAREN PotentialError RPAREN Statement OptionalElse /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
 		   |
 		   (DoWhileStatement) DO Statement WHILE LPAREN Condition RPAREN SEMI
 		   |
@@ -224,22 +242,13 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   ;
 
 PotentialError ::=
-		(IfConditionNoError) Condition
-		|
-		(IfConditionYesError) error:error
-		{:
-			parser.report_error("Successful error recovery by parser on line " + errorleft + " -> If Statement Condition", null);
-		:}
-		;
+		(IfConditionNoError) Condition;
 
 OptionalElse ::=
 		(YesOptionalStatement) ELSE Statement
 		|
 		(NoOptionalStatement) /* epsilon */
 		;
-
-
-
 
 PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER
 					|
@@ -261,11 +270,17 @@ ActualParamList ::= (ActualParams) ActualParamList COMMA Expr
 				(ActualParam) Expr
 				;
 
-Condition ::= (ConditionClass) CondTerm ConditionOptional;
-
+Condition ::= (ConditionClass) CondTerm ConditionOptional
+					|
+					(IfConditionYesErrorTwo) error:error /* greska koja brise sve iz zagrada za if; */
+					{:
+						parser.report_error("Successful error recovery by parser on line " + errorleft + " -> ConditionOptional", null);
+					:}
+					;		
+		
 ConditionOptional ::= (ConditionOptionalClass) ConditionOptional OR CondTerm
 					|
-					(NoConditionOptionalClass) /* epsilon */
+					(NoConditionOptionalClass) /* epsilon */	
 					;		
 		
 CondTerm ::= (CondTermClass) CondFact CondTermOptional;
@@ -280,7 +295,7 @@ CondFact ::= (CondFactClass) Expr CondFactOptional;
 CondFactOptional ::= (CondFactOptionalClass) RelOp Expr
 					|
 					(NoCondFactOptionalClass) /* epsion */
-					;		
+					;	
 		
 ExprNegative ::= (ExprNegativeClass) MINUS ExprPositive;
 

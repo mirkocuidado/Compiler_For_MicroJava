@@ -1,0 +1,101 @@
+INFO  01:27:54,018 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  01:27:54,090 - #34 program
+INFO  01:27:54,090 - #48 MJProgram
+INFO  01:27:54,090 - #7 const
+INFO  01:27:54,092 - #37 ;
+ERROR 01:27:54,092 - 
+Sintaksna greska na liniji 2
+INFO  01:27:54,092 - #48 int
+INFO  01:27:54,093 - #37 ;
+INFO  01:27:54,093 - #48 int
+INFO  01:27:54,094 - #48 a
+INFO  01:27:54,094 - #48 b
+ERROR 01:27:54,094 - Successful error recovery by parser on line 8 -> Variable Declaration Semi
+ERROR 01:27:54,096 - 
+Sintaksna greska na liniji 4
+INFO  01:27:54,096 - #42 ,
+INFO  01:27:54,096 - #48 c
+INFO  01:27:54,096 - #42 ,
+INFO  01:27:54,096 - #48 d
+ERROR 01:27:54,097 - Successful error recovery by parser on line 4 -> Variable Declaration
+INFO  01:27:54,106 - #45 [
+INFO  01:27:54,106 - #46 ]
+INFO  01:27:54,106 - #42 ,
+INFO  01:27:54,106 - #48 e
+INFO  01:27:54,106 - #48 f
+ERROR 01:27:54,106 - 
+Sintaksna greska na liniji 4
+INFO  01:27:54,106 - #42 ,
+INFO  01:27:54,106 - #48 g
+INFO  01:27:54,106 - #42 ,
+INFO  01:27:54,107 - #48 po
+ERROR 01:27:54,107 - Successful error recovery by parser on line 4 -> Variable Declaration
+INFO  01:27:54,107 - #48 k
+ERROR 01:27:54,107 - 
+Sintaksna greska na liniji 4
+INFO  01:27:54,107 - #37 ;
+INFO  01:27:54,107 - #7 const
+INFO  01:27:54,107 - #48 int
+INFO  01:27:54,107 - #48 a
+ERROR 01:27:54,107 - Successful error recovery by parser on line 4 -> Variable Declaration
+INFO  01:27:54,108 - #33 =
+INFO  01:27:54,108 - #47 3
+INFO  01:27:54,108 - #42 ,
+INFO  01:27:54,108 - #48 b
+INFO  01:27:54,108 - #33 =
+INFO  01:27:54,108 - #47 4
+INFO  01:27:54,108 - #42 ,
+INFO  01:27:54,108 - #48 c
+INFO  01:27:54,108 - #33 =
+INFO  01:27:54,108 - #37 ;
+ERROR 01:27:54,108 - 
+Sintaksna greska na liniji 5
+INFO  01:27:54,109 - #7 const
+INFO  01:27:54,109 - #48 int
+INFO  01:27:54,109 - #48 a
+ERROR 01:27:54,109 - Successful error recovery by parser on line 8 -> Variable Declaration Semi
+INFO  01:27:54,109 - #37 ;
+ERROR 01:27:54,109 - 
+Sintaksna greska na liniji 6
+INFO  01:27:54,109 - #35 {
+INFO  01:27:54,109 - #44 void
+INFO  01:27:54,109 - #48 main
+ERROR 01:27:54,109 - Successful error recovery by parser on line 8 -> Variable Declaration Semi
+INFO  01:27:54,110 - #38 (
+INFO  01:27:54,110 - #39 )
+INFO  01:27:54,111 - #35 {
+INFO  01:27:54,112 - #49 if
+INFO  01:27:54,112 - #38 (
+INFO  01:27:54,112 - #48 a
+INFO  01:27:54,112 - #20 ==
+INFO  01:27:54,115 - #47 3
+INFO  01:27:54,116 - #26 &&
+INFO  01:27:54,117 - #48 b
+INFO  01:27:54,117 - #20 ==
+INFO  01:27:54,117 - #26 &&
+ERROR 01:27:54,117 - 
+Sintaksna greska na liniji 10
+INFO  01:27:54,117 - #48 c
+INFO  01:27:54,117 - #20 ==
+INFO  01:27:54,117 - #47 4
+INFO  01:27:54,117 - #26 &&
+INFO  01:27:54,117 - #48 d
+INFO  01:27:54,118 - #20 ==
+INFO  01:27:54,118 - #47 5
+INFO  01:27:54,118 - #39 )
+INFO  01:27:54,118 - #35 {
+INFO  01:27:54,118 - #48 zzz
+INFO  01:27:54,118 - #33 =
+INFO  01:27:54,118 - #47 0
+INFO  01:27:54,118 - #37 ;
+INFO  01:27:54,118 - #36 }
+INFO  01:27:54,118 - #50 else
+INFO  01:27:54,118 - #35 {
+INFO  01:27:54,118 - #48 zzz
+INFO  01:27:54,118 - #33 =
+INFO  01:27:54,118 - #47 1
+INFO  01:27:54,118 - #37 ;
+INFO  01:27:54,118 - #36 }
+INFO  01:27:54,118 - #36 }
+INFO  01:27:54,118 - #36 }
+ERROR 01:27:54,119 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 22
