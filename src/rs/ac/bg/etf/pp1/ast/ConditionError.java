@@ -1,13 +1,13 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2021 1:31:18
+// 5/0/2021 1:32:46
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class IfConditionYesErrorTwo extends Condition {
+public class ConditionError extends Condition {
 
-    public IfConditionYesErrorTwo () {
+    public ConditionError () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class IfConditionYesErrorTwo extends Condition {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("IfConditionYesErrorTwo(\n");
+        buffer.append("ConditionError(\n");
 
         buffer.append(tab);
-        buffer.append(") [IfConditionYesErrorTwo]");
+        buffer.append(") [ConditionError]");
         return buffer.toString();
     }
 }

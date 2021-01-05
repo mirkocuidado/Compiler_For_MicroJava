@@ -8,9 +8,7 @@ parser code {:
 
 	Logger log = Logger.getLogger(getClass());
    
-   boolean greska=false; // da li je prijavljena greska u toku prevodjenja
-   
-    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+   	boolean greska = false; // da li je prijavljena greska u toku prevodjenja
      
     public void report_fatal_error(String message, Object info) throws java.lang.Exception {
       done_parsing();
@@ -18,18 +16,18 @@ parser code {:
     }
   
     public void syntax_error(Symbol cur_token) {
-        report_error("\nSintaksna greska", cur_token);
+        report_error("\n SYNTAX ERROR! ", cur_token);
     }
   
     public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
-        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+        report_fatal_error(" FATAL ERROR! CAN'T CONTINUE PARSING! ", cur_token);
     }
 
     public void report_error(String message, Object info) {
     	greska = true;
     	StringBuilder msg = new StringBuilder(message); 
     	if (info instanceof Symbol)
-            msg.append (" na liniji ").append(((Symbol)info).left);
+            msg.append (" ON LINE ").append(((Symbol)info).left);
         log.error(msg.toString());
     }
 
@@ -46,33 +44,84 @@ scan with {:
 
 init with {: greska=false; :};
 
-terminal CHAR, BOOLEAN, BREAK, CLASS, ENUM, CONST, SWITCH, DO, WHILE, NEW,
-		READ, EXTENDS, CONTINUE, CASE, MINUS, MUL, DIV, MOD, EQUAL_COMPARATION, 
-		NOT_EQUAL_COMPARATION, GREATER, GREATER_OR_EQUAL, LESS, LESS_OR_EQUAL,
-		AND, OR, PLUS_PLUS, MINUS_MINUS, DOT, TERNARY, COLON, EQUAL;
+terminal PROG;
+terminal CHAR, BOOLEAN;
+terminal BREAK, CONTINUE, VOID;
+terminal CLASS, EXTENDS;
+terminal ENUM, CONST;
+terminal SWITCH, CASE;
+terminal DO, WHILE;
+terminal IF, ELSE;
+terminal NEW;
+terminal READ, PRINT;
+terminal PLUS, MINUS, MUL, DIV, MOD, EQUAL;
+terminal EQUAL_COMPARATION, NOT_EQUAL_COMPARATION;
+terminal GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL;
+terminal AND, OR;
+terminal PLUS_PLUS, MINUS_MINUS;
+terminal DOT, COMMA, COLON, SEMI;
+terminal TERNARY;
+terminal LBRACE, RBRACE;
+terminal LPAREN, RPAREN;
+terminal LSQUARE_BRACKET, RSQUARE_BRACKET;
+terminal RETURN;
 
-terminal PROG, LBRACE, RBRACE, SEMI, LPAREN, RPAREN, RETURN, PLUS, COMMA, PRINT, VOID, LSQUARE_BRACKET, RSQUARE_BRACKET;
 terminal Integer NUMBER;
 terminal String IDENT;
-terminal IF, ELSE;
 
-nonterminal Program, ProgramName, VarDeclList, MethodDeclList, VarDecl, Type, MethodsOption, ExtendsOption, MethodDecl, VarList, Variable, 
-			GroupDeclList, GroupDecl, ClassDecl, ConstDecl, ConstList, ConstVariable, ValueOptions, ReturnValue, PrintCommaNumber;
-			
-nonterminal FormPars, StatementList, FormalParamList, FormalParamDecl, Statement;
-nonterminal Designator, Expr, Term, AddOp, Factor, ActualPars, ActualParamList;
+nonterminal Program, ProgramName, GroupDeclList, MethodDeclList;
+nonterminal GroupDecl;
+nonterminal VarDecl, ClassDecl, ConstDecl;
+nonterminal ExtendsOption, MethodsOption;
+nonterminal ConstList;
+nonterminal ConstVariable;
+nonterminal ValueOptions;
+nonterminal VarDeclList, VarList;
+nonterminal Variable;
+nonterminal Type;
+nonterminal MethodDecl;
+nonterminal ReturnValue, FormPars, StatementList;
+nonterminal FormalParamList;
+nonterminal FormalParamDecl;
+nonterminal Statement;
 nonterminal Matched, Unmatched;
-
-nonterminal DesignatorStatement, OptionalDesignator, AssignOp, RelOp, MulOp, FactorOptional, FactorOptionalSecond, TermOptionalList, ExprOptionalList, CondFact, 
-			CondFactOptional, CondTerm, CondTermOptional, Condition, ConditionOptional, DesignatorStatementOptions, SwitchStatementList, ExprNegative, ExprPositive, ExprOne;
-
+nonterminal Condition;
+nonterminal Designator, OptionalDesignator;
+nonterminal DesignatorStatement, DesignatorStatementOptions;
+nonterminal AssignOp, ActualPars;
+nonterminal PrintCommaNumber, SwitchStatementList;
+nonterminal ActualParamList;
+nonterminal ConditionOptional, CondTerm;
+nonterminal CondFact, CondTermOptional;
+nonterminal CondFactOptional;
+nonterminal Expr;
+nonterminal RelOp;
+nonterminal ExprPositive, ExprNegative;
+nonterminal ExprOptionalList, Term;
+nonterminal ExprOne;
+nonterminal Factor, FactorOptional, FactorOptionalSecond;
+nonterminal TermOptionalList, MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
 	
 precedence left ELSE;
 			
+			
+			
+
+/********** PROGRAM BASIC **********/
+
+
+
 Program ::= (Program) PROG ProgramName GroupDeclList LBRACE MethodDeclList RBRACE;
 
 ProgramName ::= (ProgramName) IDENT:programName;
+
+
+
+
+/********** PROGRAM STUFF **********/
+
+
 
 GroupDeclList ::= (GroupDeclarations) GroupDeclList GroupDecl
 			  |
@@ -97,25 +146,31 @@ MethodsOption ::= (MethodsClassName) LBRACE MethodDeclList RBRACE
 				|
 				(NoMethodsOption) /* epsilon */ 
 				;
-				
 
+
+
+
+/********** CONSTANTS **********/
+
+
+				
 ConstDecl ::= (ConstDeclClass) CONST Type:constVarType ConstList SEMI
 				|
-			(ConstDeclYesError) CONST error:e SEMI /* za primer -> int ; */
-				{:
-					parser.report_error("Successful error recovery by parser on line " + eleft + " -> Const Declaration Semi", null);
-				:};
+				(ConstDeclYesError) CONST error:e SEMI /* za primer -> int ; */
+					{:
+						parser.report_error("CONST DECLARATION SUCCESSFULL RECOVERY *** SEMI *** ON LINE " + eleft, null);
+					:};
 
-ConstList ::= (ConstListClass) ConstList COMMA ConstVariable
+ConstList ::= (ConstListClass) ConstList COMMA ConstVariable:afterCommaConstVariable
 			  |
-			  (ConstListSingle) ConstVariable
+			  (ConstListSingle) ConstVariable:singleConstVariable
 			  ;
 
 ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions
 			|
 			(ErrorConstVariableList) error:e /* za primer -> int a b, c, d, e f , g, po k; */
 			{:
-				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Const Declaration", null);
+				parser.report_error("CONST DECLARATION SUCCESSFULL RECOVERY *** COMMA *** ON LINE " + eleft, null);
 			:}
 		;
 
@@ -126,6 +181,15 @@ ValueOptions ::= (ValuesNumber) NUMBER
  				 (ValuesChar) CHAR
  				 ;
 
+
+
+
+/********** VARIABLES **********/
+
+
+
+
+
 VarDeclList ::= (VarDeclListClass) VarDeclList VarDecl
 				|
 				(NoVarDeclList) /* epsilon */
@@ -135,27 +199,32 @@ VarDecl ::= (VarDeclClass) Type:varType VarList SEMI
 			|
 			(VarDeclYesError) error:e SEMI /* za primer -> int ; */
 				{:
-					parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration Semi", null);
+					parser.report_error("VARIABLE DECLARATION SUCCESSFULL RECOVERY *** SEMI *** ON LINE " + eleft, null);
 				:}
 			;
 
-VarList ::= (VarListClass) VarList COMMA Variable
+VarList ::= (VarListClass) VarList COMMA Variable:afterCommaVariable
 			|
-			(VarListSingle) Variable
-			
+			(VarListSingle) Variable:singleCommaVariable
 			;
 				
 Variable ::= (VarClassNoArray) IDENT:varName
 		|
 		(VarClassArray) IDENT:varName LSQUARE_BRACKET RSQUARE_BRACKET
 		|
-			(ErrorVariable) error:e /* za primer -> int a b, c, d, e f , g, po k; */
+		(ErrorVariable) error:e /* za primer -> int a b, c, d, e f , g, po k; */
 			{:
-				parser.report_error("Successful error recovery by parser on line " + eleft + " -> Variable Declaration", null);
+				parser.report_error("VARIABLE DECLARATION SUCCESSFULL RECOVERY *** COMMA *** ON LINE " + eleft, null);
 			:}
 		;
 
 Type ::= (Type) IDENT:typeName;
+
+
+
+/********** METHODS **********/
+
+
 
 MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 				|
@@ -168,6 +237,12 @@ ReturnValue ::= (ReturnValueClassNoVoid) Type:retType
 				|
 				(ReturnValueClassVoid) VOID
 				; 
+
+
+
+/********** FORMAL PARAMETERS **********/
+
+				
 				
 FormPars ::= (FormParams) FormalParamList
 		  |
@@ -185,15 +260,17 @@ FormalParamDecl ::= (FormalParamDeclClassNoArray) Type:formalParamType IDENT:for
 		|
 		(FormParYesError) error:error
 		{:
-			parser.report_error("Successful error recovery by parser on line " + errorleft + " -> Formal function parameter", null);
+			parser.report_error("FORMAL PARAMETERS SUCCESSFUL RECOVERY ON LINE " + errorleft , null);
 		:}
 		;
 
-StatementList ::= (Statements) StatementList Statement
-				|
-				(NoStmt) /* epsilon */
-				;
-		 	
+
+
+/********** DESIGNATORS **********/
+
+
+
+
 Designator ::= (Designator) IDENT:name OptionalDesignator;
 
 OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator DOT IDENT:name
@@ -202,6 +279,12 @@ OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator DOT IDENT:na
 					|
 					(NoOptionalDesignatorClass) /* epsilon */
 					;
+
+
+
+/********** DESIGNATOR STATEMENTS **********/
+
+
 
 DesignatorStatement ::= (DesignatorStatementClass) Designator DesignatorStatementOptions;
 
@@ -215,10 +298,17 @@ DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression)
 							; 
 
 
+
+
+/********** STATEMENTS **********/
+
+
+
+
 Statement ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (ErrorStmt) error SEMI:l
-		   {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
+		   {: parser.report_error("STATEMENT SUCCESSFULL RECOVERY ON LINE " + lleft, null);  :}
 		   |
 		   (PrintStmt) PRINT LPAREN Expr PrintCommaNumber RPAREN SEMI
 		   |
@@ -241,24 +331,43 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   (StatementStatement) LBRACE StatementList RBRACE
 		   ;
 
-PotentialError ::=
-		(IfConditionNoError) Condition;
+StatementList ::= (Statements) StatementList Statement
+				|
+				(NoStmt) /* epsilon */
+				;
+				
+PotentialError ::= (IfConditionNoError) Condition;
 
-OptionalElse ::=
-		(YesOptionalStatement) ELSE Statement
-		|
-		(NoOptionalStatement) /* epsilon */
-		;
+OptionalElse ::= (YesOptionalStatement) ELSE Statement
+				|
+				(NoOptionalStatement) /* epsilon */
+				;
 
 PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER
 					|
 					(NoCommaNumberClass) /* epsilon */
 					;
 
+
+
+
+/********** SWITCH **********/
+
+
+
+
 SwitchStatementList ::= (SwitchStatementListClass) SwitchStatementList CASE NUMBER COLON Statement
 					|
 					(NoSwitchStatementList) /* epsilon */
 					;
+
+
+
+/********** ACTUAL PARAMETERS **********/
+
+
+
+
 		
 ActualPars ::= (Actuals) ActualParamList
 			|
@@ -270,11 +379,19 @@ ActualParamList ::= (ActualParams) ActualParamList COMMA Expr
 				(ActualParam) Expr
 				;
 
+
+
+
+/********** CONDITIONS **********/
+
+
+
+
 Condition ::= (ConditionClass) CondTerm ConditionOptional
 					|
-					(IfConditionYesErrorTwo) error:error /* greska koja brise sve iz zagrada za if; */
+					(ConditionError) error:error /* greska koja brise sve iz zagrada za if; */
 					{:
-						parser.report_error("Successful error recovery by parser on line " + errorleft + " -> ConditionOptional", null);
+						parser.report_error("CONDITION SUCCESSFULL RECOVERY ON LINE " + errorleft, null);
 					:}
 					;		
 		
@@ -296,6 +413,14 @@ CondFactOptional ::= (CondFactOptionalClass) RelOp Expr
 					|
 					(NoCondFactOptionalClass) /* epsion */
 					;	
+
+
+
+
+/********** EXPRETIONS **********/
+
+
+
 		
 ExprNegative ::= (ExprNegativeClass) MINUS ExprPositive;
 
@@ -316,6 +441,14 @@ ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList AddOp Term
 					|
 					(NoExprOptionalListClass) /* epsilon */
 					;
+
+
+
+
+/********** TERMS **********/
+
+
+
 					
 Term ::= (TermClass) Factor TermOptionalList;
 
@@ -323,6 +456,14 @@ TermOptionalList ::= (TermOptionalListClass) TermOptionalList MulOp Factor
 					|
 					(NoTermOptionalListClass) /* epsilon */
 					; 				
+				
+
+				
+				
+/********** FACTORS **********/
+
+			
+				
 				
 Factor ::= (DesignatorClass) Designator FactorOptional
 			|
@@ -347,6 +488,14 @@ FactorOptionalSecond ::= (FactorOptionalSecondClass) LSQUARE_BRACKET Expr RSQUAR
 				(NoFactorOptionalSecondClass) /* epsilon */
 				;
 				
+				
+				
+				
+/********** OPERATORS **********/
+
+
+
+
 AddOp ::= (PlusOperation) PLUS
 		|
 		(MinusOperation) MINUS

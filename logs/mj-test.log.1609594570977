@@ -1,0 +1,430 @@
+INFO  14:35:52,082 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  14:35:52,137 - #34 program
+INFO  14:35:52,137 - #48 MJProgram
+INFO  14:35:52,137 - #48 int
+INFO  14:35:52,138 - #48 zzz
+INFO  14:35:52,139 - #37 ;
+INFO  14:35:52,140 - #35 {
+INFO  14:35:52,140 - #44 void
+INFO  14:35:52,141 - #48 main
+INFO  14:35:52,143 - #38 (
+INFO  14:35:52,143 - #39 )
+INFO  14:35:52,144 - #35 {
+INFO  14:35:52,145 - #49 if
+INFO  14:35:52,146 - #38 (
+INFO  14:35:52,146 - #48 a
+INFO  14:35:52,146 - #20 ==
+INFO  14:35:52,149 - #47 3
+INFO  14:35:52,150 - #26 &&
+INFO  14:35:52,151 - #38 (
+INFO  14:35:52,151 - #48 b
+INFO  14:35:52,151 - #41 +
+INFO  14:35:52,152 - #47 5
+INFO  14:35:52,162 - #39 )
+INFO  14:35:52,162 - #20 ==
+INFO  14:35:52,163 - #47 3
+INFO  14:35:52,163 - #26 &&
+INFO  14:35:52,163 - #48 c
+INFO  14:35:52,163 - #20 ==
+INFO  14:35:52,163 - #47 4
+INFO  14:35:52,163 - #26 &&
+INFO  14:35:52,163 - #48 d
+INFO  14:35:52,163 - #20 ==
+INFO  14:35:52,164 - #47 5
+INFO  14:35:52,164 - #39 )
+INFO  14:35:52,165 - #35 {
+INFO  14:35:52,165 - #48 zzz
+INFO  14:35:52,165 - #33 =
+INFO  14:35:52,165 - #47 0
+INFO  14:35:52,166 - #37 ;
+INFO  14:35:52,166 - #36 }
+INFO  14:35:52,166 - #50 else
+INFO  14:35:52,166 - #49 if
+INFO  14:35:52,167 - #38 (
+INFO  14:35:52,167 - #48 duca
+INFO  14:35:52,167 - #20 ==
+INFO  14:35:52,167 - #47 5
+INFO  14:35:52,167 - #27 ||
+INFO  14:35:52,167 - #48 duca
+INFO  14:35:52,167 - #20 ==
+INFO  14:35:52,167 - #39 )
+ERROR 14:35:52,167 - 
+Sintaksna greska na liniji 9
+INFO  14:35:52,167 - #35 {
+INFO  14:35:52,167 - #48 zzz
+INFO  14:35:52,167 - #33 =
+ERROR 14:35:52,168 - Successful error recovery by parser on line 9 -> ConditionOptional
+INFO  14:35:52,169 - #47 1
+INFO  14:35:52,169 - #37 ;
+INFO  14:35:52,169 - #36 }
+INFO  14:35:52,169 - #50 else
+INFO  14:35:52,169 - #35 {
+INFO  14:35:52,169 - #48 zzz
+INFO  14:35:52,169 - #33 =
+INFO  14:35:52,169 - #47 2
+INFO  14:35:52,169 - #37 ;
+INFO  14:35:52,169 - #36 }
+INFO  14:35:52,169 - #36 }
+INFO  14:35:52,170 - #36 }
+INFO  14:35:52,172 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    NoGroupDecl(
+    ) [NoGroupDecl]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListSingle(
+          VarClassNoArray(
+           zzz
+          ) [VarClassNoArray]
+        ) [VarListSingle]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+      ) [ReturnValueClassVoid]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        IfStatement(
+          IfConditionNoError(
+            ConditionClass(
+              CondTermClass(
+                CondFactClass(
+                  ClassOneClass(
+                    NormalExpressionClass(
+                      ExprFirstOptionClassWithMinus(
+                        TermClass(
+                          DesignatorClass(
+                            Designator(
+                             a
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                            ) [Designator]
+                            NoFactorOptional(
+                            ) [NoFactorOptional]
+                          ) [DesignatorClass]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprFirstOptionClassWithMinus]
+                    ) [NormalExpressionClass]
+                  ) [ClassOneClass]
+                  CondFactOptionalClass(
+                    RelationOperationClassEqualComparation(
+                    ) [RelationOperationClassEqualComparation]
+                    ClassOneClass(
+                      NormalExpressionClass(
+                        ExprFirstOptionClassWithMinus(
+                          TermClass(
+                            NumberConst(
+                             3
+                            ) [NumberConst]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprFirstOptionClassWithMinus]
+                      ) [NormalExpressionClass]
+                    ) [ClassOneClass]
+                  ) [CondFactOptionalClass]
+                ) [CondFactClass]
+                CondTermOptionalClass(
+                  CondTermOptionalClass(
+                    CondTermOptionalClass(
+                      NoCondTermOptionalClass(
+                      ) [NoCondTermOptionalClass]
+                      CondFactClass(
+                        ClassOneClass(
+                          NormalExpressionClass(
+                            ExprFirstOptionClassWithMinus(
+                              TermClass(
+                                ParenFactorClass(
+                                  ClassOneClass(
+                                    NormalExpressionClass(
+                                      ExprFirstOptionClassWithMinus(
+                                        TermClass(
+                                          DesignatorClass(
+                                            Designator(
+                                             b
+                                              NoOptionalDesignatorClass(
+                                              ) [NoOptionalDesignatorClass]
+                                            ) [Designator]
+                                            NoFactorOptional(
+                                            ) [NoFactorOptional]
+                                          ) [DesignatorClass]
+                                          NoTermOptionalListClass(
+                                          ) [NoTermOptionalListClass]
+                                        ) [TermClass]
+                                        ExprOptionalListClass(
+                                          NoExprOptionalListClass(
+                                          ) [NoExprOptionalListClass]
+                                          PlusOperation(
+                                          ) [PlusOperation]
+                                          TermClass(
+                                            NumberConst(
+                                             5
+                                            ) [NumberConst]
+                                            NoTermOptionalListClass(
+                                            ) [NoTermOptionalListClass]
+                                          ) [TermClass]
+                                        ) [ExprOptionalListClass]
+                                      ) [ExprFirstOptionClassWithMinus]
+                                    ) [NormalExpressionClass]
+                                  ) [ClassOneClass]
+                                ) [ParenFactorClass]
+                                NoTermOptionalListClass(
+                                ) [NoTermOptionalListClass]
+                              ) [TermClass]
+                              NoExprOptionalListClass(
+                              ) [NoExprOptionalListClass]
+                            ) [ExprFirstOptionClassWithMinus]
+                          ) [NormalExpressionClass]
+                        ) [ClassOneClass]
+                        CondFactOptionalClass(
+                          RelationOperationClassEqualComparation(
+                          ) [RelationOperationClassEqualComparation]
+                          ClassOneClass(
+                            NormalExpressionClass(
+                              ExprFirstOptionClassWithMinus(
+                                TermClass(
+                                  NumberConst(
+                                   3
+                                  ) [NumberConst]
+                                  NoTermOptionalListClass(
+                                  ) [NoTermOptionalListClass]
+                                ) [TermClass]
+                                NoExprOptionalListClass(
+                                ) [NoExprOptionalListClass]
+                              ) [ExprFirstOptionClassWithMinus]
+                            ) [NormalExpressionClass]
+                          ) [ClassOneClass]
+                        ) [CondFactOptionalClass]
+                      ) [CondFactClass]
+                    ) [CondTermOptionalClass]
+                    CondFactClass(
+                      ClassOneClass(
+                        NormalExpressionClass(
+                          ExprFirstOptionClassWithMinus(
+                            TermClass(
+                              DesignatorClass(
+                                Designator(
+                                 c
+                                  NoOptionalDesignatorClass(
+                                  ) [NoOptionalDesignatorClass]
+                                ) [Designator]
+                                NoFactorOptional(
+                                ) [NoFactorOptional]
+                              ) [DesignatorClass]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprFirstOptionClassWithMinus]
+                        ) [NormalExpressionClass]
+                      ) [ClassOneClass]
+                      CondFactOptionalClass(
+                        RelationOperationClassEqualComparation(
+                        ) [RelationOperationClassEqualComparation]
+                        ClassOneClass(
+                          NormalExpressionClass(
+                            ExprFirstOptionClassWithMinus(
+                              TermClass(
+                                NumberConst(
+                                 4
+                                ) [NumberConst]
+                                NoTermOptionalListClass(
+                                ) [NoTermOptionalListClass]
+                              ) [TermClass]
+                              NoExprOptionalListClass(
+                              ) [NoExprOptionalListClass]
+                            ) [ExprFirstOptionClassWithMinus]
+                          ) [NormalExpressionClass]
+                        ) [ClassOneClass]
+                      ) [CondFactOptionalClass]
+                    ) [CondFactClass]
+                  ) [CondTermOptionalClass]
+                  CondFactClass(
+                    ClassOneClass(
+                      NormalExpressionClass(
+                        ExprFirstOptionClassWithMinus(
+                          TermClass(
+                            DesignatorClass(
+                              Designator(
+                               d
+                                NoOptionalDesignatorClass(
+                                ) [NoOptionalDesignatorClass]
+                              ) [Designator]
+                              NoFactorOptional(
+                              ) [NoFactorOptional]
+                            ) [DesignatorClass]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprFirstOptionClassWithMinus]
+                      ) [NormalExpressionClass]
+                    ) [ClassOneClass]
+                    CondFactOptionalClass(
+                      RelationOperationClassEqualComparation(
+                      ) [RelationOperationClassEqualComparation]
+                      ClassOneClass(
+                        NormalExpressionClass(
+                          ExprFirstOptionClassWithMinus(
+                            TermClass(
+                              NumberConst(
+                               5
+                              ) [NumberConst]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprFirstOptionClassWithMinus]
+                        ) [NormalExpressionClass]
+                      ) [ClassOneClass]
+                    ) [CondFactOptionalClass]
+                  ) [CondFactClass]
+                ) [CondTermOptionalClass]
+              ) [CondTermClass]
+              NoConditionOptionalClass(
+              ) [NoConditionOptionalClass]
+            ) [ConditionClass]
+          ) [IfConditionNoError]
+          StatementStatement(
+            Statements(
+              NoStmt(
+              ) [NoStmt]
+              Assignment(
+                DesignatorStatementClass(
+                  Designator(
+                   zzz
+                    NoOptionalDesignatorClass(
+                    ) [NoOptionalDesignatorClass]
+                  ) [Designator]
+                  DesignatorStatementOptionsClassAssignExpression(
+                    AssignOperationClass(
+                    ) [AssignOperationClass]
+                    ClassOneClass(
+                      NormalExpressionClass(
+                        ExprFirstOptionClassWithMinus(
+                          TermClass(
+                            NumberConst(
+                             0
+                            ) [NumberConst]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprFirstOptionClassWithMinus]
+                      ) [NormalExpressionClass]
+                    ) [ClassOneClass]
+                  ) [DesignatorStatementOptionsClassAssignExpression]
+                ) [DesignatorStatementClass]
+              ) [Assignment]
+            ) [Statements]
+          ) [StatementStatement]
+          YesOptionalStatement(
+            IfStatement(
+              IfConditionNoError(
+                ConditionError(
+                ) [ConditionError]
+              ) [IfConditionNoError]
+              StatementStatement(
+                Statements(
+                  NoStmt(
+                  ) [NoStmt]
+                  Assignment(
+                    DesignatorStatementClass(
+                      Designator(
+                       zzz
+                        NoOptionalDesignatorClass(
+                        ) [NoOptionalDesignatorClass]
+                      ) [Designator]
+                      DesignatorStatementOptionsClassAssignExpression(
+                        AssignOperationClass(
+                        ) [AssignOperationClass]
+                        ClassOneClass(
+                          NormalExpressionClass(
+                            ExprFirstOptionClassWithMinus(
+                              TermClass(
+                                NumberConst(
+                                 1
+                                ) [NumberConst]
+                                NoTermOptionalListClass(
+                                ) [NoTermOptionalListClass]
+                              ) [TermClass]
+                              NoExprOptionalListClass(
+                              ) [NoExprOptionalListClass]
+                            ) [ExprFirstOptionClassWithMinus]
+                          ) [NormalExpressionClass]
+                        ) [ClassOneClass]
+                      ) [DesignatorStatementOptionsClassAssignExpression]
+                    ) [DesignatorStatementClass]
+                  ) [Assignment]
+                ) [Statements]
+              ) [StatementStatement]
+              YesOptionalStatement(
+                StatementStatement(
+                  Statements(
+                    NoStmt(
+                    ) [NoStmt]
+                    Assignment(
+                      DesignatorStatementClass(
+                        Designator(
+                         zzz
+                          NoOptionalDesignatorClass(
+                          ) [NoOptionalDesignatorClass]
+                        ) [Designator]
+                        DesignatorStatementOptionsClassAssignExpression(
+                          AssignOperationClass(
+                          ) [AssignOperationClass]
+                          ClassOneClass(
+                            NormalExpressionClass(
+                              ExprFirstOptionClassWithMinus(
+                                TermClass(
+                                  NumberConst(
+                                   2
+                                  ) [NumberConst]
+                                  NoTermOptionalListClass(
+                                  ) [NoTermOptionalListClass]
+                                ) [TermClass]
+                                NoExprOptionalListClass(
+                                ) [NoExprOptionalListClass]
+                              ) [ExprFirstOptionClassWithMinus]
+                            ) [NormalExpressionClass]
+                          ) [ClassOneClass]
+                        ) [DesignatorStatementOptionsClassAssignExpression]
+                      ) [DesignatorStatementClass]
+                    ) [Assignment]
+                  ) [Statements]
+                ) [StatementStatement]
+              ) [YesOptionalStatement]
+            ) [IfStatement]
+          ) [YesOptionalStatement]
+        ) [IfStatement]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  14:35:52,175 - ===================================

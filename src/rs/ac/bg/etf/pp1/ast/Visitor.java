@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 2/0/2021 1:31:19
+// 5/0/2021 1:32:46
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -12,8 +12,8 @@ public interface Visitor {
     public void visit(Matched Matched);
     public void visit(TermOptionalList TermOptionalList);
     public void visit(ExprOne ExprOne);
-    public void visit(DesignatorStatementOptions DesignatorStatementOptions);
     public void visit(FormalParamDecl FormalParamDecl);
+    public void visit(DesignatorStatementOptions DesignatorStatementOptions);
     public void visit(ConditionOptional ConditionOptional);
     public void visit(Variable Variable);
     public void visit(ExprNegative ExprNegative);
@@ -23,13 +23,13 @@ public interface Visitor {
     public void visit(CondFactOptional CondFactOptional);
     public void visit(FactorOptional FactorOptional);
     public void visit(ConstVariable ConstVariable);
-    public void visit(ExprOptionalList ExprOptionalList);
     public void visit(Factor Factor);
+    public void visit(ExprOptionalList ExprOptionalList);
     public void visit(CondTerm CondTerm);
     public void visit(VarList VarList);
     public void visit(ConstList ConstList);
-    public void visit(ExprPositive ExprPositive);
     public void visit(Term Term);
+    public void visit(ExprPositive ExprPositive);
     public void visit(Condition Condition);
     public void visit(MulOp MulOp);
     public void visit(PotentialError PotentialError);
@@ -99,7 +99,7 @@ public interface Visitor {
     public void visit(CondTermClass CondTermClass);
     public void visit(NoConditionOptionalClass NoConditionOptionalClass);
     public void visit(ConditionOptionalClass ConditionOptionalClass);
-    public void visit(IfConditionYesErrorTwo IfConditionYesErrorTwo);
+    public void visit(ConditionError ConditionError);
     public void visit(ConditionClass ConditionClass);
     public void visit(ActualParam ActualParam);
     public void visit(ActualParams ActualParams);
@@ -112,6 +112,8 @@ public interface Visitor {
     public void visit(NoOptionalStatement NoOptionalStatement);
     public void visit(YesOptionalStatement YesOptionalStatement);
     public void visit(IfConditionNoError IfConditionNoError);
+    public void visit(NoStmt NoStmt);
+    public void visit(Statements Statements);
     public void visit(StatementStatement StatementStatement);
     public void visit(SwitchStatement SwitchStatement);
     public void visit(DoWhileStatement DoWhileStatement);
@@ -133,8 +135,6 @@ public interface Visitor {
     public void visit(OptionalDesignatorArray OptionalDesignatorArray);
     public void visit(OptionalDesignatorClass OptionalDesignatorClass);
     public void visit(Designator Designator);
-    public void visit(NoStmt NoStmt);
-    public void visit(Statements Statements);
     public void visit(FormParYesError FormParYesError);
     public void visit(FormalParamDeclClassArray FormalParamDeclClassArray);
     public void visit(FormalParamDeclClassNoArray FormalParamDeclClassNoArray);
