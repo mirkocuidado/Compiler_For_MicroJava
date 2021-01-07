@@ -1,0 +1,243 @@
+INFO  20:39:02,282 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  20:39:02,343 - #2 program
+INFO  20:39:02,343 - #48 MJProgram
+INFO  20:39:02,344 - #48 int
+INFO  20:39:02,345 - #48 a
+INFO  20:39:02,346 - #36 ,
+INFO  20:39:02,347 - #48 b
+INFO  20:39:02,347 - #44 [
+INFO  20:39:02,347 - #45 ]
+INFO  20:39:02,347 - #36 ,
+INFO  20:39:02,347 - #48 c
+INFO  20:39:02,347 - #36 ,
+INFO  20:39:02,347 - #48 d
+INFO  20:39:02,347 - #38 ;
+INFO  20:39:02,348 - #48 char
+INFO  20:39:02,348 - #48 e
+INFO  20:39:02,348 - #36 ,
+INFO  20:39:02,348 - #48 f
+INFO  20:39:02,348 - #44 [
+INFO  20:39:02,348 - #45 ]
+INFO  20:39:02,348 - #36 ,
+INFO  20:39:02,349 - #48 g
+INFO  20:39:02,349 - #38 ;
+INFO  20:39:02,357 - #48 bool
+INFO  20:39:02,357 - #48 h
+INFO  20:39:02,357 - #36 ,
+INFO  20:39:02,357 - #48 i
+INFO  20:39:02,357 - #44 [
+INFO  20:39:02,358 - #45 ]
+INFO  20:39:02,358 - #38 ;
+INFO  20:39:02,358 - #9 const
+INFO  20:39:02,358 - #48 int
+INFO  20:39:02,358 - #48 aa
+INFO  20:39:02,358 - #24 =
+INFO  20:39:02,358 - #49 s
+INFO  20:39:02,358 - #36 ,
+INFO  20:39:02,359 - #48 bb
+INFO  20:39:02,359 - #24 =
+INFO  20:39:02,359 - #47 6
+INFO  20:39:02,359 - #38 ;
+INFO  20:39:02,359 - #9 const
+INFO  20:39:02,359 - #48 char
+INFO  20:39:02,359 - #48 cc
+INFO  20:39:02,360 - #24 =
+INFO  20:39:02,360 - #49 c
+INFO  20:39:02,360 - #36 ,
+INFO  20:39:02,360 - #48 dd
+INFO  20:39:02,360 - #24 =
+INFO  20:39:02,360 - #49 d
+INFO  20:39:02,360 - #38 ;
+INFO  20:39:02,360 - #9 const
+INFO  20:39:02,360 - #48 bool
+INFO  20:39:02,360 - #48 ee
+INFO  20:39:02,360 - #24 =
+INFO  20:39:02,361 - #50 true
+INFO  20:39:02,361 - #36 ,
+INFO  20:39:02,361 - #48 ff
+INFO  20:39:02,361 - #24 =
+INFO  20:39:02,361 - #50 false
+INFO  20:39:02,361 - #38 ;
+INFO  20:39:02,361 - #40 {
+INFO  20:39:02,361 - #41 }
+INFO  20:39:02,372 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        GroupDeclarations(
+          GroupDeclarations(
+            GroupDeclarations(
+              NoGroupDecl(
+              ) [NoGroupDecl]
+              GroupDeclarationVars(
+                VarDeclClass(
+                  Type(
+                   int
+                  ) [Type]
+                  VarListClass(
+                    VarListClass(
+                      VarListClass(
+                        VarListSingle(
+                          VarClassNoArray(
+                           a
+                          ) [VarClassNoArray]
+                        ) [VarListSingle]
+                        VarClassArray(
+                         b
+                        ) [VarClassArray]
+                      ) [VarListClass]
+                      VarClassNoArray(
+                       c
+                      ) [VarClassNoArray]
+                    ) [VarListClass]
+                    VarClassNoArray(
+                     d
+                    ) [VarClassNoArray]
+                  ) [VarListClass]
+                ) [VarDeclClass]
+              ) [GroupDeclarationVars]
+            ) [GroupDeclarations]
+            GroupDeclarationVars(
+              VarDeclClass(
+                Type(
+                 char
+                ) [Type]
+                VarListClass(
+                  VarListClass(
+                    VarListSingle(
+                      VarClassNoArray(
+                       e
+                      ) [VarClassNoArray]
+                    ) [VarListSingle]
+                    VarClassArray(
+                     f
+                    ) [VarClassArray]
+                  ) [VarListClass]
+                  VarClassNoArray(
+                   g
+                  ) [VarClassNoArray]
+                ) [VarListClass]
+              ) [VarDeclClass]
+            ) [GroupDeclarationVars]
+          ) [GroupDeclarations]
+          GroupDeclarationVars(
+            VarDeclClass(
+              Type(
+               bool
+              ) [Type]
+              VarListClass(
+                VarListSingle(
+                  VarClassNoArray(
+                   h
+                  ) [VarClassNoArray]
+                ) [VarListSingle]
+                VarClassArray(
+                 i
+                ) [VarClassArray]
+              ) [VarListClass]
+            ) [VarDeclClass]
+          ) [GroupDeclarationVars]
+        ) [GroupDeclarations]
+        GroupDeclarationsConsts(
+          ConstDeclClass(
+            Type(
+             int
+            ) [Type]
+            ConstListClass(
+              ConstListSingle(
+                ConstListNoArray(
+                 aa
+                  ValuesChar(
+                   s
+                  ) [ValuesChar]
+                ) [ConstListNoArray]
+              ) [ConstListSingle]
+              ConstListNoArray(
+               bb
+                ValuesNumber(
+                 6
+                ) [ValuesNumber]
+              ) [ConstListNoArray]
+            ) [ConstListClass]
+          ) [ConstDeclClass]
+        ) [GroupDeclarationsConsts]
+      ) [GroupDeclarations]
+      GroupDeclarationsConsts(
+        ConstDeclClass(
+          Type(
+           char
+          ) [Type]
+          ConstListClass(
+            ConstListSingle(
+              ConstListNoArray(
+               cc
+                ValuesChar(
+                 c
+                ) [ValuesChar]
+              ) [ConstListNoArray]
+            ) [ConstListSingle]
+            ConstListNoArray(
+             dd
+              ValuesChar(
+               d
+              ) [ValuesChar]
+            ) [ConstListNoArray]
+          ) [ConstListClass]
+        ) [ConstDeclClass]
+      ) [GroupDeclarationsConsts]
+    ) [GroupDeclarations]
+    GroupDeclarationsConsts(
+      ConstDeclClass(
+        Type(
+         bool
+        ) [Type]
+        ConstListClass(
+          ConstListSingle(
+            ConstListNoArray(
+             ee
+              ValuesBoolean(
+               true
+              ) [ValuesBoolean]
+            ) [ConstListNoArray]
+          ) [ConstListSingle]
+          ConstListNoArray(
+           ff
+            ValuesBoolean(
+             false
+            ) [ValuesBoolean]
+          ) [ConstListNoArray]
+        ) [ConstListClass]
+      ) [ConstDeclClass]
+    ) [GroupDeclarationsConsts]
+  ) [GroupDeclarations]
+  NoMethodDecl(
+  ) [NoMethodDecl]
+) [Program]
+INFO  20:39:02,373 - ===================================
+INFO  20:39:02,375 - PROGRAM NAME DETECTED => MJProgram ON LINE 1
+INFO  20:39:02,376 - VARIABLE a IS BEING DEFINED! ON LINE 2
+INFO  20:39:02,376 - ARRAY VARIABLE b IS BEING DEFINED! ON LINE 2
+INFO  20:39:02,376 - VARIABLE c IS BEING DEFINED! ON LINE 2
+INFO  20:39:02,376 - VARIABLE d IS BEING DEFINED! ON LINE 2
+INFO  20:39:02,376 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 2
+INFO  20:39:02,376 - VARIABLE e IS BEING DEFINED! ON LINE 3
+INFO  20:39:02,376 - ARRAY VARIABLE f IS BEING DEFINED! ON LINE 3
+INFO  20:39:02,376 - VARIABLE g IS BEING DEFINED! ON LINE 3
+INFO  20:39:02,376 - VARIABLES OF TYPE char HAVE BEEN DEFINED! ON LINE 3
+INFO  20:39:02,376 - VARIABLE h IS BEING DEFINED! ON LINE 4
+INFO  20:39:02,376 - ARRAY VARIABLE i IS BEING DEFINED! ON LINE 4
+INFO  20:39:02,376 - VARIABLES OF TYPE bool HAVE BEEN DEFINED! ON LINE 4
+ERROR 20:39:02,376 - ERROR! CONST VARIABLE aa ALREADY DEFINED IN SYMBOL TABLE! 
+INFO  20:39:02,376 - CONST VARIABLE aa IS BEING DEFINED! ON LINE 6
+INFO  20:39:02,377 - CONST VARIABLE bb IS BEING DEFINED! ON LINE 6
+INFO  20:39:02,377 - CONST VARIABLE cc IS BEING DEFINED! ON LINE 7
+INFO  20:39:02,377 - CONST VARIABLE dd IS BEING DEFINED! ON LINE 7
+INFO  20:39:02,377 - CONST VARIABLE ee IS BEING DEFINED! ON LINE 8
+INFO  20:39:02,377 - CONST VARIABLE ff IS BEING DEFINED! ON LINE 8
+INFO  20:39:02,377 - PROGRAM ENDED => MJProgram ON LINE 1
+INFO  20:39:02,377 -  Deklarisanih promenljivih ima = 9
+INFO  20:39:02,377 - ===================================
+ERROR 20:39:02,378 - Parsiranje NIJE uspesno zavrseno!

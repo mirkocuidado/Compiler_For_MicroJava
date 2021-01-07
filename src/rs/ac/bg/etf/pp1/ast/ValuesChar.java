@@ -1,13 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/0/2021 1:32:46
+// 7/0/2021 22:51:14
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ValuesChar extends ValueOptions {
 
-    public ValuesChar () {
+    private Character val;
+
+    public ValuesChar (Character val) {
+        this.val=val;
+    }
+
+    public Character getVal() {
+        return val;
+    }
+
+    public void setVal(Character val) {
+        this.val=val;
     }
 
     public void accept(Visitor visitor) {
@@ -29,6 +40,9 @@ public class ValuesChar extends ValueOptions {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("ValuesChar(\n");
+
+        buffer.append(" "+tab+val);
+        buffer.append("\n");
 
         buffer.append(tab);
         buffer.append(") [ValuesChar]");

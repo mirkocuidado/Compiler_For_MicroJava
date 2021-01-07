@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/0/2021 1:32:46
+// 7/0/2021 22:51:14
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,10 +8,12 @@ package rs.ac.bg.etf.pp1.ast;
 public class ReturnValueClassNoVoid extends ReturnValue {
 
     private Type Type;
+    private String methName;
 
-    public ReturnValueClassNoVoid (Type Type) {
+    public ReturnValueClassNoVoid (Type Type, String methName) {
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
+        this.methName=methName;
     }
 
     public Type getType() {
@@ -20,6 +22,14 @@ public class ReturnValueClassNoVoid extends ReturnValue {
 
     public void setType(Type Type) {
         this.Type=Type;
+    }
+
+    public String getMethName() {
+        return methName;
+    }
+
+    public void setMethName(String methName) {
+        this.methName=methName;
     }
 
     public void accept(Visitor visitor) {
@@ -49,6 +59,9 @@ public class ReturnValueClassNoVoid extends ReturnValue {
             buffer.append(Type.toString("  "+tab));
         else
             buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        buffer.append(" "+tab+methName);
         buffer.append("\n");
 
         buffer.append(tab);

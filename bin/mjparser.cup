@@ -45,7 +45,6 @@ scan with {:
 init with {: greska=false; :};
 
 terminal PROG;
-terminal CHAR, BOOLEAN;
 terminal BREAK, CONTINUE, VOID;
 terminal CLASS, EXTENDS;
 terminal ENUM, CONST;
@@ -68,19 +67,18 @@ terminal RETURN;
 
 terminal Integer NUMBER;
 terminal String IDENT;
+terminal Character CHAR;
+terminal String BOOLEAN;
 
-nonterminal Program, ProgramName, GroupDeclList, MethodDeclList;
+nonterminal GroupDeclList, MethodDeclList;
 nonterminal GroupDecl;
 nonterminal VarDecl, ClassDecl, ConstDecl;
 nonterminal ExtendsOption, MethodsOption;
 nonterminal ConstList;
 nonterminal ConstVariable;
-nonterminal ValueOptions;
 nonterminal VarDeclList, VarList;
 nonterminal Variable;
-nonterminal Type;
-nonterminal MethodDecl;
-nonterminal ReturnValue, FormPars, StatementList;
+nonterminal FormPars, StatementList;
 nonterminal FormalParamList;
 nonterminal FormalParamDecl;
 nonterminal Statement;
@@ -94,19 +92,26 @@ nonterminal ActualParamList;
 nonterminal ConditionOptional, CondTerm;
 nonterminal CondFact, CondTermOptional;
 nonterminal CondFactOptional;
-nonterminal Expr;
 nonterminal RelOp;
 nonterminal ExprPositive, ExprNegative;
-nonterminal ExprOptionalList, Term;
+nonterminal ExprOptionalList;
 nonterminal ExprOne;
-nonterminal Factor, FactorOptional, FactorOptionalSecond;
+nonterminal FactorOptional, FactorOptionalSecond;
 nonterminal TermOptionalList, MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
+nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord;
+
+/********** PHASE 3 - SEMANTIC ANALYSIS **********/	
+
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgramName, MethodDecl, ReturnValue;
+	
+	
+	
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, ValueOptions;	
+	
+	
 	
 precedence left ELSE;
-			
-			
-			
 
 /********** PROGRAM BASIC **********/
 
@@ -166,7 +171,7 @@ ConstList ::= (ConstListClass) ConstList COMMA ConstVariable:afterCommaConstVari
 			  (ConstListSingle) ConstVariable:singleConstVariable
 			  ;
 
-ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions
+ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions:constValue
 			|
 			(ErrorConstVariableList) error:e /* za primer -> int a b, c, d, e f , g, po k; */
 			{:
@@ -174,11 +179,11 @@ ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions
 			:}
 		;
 
-ValueOptions ::= (ValuesNumber) NUMBER
+ValueOptions ::= (ValuesNumber) NUMBER:numValue
 				 |
- 				 (ValuesBoolean) BOOLEAN
+ 				 (ValuesBoolean) BOOLEAN:val
  				 |
- 				 (ValuesChar) CHAR
+ 				 (ValuesChar) CHAR:val
  				 ;
 
 
@@ -222,7 +227,7 @@ Type ::= (Type) IDENT:typeName;
 
 
 
-/********** METHODS **********/
+/********** METHODS -> ovde izmena bila, ako ne bude radilo **********/
 
 
 
@@ -231,11 +236,11 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 				(NoMethodDecl) /* epsilon */
 				;
 				
-MethodDecl ::= (MethodDecl) ReturnValue IDENT:methName LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE;
+MethodDecl ::= (MethodDecl) ReturnValue LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE;
 
-ReturnValue ::= (ReturnValueClassNoVoid) Type:retType
+ReturnValue ::= (ReturnValueClassNoVoid) Type:retType IDENT:methName 
 				|
-				(ReturnValueClassVoid) VOID
+				(ReturnValueClassVoid) VOID:retType IDENT:methName 
 				; 
 
 
@@ -286,7 +291,7 @@ OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator DOT IDENT:na
 
 
 
-DesignatorStatement ::= (DesignatorStatementClass) Designator DesignatorStatementOptions;
+DesignatorStatement ::= (DesignatorStatementClass) Designator:designatorName DesignatorStatementOptions;
 
 DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOp Expr
 							|
@@ -312,24 +317,32 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (PrintStmt) PRINT LPAREN Expr PrintCommaNumber RPAREN SEMI
 		   |
-		   (ReturnExpr) RETURN Expr:t SEMI 
+		   (ReturnExpr) ReturnNonTerminal Expr:t SEMI 
 		   |
 		   (ReturnNoExpr) RETURN SEMI
 		   |
-		   (BreakClass) BREAK SEMI
+		   (BreakClass) BreakKeyWord SEMI
 		   |
-		   (ContinueClass) CONTINUE SEMI
+		   (ContinueClass) ContinueKeyWord SEMI
 		   |
-		   (ReadClass) READ LPAREN Designator RPAREN SEMI
+		   (ReadClass) READ LPAREN Designator:designator RPAREN SEMI
 		   |
 		   (IfStatement) IF LPAREN PotentialError RPAREN Statement OptionalElse /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
 		   |
-		   (DoWhileStatement) DO Statement WHILE LPAREN Condition RPAREN SEMI
+		   (DoWhileStatement) DoKeyWord Statement WHILE LPAREN Condition RPAREN SEMI
 		   |
 		   (SwitchStatement) SWITCH LPAREN Expr RPAREN LBRACE SwitchStatementList RBRACE
 		   |
 		   (StatementStatement) LBRACE StatementList RBRACE
 		   ;
+		   
+DoKeyWord ::= (DoClass) DO;
+
+BreakKeyWord ::= (BreakKeyWordClass) BREAK;
+
+ContinueKeyWord ::= (ContinueKeyWord) CONTINUE;
+
+ReturnNonTerminal ::= (ReturnNonTerminalClass) RETURN;
 
 StatementList ::= (Statements) StatementList Statement
 				|
@@ -465,13 +478,13 @@ TermOptionalList ::= (TermOptionalListClass) TermOptionalList MulOp Factor
 			
 				
 				
-Factor ::= (DesignatorClass) Designator FactorOptional
+Factor ::= 	(DesignatorClass) Designator FactorOptional
 			|
-			(NumberConst) NUMBER
+			(NumberConst) NUMBER:val
 			|
-			(CharConst) CHAR
+			(CharConst) CHAR:val
 			|
-			(BooleanClassConstFactor) BOOLEAN
+			(BooleanClassConstFactor) BOOLEAN:val
 			|
 			(NewFactorClass) NEW IDENT:varType FactorOptionalSecond
 			|

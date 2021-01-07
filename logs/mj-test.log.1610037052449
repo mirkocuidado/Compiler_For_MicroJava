@@ -1,0 +1,266 @@
+INFO  17:30:33,989 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  17:30:34,044 - #2 program
+INFO  17:30:34,044 - #48 MJProgram
+INFO  17:30:34,044 - #48 int
+INFO  17:30:34,045 - #48 a
+INFO  17:30:34,046 - #36 ,
+INFO  17:30:34,046 - #48 b
+INFO  17:30:34,046 - #44 [
+INFO  17:30:34,047 - #45 ]
+INFO  17:30:34,047 - #36 ,
+INFO  17:30:34,047 - #48 c
+INFO  17:30:34,047 - #36 ,
+INFO  17:30:34,047 - #48 d
+INFO  17:30:34,047 - #38 ;
+INFO  17:30:34,047 - #48 char
+INFO  17:30:34,047 - #48 e
+INFO  17:30:34,048 - #36 ,
+INFO  17:30:34,048 - #48 f
+INFO  17:30:34,048 - #44 [
+INFO  17:30:34,048 - #45 ]
+INFO  17:30:34,048 - #36 ,
+INFO  17:30:34,048 - #48 g
+INFO  17:30:34,048 - #38 ;
+INFO  17:30:34,058 - #48 bool
+INFO  17:30:34,058 - #48 h
+INFO  17:30:34,058 - #36 ,
+INFO  17:30:34,058 - #48 i
+INFO  17:30:34,058 - #44 [
+INFO  17:30:34,058 - #45 ]
+INFO  17:30:34,058 - #38 ;
+INFO  17:30:34,058 - #9 const
+INFO  17:30:34,058 - #48 int
+INFO  17:30:34,058 - #48 aa
+INFO  17:30:34,058 - #24 =
+INFO  17:30:34,058 - #47 5
+INFO  17:30:34,059 - #36 ,
+INFO  17:30:34,059 - #48 bb
+INFO  17:30:34,059 - #24 =
+INFO  17:30:34,059 - #47 6
+INFO  17:30:34,059 - #38 ;
+INFO  17:30:34,059 - #9 const
+INFO  17:30:34,059 - #48 char
+INFO  17:30:34,059 - #48 cc
+INFO  17:30:34,059 - #24 =
+INFO  17:30:34,060 - #49 c
+INFO  17:30:34,060 - #36 ,
+INFO  17:30:34,060 - #48 dd
+INFO  17:30:34,060 - #24 =
+INFO  17:30:34,060 - #49 d
+INFO  17:30:34,060 - #38 ;
+INFO  17:30:34,060 - #9 const
+INFO  17:30:34,060 - #48 bool
+INFO  17:30:34,060 - #48 ee
+INFO  17:30:34,060 - #24 =
+INFO  17:30:34,060 - #50 true
+INFO  17:30:34,060 - #36 ,
+INFO  17:30:34,060 - #48 ff
+INFO  17:30:34,060 - #24 =
+INFO  17:30:34,060 - #50 false
+INFO  17:30:34,060 - #38 ;
+INFO  17:30:34,061 - #40 {
+INFO  17:30:34,061 - #48 int
+INFO  17:30:34,061 - #48 main
+INFO  17:30:34,061 - #42 (
+INFO  17:30:34,062 - #43 )
+INFO  17:30:34,062 - #40 {
+INFO  17:30:34,063 - #41 }
+INFO  17:30:34,063 - #41 }
+INFO  17:30:34,070 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        GroupDeclarations(
+          GroupDeclarations(
+            GroupDeclarations(
+              NoGroupDecl(
+              ) [NoGroupDecl]
+              GroupDeclarationVars(
+                VarDeclClass(
+                  Type(
+                   int
+                  ) [Type]
+                  VarListClass(
+                    VarListClass(
+                      VarListClass(
+                        VarListSingle(
+                          VarClassNoArray(
+                           a
+                          ) [VarClassNoArray]
+                        ) [VarListSingle]
+                        VarClassArray(
+                         b
+                        ) [VarClassArray]
+                      ) [VarListClass]
+                      VarClassNoArray(
+                       c
+                      ) [VarClassNoArray]
+                    ) [VarListClass]
+                    VarClassNoArray(
+                     d
+                    ) [VarClassNoArray]
+                  ) [VarListClass]
+                ) [VarDeclClass]
+              ) [GroupDeclarationVars]
+            ) [GroupDeclarations]
+            GroupDeclarationVars(
+              VarDeclClass(
+                Type(
+                 char
+                ) [Type]
+                VarListClass(
+                  VarListClass(
+                    VarListSingle(
+                      VarClassNoArray(
+                       e
+                      ) [VarClassNoArray]
+                    ) [VarListSingle]
+                    VarClassArray(
+                     f
+                    ) [VarClassArray]
+                  ) [VarListClass]
+                  VarClassNoArray(
+                   g
+                  ) [VarClassNoArray]
+                ) [VarListClass]
+              ) [VarDeclClass]
+            ) [GroupDeclarationVars]
+          ) [GroupDeclarations]
+          GroupDeclarationVars(
+            VarDeclClass(
+              Type(
+               bool
+              ) [Type]
+              VarListClass(
+                VarListSingle(
+                  VarClassNoArray(
+                   h
+                  ) [VarClassNoArray]
+                ) [VarListSingle]
+                VarClassArray(
+                 i
+                ) [VarClassArray]
+              ) [VarListClass]
+            ) [VarDeclClass]
+          ) [GroupDeclarationVars]
+        ) [GroupDeclarations]
+        GroupDeclarationsConsts(
+          ConstDeclClass(
+            Type(
+             int
+            ) [Type]
+            ConstListClass(
+              ConstListSingle(
+                ConstListNoArray(
+                 aa
+                  ValuesNumber(
+                   5
+                  ) [ValuesNumber]
+                ) [ConstListNoArray]
+              ) [ConstListSingle]
+              ConstListNoArray(
+               bb
+                ValuesNumber(
+                 6
+                ) [ValuesNumber]
+              ) [ConstListNoArray]
+            ) [ConstListClass]
+          ) [ConstDeclClass]
+        ) [GroupDeclarationsConsts]
+      ) [GroupDeclarations]
+      GroupDeclarationsConsts(
+        ConstDeclClass(
+          Type(
+           char
+          ) [Type]
+          ConstListClass(
+            ConstListSingle(
+              ConstListNoArray(
+               cc
+                ValuesChar(
+                 c
+                ) [ValuesChar]
+              ) [ConstListNoArray]
+            ) [ConstListSingle]
+            ConstListNoArray(
+             dd
+              ValuesChar(
+               d
+              ) [ValuesChar]
+            ) [ConstListNoArray]
+          ) [ConstListClass]
+        ) [ConstDeclClass]
+      ) [GroupDeclarationsConsts]
+    ) [GroupDeclarations]
+    GroupDeclarationsConsts(
+      ConstDeclClass(
+        Type(
+         bool
+        ) [Type]
+        ConstListClass(
+          ConstListSingle(
+            ConstListNoArray(
+             ee
+              ValuesBoolean(
+               true
+              ) [ValuesBoolean]
+            ) [ConstListNoArray]
+          ) [ConstListSingle]
+          ConstListNoArray(
+           ff
+            ValuesBoolean(
+             false
+            ) [ValuesBoolean]
+          ) [ConstListNoArray]
+        ) [ConstListClass]
+      ) [ConstDeclClass]
+    ) [GroupDeclarationsConsts]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassNoVoid(
+        Type(
+         int
+        ) [Type]
+       main
+      ) [ReturnValueClassNoVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      NoStmt(
+      ) [NoStmt]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  17:30:34,070 - ===================================
+INFO  17:30:34,072 - PROGRAM NAME DETECTED => MJProgram ON LINE 1
+INFO  17:30:34,072 - VARIABLE a IS BEING DEFINED! ON LINE 2
+INFO  17:30:34,073 - ARRAY VARIABLE b IS BEING DEFINED! ON LINE 2
+INFO  17:30:34,073 - VARIABLE c IS BEING DEFINED! ON LINE 2
+INFO  17:30:34,073 - VARIABLE d IS BEING DEFINED! ON LINE 2
+INFO  17:30:34,073 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 2
+INFO  17:30:34,073 - VARIABLE e IS BEING DEFINED! ON LINE 3
+INFO  17:30:34,073 - ARRAY VARIABLE f IS BEING DEFINED! ON LINE 3
+INFO  17:30:34,073 - VARIABLE g IS BEING DEFINED! ON LINE 3
+INFO  17:30:34,073 - VARIABLES OF TYPE char HAVE BEEN DEFINED! ON LINE 3
+INFO  17:30:34,073 - VARIABLE h IS BEING DEFINED! ON LINE 4
+INFO  17:30:34,073 - ARRAY VARIABLE i IS BEING DEFINED! ON LINE 4
+INFO  17:30:34,073 - VARIABLES OF TYPE bool HAVE BEEN DEFINED! ON LINE 4
+INFO  17:30:34,073 - CONST VARIABLE aa IS BEING DEFINED! ON LINE 6
+INFO  17:30:34,073 - CONST VARIABLE bb IS BEING DEFINED! ON LINE 6
+INFO  17:30:34,073 - CONST VARIABLE cc IS BEING DEFINED! ON LINE 7
+INFO  17:30:34,073 - CONST VARIABLE dd IS BEING DEFINED! ON LINE 7
+INFO  17:30:34,073 - CONST VARIABLE ee IS BEING DEFINED! ON LINE 8
+INFO  17:30:34,074 - CONST VARIABLE ff IS BEING DEFINED! ON LINE 8
+INFO  17:30:34,074 - FUNCTION main WITH RETURN VALUE!  ON LINE 10
+ERROR 17:30:34,074 - Semanticka greska na liniji 10: funkcija main nema return iskaz!
+INFO  17:30:34,074 - PROGRAM ENDED => MJProgram ON LINE 1
+INFO  17:30:34,074 -  Deklarisanih promenljivih ima = 9
+INFO  17:30:34,074 - ===================================
+ERROR 17:30:34,074 - Parsiranje NIJE uspesno zavrseno!

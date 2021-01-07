@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/0/2021 1:32:46
+// 7/0/2021 22:51:14
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -31,9 +31,11 @@ public interface Visitor {
     public void visit(Term Term);
     public void visit(ExprPositive ExprPositive);
     public void visit(Condition Condition);
+    public void visit(DoKeyWord DoKeyWord);
     public void visit(MulOp MulOp);
     public void visit(PotentialError PotentialError);
     public void visit(OptionalDesignator OptionalDesignator);
+    public void visit(ReturnNonTerminal ReturnNonTerminal);
     public void visit(RelOp RelOp);
     public void visit(AssignOp AssignOp);
     public void visit(ActualParamList ActualParamList);
@@ -46,6 +48,7 @@ public interface Visitor {
     public void visit(DesignatorStatement DesignatorStatement);
     public void visit(ActualPars ActualPars);
     public void visit(PrintCommaNumber PrintCommaNumber);
+    public void visit(BreakKeyWord BreakKeyWord);
     public void visit(ExtendsOption ExtendsOption);
     public void visit(Statement Statement);
     public void visit(VarDecl VarDecl);
@@ -54,8 +57,8 @@ public interface Visitor {
     public void visit(CondFact CondFact);
     public void visit(MethodDeclList MethodDeclList);
     public void visit(SwitchStatementList SwitchStatementList);
-    public void visit(GroupDecl GroupDecl);
     public void visit(ReturnValue ReturnValue);
+    public void visit(GroupDecl GroupDecl);
     public void visit(FormPars FormPars);
     public void visit(OptionalElse OptionalElse);
     public void visit(ModOperationClass ModOperationClass);
@@ -114,6 +117,10 @@ public interface Visitor {
     public void visit(IfConditionNoError IfConditionNoError);
     public void visit(NoStmt NoStmt);
     public void visit(Statements Statements);
+    public void visit(ReturnNonTerminalClass ReturnNonTerminalClass);
+    public void visit(ContinueKeyWord ContinueKeyWord);
+    public void visit(BreakKeyWordClass BreakKeyWordClass);
+    public void visit(DoClass DoClass);
     public void visit(StatementStatement StatementStatement);
     public void visit(SwitchStatement SwitchStatement);
     public void visit(DoWhileStatement DoWhileStatement);

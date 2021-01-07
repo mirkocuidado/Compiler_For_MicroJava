@@ -1,13 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/0/2021 1:32:46
+// 7/0/2021 22:51:14
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ReturnValueClassVoid extends ReturnValue {
 
-    public ReturnValueClassVoid () {
+    private String methName;
+
+    public ReturnValueClassVoid (String methName) {
+        this.methName=methName;
+    }
+
+    public String getMethName() {
+        return methName;
+    }
+
+    public void setMethName(String methName) {
+        this.methName=methName;
     }
 
     public void accept(Visitor visitor) {
@@ -29,6 +40,9 @@ public class ReturnValueClassVoid extends ReturnValue {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("ReturnValueClassVoid(\n");
+
+        buffer.append(" "+tab+methName);
+        buffer.append("\n");
 
         buffer.append(tab);
         buffer.append(") [ReturnValueClassVoid]");

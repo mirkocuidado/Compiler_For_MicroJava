@@ -45,7 +45,6 @@ scan with {:
 init with {: greska=false; :};
 
 terminal PROG;
-terminal CHAR, BOOLEAN;
 terminal BREAK, CONTINUE, VOID;
 terminal CLASS, EXTENDS;
 terminal ENUM, CONST;
@@ -68,9 +67,9 @@ terminal RETURN;
 
 terminal Integer NUMBER;
 terminal String IDENT;
+terminal Character CHAR;
+terminal String BOOLEAN;
 
-nonterminal Program Program;
-nonterminal ProgramName ProgramName;
 nonterminal GroupDeclList GroupDeclList;
 nonterminal MethodDeclList MethodDeclList;
 nonterminal GroupDecl GroupDecl;
@@ -81,13 +80,9 @@ nonterminal ExtendsOption ExtendsOption;
 nonterminal MethodsOption MethodsOption;
 nonterminal ConstList ConstList;
 nonterminal ConstVariable ConstVariable;
-nonterminal ValueOptions ValueOptions;
 nonterminal VarDeclList VarDeclList;
 nonterminal VarList VarList;
 nonterminal Variable Variable;
-nonterminal Type Type;
-nonterminal MethodDecl MethodDecl;
-nonterminal ReturnValue ReturnValue;
 nonterminal FormPars FormPars;
 nonterminal StatementList StatementList;
 nonterminal FormalParamList FormalParamList;
@@ -110,14 +105,11 @@ nonterminal CondTerm CondTerm;
 nonterminal CondFact CondFact;
 nonterminal CondTermOptional CondTermOptional;
 nonterminal CondFactOptional CondFactOptional;
-nonterminal Expr Expr;
 nonterminal RelOp RelOp;
 nonterminal ExprPositive ExprPositive;
 nonterminal ExprNegative ExprNegative;
 nonterminal ExprOptionalList ExprOptionalList;
-nonterminal Term Term;
 nonterminal ExprOne ExprOne;
-nonterminal Factor Factor;
 nonterminal FactorOptional FactorOptional;
 nonterminal FactorOptionalSecond FactorOptionalSecond;
 nonterminal TermOptionalList TermOptionalList;
@@ -125,12 +117,31 @@ nonterminal MulOp MulOp;
 nonterminal AddOp AddOp;
 nonterminal PotentialError PotentialError;
 nonterminal OptionalElse OptionalElse;		
+nonterminal ReturnNonTerminal ReturnNonTerminal;
+nonterminal DoKeyWord DoKeyWord;
+nonterminal BreakKeyWord BreakKeyWord;
+nonterminal ContinueKeyWord ContinueKeyWord;
+
+/********** PHASE 3 - SEMANTIC ANALYSIS **********/	
+
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgramName, MethodDecl, ReturnValue;
+	
+	
+	
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, ValueOptions;	
+	
+	
 	
 precedence left ELSE;
-			
+
+/********** PROGRAM BASIC **********/
+
+
+
 Program ::= (Program) PROG ProgramName:P1 GroupDeclList:G2 LBRACE MethodDeclList:M3 RBRACE {: RESULT=new Program(P1, G2, M3); RESULT.setLine(P1left); :};
 
 ProgramName ::= (ProgramName) IDENT:programName {: RESULT=new ProgramName(programName); RESULT.setLine(programNameleft); :};
+
 
 
 
@@ -181,7 +192,7 @@ ConstList ::= (ConstListClass) ConstList:C1 COMMA ConstVariable:afterCommaConstV
 			  (ConstListSingle) ConstVariable:singleConstVariable {: RESULT=new ConstListSingle(singleConstVariable); RESULT.setLine(singleConstVariableleft); :}
 			  ;
 
-ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions:V1 {: RESULT=new ConstListNoArray(constVarName, V1); RESULT.setLine(constVarNameleft); :}
+ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions:constValue {: RESULT=new ConstListNoArray(constVarName, constValue); RESULT.setLine(constVarNameleft); :}
 			|
 			(ErrorConstVariableList) error:e /* za primer -> int a b, c, d, e f , g, po k; */
 			{:
@@ -189,11 +200,11 @@ ConstVariable ::= (ConstListNoArray) IDENT:constVarName EQUAL ValueOptions:V1 {:
 			:} {: RESULT=new ErrorConstVariableList(); :}
 		;
 
-ValueOptions ::= (ValuesNumber) NUMBER:N1 {: RESULT=new ValuesNumber(N1); RESULT.setLine(N1left); :}
+ValueOptions ::= (ValuesNumber) NUMBER:numValue {: RESULT=new ValuesNumber(numValue); RESULT.setLine(numValueleft); :}
 				 |
- 				 (ValuesBoolean) BOOLEAN {: RESULT=new ValuesBoolean(); :}
+ 				 (ValuesBoolean) BOOLEAN:val {: RESULT=new ValuesBoolean(val); RESULT.setLine(valleft); :}
  				 |
- 				 (ValuesChar) CHAR {: RESULT=new ValuesChar(); :}
+ 				 (ValuesChar) CHAR:val {: RESULT=new ValuesChar(val); RESULT.setLine(valleft); :}
  				 ;
 
 
@@ -237,7 +248,7 @@ Type ::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(type
 
 
 
-/********** METHODS **********/
+/********** METHODS -> ovde izmena bila, ako ne bude radilo **********/
 
 
 
@@ -246,11 +257,11 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESUL
 				(NoMethodDecl) {: RESULT=new NoMethodDecl(); :} /* epsilon */
 				;
 				
-MethodDecl ::= (MethodDecl) ReturnValue:R1 IDENT:methName LPAREN FormPars:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 RBRACE {: RESULT=new MethodDecl(R1, methName, F2, V3, S4); RESULT.setLine(R1left); :};
+MethodDecl ::= (MethodDecl) ReturnValue:R1 LPAREN FormPars:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 RBRACE {: RESULT=new MethodDecl(R1, F2, V3, S4); RESULT.setLine(R1left); :};
 
-ReturnValue ::= (ReturnValueClassNoVoid) Type:retType {: RESULT=new ReturnValueClassNoVoid(retType); RESULT.setLine(retTypeleft); :}
+ReturnValue ::= (ReturnValueClassNoVoid) Type:retType IDENT:methName {: RESULT=new ReturnValueClassNoVoid(retType, methName); RESULT.setLine(retTypeleft); :} 
 				|
-				(ReturnValueClassVoid) VOID {: RESULT=new ReturnValueClassVoid(); :}
+				(ReturnValueClassVoid) VOID:retType IDENT:methName {: RESULT=new ReturnValueClassVoid(methName); RESULT.setLine(methNameleft); :} 
 				; 
 
 
@@ -301,7 +312,7 @@ OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator:O1 DOT IDENT
 
 
 
-DesignatorStatement ::= (DesignatorStatementClass) Designator:D1 DesignatorStatementOptions:D2 {: RESULT=new DesignatorStatementClass(D1, D2); RESULT.setLine(D1left); :};
+DesignatorStatement ::= (DesignatorStatementClass) Designator:designatorName DesignatorStatementOptions:D1 {: RESULT=new DesignatorStatementClass(designatorName, D1); RESULT.setLine(designatorNameleft); :};
 
 DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOp:A1 Expr:E2 {: RESULT=new DesignatorStatementOptionsClassAssignExpression(A1, E2); RESULT.setLine(A1left); :}
 							|
@@ -327,24 +338,32 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   |
 		   (PrintStmt) PRINT LPAREN Expr:E1 PrintCommaNumber:P2 RPAREN SEMI {: RESULT=new PrintStmt(E1, P2); RESULT.setLine(E1left); :}
 		   |
-		   (ReturnExpr) RETURN Expr:t SEMI {: RESULT=new ReturnExpr(t); RESULT.setLine(tleft); :} 
+		   (ReturnExpr) ReturnNonTerminal:R1 Expr:t SEMI {: RESULT=new ReturnExpr(R1, t); RESULT.setLine(R1left); :} 
 		   |
 		   (ReturnNoExpr) RETURN SEMI {: RESULT=new ReturnNoExpr(); :}
 		   |
-		   (BreakClass) BREAK SEMI {: RESULT=new BreakClass(); :}
+		   (BreakClass) BreakKeyWord:B1 SEMI {: RESULT=new BreakClass(B1); RESULT.setLine(B1left); :}
 		   |
-		   (ContinueClass) CONTINUE SEMI {: RESULT=new ContinueClass(); :}
+		   (ContinueClass) ContinueKeyWord:C1 SEMI {: RESULT=new ContinueClass(C1); RESULT.setLine(C1left); :}
 		   |
-		   (ReadClass) READ LPAREN Designator:D1 RPAREN SEMI {: RESULT=new ReadClass(D1); RESULT.setLine(D1left); :}
+		   (ReadClass) READ LPAREN Designator:designator RPAREN SEMI {: RESULT=new ReadClass(designator); RESULT.setLine(designatorleft); :}
 		   |
 		   (IfStatement) IF LPAREN PotentialError:P1 RPAREN Statement:S2 OptionalElse:O3 {: RESULT=new IfStatement(P1, S2, O3); RESULT.setLine(P1left); :} /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
 		   |
-		   (DoWhileStatement) DO Statement:S1 WHILE LPAREN Condition:C2 RPAREN SEMI {: RESULT=new DoWhileStatement(S1, C2); RESULT.setLine(S1left); :}
+		   (DoWhileStatement) DoKeyWord:D1 Statement:S2 WHILE LPAREN Condition:C3 RPAREN SEMI {: RESULT=new DoWhileStatement(D1, S2, C3); RESULT.setLine(D1left); :}
 		   |
 		   (SwitchStatement) SWITCH LPAREN Expr:E1 RPAREN LBRACE SwitchStatementList:S2 RBRACE {: RESULT=new SwitchStatement(E1, S2); RESULT.setLine(E1left); :}
 		   |
 		   (StatementStatement) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementStatement(S1); RESULT.setLine(S1left); :}
 		   ;
+		   
+DoKeyWord ::= (DoClass) DO {: RESULT=new DoClass(); :};
+
+BreakKeyWord ::= (BreakKeyWordClass) BREAK {: RESULT=new BreakKeyWordClass(); :};
+
+ContinueKeyWord ::= (ContinueKeyWord) CONTINUE {: RESULT=new ContinueKeyWord(); :};
+
+ReturnNonTerminal ::= (ReturnNonTerminalClass) RETURN {: RESULT=new ReturnNonTerminalClass(); :};
 
 StatementList ::= (Statements) StatementList:S1 Statement:S2 {: RESULT=new Statements(S1, S2); RESULT.setLine(S1left); :}
 				|
@@ -480,13 +499,13 @@ TermOptionalList ::= (TermOptionalListClass) TermOptionalList:T1 MulOp:M2 Factor
 			
 				
 				
-Factor ::= (DesignatorClass) Designator:D1 FactorOptional:F2 {: RESULT=new DesignatorClass(D1, F2); RESULT.setLine(D1left); :}
+Factor ::= 	(DesignatorClass) Designator:D1 FactorOptional:F2 {: RESULT=new DesignatorClass(D1, F2); RESULT.setLine(D1left); :}
 			|
-			(NumberConst) NUMBER:N1 {: RESULT=new NumberConst(N1); RESULT.setLine(N1left); :}
+			(NumberConst) NUMBER:val {: RESULT=new NumberConst(val); RESULT.setLine(valleft); :}
 			|
-			(CharConst) CHAR {: RESULT=new CharConst(); :}
+			(CharConst) CHAR:val {: RESULT=new CharConst(val); RESULT.setLine(valleft); :}
 			|
-			(BooleanClassConstFactor) BOOLEAN {: RESULT=new BooleanClassConstFactor(); :}
+			(BooleanClassConstFactor) BOOLEAN:val {: RESULT=new BooleanClassConstFactor(val); RESULT.setLine(valleft); :}
 			|
 			(NewFactorClass) NEW IDENT:varType FactorOptionalSecond:F1 {: RESULT=new NewFactorClass(varType, F1); RESULT.setLine(varTypeleft); :}
 			|

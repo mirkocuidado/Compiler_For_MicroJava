@@ -1,24 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/0/2021 1:32:46
+// 7/0/2021 22:51:14
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ValuesNumber extends ValueOptions {
 
-    private Integer N1;
+    private Integer numValue;
 
-    public ValuesNumber (Integer N1) {
-        this.N1=N1;
+    public ValuesNumber (Integer numValue) {
+        this.numValue=numValue;
     }
 
-    public Integer getN1() {
-        return N1;
+    public Integer getNumValue() {
+        return numValue;
     }
 
-    public void setN1(Integer N1) {
-        this.N1=N1;
+    public void setNumValue(Integer numValue) {
+        this.numValue=numValue;
     }
 
     public void accept(Visitor visitor) {
@@ -41,7 +41,7 @@ public class ValuesNumber extends ValueOptions {
         buffer.append(tab);
         buffer.append("ValuesNumber(\n");
 
-        buffer.append(" "+tab+N1);
+        buffer.append(" "+tab+numValue);
         buffer.append("\n");
 
         buffer.append(tab);

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/0/2021 1:32:46
+// 7/0/2021 22:51:14
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,16 +9,16 @@ public class MethodDecl implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
+    public rs.etf.pp1.symboltable.concepts.Obj obj = null;
+
     private ReturnValue ReturnValue;
-    private String methName;
     private FormPars FormPars;
     private VarDeclList VarDeclList;
     private StatementList StatementList;
 
-    public MethodDecl (ReturnValue ReturnValue, String methName, FormPars FormPars, VarDeclList VarDeclList, StatementList StatementList) {
+    public MethodDecl (ReturnValue ReturnValue, FormPars FormPars, VarDeclList VarDeclList, StatementList StatementList) {
         this.ReturnValue=ReturnValue;
         if(ReturnValue!=null) ReturnValue.setParent(this);
-        this.methName=methName;
         this.FormPars=FormPars;
         if(FormPars!=null) FormPars.setParent(this);
         this.VarDeclList=VarDeclList;
@@ -33,14 +33,6 @@ public class MethodDecl implements SyntaxNode {
 
     public void setReturnValue(ReturnValue ReturnValue) {
         this.ReturnValue=ReturnValue;
-    }
-
-    public String getMethName() {
-        return methName;
-    }
-
-    public void setMethName(String methName) {
-        this.methName=methName;
     }
 
     public FormPars getFormPars() {
@@ -119,9 +111,6 @@ public class MethodDecl implements SyntaxNode {
             buffer.append(ReturnValue.toString("  "+tab));
         else
             buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        buffer.append(" "+tab+methName);
         buffer.append("\n");
 
         if(FormPars!=null)

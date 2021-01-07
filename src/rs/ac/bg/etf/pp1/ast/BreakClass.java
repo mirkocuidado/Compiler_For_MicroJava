@@ -1,13 +1,25 @@
 // generated with ast extension for cup
 // version 0.8
-// 5/0/2021 1:32:46
+// 7/0/2021 22:51:14
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class BreakClass extends Statement {
 
-    public BreakClass () {
+    private BreakKeyWord BreakKeyWord;
+
+    public BreakClass (BreakKeyWord BreakKeyWord) {
+        this.BreakKeyWord=BreakKeyWord;
+        if(BreakKeyWord!=null) BreakKeyWord.setParent(this);
+    }
+
+    public BreakKeyWord getBreakKeyWord() {
+        return BreakKeyWord;
+    }
+
+    public void setBreakKeyWord(BreakKeyWord BreakKeyWord) {
+        this.BreakKeyWord=BreakKeyWord;
     }
 
     public void accept(Visitor visitor) {
@@ -15,13 +27,16 @@ public class BreakClass extends Statement {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(BreakKeyWord!=null) BreakKeyWord.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(BreakKeyWord!=null) BreakKeyWord.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(BreakKeyWord!=null) BreakKeyWord.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -29,6 +44,12 @@ public class BreakClass extends Statement {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("BreakClass(\n");
+
+        if(BreakKeyWord!=null)
+            buffer.append(BreakKeyWord.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
 
         buffer.append(tab);
         buffer.append(") [BreakClass]");

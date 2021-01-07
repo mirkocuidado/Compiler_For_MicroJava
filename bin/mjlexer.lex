@@ -100,7 +100,7 @@ import java_cup.runtime.Symbol;
 '[\x20-\x7E]' {return new_symbol(sym.CHAR, new Character(yytext().charAt(1)));}
 
 /********** BOOLEAN **********/
-("true"|"false") {return new_symbol(sym.BOOLEAN, new Boolean(yytext()));}
+("true"|"false") {return new_symbol(sym.BOOLEAN, yytext());}
 
 /********** IDENTIFICATORS **********/
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{return new_symbol (sym.IDENT, yytext()); }
