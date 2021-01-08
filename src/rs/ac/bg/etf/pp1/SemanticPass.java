@@ -32,10 +32,10 @@ public class SemanticPass extends VisitorAdaptor {
 	Obj current_variable_in_use = null;
 	
 	/********** CURRENT VARIABLE WE ARE USING **********/
-	boolean if_we_are_using_an_array = false;
+	int if_we_are_using_an_array = 0;
 	
 	/********** MARK THE BEGINNING OF DO...WHILE **********/
-	boolean do_while_flag = false;
+	int do_while_flag = 0;
 	
 	Logger log = Logger.getLogger(getClass());
 
@@ -246,18 +246,6 @@ public class SemanticPass extends VisitorAdaptor {
     	if(current_variable_in_use == Symbol_Table.noObj) {
     		report_error("VARIABLE OF NAME " + designator.getName() + " IS NOT DEFINED!", null);
     	}
-    	else {
-    		if(current_variable_in_use.getType().getKind() == Struct.Array && if_we_are_using_an_array == false) {
-    			report_error("ARRAY OF NAME " + designator.getName() + " IS NOT BEING PROPERLY USED!", null);
-    		}
-    		report_info("USING DESIGNATOR " + current_variable_in_use.getName(), designator);
-    	}
-    	if_we_are_using_an_array = false;
-    }
-    
-    /********** NOTICE THAT WE ARE OUGHT TO USE AN ARRAY **********/
-    public void visit(OptionalDesignatorArray param) {
-    	if_we_are_using_an_array = true;
     }
     
     /********** ONLY INTEGERS HAVE ++ **********/
@@ -268,6 +256,11 @@ public class SemanticPass extends VisitorAdaptor {
     	else {
     		report_error("VARIABLE OF NAME " + current_variable_in_use.getName() + " IS NOT AN INTEGER AND IS USED WITH ++!", null);
     	}
+    	
+    	if(if_we_are_using_an_array == 0 && current_variable_in_use.getType().getKind() == Struct.Array) {
+    		report_error("VARIABLE ARRAY OF NAME " + current_variable_in_use.getName() + " CAN NOT BE USED LIKE THIS WITH ++!", null);
+    	}
+    	else if( current_variable_in_use.getType().getKind() == Struct.Array ) if_we_are_using_an_array--;
     }
     
     /********** ONLY INTEGERS HAVE -- **********/
@@ -276,8 +269,13 @@ public class SemanticPass extends VisitorAdaptor {
     		report_info("USING -- ON " + current_variable_in_use.getName(), param);
     	}
     	else {
-    		report_error("VARIABLE OF NAME " + current_variable_in_use.getName() + " IS NOT AN INTEGER AND IS USED WITH ++!", null);
+    		report_error("VARIABLE OF NAME " + current_variable_in_use.getName() + " IS NOT AN INTEGER AND IS USED WITH --!", null);
     	}
+    	
+    	if(if_we_are_using_an_array == 0 && current_variable_in_use.getType().getKind() == Struct.Array) {
+    		report_error("VARIABLE ARRAY OF NAME " + current_variable_in_use.getName() + " CAN NOT BE USED LIKE THIS WITH --!", null);
+    	}
+    	else if( current_variable_in_use.getType().getKind() == Struct.Array ) if_we_are_using_an_array--;
     }
 
     /********** ONLY CALL GLOBAL FUNCTIONS **********/
@@ -295,23 +293,29 @@ public class SemanticPass extends VisitorAdaptor {
     
     /********** MARK THE BEGINNING OF DO...WHILE **********/
     public void visit(DoKeyWord param) {
-    	do_while_flag = true;
+    	do_while_flag++;
+    }
+    
+    /********** MARK THE USE OF ARRAYS **********/
+    public void visit(LSquareClass param) {
+    	report_info(" ~~~ ARRAY BEGINNING", param);
+    	if_we_are_using_an_array++;
     }
     
     /********** CATCH THE USE OF BREAK OUTSIDE DO...WHILE **********/
     public void visit(BreakKeyWordClass param) {
-    	if(do_while_flag != true) {
+    	if(do_while_flag == 0) {
     		report_error("BREAK NOT USED IN DO...WHILE !", param);
     	}
-    	do_while_flag = false;
+    	do_while_flag--;
     }
     
     /********** CATCH THE USE OF CONTINUE OUTSIDE DO...WHILE **********/
     public void visit(ContinueKeyWord param) {
-    	if(do_while_flag != true) {
+    	if(do_while_flag == 0) {
     		report_error("BREAK NOT USED IN DO...WHILE !", param);
     	}
-    	do_while_flag = false;
+    	do_while_flag--;
     }
     
     /********** READ FUNCTION **********/
@@ -323,9 +327,15 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     	else if(in_symbol_table.getType().getKind() != Struct.Bool && in_symbol_table.getType().getKind() != Struct.Char && in_symbol_table.getType().getKind() != Struct.Int) {
     		if(in_symbol_table.getType().getKind() == Struct.Array) {
-    			report_info("ARRAY " + designator_in_use + " IN USE IN FUNCTION READ", read);
+    			if(if_we_are_using_an_array == 0) {
+    				report_error("DESIGNATOR IN USE " + designator_in_use + " IS A PURE ARRAY WHICH IS NOT ALLOWED IN READ!", read);
+    			}
+    			else { 
+    				report_info("ARRAY " + designator_in_use + " IN USE IN FUNCTION READ", read);
+    				if_we_are_using_an_array--;
+    			}
     		}
-    		else report_error("DESIGNATOR IN USE " + designator_in_use + " IS NOT A VARIABLE OF TYPE BOOL, CHAR OR INT!", read);
+    		else report_error("DESIGNATOR IN USE " + designator_in_use + " IS NOT A VARIABLE OF TYPE BOOL, CHAR OR INT OR AN ARRAY!", read);
     	}
     	
     }

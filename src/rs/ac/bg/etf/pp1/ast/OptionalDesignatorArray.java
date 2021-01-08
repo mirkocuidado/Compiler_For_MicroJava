@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 7/0/2021 22:51:14
+// 8/0/2021 16:5:42
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,11 +8,14 @@ package rs.ac.bg.etf.pp1.ast;
 public class OptionalDesignatorArray extends OptionalDesignator {
 
     private OptionalDesignator OptionalDesignator;
+    private LSquareKeyWord LSquareKeyWord;
     private Expr Expr;
 
-    public OptionalDesignatorArray (OptionalDesignator OptionalDesignator, Expr Expr) {
+    public OptionalDesignatorArray (OptionalDesignator OptionalDesignator, LSquareKeyWord LSquareKeyWord, Expr Expr) {
         this.OptionalDesignator=OptionalDesignator;
         if(OptionalDesignator!=null) OptionalDesignator.setParent(this);
+        this.LSquareKeyWord=LSquareKeyWord;
+        if(LSquareKeyWord!=null) LSquareKeyWord.setParent(this);
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
     }
@@ -23,6 +26,14 @@ public class OptionalDesignatorArray extends OptionalDesignator {
 
     public void setOptionalDesignator(OptionalDesignator OptionalDesignator) {
         this.OptionalDesignator=OptionalDesignator;
+    }
+
+    public LSquareKeyWord getLSquareKeyWord() {
+        return LSquareKeyWord;
+    }
+
+    public void setLSquareKeyWord(LSquareKeyWord LSquareKeyWord) {
+        this.LSquareKeyWord=LSquareKeyWord;
     }
 
     public Expr getExpr() {
@@ -39,17 +50,20 @@ public class OptionalDesignatorArray extends OptionalDesignator {
 
     public void childrenAccept(Visitor visitor) {
         if(OptionalDesignator!=null) OptionalDesignator.accept(visitor);
+        if(LSquareKeyWord!=null) LSquareKeyWord.accept(visitor);
         if(Expr!=null) Expr.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(OptionalDesignator!=null) OptionalDesignator.traverseTopDown(visitor);
+        if(LSquareKeyWord!=null) LSquareKeyWord.traverseTopDown(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(OptionalDesignator!=null) OptionalDesignator.traverseBottomUp(visitor);
+        if(LSquareKeyWord!=null) LSquareKeyWord.traverseBottomUp(visitor);
         if(Expr!=null) Expr.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -61,6 +75,12 @@ public class OptionalDesignatorArray extends OptionalDesignator {
 
         if(OptionalDesignator!=null)
             buffer.append(OptionalDesignator.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(LSquareKeyWord!=null)
+            buffer.append(LSquareKeyWord.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

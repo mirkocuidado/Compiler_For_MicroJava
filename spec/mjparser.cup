@@ -99,7 +99,7 @@ nonterminal ExprOne;
 nonterminal FactorOptional, FactorOptionalSecond;
 nonterminal TermOptionalList, MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
-nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord;
+nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -280,12 +280,12 @@ Designator ::= (Designator) IDENT:name OptionalDesignator;
 
 OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator DOT IDENT:name
 					|
-					(OptionalDesignatorArray) OptionalDesignator LSQUARE_BRACKET Expr RSQUARE_BRACKET
+					(OptionalDesignatorArray) OptionalDesignator LSquareKeyWord Expr RSQUARE_BRACKET
 					|
 					(NoOptionalDesignatorClass) /* epsilon */
 					;
 
-
+LSquareKeyWord ::= (LSquareClass) LSQUARE_BRACKET;
 
 /********** DESIGNATOR STATEMENTS **********/
 

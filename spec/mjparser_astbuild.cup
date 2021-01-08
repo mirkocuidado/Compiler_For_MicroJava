@@ -121,6 +121,7 @@ nonterminal ReturnNonTerminal ReturnNonTerminal;
 nonterminal DoKeyWord DoKeyWord;
 nonterminal BreakKeyWord BreakKeyWord;
 nonterminal ContinueKeyWord ContinueKeyWord;
+nonterminal LSquareKeyWord LSquareKeyWord;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -301,12 +302,12 @@ Designator ::= (Designator) IDENT:name OptionalDesignator:O1 {: RESULT=new Desig
 
 OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator:O1 DOT IDENT:name {: RESULT=new OptionalDesignatorClass(O1, name); RESULT.setLine(O1left); :}
 					|
-					(OptionalDesignatorArray) OptionalDesignator:O1 LSQUARE_BRACKET Expr:E2 RSQUARE_BRACKET {: RESULT=new OptionalDesignatorArray(O1, E2); RESULT.setLine(O1left); :}
+					(OptionalDesignatorArray) OptionalDesignator:O1 LSquareKeyWord:L2 Expr:E3 RSQUARE_BRACKET {: RESULT=new OptionalDesignatorArray(O1, L2, E3); RESULT.setLine(O1left); :}
 					|
 					(NoOptionalDesignatorClass) {: RESULT=new NoOptionalDesignatorClass(); :} /* epsilon */
 					;
 
-
+LSquareKeyWord ::= (LSquareClass) LSQUARE_BRACKET {: RESULT=new LSquareClass(); :};
 
 /********** DESIGNATOR STATEMENTS **********/
 
