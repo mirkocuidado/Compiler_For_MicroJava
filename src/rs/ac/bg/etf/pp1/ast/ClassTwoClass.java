@@ -1,23 +1,31 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/0/2021 22:56:20
+// 9/0/2021 20:28:31
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ClassTwoClass extends Expr {
 
+    private CondFact CondFact;
     private ExprOne ExprOne;
     private ExprOne ExprOne1;
-    private ExprOne ExprOne2;
 
-    public ClassTwoClass (ExprOne ExprOne, ExprOne ExprOne1, ExprOne ExprOne2) {
+    public ClassTwoClass (CondFact CondFact, ExprOne ExprOne, ExprOne ExprOne1) {
+        this.CondFact=CondFact;
+        if(CondFact!=null) CondFact.setParent(this);
         this.ExprOne=ExprOne;
         if(ExprOne!=null) ExprOne.setParent(this);
         this.ExprOne1=ExprOne1;
         if(ExprOne1!=null) ExprOne1.setParent(this);
-        this.ExprOne2=ExprOne2;
-        if(ExprOne2!=null) ExprOne2.setParent(this);
+    }
+
+    public CondFact getCondFact() {
+        return CondFact;
+    }
+
+    public void setCondFact(CondFact CondFact) {
+        this.CondFact=CondFact;
     }
 
     public ExprOne getExprOne() {
@@ -36,35 +44,27 @@ public class ClassTwoClass extends Expr {
         this.ExprOne1=ExprOne1;
     }
 
-    public ExprOne getExprOne2() {
-        return ExprOne2;
-    }
-
-    public void setExprOne2(ExprOne ExprOne2) {
-        this.ExprOne2=ExprOne2;
-    }
-
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(CondFact!=null) CondFact.accept(visitor);
         if(ExprOne!=null) ExprOne.accept(visitor);
         if(ExprOne1!=null) ExprOne1.accept(visitor);
-        if(ExprOne2!=null) ExprOne2.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(CondFact!=null) CondFact.traverseTopDown(visitor);
         if(ExprOne!=null) ExprOne.traverseTopDown(visitor);
         if(ExprOne1!=null) ExprOne1.traverseTopDown(visitor);
-        if(ExprOne2!=null) ExprOne2.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(CondFact!=null) CondFact.traverseBottomUp(visitor);
         if(ExprOne!=null) ExprOne.traverseBottomUp(visitor);
         if(ExprOne1!=null) ExprOne1.traverseBottomUp(visitor);
-        if(ExprOne2!=null) ExprOne2.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -72,6 +72,12 @@ public class ClassTwoClass extends Expr {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("ClassTwoClass(\n");
+
+        if(CondFact!=null)
+            buffer.append(CondFact.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
 
         if(ExprOne!=null)
             buffer.append(ExprOne.toString("  "+tab));
@@ -81,12 +87,6 @@ public class ClassTwoClass extends Expr {
 
         if(ExprOne1!=null)
             buffer.append(ExprOne1.toString("  "+tab));
-        else
-            buffer.append(tab+"  null");
-        buffer.append("\n");
-
-        if(ExprOne2!=null)
-            buffer.append(ExprOne2.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

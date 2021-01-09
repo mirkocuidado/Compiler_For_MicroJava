@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/0/2021 22:56:20
+// 9/0/2021 20:28:31
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -12,9 +12,9 @@ public interface Visitor {
     public void visit(GroupDeclList GroupDeclList);
     public void visit(Matched Matched);
     public void visit(TermOptionalList TermOptionalList);
+    public void visit(DesignatorStatementOptions DesignatorStatementOptions);
     public void visit(ExprOne ExprOne);
     public void visit(FormalParamDecl FormalParamDecl);
-    public void visit(DesignatorStatementOptions DesignatorStatementOptions);
     public void visit(ConditionOptional ConditionOptional);
     public void visit(Variable Variable);
     public void visit(ExprNegative ExprNegative);
@@ -34,12 +34,13 @@ public interface Visitor {
     public void visit(Condition Condition);
     public void visit(DoKeyWord DoKeyWord);
     public void visit(MulOp MulOp);
-    public void visit(PotentialError PotentialError);
     public void visit(OptionalDesignator OptionalDesignator);
-    public void visit(ReturnNonTerminal ReturnNonTerminal);
+    public void visit(PotentialError PotentialError);
     public void visit(RelOp RelOp);
+    public void visit(ReturnNonTerminal ReturnNonTerminal);
     public void visit(AssignOp AssignOp);
     public void visit(ActualParamList ActualParamList);
+    public void visit(LBraceKeyWord LBraceKeyWord);
     public void visit(FactorOptionalSecond FactorOptionalSecond);
     public void visit(VarDeclList VarDeclList);
     public void visit(FormalParamList FormalParamList);
@@ -53,6 +54,8 @@ public interface Visitor {
     public void visit(ExtendsOption ExtendsOption);
     public void visit(Statement Statement);
     public void visit(VarDecl VarDecl);
+    public void visit(RBraceKeyWord RBraceKeyWord);
+    public void visit(AssignOpKeyWord AssignOpKeyWord);
     public void visit(ClassDecl ClassDecl);
     public void visit(ConstDecl ConstDecl);
     public void visit(CondFact CondFact);
@@ -134,6 +137,7 @@ public interface Visitor {
     public void visit(PrintStmt PrintStmt);
     public void visit(ErrorStmt ErrorStmt);
     public void visit(Assignment Assignment);
+    public void visit(AssignOpClass AssignOpClass);
     public void visit(DesignatorStatementMinusMinus DesignatorStatementMinusMinus);
     public void visit(DesignatorStatementPlusPlus DesignatorStatementPlusPlus);
     public void visit(DesignatorStatementActualParameters DesignatorStatementActualParameters);
@@ -153,6 +157,8 @@ public interface Visitor {
     public void visit(FormParams FormParams);
     public void visit(ReturnValueClassVoid ReturnValueClassVoid);
     public void visit(ReturnValueClassNoVoid ReturnValueClassNoVoid);
+    public void visit(RBraceClass RBraceClass);
+    public void visit(LBraceClass LBraceClass);
     public void visit(MethodDecl MethodDecl);
     public void visit(NoMethodDecl NoMethodDecl);
     public void visit(MethodDeclarations MethodDeclarations);

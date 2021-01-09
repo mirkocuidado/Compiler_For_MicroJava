@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/0/2021 22:56:20
+// 9/0/2021 20:28:31
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,13 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class CondFactOptionalClass extends CondFactOptional {
 
     private RelOp RelOp;
-    private Expr Expr;
+    private ExprOne ExprOne;
 
-    public CondFactOptionalClass (RelOp RelOp, Expr Expr) {
+    public CondFactOptionalClass (RelOp RelOp, ExprOne ExprOne) {
         this.RelOp=RelOp;
         if(RelOp!=null) RelOp.setParent(this);
-        this.Expr=Expr;
-        if(Expr!=null) Expr.setParent(this);
+        this.ExprOne=ExprOne;
+        if(ExprOne!=null) ExprOne.setParent(this);
     }
 
     public RelOp getRelOp() {
@@ -25,12 +25,12 @@ public class CondFactOptionalClass extends CondFactOptional {
         this.RelOp=RelOp;
     }
 
-    public Expr getExpr() {
-        return Expr;
+    public ExprOne getExprOne() {
+        return ExprOne;
     }
 
-    public void setExpr(Expr Expr) {
-        this.Expr=Expr;
+    public void setExprOne(ExprOne ExprOne) {
+        this.ExprOne=ExprOne;
     }
 
     public void accept(Visitor visitor) {
@@ -39,18 +39,18 @@ public class CondFactOptionalClass extends CondFactOptional {
 
     public void childrenAccept(Visitor visitor) {
         if(RelOp!=null) RelOp.accept(visitor);
-        if(Expr!=null) Expr.accept(visitor);
+        if(ExprOne!=null) ExprOne.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(RelOp!=null) RelOp.traverseTopDown(visitor);
-        if(Expr!=null) Expr.traverseTopDown(visitor);
+        if(ExprOne!=null) ExprOne.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(RelOp!=null) RelOp.traverseBottomUp(visitor);
-        if(Expr!=null) Expr.traverseBottomUp(visitor);
+        if(ExprOne!=null) ExprOne.traverseBottomUp(visitor);
         accept(visitor);
     }
 
@@ -65,8 +65,8 @@ public class CondFactOptionalClass extends CondFactOptional {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        if(Expr!=null)
-            buffer.append(Expr.toString("  "+tab));
+        if(ExprOne!=null)
+            buffer.append(ExprOne.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

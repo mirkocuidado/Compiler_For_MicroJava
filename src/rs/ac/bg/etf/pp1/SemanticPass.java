@@ -40,13 +40,22 @@ public class SemanticPass extends VisitorAdaptor {
 	/********** CURRENT VARIABLE WE ARE USING **********/
 	boolean if_we_are_using_an_array = false;
 	
+	/********** IF WE HAVE DESIGNATOR STATEMENT WITH ASSIGN OPERATION **********/
+	boolean assignOperationFlag = false;
+	
 	/********** MARK THE BEGINNING OF DO...WHILE **********/
 	int do_while_flag = 0;
+	
+	/********** MARK THE BEGINNING OF A FUNCTION **********/
+	boolean open_method = false;
 	
 	/********** LIST OF ACTUAL PARAMETERS **********/
 	List<Expr> list_of_actual_parameters = new ArrayList<>();
 	List<Obj> list_of_function_calls = new ArrayList<>();
 	List<List<Expr>> stack = new ArrayList<>();
+	
+	
+	
 	
 	Logger log = Logger.getLogger(getClass());
 
@@ -67,7 +76,14 @@ public class SemanticPass extends VisitorAdaptor {
 		log.info(msg.toString());
 	}
 	
-	
+	private String getTypeAsString(int num) {
+		if(num==0) return "void";
+		else if(num==1) return "int";
+		else if(num==2) return "char";
+		else if(num==3) return "array";
+		else if(num==5) return "boolean";
+		else return "No type recognised!";
+	}
 	
 	
 	/********** READ PROGRAM NAME **********/
@@ -84,6 +100,14 @@ public class SemanticPass extends VisitorAdaptor {
     	report_info("PROGRAM ENDED => "+ program.getProgramName().getProgramName(), program);
     	Symbol_Table.closeScope();
     }
+    
+    
+    
+    
+    /********** GLOBAL VARIABLES **********/
+  
+    
+    
   
     /********** READ THE TYPE OF OUR VARIABLE(S) AND PUT IT IN THE SYMBOL TABLE **********/
 	public void visit(VarDeclClass varDecl){
@@ -96,13 +120,16 @@ public class SemanticPass extends VisitorAdaptor {
 		varDeclCount++;
 		Obj error_handler = Symbol_Table.find(varDecl.getVarName());
 		if(error_handler!= Symbol_Table.noObj) {
+			// error if it already exists in the table
 			report_error("ERROR! VARIABLE " + varDecl.getVarName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
 		}
 		if(current_variable_definition_type == null) {
+			// this must mean that somebody did not define a type for this variable
 			report_error("ERROR! VARIABLE " + varDecl.getVarName() + " BEING DEFINED, BUT NO TYPE PROVIDED! ", null);
 		}
+		// if we came here, we can add it to the Symbol_Table
 		Obj varNode = Symbol_Table.insert(Obj.Var, varDecl.getVarName(), current_variable_definition_type);
-		report_info("VARIABLE " + varDecl.getVarName() + " IS BEING DEFINED!", varDecl);
+		report_info("VARIABLE " + varNode.getName() + " IS BEING DEFINED!", varDecl);
 	}
 	
 	/********** READ OUR ARRAY VARIABLE(S) **********/
@@ -110,18 +137,22 @@ public class SemanticPass extends VisitorAdaptor {
 		varDeclCount++;
 		Obj error_handler = Symbol_Table.find(varDecl.getVarName());
 		if(error_handler!= Symbol_Table.noObj) {
+			// error if it already exists in the table
 			report_error("ERROR! ARRAY VARIABLE " + varDecl.getVarName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
 		}
 		if(current_variable_definition_type == null) {
+			// this must mean that somebody did not define a type for this variable
 			report_error("ERROR! ARRAY VARIABLE " + varDecl.getVarName() + " BEING DEFINED, BUT NO TYPE PROVIDED! ", null);
 		}
+		// if we came here, we can add it to the Symbol_Table
 		Obj varNode = Symbol_Table.insert(Obj.Var, varDecl.getVarName(), new Struct(Struct.Array,current_variable_definition_type));
-		report_info("ARRAY VARIABLE " + varDecl.getVarName() + " IS BEING DEFINED!", varDecl);
+		report_info("ARRAY VARIABLE " + varNode.getName() + " IS BEING DEFINED!", varDecl);
 	}
 
 	/********** NUMBER VALUE ANALYSE **********/
 	public void visit(ValuesNumber constValueNumber) {
 		constValue = constValueNumber.getNumValue();
+		report_info("CONST VALUE " + constValue + " IS BEING USED!", constValueNumber);
 		constValueNumber.struct = Symbol_Table.intType;
 	}
 	
@@ -138,14 +169,25 @@ public class SemanticPass extends VisitorAdaptor {
 		else {
 			report_error("ERROR! CONST BOOLEAN VARIABLE BEING DEFINED, BUT NO CORRECT VALUE! ", null);
 		}
+		report_info("CONST VALUE " + s + " IS BEING USED!", constValueBool);
 	}
 	
 	/********** CHAR VALUE ANALYSE **********/
 	public void visit(ValuesChar constValueChar) {
 		constValueChar.struct = Symbol_Table.charType;
 		charValue = constValueChar.getVal();
+		report_info("CONST VALUE " + charValue + " IS BEING USED!", constValueChar);
+		
 		constValue = charValue;
 	}
+	
+	
+	
+	
+	/********** GLOBAL CONSTANTS **********/
+	
+	
+	
 	
 	/********** CONST VARIABLE DEFINITION **********/
 	public void visit(ConstListNoArray constDecl) {
@@ -161,6 +203,14 @@ public class SemanticPass extends VisitorAdaptor {
 		varNode.setAdr(constValue);
 		report_info("CONST VARIABLE " + constDecl.getConstVarName() + " IS BEING DEFINED!", constDecl);
 	}
+	
+	
+	
+	
+	/********** TYPE **********/
+	
+	
+	
 	
 	/********** GET THE TYPE OF THE VARIABLE(S) **********/
     public void visit(Type type){
@@ -181,7 +231,15 @@ public class SemanticPass extends VisitorAdaptor {
 	current_variable_definition_type = type.struct;
     }
     
-    /********** GET METHOD NAME AND RETURN VALUE **********/
+    
+    
+    
+    /********** FUNCTION **********/
+    
+    
+    
+    
+    /********** GET FUNCTION NAME AND RETURN VALUE **********/
     public void visit(ReturnValueClassNoVoid methodTypeName){
     	currentMethod = Symbol_Table.insert(Obj.Meth, methodTypeName.getMethName(), methodTypeName.getType().struct);
     	if(Symbol_Table.find(methodTypeName.getMethName()) == Symbol_Table.noObj) {
@@ -190,10 +248,10 @@ public class SemanticPass extends VisitorAdaptor {
     	returnForMethod = methodTypeName.getType().struct;
     	methodTypeName.obj = currentMethod;
     	Symbol_Table.openScope();
-		report_info("FUNCTION " + methodTypeName.getMethName() + " WITH RETURN VALUE! ", methodTypeName);
+		report_info("FUNCTION " + methodTypeName.getMethName() + " WITH RETURN VALUE OF TYPE " + getTypeAsString(methodTypeName.getType().struct.getKind()), methodTypeName);
     }
     
-    /********** GET METHOD NAME AND VOID FOR RETURN VALUE **********/
+    /********** GET FUNCTION NAME AND VOID FOR RETURN VALUE **********/
     public void visit(ReturnValueClassVoid methodTypeName){
     	currentMethod = Symbol_Table.insert(Obj.Meth, methodTypeName.getMethName(), Symbol_Table.noType);
     	if(Symbol_Table.find(methodTypeName.getMethName()) == Symbol_Table.noObj) {
@@ -208,23 +266,124 @@ public class SemanticPass extends VisitorAdaptor {
     /********** FUNCTION ENDING **********/
     public void visit(MethodDecl methodDecl){
     	if(!returnFound && returnForMethod != Symbol_Table.noType){
-			report_error("Semanticka greska na liniji " + methodDecl.getLine() + ": funkcija " + currentMethod.getName() + " nema return iskaz!", null);
+			report_error("SEMANTIC ERROR ON LINE " + methodDecl.getLine() + ": FUNCTION " + currentMethod.getName() + " DOES NOT HAVE A RETURN STATEMENT!", null);
+			return;
     	}
     	currentMethod.setLevel(number_of_method_formal_parameters);
     	Symbol_Table.chainLocalSymbols(currentMethod);
     	Symbol_Table.closeScope();
+    	
+    	report_info("END OF DEFINING FUNCTION " + currentMethod.getName(), null);
     	
     	returnFound = false;
     	currentMethod = null;
     	number_of_method_formal_parameters = 0;
     }
     
+    
+    
+    
+    /********** RETURN STATEMENT **********/
+    
+    
+    
+    
+    /********** RETURN STATEMENT EXPRESSION **********/
+    public void visit(ReturnExpr returnParam) {
+    	
+    	if(open_method == false) {
+    		report_error("RETURN OUT OF METHOD DECLARATION! " , returnParam);
+			return;
+    	}
+    	
+    	Struct s1 = currentMethod.getType();
+    	Struct s2 = returnParam.getExpr().struct;
+
+    	returnFound = true;
+    	
+    	if(s1.getKind() == Struct.Array && s2.getKind() == Struct.Array) {
+    		// ako su oba niz
+    		if(s1.getElemType().getKind() == s2.getElemType().getKind()) {
+    			// ako su istog tipa
+    			report_info("SUCCESSFUL RETURN! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", returnParam);
+    			return;
+    		}
+    		else {
+    			report_error("RETURN FAILED! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", returnParam);
+    			return;
+    		}
+    	}
+    	else if(s1.getKind() == Struct.Array) {
+    		// ako je samo prvo niz
+    		if(s1.getElemType().assignableTo(s2)) {
+    			// ako su assignable
+    			report_info("SUCCESSFUL RETURN! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", returnParam);
+    			return;
+    		}
+    		else {
+    			report_error("RETURN FAILED! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", returnParam);
+    			return;
+    		}
+    	}
+    	else if(s2.getKind() == Struct.Array) {
+    		// ako je samo prvo niz
+    		if(s2.getElemType().assignableTo(s1)) {
+    			// ako su assignable
+    			report_info("SUCCESSFUL RETURN! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", returnParam);
+    			return;
+    		}
+    		else {
+    			report_error("RETURN FAILED! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", returnParam);
+    			return;
+    		}
+    	}
+    	else if(!s1.assignableTo(s2)) {
+    		// ako nijedan nije niz i assignable su
+    		report_error("RETURN FAILED! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", returnParam);
+			return;
+    	}
+    	else {
+    		// ako nijedan nije niz i nisu assignable
+    		report_info("SUCCESSFUL RETURN! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", returnParam);
+			return;
+    	}
+    }
+    
+    /********** RETURN STATEMENT VOID**********/
+    public void visit(ReturnNoExpr returnParam) {
+    	
+    	if(open_method == false) {
+    		report_error("RETURN OUT OF METHOD DECLARATION! " , returnParam);
+			return;
+    	}
+    	
+    	Struct s1 = currentMethod.getType();
+    	
+    	if(s1!=Symbol_Table.noType) {
+    		report_error("ONLY return; BUT THE FUNCTION ISN'T VOID!", returnParam);
+    		return;
+    	}
+    	else {
+    		report_info("return; AND THE FUNCTION IS VOID!", returnParam);
+    		returnFound = true;
+    	}
+    }
+    
+    
+    
+    
+
+    /********** FORMAL PARAMETERS **********/
+    
+    
+    
+    
     /********** FORMAL PARAMETERS FOR FUNCTIONS - NO ARRAY **********/
     public void visit(FormalParamDeclClassNoArray formalParam) {
     	number_of_method_formal_parameters++;
     	Obj getObjectFromSymbolTable = Symbol_Table.find(formalParam.getFormalParamName());
     	if(getObjectFromSymbolTable!=Symbol_Table.noObj && getObjectFromSymbolTable.getLevel()==1) {
-    		// already exists and is this level
+    		// already exists and is of this level
     		report_error("VARIABLE OF THIS NAME ALREADY DEFINED!", null);
     	}
     	else{
@@ -232,6 +391,7 @@ public class SemanticPass extends VisitorAdaptor {
     		Obj helper = Symbol_Table.insert(Obj.Var, formalParam.getFormalParamName(), current_variable_definition_type);
     		helper.setLevel(1);
     		helper.setFpPos(number_of_method_formal_parameters-1);
+    		report_info("FORMAL PARAMETER " + helper.getName() + " DEFINED AND IT IS OF TYPE " + getTypeAsString(helper.getType().getKind()), formalParam);
     	}
     }
     
@@ -248,8 +408,13 @@ public class SemanticPass extends VisitorAdaptor {
     		Obj helper = Symbol_Table.insert(Obj.Var, formalParamArray.getFormalParamName(), new Struct(Struct.Array, current_variable_definition_type));
     		helper.setLevel(1);
     		helper.setFpPos(number_of_method_formal_parameters-1);
+    		report_info("FORMAL ARRAY PARAMETER " + helper.getName() + " DEFINED AND IT IS OF TYPE " + getTypeAsString(helper.getType().getElemType().getKind()), formalParamArray);
     	}
     }
+    
+    
+    
+    
     
     
     /********** IMPORTANT ***********
@@ -260,6 +425,12 @@ public class SemanticPass extends VisitorAdaptor {
     
     public void visit(Designator designator) {
     	current_variable_in_use = Symbol_Table.find(designator.getName());
+    	if(current_variable_in_use == Symbol_Table.noObj) {
+    		report_error("VARIABLE OF NAME " + designator.getName() + " IS NOT DEFINED!", null);
+    		return;
+    	}
+    	designator.struct = current_variable_in_use.getType();
+    	
     	if(current_variable_in_use.getKind() == Obj.Meth) {
     		list_of_function_calls.add(current_variable_in_use);
     		current_method_we_are_using = list_of_function_calls.get(list_of_function_calls.size()-1);
@@ -268,16 +439,21 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     	//else current_method_we_are_using = null; pravi probleme, a i mislim da ne treba da postoji
     	
-    	if(current_variable_in_use == Symbol_Table.noObj) {
-    		report_error("VARIABLE OF NAME " + designator.getName() + " IS NOT DEFINED!", null);
-    	}
     	if(current_variable_in_use.getType().getKind() != Struct.Array && if_we_are_using_an_array==true) {
     		report_error("ARRAY VARIABLE OF NAME " + designator.getName() + " USED WITH [ ]!", null);
     	}
     	
-    	report_info("CURRENT VARIABLE IN USE IS " + current_variable_in_use.getName() + " AND IT IS OF TYPE " + current_variable_in_use.getType().getKind(), null);
+    	report_info("CURRENT VARIABLE IN USE IS " + current_variable_in_use.getName() + " AND IT IS OF TYPE " + getTypeAsString(current_variable_in_use.getType().getKind()), null);
     }
      
+    
+    
+    
+    /********** DESIGNATOR STATEMENT -> ++, --, FUNCTION CALL AND ASSIGN **********/
+    
+    
+    
+    
     /********** ONLY INTEGERS HAVE ++ **********/
     public void visit(DesignatorStatementPlusPlus param) {
     	if(current_variable_in_use.getType().getKind() == Struct.Int || (current_variable_in_use.getType().getKind() == Struct.Array && current_variable_in_use.getType().getElemType().getKind() == Struct.Int)) {
@@ -316,14 +492,96 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
+    /********** DESIGNATOR STATEMENT TYPE PROPAGATION **********/
+    public void visit(DesignatorStatementOptionsClassAssignExpression assignDesignator) {
+    	assignDesignator.struct = assignDesignator.getExpr().struct;
+    }
+
+    
+    /********** IMPORTANT ***********
+				~~~~~~~~~~ 
+		DESIGNATOR STATEMNT -> CHECK IF TYPES ON BOTH SIDES OF EQUAL ARE THE SAME
+				~~~~~~~~~~ 
+     **********  IMPORTANT ***********/
+    public void visit(DesignatorStatementClass designatorStatement) {
+    	if(assignOperationFlag == true) {
+	    	Struct s1 = designatorStatement.getDesignator().struct;
+	    	Struct s2 = designatorStatement.getDesignatorStatementOptions().struct;
+	    	
+	    	assignOperationFlag = false;
+	    	
+	    	if(s1 == null || s2 == null) {
+	    		report_error("ASSIGNEMENT FAILED! ", designatorStatement);
+    			return;
+	    	}
+	    	
+	    	if(s1.getKind() == Struct.Array && s2.getKind() == Struct.Array) {
+	    		// ako su oba niz
+	    		if(s1.getElemType().getKind() == s2.getElemType().getKind()) {
+	    			// ako su istog tipa
+	    			report_info("SUCCESSFUL ASSIGNEMENT! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", designatorStatement);
+	    			return;
+	    		}
+	    		else {
+	    			report_error("ASSIGNEMENT FAILED! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", designatorStatement);
+	    			return;
+	    		}
+	    	}
+	    	else if(s1.getKind() == Struct.Array) {
+	    		// ako je samo prvo niz
+	    		if(s1.getElemType().assignableTo(s2)) {
+	    			// ako su assignable
+	    			report_info("SUCCESSFUL ASSIGNEMENT! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", designatorStatement);
+	    			return;
+	    		}
+	    		else {
+	    			report_error("ASSIGNEMENT FAILED! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", designatorStatement);
+	    			return;
+	    		}
+	    	}
+	    	else if(s2.getKind() == Struct.Array) {
+	    		// ako je samo prvo niz
+	    		if(s2.getElemType().assignableTo(s1)) {
+	    			// ako su assignable
+	    			report_info("SUCCESSFUL ASSIGNEMENT! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", designatorStatement);
+	    			return;
+	    		}
+	    		else {
+	    			report_error("ASSIGNEMENT FAILED! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", designatorStatement);
+	    			return;
+	    		}
+	    	}
+	    	else if(!s1.assignableTo(s2)) {
+	    		// ako nijedan nije niz i assignable su
+	    		report_error("ASSIGNEMENT FAILED! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", designatorStatement);
+				return;
+	    	}
+	    	else {
+	    		// ako nijedan nije niz i nisu assignable
+	    		report_info("SUCCESSFUL ASSIGNEMENT! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", designatorStatement);
+				return;
+	    	}
+    	}
+    }
+    
+    
+    
+    
+    /********** FLAG AND COUNTER SETTERS **********/
+    
+    
+    
+    
     /********** MARK THE BEGINNING OF DO...WHILE **********/
     public void visit(DoKeyWord param) {
     	do_while_flag++;
+    	report_info("BEGINNING OF A DO...WHILE LOOP!", param);
     }
     
     /********** MARK THE END OF DO...WHILE **********/
     public void visit(DoWhileStatement param) {
     	do_while_flag--;
+    	report_info("ENDING OF A DO...WHILE LOOP!", param);
     }
     
     /********** MARK NOT USING ARRAYS **********/
@@ -344,6 +602,7 @@ public class SemanticPass extends VisitorAdaptor {
     	if(do_while_flag == 0) {
     		report_error("BREAK NOT USED IN DO...WHILE !", param);
     	}
+    	else report_info("USING BREAK KEYWORD!", param);
     }
     
     /********** CATCH THE USE OF CONTINUE OUTSIDE DO...WHILE **********/
@@ -351,9 +610,35 @@ public class SemanticPass extends VisitorAdaptor {
     	if(do_while_flag == 0) {
     		report_error("BREAK NOT USED IN DO...WHILE !", param);
     	}
+    	else report_info("USING CONTINUE KEYWORD!", param);
     }
     
-    /********** READ FUNCTION **********/
+    /********** CATCH THE USE OF '=' IN DESIGNATOR STATEMENT **********/
+    public void visit(AssignOpClass param) {
+    	assignOperationFlag = true;
+    	report_info("BEGINNING OF AN ASSIGNEMENT!", param);
+    }
+    
+    /********** CATCH THE OPENING OF A FUNCTION **********/
+    public void visit(LBraceClass param) {
+    	open_method = true;
+    	report_info("METHOD BODY STARTING!", param);
+    }
+    
+    /********** CATCH THE CLOSING OF A FUNCTION **********/
+    public void visit(RBraceClass param) {
+    	open_method = false;
+    	report_info("METHOD BODY ENDING!", param);
+    }
+    
+    
+    
+    
+    /********** READ **********/
+    
+    
+    
+    
     public void visit(ReadClass read) {
     	String designator_in_use = read.getDesignator().getName();
     	Obj in_symbol_table = Symbol_Table.find(designator_in_use);
@@ -377,6 +662,24 @@ public class SemanticPass extends VisitorAdaptor {
     
     
     
+    /********** PRINT **********/
+    
+    
+    
+    
+    public void visit(PrintStmt printParam) {
+    	Struct s0 = printParam.getExpr().struct;
+    	
+    	if(s0.getKind() != Struct.Int && s0.getKind() != Struct.Char && s0.getKind() != Struct.Bool) {
+    		report_error("EXPRESSION USED IN PRINT IS NOT A VARIABLE OF TYPE BOOL, CHAR OR INT OR AN ARRAY!", printParam);
+    	}
+    	else {
+    		report_info("PRINT FUNCTION CALL IN USE!", printParam);
+    	}
+    }
+    
+    
+    
     
     /********** FACTOR **********/
     
@@ -386,21 +689,25 @@ public class SemanticPass extends VisitorAdaptor {
     /********** NUMBER CONST VISIT FOR FACTOR **********/
     public void visit(NumberConst numberConst) {
     	numberConst.struct = Symbol_Table.intType;
+    	report_info("CONST NUMBER " + numberConst.getVal(), numberConst);
     }
     
     /********** CHAR CONST VISIT FOR FACTOR **********/
     public void visit(CharConst charConst) {
     	charConst.struct = Symbol_Table.charType;
+    	report_info("CONST CHAR " + charConst.getVal(), charConst);
     }
     
     /********** BOOL CONST VISIT FOR FACTOR **********/
     public void visit(BooleanClassConstFactor boolConst) {
     	boolConst.struct = Symbol_Table.boolType;
+    	report_info("CONST CHAR " + boolConst.getVal(), boolConst);
     }
     
     /********** KEYWORD NEW VISIT FOR FACTOR **********/
     public void visit(NewFactorClass neww) {
     	neww.struct = new Struct(Struct.Array, current_variable_definition_type);
+    	report_info("USAGE OF KEYWORD NEW!", neww);
     }
     
     /********** KEYWORD NEW FALSE USAGE **********/
@@ -423,18 +730,19 @@ public class SemanticPass extends VisitorAdaptor {
     
     public void visit(DesignatorClass factorDesignator) {
     	if(current_variable_in_use.getType().getKind()==Struct.Array && if_we_are_using_an_array==true) {
+    		report_info("WE ARE USING AN ARRAY OF TYPE " + getTypeAsString(current_variable_in_use.getType().getElemType().getKind()), factorDesignator);
     		factorDesignator.struct = current_variable_in_use.getType().getElemType();
     	}
-    	else factorDesignator.struct = current_variable_in_use.getType();
+    	else {
+    		report_info("WE ARE USING A VARIABLE OF TYPE " + getTypeAsString(current_variable_in_use.getType().getKind()), factorDesignator);
+    		factorDesignator.struct = current_variable_in_use.getType();
+    	}
     }
 
     
     
     
-    
-    
     /********** TERM **********/
-    
     
     
     
@@ -447,9 +755,11 @@ public class SemanticPass extends VisitorAdaptor {
     	if(t2 == null) {
     		// term consists of only one term
     		term.struct = t1;
+    		report_info("USING ONLY ONE EXPRESSION IN TERM!", term);
     	}
     	else if(t1.equals(t2) && t1 == Symbol_Table.intType){
     		term.struct = t1;
+    		report_info("USING INTEGERS IN TERM!", term);
     	}else{
 			report_error("ERROR ON LINE "+ term.getLine()+" : TYPES WHICH ARE NOT COMPATIBLE", null);
 			term.struct = Symbol_Table.noType;
@@ -464,9 +774,11 @@ public class SemanticPass extends VisitorAdaptor {
     	if(t1 == null) {
     		// no adding done
     		term.struct = t2;
+    		report_info("USING ONLY ONE EXPRESSION IN TERM!", term);
     	}
     	else if(t1.equals(t2) && t1 == Symbol_Table.intType) {
     		term.struct = t1;
+    		report_info("USING INTEGERS IN TERM!", term);
     	}
     	else {
     		report_error("ERROR ON LINE "+ term.getLine()+" : TYPES WHICH ARE NOT COMPATIBLE", null);
@@ -482,9 +794,7 @@ public class SemanticPass extends VisitorAdaptor {
     
     
     
-    
     /********** EXPRESSION **********/
-    
     
     
     
@@ -505,9 +815,11 @@ public class SemanticPass extends VisitorAdaptor {
     	if(t2 == null) {
     		// no adding done
     		exprTwoThings.struct = t1;
+    		report_info("USING ONLY ONE EXPRESSION IN TERM!", exprTwoThings);
     	}
     	else if(t1.equals(t2) && t1 == Symbol_Table.intType) {
     		exprTwoThings.struct = t1;
+    		report_info("USING INTEGERS IN TERM!", exprTwoThings);
     	}
     	else {
     		report_error("ERROR ON LINE "+ exprTwoThings.getLine()+" : TYPES WHICH ARE NOT COMPATIBLE", null);
@@ -538,9 +850,11 @@ public class SemanticPass extends VisitorAdaptor {
     	if(t1 == null) {
     		// no multiplying done
     		exprTwoThings.struct = t2;
+    		report_info("USING ONLY ONE EXPRESSION IN TERM!", exprTwoThings);
     	}
     	else if(t1.equals(t2) && t1 == Symbol_Table.intType) {
     		exprTwoThings.struct = t1;
+    		report_info("USING INTEGERS IN TERM!", exprTwoThings);
     	}
     	else {
     		report_error("ERROR ON LINE "+ exprTwoThings.getLine()+" : TYPES WHICH ARE NOT COMPATIBLE", null);
@@ -556,16 +870,14 @@ public class SemanticPass extends VisitorAdaptor {
 
     
     
-    
     /********** CONDITION **********/
-    
     
     
     
     
     /********** CONDFACT -> CHECK IF TYPES ARE OF SAME TYPE**********/
     public void visit(CondFactClass condFact) {
-    	Struct s1 = condFact.getExpr().struct;
+    	Struct s1 = condFact.getExprOne().struct;
     	Struct s2 = condFact.getCondFactOptional().struct;
     	
     	condFact.struct = new Struct(Struct.Bool);
@@ -575,15 +887,21 @@ public class SemanticPass extends VisitorAdaptor {
     		if(s1.getKind() != Struct.Bool) {
     			report_error("ERROR ON LINE "+ condFact.getLine()+" : CONDFACT CAN'T CONSIST OF ONE EXPR WHICH IS NOT BOOL", condFact);
     		}
+    		else {
+    			report_info("USING ONLY ONE BOOLEAN IN TERM!", condFact);
+    		}
     	}
     	else if(s1.getKind() != s2.getKind()) {
     		report_error("ERROR ON LINE "+ condFact.getLine()+" : CONDFACT WITH VARIOUS TYPES", condFact);
+    	}
+    	else {
+    		report_info("USING TWO EXPRESSIONS OF TYPE " + getTypeAsString(s1.getKind()), condFact);
     	}
     }
 
     /********** CONDFACT -> TYPE PROPAGATION **********/
     public void visit(CondFactOptionalClass condFactOptional) {
-    	condFactOptional.struct = condFactOptional.getExpr().struct;
+    	condFactOptional.struct = condFactOptional.getExprOne().struct;
     }
     
     /********** CONDFACT -> TYPE PROPAGATION**********/
@@ -594,14 +912,16 @@ public class SemanticPass extends VisitorAdaptor {
     
     
     
-    
     /********** ACTUAL PARAMETERS **********/
     
     
     
     
-    
-    /********** ACTUAL PARAMS -> CHECK THE TYPES **********/
+    /********** IMPORTANT ***********
+				~~~~~~~~~~ 
+		CHECK THE TYPES OF ACTUAL PARAMETERS
+				~~~~~~~~~~ 
+     **********  IMPORTANT ***********/
     public void visit(Actuals actuals) {
     	if(current_method_we_are_using == null) {
 			report_error("NO METHOD IN USE!", null);
@@ -612,13 +932,16 @@ public class SemanticPass extends VisitorAdaptor {
     	ArrayList<Obj> list_helper = new ArrayList<>(real_parameters_from_symbol_table);
     	
     	if(list_of_actual_parameters.size()!=current_method_we_are_using.getLevel()) {
-    		report_error("NOT THE SAME NUMBER OF ARGUMENTS (from noActuals) !", actuals);
+    		report_error("NOT THE SAME NUMBER OF ARGUMENTS (from Actuals) !", actuals);
     		return;
     	}
     	
     	for(int i=0; i<list_of_actual_parameters.size(); i++) {
     		if(list_of_actual_parameters.get(i).struct.getKind() != list_helper.get(i).getType().getKind()) {
     			report_error("NOT THE SAME TYPE OF ARGUMENTS AT ARGUMENT (from Actuals) !" + (i+1), actuals);
+    		}
+    		else {
+    			report_info("TYPE -> " + getTypeAsString(list_of_actual_parameters.get(i).struct.getKind()) + " <- AND -> " + getTypeAsString(list_helper.get(i).getType().getKind()) + " <-", actuals);
     		}
     	}
     	
@@ -632,7 +955,7 @@ public class SemanticPass extends VisitorAdaptor {
     }
     
     /********** ACTUAL PARAMS -> CHECK THE TYPES **********/
-    public void visit(NoActuals noActuals) { // dopuni da li postoji i ostala sranja
+    public void visit(NoActuals noActuals) {
     	Obj helper_object = Symbol_Table.find(current_method_we_are_using.getName());
     	
     	if(helper_object == Symbol_Table.noObj) {
@@ -659,70 +982,65 @@ public class SemanticPass extends VisitorAdaptor {
     
     
     
-    /*
-    public void visit(Designator designator){
-    	Obj obj = Symbol_Table.find(designator.getName());
-    	if(obj == Symbol_Table.noObj){
-			report_error("Greska na liniji " + designator.getLine()+ " : ime "+designator.getName()+" nije deklarisano! ", null);
+    /********** TERNARY **********/
+    public void visit(ClassTwoClass ternary) {
+    	Struct s1 = ternary.getExprOne().struct;
+    	Struct s2 = ternary.getExprOne1().struct;
+    	
+    	ternary.struct = s1;
+    	
+    	if(s1.getKind() == Struct.Array && s2.getKind() == Struct.Array) {
+    		// ako su oba niz
+    		if(s1.getElemType().getKind() == s2.getElemType().getKind()) {
+    			// ako su istog tipa
+    			report_info("SUCCESSFUL TERNARY! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", ternary);
+    			return;
+    		}
+    		else {
+    			report_error("TERNARY FAILED! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", ternary);
+    			return;
+    		}
     	}
-    	designator.obj = obj;
-    }
-    
-    
-    public void visit(FuncCall funcCall){
-    	Obj func = funcCall.getDesignator().obj;
-    	if(Obj.Meth == func.getKind()){
-			report_info("Pronadjen poziv funkcije " + func.getName() + " na liniji " + funcCall.getLine(), null);
-			funcCall.struct = func.getType();
-    	}else{
-			report_error("Greska na liniji " + funcCall.getLine()+" : ime " + func.getName() + " nije funkcija!", null);
-			funcCall.struct = Symbol_Table.noType;
+    	else if(s1.getKind() == Struct.Array) {
+    		// ako je samo prvo niz
+    		if(s1.getElemType().assignableTo(s2)) {
+    			// ako su assignable
+    			report_info("SUCCESSFUL TERNARY! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", ternary);
+    			return;
+    		}
+    		else {
+    			report_error("TERNARY FAILED! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", ternary);
+    			return;
+    		}
+    	}
+    	else if(s2.getKind() == Struct.Array) {
+    		// ako je samo prvo niz
+    		if(s2.getElemType().assignableTo(s1)) {
+    			// ako su assignable
+    			report_info("SUCCESSFUL TERNARY! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", ternary);
+    			return;
+    		}
+    		else {
+    			report_error("TERNARY FAILED! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", ternary);
+    			return;
+    		}
+    	}
+    	else if(!s1.assignableTo(s2)) {
+    		// ako nijedan nije niz i assignable su
+    		report_error("TERNARY FAILED! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", ternary);
+			return;
+    	}
+    	else {
+    		// ako nijedan nije niz i nisu assignable
+    		report_info("SUCCESSFUL TERNARY! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", ternary);
+			return;
     	}
     }
+
     
-    public void visit(Term term){
-    	term.struct = term.getFactor().struct;
-    }
+
     
-    public void visit(TermExpr termExpr){
-    	termExpr.struct = termExpr.getTerm().struct;
-    }
-    
-    public void visit(AddExpr addExpr){
-    	Struct te = addExpr.getExpr().struct;
-    	Struct t = addExpr.getTerm().struct;
-    	if(te.equals(t) && te == Symbol_Table.intType){
-    		addExpr.struct = te;
-    	}else{
-			report_error("Greska na liniji "+ addExpr.getLine()+" : nekompatibilni tipovi u izrazu za sabiranje.", null);
-			addExpr.struct = Symbol_Table.noType;
-    	}
-    }
-    
-    public void visit(Const cnst){
-    	cnst.struct = Symbol_Table.intType;
-    }
-    
-    public void visit(Var var){
-    	var.struct = var.getDesignator().obj.getType();
-    }
-    
-    public void visit(ReturnExpr returnExpr){
-    	returnFound = true;
-    	Struct currMethType = currentMethod.getType();
-    	if(!currMethType.compatibleWith(returnExpr.getExpr().struct)){
-			report_error("Greska na liniji " + returnExpr.getLine() + " : " + "tip izraza u return naredbi ne slaze se sa tipom povratne vrednosti funkcije " + currentMethod.getName(), null);
-    	}
-    }
-    
-    public void visit(Assignment assignment){
-    	if(!assignment.getExpr().struct.assignableTo(assignment.getDesignator().obj.getType()))
-    		report_error("Greska na liniji " + assignment.getLine() + " : " + "nekompatibilni tipovi u dodeli vrednosti! ", null);
-    }
-    
-    */
     public boolean passed(){
     	return !errorDetected;
-    }
-    
+    }   
 }

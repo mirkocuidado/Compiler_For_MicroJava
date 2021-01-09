@@ -83,15 +83,13 @@ nonterminal FormalParamList;
 nonterminal FormalParamDecl;
 nonterminal Statement;
 nonterminal Matched, Unmatched;
-nonterminal Designator, OptionalDesignator;
-nonterminal DesignatorStatement, DesignatorStatementOptions;
 nonterminal AssignOp, ActualPars;
 nonterminal PrintCommaNumber, SwitchStatementList;
 nonterminal ActualParamList;
 nonterminal RelOp;
 nonterminal MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
-nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord;
+nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord, AssignOpKeyWord, LBraceKeyWord, RBraceKeyWord;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -104,7 +102,9 @@ nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, Val
 nonterminal rs.etf.pp1.symboltable.concepts.Struct FactorOptional, FactorOptionalSecond, ExprPositive, ExprNegative, ExprOptionalList, ExprOne, TermOptionalList;
 												   
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Condition, ConditionOptional, CondTerm, CondFact, CondTermOptional, CondFactOptional;
-	
+
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Designator, OptionalDesignator, DesignatorStatementOptions, DesignatorStatement;
+
 precedence left ELSE;
 
 /********** PROGRAM BASIC **********/
@@ -230,7 +230,12 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 				(NoMethodDecl) /* epsilon */
 				;
 				
-MethodDecl ::= (MethodDecl) ReturnValue LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE;
+MethodDecl ::= (MethodDecl) ReturnValue LPAREN FormPars RPAREN VarDeclList LBraceKeyWord StatementList RBraceKeyWord;
+
+LBraceKeyWord ::= (LBraceClass) LBRACE;
+
+RBraceKeyWord ::= (RBraceClass) RBRACE;
+
 
 ReturnValue ::= (ReturnValueClassNoVoid) Type:retType IDENT:methName 
 				|
@@ -281,13 +286,16 @@ OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator DOT IDENT:na
 
 LSquareKeyWord ::= (LSquareClass) LSQUARE_BRACKET;
 
+
+
+
 /********** DESIGNATOR STATEMENTS **********/
 
 
 
 DesignatorStatement ::= (DesignatorStatementClass) Designator:designatorName DesignatorStatementOptions;
 
-DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOp Expr
+DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOpKeyWord Expr
 							|
 							(DesignatorStatementActualParameters) LPAREN ActualPars  RPAREN
 							|
@@ -296,7 +304,7 @@ DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression)
 							(DesignatorStatementMinusMinus) MINUS_MINUS
 							; 
 
-
+AssignOpKeyWord ::= (AssignOpClass) AssignOp;
 
 
 /********** STATEMENTS **********/
@@ -358,7 +366,9 @@ PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER
 
 
 
+
 /********** SWITCH **********/
+
 
 
 
@@ -367,6 +377,7 @@ SwitchStatementList ::= (SwitchStatementListClass) SwitchStatementList CASE NUMB
 					|
 					(NoSwitchStatementList) /* epsilon */
 					;
+
 
 
 
@@ -414,9 +425,9 @@ CondTermOptional ::= (CondTermOptionalClass) CondTermOptional AND CondFact
 					(NoCondTermOptionalClass) /* epsilon */
 					;
 		
-CondFact ::= (CondFactClass) Expr CondFactOptional;
+CondFact ::= (CondFactClass) ExprOne CondFactOptional;
 
-CondFactOptional ::= (CondFactOptionalClass) RelOp Expr
+CondFactOptional ::= (CondFactOptionalClass) RelOp ExprOne
 					|
 					(NoCondFactOptionalClass) /* epsion */
 					;	
@@ -441,7 +452,7 @@ ExprOne ::= (NormalExpressionClass) ExprPositive
 
 Expr ::= (ClassOneClass) ExprOne
 		|
-		(ClassTwoClass) ExprOne TERNARY ExprOne COLON ExprOne
+		(ClassTwoClass) CondFact TERNARY ExprOne:exprFirst COLON ExprOne:exprSecond
 		;
 	
 ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList AddOp Term
@@ -480,7 +491,7 @@ Factor ::= 	(DesignatorClass) Designator FactorOptional
 			|
 			(BooleanClassConstFactor) BOOLEAN:val
 			|
-			(NewFactorClass) NEW IDENT:varType FactorOptionalSecond
+			(NewFactorClass) NEW Type:varType FactorOptionalSecond
 			|
 			(ParenFactorClass) LPAREN Expr RPAREN
 			;

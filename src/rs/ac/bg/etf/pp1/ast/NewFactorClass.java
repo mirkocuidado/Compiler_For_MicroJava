@@ -1,27 +1,28 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/0/2021 22:56:20
+// 9/0/2021 20:28:31
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class NewFactorClass extends Factor {
 
-    private String varType;
+    private Type Type;
     private FactorOptionalSecond FactorOptionalSecond;
 
-    public NewFactorClass (String varType, FactorOptionalSecond FactorOptionalSecond) {
-        this.varType=varType;
+    public NewFactorClass (Type Type, FactorOptionalSecond FactorOptionalSecond) {
+        this.Type=Type;
+        if(Type!=null) Type.setParent(this);
         this.FactorOptionalSecond=FactorOptionalSecond;
         if(FactorOptionalSecond!=null) FactorOptionalSecond.setParent(this);
     }
 
-    public String getVarType() {
-        return varType;
+    public Type getType() {
+        return Type;
     }
 
-    public void setVarType(String varType) {
-        this.varType=varType;
+    public void setType(Type Type) {
+        this.Type=Type;
     }
 
     public FactorOptionalSecond getFactorOptionalSecond() {
@@ -37,15 +38,18 @@ public class NewFactorClass extends Factor {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(Type!=null) Type.accept(visitor);
         if(FactorOptionalSecond!=null) FactorOptionalSecond.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(Type!=null) Type.traverseTopDown(visitor);
         if(FactorOptionalSecond!=null) FactorOptionalSecond.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(Type!=null) Type.traverseBottomUp(visitor);
         if(FactorOptionalSecond!=null) FactorOptionalSecond.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -55,7 +59,10 @@ public class NewFactorClass extends Factor {
         buffer.append(tab);
         buffer.append("NewFactorClass(\n");
 
-        buffer.append(" "+tab+varType);
+        if(Type!=null)
+            buffer.append(Type.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(FactorOptionalSecond!=null)

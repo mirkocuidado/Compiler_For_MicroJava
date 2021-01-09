@@ -90,10 +90,6 @@ nonterminal FormalParamDecl FormalParamDecl;
 nonterminal Statement Statement;
 nonterminal Matched Matched;
 nonterminal Unmatched Unmatched;
-nonterminal Designator Designator;
-nonterminal OptionalDesignator OptionalDesignator;
-nonterminal DesignatorStatement DesignatorStatement;
-nonterminal DesignatorStatementOptions DesignatorStatementOptions;
 nonterminal AssignOp AssignOp;
 nonterminal ActualPars ActualPars;
 nonterminal PrintCommaNumber PrintCommaNumber;
@@ -109,6 +105,9 @@ nonterminal DoKeyWord DoKeyWord;
 nonterminal BreakKeyWord BreakKeyWord;
 nonterminal ContinueKeyWord ContinueKeyWord;
 nonterminal LSquareKeyWord LSquareKeyWord;
+nonterminal AssignOpKeyWord AssignOpKeyWord;
+nonterminal LBraceKeyWord LBraceKeyWord;
+nonterminal RBraceKeyWord RBraceKeyWord;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -121,7 +120,9 @@ nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, Val
 nonterminal rs.etf.pp1.symboltable.concepts.Struct FactorOptional, FactorOptionalSecond, ExprPositive, ExprNegative, ExprOptionalList, ExprOne, TermOptionalList;
 												   
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Condition, ConditionOptional, CondTerm, CondFact, CondTermOptional, CondFactOptional;
-	
+
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Designator, OptionalDesignator, DesignatorStatementOptions, DesignatorStatement;
+
 precedence left ELSE;
 
 /********** PROGRAM BASIC **********/
@@ -247,7 +248,12 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESUL
 				(NoMethodDecl) {: RESULT=new NoMethodDecl(); :} /* epsilon */
 				;
 				
-MethodDecl ::= (MethodDecl) ReturnValue:R1 LPAREN FormPars:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 RBRACE {: RESULT=new MethodDecl(R1, F2, V3, S4); RESULT.setLine(R1left); :};
+MethodDecl ::= (MethodDecl) ReturnValue:R1 LPAREN FormPars:F2 RPAREN VarDeclList:V3 LBraceKeyWord:L4 StatementList:S5 RBraceKeyWord:R6 {: RESULT=new MethodDecl(R1, F2, V3, L4, S5, R6); RESULT.setLine(R1left); :};
+
+LBraceKeyWord ::= (LBraceClass) LBRACE {: RESULT=new LBraceClass(); :};
+
+RBraceKeyWord ::= (RBraceClass) RBRACE {: RESULT=new RBraceClass(); :};
+
 
 ReturnValue ::= (ReturnValueClassNoVoid) Type:retType IDENT:methName {: RESULT=new ReturnValueClassNoVoid(retType, methName); RESULT.setLine(retTypeleft); :} 
 				|
@@ -298,13 +304,16 @@ OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator:O1 DOT IDENT
 
 LSquareKeyWord ::= (LSquareClass) LSQUARE_BRACKET {: RESULT=new LSquareClass(); :};
 
+
+
+
 /********** DESIGNATOR STATEMENTS **********/
 
 
 
 DesignatorStatement ::= (DesignatorStatementClass) Designator:designatorName DesignatorStatementOptions:D1 {: RESULT=new DesignatorStatementClass(designatorName, D1); RESULT.setLine(designatorNameleft); :};
 
-DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOp:A1 Expr:E2 {: RESULT=new DesignatorStatementOptionsClassAssignExpression(A1, E2); RESULT.setLine(A1left); :}
+DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOpKeyWord:A1 Expr:E2 {: RESULT=new DesignatorStatementOptionsClassAssignExpression(A1, E2); RESULT.setLine(A1left); :}
 							|
 							(DesignatorStatementActualParameters) LPAREN ActualPars:A1  RPAREN {: RESULT=new DesignatorStatementActualParameters(A1); RESULT.setLine(A1left); :}
 							|
@@ -313,7 +322,7 @@ DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression)
 							(DesignatorStatementMinusMinus) MINUS_MINUS {: RESULT=new DesignatorStatementMinusMinus(); :}
 							; 
 
-
+AssignOpKeyWord ::= (AssignOpClass) AssignOp:A1 {: RESULT=new AssignOpClass(A1); RESULT.setLine(A1left); :};
 
 
 /********** STATEMENTS **********/
@@ -375,7 +384,9 @@ PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER:N1 {: RESULT=new CommaNumbe
 
 
 
+
 /********** SWITCH **********/
+
 
 
 
@@ -384,6 +395,7 @@ SwitchStatementList ::= (SwitchStatementListClass) SwitchStatementList:S1 CASE N
 					|
 					(NoSwitchStatementList) {: RESULT=new NoSwitchStatementList(); :} /* epsilon */
 					;
+
 
 
 
@@ -431,9 +443,9 @@ CondTermOptional ::= (CondTermOptionalClass) CondTermOptional:C1 AND CondFact:C2
 					(NoCondTermOptionalClass) {: RESULT=new NoCondTermOptionalClass(); :} /* epsilon */
 					;
 		
-CondFact ::= (CondFactClass) Expr:E1 CondFactOptional:C2 {: RESULT=new CondFactClass(E1, C2); RESULT.setLine(E1left); :};
+CondFact ::= (CondFactClass) ExprOne:E1 CondFactOptional:C2 {: RESULT=new CondFactClass(E1, C2); RESULT.setLine(E1left); :};
 
-CondFactOptional ::= (CondFactOptionalClass) RelOp:R1 Expr:E2 {: RESULT=new CondFactOptionalClass(R1, E2); RESULT.setLine(R1left); :}
+CondFactOptional ::= (CondFactOptionalClass) RelOp:R1 ExprOne:E2 {: RESULT=new CondFactOptionalClass(R1, E2); RESULT.setLine(R1left); :}
 					|
 					(NoCondFactOptionalClass) {: RESULT=new NoCondFactOptionalClass(); :} /* epsion */
 					;	
@@ -458,7 +470,7 @@ ExprOne ::= (NormalExpressionClass) ExprPositive:E1 {: RESULT=new NormalExpressi
 
 Expr ::= (ClassOneClass) ExprOne:E1 {: RESULT=new ClassOneClass(E1); RESULT.setLine(E1left); :}
 		|
-		(ClassTwoClass) ExprOne:E1 TERNARY ExprOne:E2 COLON ExprOne:E3 {: RESULT=new ClassTwoClass(E1, E2, E3); RESULT.setLine(E1left); :}
+		(ClassTwoClass) CondFact:C1 TERNARY ExprOne:exprFirst COLON ExprOne:exprSecond {: RESULT=new ClassTwoClass(C1, exprFirst, exprSecond); RESULT.setLine(C1left); :}
 		;
 	
 ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList:E1 AddOp:A2 Term:T3 {: RESULT=new ExprOptionalListClass(E1, A2, T3); RESULT.setLine(E1left); :}
@@ -497,7 +509,7 @@ Factor ::= 	(DesignatorClass) Designator:D1 FactorOptional:F2 {: RESULT=new Desi
 			|
 			(BooleanClassConstFactor) BOOLEAN:val {: RESULT=new BooleanClassConstFactor(val); RESULT.setLine(valleft); :}
 			|
-			(NewFactorClass) NEW IDENT:varType FactorOptionalSecond:F1 {: RESULT=new NewFactorClass(varType, F1); RESULT.setLine(varTypeleft); :}
+			(NewFactorClass) NEW Type:varType FactorOptionalSecond:F1 {: RESULT=new NewFactorClass(varType, F1); RESULT.setLine(varTypeleft); :}
 			|
 			(ParenFactorClass) LPAREN Expr:E1 RPAREN {: RESULT=new ParenFactorClass(E1); RESULT.setLine(E1left); :}
 			;

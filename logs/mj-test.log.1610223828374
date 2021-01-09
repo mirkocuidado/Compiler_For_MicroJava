@@ -1,0 +1,99 @@
+INFO  21:23:13,565 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  21:23:13,632 - #2 program
+INFO  21:23:13,632 - #48 test301
+INFO  21:23:13,632 - #40 {
+INFO  21:23:13,633 - #5 void
+INFO  21:23:13,634 - #48 main
+INFO  21:23:13,634 - #42 (
+INFO  21:23:13,635 - #43 )
+INFO  21:23:13,636 - #48 bool
+INFO  21:23:13,637 - #48 bt
+INFO  21:23:13,637 - #38 ;
+INFO  21:23:13,638 - #40 {
+INFO  21:23:13,638 - #48 bt
+INFO  21:23:13,639 - #24 =
+INFO  21:23:13,641 - #50 true
+INFO  21:23:13,642 - #38 ;
+INFO  21:23:13,643 - #41 }
+INFO  21:23:13,644 - #41 }
+INFO  21:23:13,652 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        NoVarDeclList(
+        ) [NoVarDeclList]
+        VarDeclClass(
+          Type(
+           bool
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             bt
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        NoStmt(
+        ) [NoStmt]
+        Assignment(
+          DesignatorStatementClass(
+            Designator(
+             bt
+              NoOptionalDesignatorClass(
+              ) [NoOptionalDesignatorClass]
+            ) [Designator]
+            DesignatorStatementOptionsClassAssignExpression(
+              AssignOpClass(
+                AssignOperationClass(
+                ) [AssignOperationClass]
+              ) [AssignOpClass]
+              ClassOneClass(
+                NormalExpressionClass(
+                  ExprFirstOptionClassWithMinus(
+                    TermClass(
+                      BooleanClassConstFactor(
+                       true
+                      ) [BooleanClassConstFactor]
+                      NoTermOptionalListClass(
+                      ) [NoTermOptionalListClass]
+                    ) [TermClass]
+                    NoExprOptionalListClass(
+                    ) [NoExprOptionalListClass]
+                  ) [ExprFirstOptionClassWithMinus]
+                ) [NormalExpressionClass]
+              ) [ClassOneClass]
+            ) [DesignatorStatementOptionsClassAssignExpression]
+          ) [DesignatorStatementClass]
+        ) [Assignment]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  21:23:13,653 - ===================================
+INFO  21:23:13,657 - PROGRAM NAME DETECTED => test301 ON LINE 3
+INFO  21:23:13,657 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 7
+INFO  21:23:13,657 - VARIABLE bt IS BEING DEFINED! ON LINE 8
+INFO  21:23:13,657 - VARIABLES OF TYPE bool HAVE BEEN DEFINED! ON LINE 8
+INFO  21:23:13,657 - CURRENT VARIABLE IN USE IS bt AND IT IS OF TYPE 5
+INFO  21:23:13,657 - SUCCESSFUL ASSIGNEMENT! ON LINE 11
+INFO  21:23:13,657 - PROGRAM ENDED => test301 ON LINE 3
+INFO  21:23:13,658 -  Deklarisanih promenljivih ima = 1
+INFO  21:23:13,658 - ===================================
+INFO  21:23:13,658 - Parsiranje uspesno zavrseno!

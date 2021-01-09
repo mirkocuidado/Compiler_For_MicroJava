@@ -1,28 +1,28 @@
 // generated with ast extension for cup
 // version 0.8
-// 8/0/2021 22:56:20
+// 9/0/2021 20:28:31
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class DesignatorStatementOptionsClassAssignExpression extends DesignatorStatementOptions {
 
-    private AssignOp AssignOp;
+    private AssignOpKeyWord AssignOpKeyWord;
     private Expr Expr;
 
-    public DesignatorStatementOptionsClassAssignExpression (AssignOp AssignOp, Expr Expr) {
-        this.AssignOp=AssignOp;
-        if(AssignOp!=null) AssignOp.setParent(this);
+    public DesignatorStatementOptionsClassAssignExpression (AssignOpKeyWord AssignOpKeyWord, Expr Expr) {
+        this.AssignOpKeyWord=AssignOpKeyWord;
+        if(AssignOpKeyWord!=null) AssignOpKeyWord.setParent(this);
         this.Expr=Expr;
         if(Expr!=null) Expr.setParent(this);
     }
 
-    public AssignOp getAssignOp() {
-        return AssignOp;
+    public AssignOpKeyWord getAssignOpKeyWord() {
+        return AssignOpKeyWord;
     }
 
-    public void setAssignOp(AssignOp AssignOp) {
-        this.AssignOp=AssignOp;
+    public void setAssignOpKeyWord(AssignOpKeyWord AssignOpKeyWord) {
+        this.AssignOpKeyWord=AssignOpKeyWord;
     }
 
     public Expr getExpr() {
@@ -38,18 +38,18 @@ public class DesignatorStatementOptionsClassAssignExpression extends DesignatorS
     }
 
     public void childrenAccept(Visitor visitor) {
-        if(AssignOp!=null) AssignOp.accept(visitor);
+        if(AssignOpKeyWord!=null) AssignOpKeyWord.accept(visitor);
         if(Expr!=null) Expr.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
-        if(AssignOp!=null) AssignOp.traverseTopDown(visitor);
+        if(AssignOpKeyWord!=null) AssignOpKeyWord.traverseTopDown(visitor);
         if(Expr!=null) Expr.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
-        if(AssignOp!=null) AssignOp.traverseBottomUp(visitor);
+        if(AssignOpKeyWord!=null) AssignOpKeyWord.traverseBottomUp(visitor);
         if(Expr!=null) Expr.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -59,8 +59,8 @@ public class DesignatorStatementOptionsClassAssignExpression extends DesignatorS
         buffer.append(tab);
         buffer.append("DesignatorStatementOptionsClassAssignExpression(\n");
 
-        if(AssignOp!=null)
-            buffer.append(AssignOp.toString("  "+tab));
+        if(AssignOpKeyWord!=null)
+            buffer.append(AssignOpKeyWord.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
