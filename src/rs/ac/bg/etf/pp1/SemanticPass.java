@@ -251,7 +251,13 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
-    /********** READ THE CURRENT VARIABLE WE ARE USING **********/
+    
+    /********** IMPORTANT ***********
+				~~~~~~~~~~ 
+		READ THE CURRENT VARIABLE WE ARE USING
+				~~~~~~~~~~ 
+     **********  IMPORTANT ***********/
+    
     public void visit(Designator designator) {
     	current_variable_in_use = Symbol_Table.find(designator.getName());
     	if(current_variable_in_use.getKind() == Obj.Meth) {
@@ -260,7 +266,7 @@ public class SemanticPass extends VisitorAdaptor {
     		stack.add(new ArrayList<>());
     		list_of_actual_parameters = stack.get(stack.size()-1);
     	}
-    	else current_method_we_are_using = null;
+    	//else current_method_we_are_using = null; pravi probleme, a i mislim da ne treba da postoji
     	
     	if(current_variable_in_use == Symbol_Table.noObj) {
     		report_error("VARIABLE OF NAME " + designator.getName() + " IS NOT DEFINED!", null);
@@ -368,21 +374,52 @@ public class SemanticPass extends VisitorAdaptor {
     	
     }
     
+    
+    
+    
+    
+    /********** FACTOR **********/
+    
+    
+    
+    
+    /********** NUMBER CONST VISIT FOR FACTOR **********/
     public void visit(NumberConst numberConst) {
     	numberConst.struct = Symbol_Table.intType;
     }
     
+    /********** CHAR CONST VISIT FOR FACTOR **********/
     public void visit(CharConst charConst) {
     	charConst.struct = Symbol_Table.charType;
     }
     
-    public void visit(BooleanClassConstFactor charConst) {
-    	charConst.struct = Symbol_Table.boolType;
+    /********** BOOL CONST VISIT FOR FACTOR **********/
+    public void visit(BooleanClassConstFactor boolConst) {
+    	boolConst.struct = Symbol_Table.boolType;
     }
     
+    /********** KEYWORD NEW VISIT FOR FACTOR **********/
     public void visit(NewFactorClass neww) {
     	neww.struct = new Struct(Struct.Array, current_variable_definition_type);
     }
+    
+    /********** KEYWORD NEW FALSE USAGE **********/
+    public void visit(NoFactorOptionalSecondClass param) {
+    	report_error("NO PROPER USAGE OF THIS FACTOR AND KEYWORD NEW!", param);
+    }
+    
+    /********** EXPRESSION IN PARENTHESIS TYPE PROPAGATION **********/
+    public void visit(ParenFactorClass expressionInParenthesis) {
+    	expressionInParenthesis.struct = expressionInParenthesis.getExpr().struct;
+    }
+    
+    
+    
+    /********** IMPORTANT ***********
+      			~~~~~~~~~~ 
+     	USAGE OF EITHER A SIMPLE VARIABLE OR AN ARRAY VARIABLE
+     			~~~~~~~~~~ 
+    **********  IMPORTANT ***********/
     
     public void visit(DesignatorClass factorDesignator) {
     	if(current_variable_in_use.getType().getKind()==Struct.Array && if_we_are_using_an_array==true) {
@@ -390,11 +427,19 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     	else factorDesignator.struct = current_variable_in_use.getType();
     }
+
     
-    public void visit(NoFactorOptionalSecondClass param) {
-    	report_error("NO PROPER USAGE OF THIS FACTOR AND KEYWORD NEW!", param);
-    }
     
+    
+    
+    
+    /********** TERM **********/
+    
+    
+    
+    
+    
+    /********** TERM CHECK -> IF THE TYPES ARE COMPATIBLE **********/
     public void visit(TermClass term) {
     	Struct t1 = term.getFactor().struct;
     	Struct t2 = term.getTermOptionalList().struct;
@@ -411,6 +456,7 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
+    /**********  TERM -> TERM_OPTIONAL_LIST CHECK -> IF TYPES ARE COMPATIBLE **********/
     public void visit(TermOptionalListClass term) {
     	Struct t1 = term.getTermOptionalList().struct;
     	Struct t2 = term.getFactor().struct;
@@ -428,10 +474,22 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
+    /**********  TERM -> NO TERM **********/
     public void visit(NoTermOptionalListClass noterm) {
     	noterm.struct = null;
     }
     
+    
+    
+    
+    
+    /********** EXPRESSION **********/
+    
+    
+    
+    
+    
+    /********** EXPRESSION NEGATIVE USAGE **********/
     public void visit(ExprNegativeClass exprNeg) {
     	if(exprNeg.getExprPositive().struct.getKind()!=Struct.Int) {
     		report_error("ERROR ON LINE "+ exprNeg.getLine()+" : CAN'T USE MINUS AND EXPR", null);
@@ -439,6 +497,7 @@ public class SemanticPass extends VisitorAdaptor {
     	exprNeg.struct = exprNeg.getExprPositive().struct;
     }
     
+    /**********  EXPRESSION -> CHECK IF TYPES ARE INTEGER **********/
     public void visit(ExprFirstOptionClassWithMinus exprTwoThings) {
     	Struct t1 = exprTwoThings.getTerm().struct;
     	Struct t2 = exprTwoThings.getExprOptionalList().struct;
@@ -456,18 +515,22 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
+    /********** EXPRESSION -> TYPE PROPAGATION **********/
     public void visit(NormalExpressionClass normal) {
     	normal.struct = normal.getExprPositive().struct;
     }
     
+    /********** EXPRESSION -> TYPE PROPAGATION **********/
     public void visit(ExprSecondOptionClassMinus exprNormal) {
     	exprNormal.struct = exprNormal.getExprNegative().struct;
     }
     
+    /********** EXPRESSION -> TYPE PROPAGATION **********/
     public void visit(ClassOneClass expr) {
     	expr.struct = expr.getExprOne().struct;
     }
     
+    /********** EXPRESSION -> CHECK IF TYPES ARE INTEGER **********/
     public void visit(ExprOptionalListClass exprTwoThings) {
     	Struct t1 = exprTwoThings.getExprOptionalList().struct;
     	Struct t2 = exprTwoThings.getTerm().struct;
@@ -485,6 +548,7 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
+    /********** EXPRESSION -> TYPE PROPAGATION **********/
     public void visit(NoExprOptionalListClass expr) {
     	expr.struct = null;
     }
@@ -492,6 +556,14 @@ public class SemanticPass extends VisitorAdaptor {
 
     
     
+    
+    /********** CONDITION **********/
+    
+    
+    
+    
+    
+    /********** CONDFACT -> CHECK IF TYPES ARE OF SAME TYPE**********/
     public void visit(CondFactClass condFact) {
     	Struct s1 = condFact.getExpr().struct;
     	Struct s2 = condFact.getCondFactOptional().struct;
@@ -499,6 +571,7 @@ public class SemanticPass extends VisitorAdaptor {
     	condFact.struct = new Struct(Struct.Bool);
     	
     	if(s2 == null) {
+    		// only one Expr provided for the CondFact, so it has to be of type Bool
     		if(s1.getKind() != Struct.Bool) {
     			report_error("ERROR ON LINE "+ condFact.getLine()+" : CONDFACT CAN'T CONSIST OF ONE EXPR WHICH IS NOT BOOL", condFact);
     		}
@@ -507,25 +580,41 @@ public class SemanticPass extends VisitorAdaptor {
     		report_error("ERROR ON LINE "+ condFact.getLine()+" : CONDFACT WITH VARIOUS TYPES", condFact);
     	}
     }
-    
+
+    /********** CONDFACT -> TYPE PROPAGATION **********/
     public void visit(CondFactOptionalClass condFactOptional) {
     	condFactOptional.struct = condFactOptional.getExpr().struct;
     }
     
+    /********** CONDFACT -> TYPE PROPAGATION**********/
     public void visit(NoCondFactOptionalClass noCondFact) {
     	noCondFact.struct = null;
     }
     
     
+    
+    
+    
+    /********** ACTUAL PARAMETERS **********/
+    
+    
+    
+    
+    
+    /********** ACTUAL PARAMS -> CHECK THE TYPES **********/
     public void visit(Actuals actuals) {
     	if(current_method_we_are_using == null) {
 			report_error("NO METHOD IN USE!", null);
     		return;
     	}
+    	
     	Collection<Obj> real_parameters_from_symbol_table = Symbol_Table.find(current_method_we_are_using.getName()).getLocalSymbols();
     	ArrayList<Obj> list_helper = new ArrayList<>(real_parameters_from_symbol_table);
     	
-    	// level je broj param za metodu
+    	if(list_of_actual_parameters.size()!=current_method_we_are_using.getLevel()) {
+    		report_error("NOT THE SAME NUMBER OF ARGUMENTS (from noActuals) !", actuals);
+    		return;
+    	}
     	
     	for(int i=0; i<list_of_actual_parameters.size(); i++) {
     		if(list_of_actual_parameters.get(i).struct.getKind() != list_helper.get(i).getType().getKind()) {
@@ -533,27 +622,36 @@ public class SemanticPass extends VisitorAdaptor {
     		}
     	}
     	
-    	list_of_function_calls.remove(list_of_function_calls.size()-1);
-    	if(list_of_function_calls.size()>0)
-    		current_method_we_are_using = list_of_function_calls.get(list_of_function_calls.size()-1);
-    	stack.remove(stack.size()-1);
-    	if(stack.size()>0)
-    		list_of_actual_parameters = stack.get(stack.size()-1);
+    	list_of_function_calls.remove(list_of_function_calls.size()-1); // remove the current method used from the stack of methods
+    	if(list_of_function_calls.size()>0) // if there is more methods left 
+    		current_method_we_are_using = list_of_function_calls.get(list_of_function_calls.size()-1); // get the previous one
+    	
+    	stack.remove(stack.size()-1); // remove the current list of actual parameters from the stack of actual parameters
+    	if(stack.size()>0) // if there is more lists of actual parameters
+    		list_of_actual_parameters = stack.get(stack.size()-1); // get the previous one
     }
     
+    /********** ACTUAL PARAMS -> CHECK THE TYPES **********/
     public void visit(NoActuals noActuals) { // dopuni da li postoji i ostala sranja
-    	Collection<Obj> real_parameters_from_symbol_table = Symbol_Table.find(current_variable_in_use.getName()).getLocalSymbols();
+    	Obj helper_object = Symbol_Table.find(current_method_we_are_using.getName());
     	
-    	if(real_parameters_from_symbol_table == null) return;
-    	if(real_parameters_from_symbol_table != null && real_parameters_from_symbol_table.size() > 0) {
+    	if(helper_object == Symbol_Table.noObj) {
+    		report_error("FUNCTION YOU ARE TRYING TO USE DOES NOT EXIST !", noActuals);
+    		return;
+    	}
+    	else if(helper_object.getLevel() > 0) {
+    		// if current method has parameters, but there are no actual ones
     		report_error("NOT THE SAME NUMBER OF ARGUMENTS (from noActuals) !", noActuals);
+    		return;
     	}
     }
     
+    /********** ACTUAL PARAMS -> ADD EXPRESSIONS TO THE LIST **********/
     public void visit(ActualParams actualParamsAtTheEnd) {
     	list_of_actual_parameters.add(actualParamsAtTheEnd.getExpr());
     }
     
+    /********** ACTUAL PARAMS -> ADD EXPRESSIONS TO THE LIST **********/
     public void visit(ActualParam actualParamSingle) {
     	list_of_actual_parameters.add(actualParamSingle.getExpr());
     }

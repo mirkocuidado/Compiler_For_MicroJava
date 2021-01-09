@@ -13,7 +13,7 @@ const bool ee = true, ff = false;
 	void main(int a, int b[], char c, char d[], bool e, bool f[]){
 		
 		
-		func(a,func(a,b[0]));
+		func((a+b[a]),func(a,b[0]));
 	}
 	
 }
