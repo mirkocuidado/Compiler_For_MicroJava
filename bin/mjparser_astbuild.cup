@@ -90,7 +90,6 @@ nonterminal FormalParamDecl FormalParamDecl;
 nonterminal Statement Statement;
 nonterminal Matched Matched;
 nonterminal Unmatched Unmatched;
-nonterminal Condition Condition;
 nonterminal Designator Designator;
 nonterminal OptionalDesignator OptionalDesignator;
 nonterminal DesignatorStatement DesignatorStatement;
@@ -100,19 +99,7 @@ nonterminal ActualPars ActualPars;
 nonterminal PrintCommaNumber PrintCommaNumber;
 nonterminal SwitchStatementList SwitchStatementList;
 nonterminal ActualParamList ActualParamList;
-nonterminal ConditionOptional ConditionOptional;
-nonterminal CondTerm CondTerm;
-nonterminal CondFact CondFact;
-nonterminal CondTermOptional CondTermOptional;
-nonterminal CondFactOptional CondFactOptional;
 nonterminal RelOp RelOp;
-nonterminal ExprPositive ExprPositive;
-nonterminal ExprNegative ExprNegative;
-nonterminal ExprOptionalList ExprOptionalList;
-nonterminal ExprOne ExprOne;
-nonterminal FactorOptional FactorOptional;
-nonterminal FactorOptionalSecond FactorOptionalSecond;
-nonterminal TermOptionalList TermOptionalList;
 nonterminal MulOp MulOp;
 nonterminal AddOp AddOp;
 nonterminal PotentialError PotentialError;
@@ -130,8 +117,10 @@ nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgramName, MethodDecl
 	
 	
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, ValueOptions;	
-	
-	
+
+nonterminal rs.etf.pp1.symboltable.concepts.Struct FactorOptional, FactorOptionalSecond, ExprPositive, ExprNegative, ExprOptionalList, ExprOne, TermOptionalList;
+												   
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Condition, ConditionOptional, CondTerm, CondFact, CondTermOptional, CondFactOptional;
 	
 precedence left ELSE;
 

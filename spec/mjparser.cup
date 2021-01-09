@@ -83,21 +83,13 @@ nonterminal FormalParamList;
 nonterminal FormalParamDecl;
 nonterminal Statement;
 nonterminal Matched, Unmatched;
-nonterminal Condition;
 nonterminal Designator, OptionalDesignator;
 nonterminal DesignatorStatement, DesignatorStatementOptions;
 nonterminal AssignOp, ActualPars;
 nonterminal PrintCommaNumber, SwitchStatementList;
 nonterminal ActualParamList;
-nonterminal ConditionOptional, CondTerm;
-nonterminal CondFact, CondTermOptional;
-nonterminal CondFactOptional;
 nonterminal RelOp;
-nonterminal ExprPositive, ExprNegative;
-nonterminal ExprOptionalList;
-nonterminal ExprOne;
-nonterminal FactorOptional, FactorOptionalSecond;
-nonterminal TermOptionalList, MulOp, AddOp;
+nonterminal MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
 nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord;
 
@@ -108,8 +100,10 @@ nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgramName, MethodDecl
 	
 	
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, ValueOptions;	
-	
-	
+
+nonterminal rs.etf.pp1.symboltable.concepts.Struct FactorOptional, FactorOptionalSecond, ExprPositive, ExprNegative, ExprOptionalList, ExprOne, TermOptionalList;
+												   
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Condition, ConditionOptional, CondTerm, CondFact, CondTermOptional, CondFactOptional;
 	
 precedence left ELSE;
 

@@ -1,5 +1,10 @@
 package rs.ac.bg.etf.pp1;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import rs.ac.bg.etf.pp1.ast.*;
@@ -30,12 +35,18 @@ public class SemanticPass extends VisitorAdaptor {
 	
 	/********** CURRENT VARIABLE WE ARE USING **********/
 	Obj current_variable_in_use = null;
+	Obj current_method_we_are_using = null;
 	
 	/********** CURRENT VARIABLE WE ARE USING **********/
-	int if_we_are_using_an_array = 0;
+	boolean if_we_are_using_an_array = false;
 	
 	/********** MARK THE BEGINNING OF DO...WHILE **********/
 	int do_while_flag = 0;
+	
+	/********** LIST OF ACTUAL PARAMETERS **********/
+	List<Expr> list_of_actual_parameters = new ArrayList<>();
+	List<Obj> list_of_function_calls = new ArrayList<>();
+	List<List<Expr>> stack = new ArrayList<>();
 	
 	Logger log = Logger.getLogger(getClass());
 
@@ -243,11 +254,24 @@ public class SemanticPass extends VisitorAdaptor {
     /********** READ THE CURRENT VARIABLE WE ARE USING **********/
     public void visit(Designator designator) {
     	current_variable_in_use = Symbol_Table.find(designator.getName());
+    	if(current_variable_in_use.getKind() == Obj.Meth) {
+    		list_of_function_calls.add(current_variable_in_use);
+    		current_method_we_are_using = list_of_function_calls.get(list_of_function_calls.size()-1);
+    		stack.add(new ArrayList<>());
+    		list_of_actual_parameters = stack.get(stack.size()-1);
+    	}
+    	else current_method_we_are_using = null;
+    	
     	if(current_variable_in_use == Symbol_Table.noObj) {
     		report_error("VARIABLE OF NAME " + designator.getName() + " IS NOT DEFINED!", null);
     	}
+    	if(current_variable_in_use.getType().getKind() != Struct.Array && if_we_are_using_an_array==true) {
+    		report_error("ARRAY VARIABLE OF NAME " + designator.getName() + " USED WITH [ ]!", null);
+    	}
+    	
+    	report_info("CURRENT VARIABLE IN USE IS " + current_variable_in_use.getName() + " AND IT IS OF TYPE " + current_variable_in_use.getType().getKind(), null);
     }
-    
+     
     /********** ONLY INTEGERS HAVE ++ **********/
     public void visit(DesignatorStatementPlusPlus param) {
     	if(current_variable_in_use.getType().getKind() == Struct.Int || (current_variable_in_use.getType().getKind() == Struct.Array && current_variable_in_use.getType().getElemType().getKind() == Struct.Int)) {
@@ -257,10 +281,9 @@ public class SemanticPass extends VisitorAdaptor {
     		report_error("VARIABLE OF NAME " + current_variable_in_use.getName() + " IS NOT AN INTEGER AND IS USED WITH ++!", null);
     	}
     	
-    	if(if_we_are_using_an_array == 0 && current_variable_in_use.getType().getKind() == Struct.Array) {
+    	if(if_we_are_using_an_array == false && current_variable_in_use.getType().getKind() == Struct.Array) {
     		report_error("VARIABLE ARRAY OF NAME " + current_variable_in_use.getName() + " CAN NOT BE USED LIKE THIS WITH ++!", null);
     	}
-    	else if( current_variable_in_use.getType().getKind() == Struct.Array ) if_we_are_using_an_array--;
     }
     
     /********** ONLY INTEGERS HAVE -- **********/
@@ -272,22 +295,18 @@ public class SemanticPass extends VisitorAdaptor {
     		report_error("VARIABLE OF NAME " + current_variable_in_use.getName() + " IS NOT AN INTEGER AND IS USED WITH --!", null);
     	}
     	
-    	if(if_we_are_using_an_array == 0 && current_variable_in_use.getType().getKind() == Struct.Array) {
+    	if(if_we_are_using_an_array == false && current_variable_in_use.getType().getKind() == Struct.Array) {
     		report_error("VARIABLE ARRAY OF NAME " + current_variable_in_use.getName() + " CAN NOT BE USED LIKE THIS WITH --!", null);
     	}
-    	else if( current_variable_in_use.getType().getKind() == Struct.Array ) if_we_are_using_an_array--;
     }
 
     /********** ONLY CALL GLOBAL FUNCTIONS **********/
     public void visit(DesignatorStatementActualParameters function) {
-    	if(current_variable_in_use.getKind() != Obj.Meth) {
-    		report_error("THE " + current_variable_in_use.getName() + " IS NOT A FUNCTION!", null);
-    	}
-    	if(current_variable_in_use.getLevel() != 0) {
-    		report_error("THE " + current_variable_in_use.getName() + " IS NOT A GLOBAL FUNCTION!", null);
+    	if(current_method_we_are_using == null || current_method_we_are_using.getKind() != Obj.Meth) {
+    		report_error("THE CURRENT METHOD WE ARE TRYING TO USE IS NOT A FUNCTION!", null);
     	}
     	else {
-    		report_info("GLOBAL METHOD " + current_variable_in_use.getName() + " HAS BEEN CALLED!", null);
+    		report_info("GLOBAL METHOD " + current_method_we_are_using.getName() + " HAS BEEN CALLED!", null);
     	}
     }
     
@@ -296,10 +315,22 @@ public class SemanticPass extends VisitorAdaptor {
     	do_while_flag++;
     }
     
-    /********** MARK THE USE OF ARRAYS **********/
-    public void visit(LSquareClass param) {
-    	report_info(" ~~~ ARRAY BEGINNING", param);
-    	if_we_are_using_an_array++;
+    /********** MARK THE END OF DO...WHILE **********/
+    public void visit(DoWhileStatement param) {
+    	do_while_flag--;
+    }
+    
+    /********** MARK NOT USING ARRAYS **********/
+    public void visit(NoOptionalDesignatorClass param) {
+    	if_we_are_using_an_array = false;
+    }
+    
+    /********** MARK USING ARRAYS **********/
+    public void visit(OptionalDesignatorArray param) {
+    	if_we_are_using_an_array = true;
+    	if(param.getExpr().struct.getKind() != Struct.Int) {
+    		report_error("EXPR CAN NOT BE OF TYPE WHICH IS NOT INT!", param);
+    	}
     }
     
     /********** CATCH THE USE OF BREAK OUTSIDE DO...WHILE **********/
@@ -307,7 +338,6 @@ public class SemanticPass extends VisitorAdaptor {
     	if(do_while_flag == 0) {
     		report_error("BREAK NOT USED IN DO...WHILE !", param);
     	}
-    	do_while_flag--;
     }
     
     /********** CATCH THE USE OF CONTINUE OUTSIDE DO...WHILE **********/
@@ -315,7 +345,6 @@ public class SemanticPass extends VisitorAdaptor {
     	if(do_while_flag == 0) {
     		report_error("BREAK NOT USED IN DO...WHILE !", param);
     	}
-    	do_while_flag--;
     }
     
     /********** READ FUNCTION **********/
@@ -327,18 +356,208 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     	else if(in_symbol_table.getType().getKind() != Struct.Bool && in_symbol_table.getType().getKind() != Struct.Char && in_symbol_table.getType().getKind() != Struct.Int) {
     		if(in_symbol_table.getType().getKind() == Struct.Array) {
-    			if(if_we_are_using_an_array == 0) {
+    			if(if_we_are_using_an_array == false) {
     				report_error("DESIGNATOR IN USE " + designator_in_use + " IS A PURE ARRAY WHICH IS NOT ALLOWED IN READ!", read);
     			}
     			else { 
     				report_info("ARRAY " + designator_in_use + " IN USE IN FUNCTION READ", read);
-    				if_we_are_using_an_array--;
     			}
     		}
     		else report_error("DESIGNATOR IN USE " + designator_in_use + " IS NOT A VARIABLE OF TYPE BOOL, CHAR OR INT OR AN ARRAY!", read);
     	}
     	
     }
+    
+    public void visit(NumberConst numberConst) {
+    	numberConst.struct = Symbol_Table.intType;
+    }
+    
+    public void visit(CharConst charConst) {
+    	charConst.struct = Symbol_Table.charType;
+    }
+    
+    public void visit(BooleanClassConstFactor charConst) {
+    	charConst.struct = Symbol_Table.boolType;
+    }
+    
+    public void visit(NewFactorClass neww) {
+    	neww.struct = new Struct(Struct.Array, current_variable_definition_type);
+    }
+    
+    public void visit(DesignatorClass factorDesignator) {
+    	if(current_variable_in_use.getType().getKind()==Struct.Array && if_we_are_using_an_array==true) {
+    		factorDesignator.struct = current_variable_in_use.getType().getElemType();
+    	}
+    	else factorDesignator.struct = current_variable_in_use.getType();
+    }
+    
+    public void visit(NoFactorOptionalSecondClass param) {
+    	report_error("NO PROPER USAGE OF THIS FACTOR AND KEYWORD NEW!", param);
+    }
+    
+    public void visit(TermClass term) {
+    	Struct t1 = term.getFactor().struct;
+    	Struct t2 = term.getTermOptionalList().struct;
+    	
+    	if(t2 == null) {
+    		// term consists of only one term
+    		term.struct = t1;
+    	}
+    	else if(t1.equals(t2) && t1 == Symbol_Table.intType){
+    		term.struct = t1;
+    	}else{
+			report_error("ERROR ON LINE "+ term.getLine()+" : TYPES WHICH ARE NOT COMPATIBLE", null);
+			term.struct = Symbol_Table.noType;
+    	}
+    }
+    
+    public void visit(TermOptionalListClass term) {
+    	Struct t1 = term.getTermOptionalList().struct;
+    	Struct t2 = term.getFactor().struct;
+    	
+    	if(t1 == null) {
+    		// no adding done
+    		term.struct = t2;
+    	}
+    	else if(t1.equals(t2) && t1 == Symbol_Table.intType) {
+    		term.struct = t1;
+    	}
+    	else {
+    		report_error("ERROR ON LINE "+ term.getLine()+" : TYPES WHICH ARE NOT COMPATIBLE", null);
+			term.struct = Symbol_Table.noType;
+    	}
+    }
+    
+    public void visit(NoTermOptionalListClass noterm) {
+    	noterm.struct = null;
+    }
+    
+    public void visit(ExprNegativeClass exprNeg) {
+    	if(exprNeg.getExprPositive().struct.getKind()!=Struct.Int) {
+    		report_error("ERROR ON LINE "+ exprNeg.getLine()+" : CAN'T USE MINUS AND EXPR", null);
+    	}
+    	exprNeg.struct = exprNeg.getExprPositive().struct;
+    }
+    
+    public void visit(ExprFirstOptionClassWithMinus exprTwoThings) {
+    	Struct t1 = exprTwoThings.getTerm().struct;
+    	Struct t2 = exprTwoThings.getExprOptionalList().struct;
+    	
+    	if(t2 == null) {
+    		// no adding done
+    		exprTwoThings.struct = t1;
+    	}
+    	else if(t1.equals(t2) && t1 == Symbol_Table.intType) {
+    		exprTwoThings.struct = t1;
+    	}
+    	else {
+    		report_error("ERROR ON LINE "+ exprTwoThings.getLine()+" : TYPES WHICH ARE NOT COMPATIBLE", null);
+    		exprTwoThings.struct = Symbol_Table.noType;
+    	}
+    }
+    
+    public void visit(NormalExpressionClass normal) {
+    	normal.struct = normal.getExprPositive().struct;
+    }
+    
+    public void visit(ExprSecondOptionClassMinus exprNormal) {
+    	exprNormal.struct = exprNormal.getExprNegative().struct;
+    }
+    
+    public void visit(ClassOneClass expr) {
+    	expr.struct = expr.getExprOne().struct;
+    }
+    
+    public void visit(ExprOptionalListClass exprTwoThings) {
+    	Struct t1 = exprTwoThings.getExprOptionalList().struct;
+    	Struct t2 = exprTwoThings.getTerm().struct;
+    	
+    	if(t1 == null) {
+    		// no multiplying done
+    		exprTwoThings.struct = t2;
+    	}
+    	else if(t1.equals(t2) && t1 == Symbol_Table.intType) {
+    		exprTwoThings.struct = t1;
+    	}
+    	else {
+    		report_error("ERROR ON LINE "+ exprTwoThings.getLine()+" : TYPES WHICH ARE NOT COMPATIBLE", null);
+    		exprTwoThings.struct = Symbol_Table.noType;
+    	}
+    }
+    
+    public void visit(NoExprOptionalListClass expr) {
+    	expr.struct = null;
+    }
+    
+
+    
+    
+    public void visit(CondFactClass condFact) {
+    	Struct s1 = condFact.getExpr().struct;
+    	Struct s2 = condFact.getCondFactOptional().struct;
+    	
+    	condFact.struct = new Struct(Struct.Bool);
+    	
+    	if(s2 == null) {
+    		if(s1.getKind() != Struct.Bool) {
+    			report_error("ERROR ON LINE "+ condFact.getLine()+" : CONDFACT CAN'T CONSIST OF ONE EXPR WHICH IS NOT BOOL", condFact);
+    		}
+    	}
+    	else if(s1.getKind() != s2.getKind()) {
+    		report_error("ERROR ON LINE "+ condFact.getLine()+" : CONDFACT WITH VARIOUS TYPES", condFact);
+    	}
+    }
+    
+    public void visit(CondFactOptionalClass condFactOptional) {
+    	condFactOptional.struct = condFactOptional.getExpr().struct;
+    }
+    
+    public void visit(NoCondFactOptionalClass noCondFact) {
+    	noCondFact.struct = null;
+    }
+    
+    
+    public void visit(Actuals actuals) {
+    	if(current_method_we_are_using == null) {
+			report_error("NO METHOD IN USE!", null);
+    		return;
+    	}
+    	Collection<Obj> real_parameters_from_symbol_table = Symbol_Table.find(current_method_we_are_using.getName()).getLocalSymbols();
+    	ArrayList<Obj> list_helper = new ArrayList<>(real_parameters_from_symbol_table);
+    	
+    	// level je broj param za metodu
+    	
+    	for(int i=0; i<list_of_actual_parameters.size(); i++) {
+    		if(list_of_actual_parameters.get(i).struct.getKind() != list_helper.get(i).getType().getKind()) {
+    			report_error("NOT THE SAME TYPE OF ARGUMENTS AT ARGUMENT (from Actuals) !" + (i+1), actuals);
+    		}
+    	}
+    	
+    	list_of_function_calls.remove(list_of_function_calls.size()-1);
+    	if(list_of_function_calls.size()>0)
+    		current_method_we_are_using = list_of_function_calls.get(list_of_function_calls.size()-1);
+    	stack.remove(stack.size()-1);
+    	if(stack.size()>0)
+    		list_of_actual_parameters = stack.get(stack.size()-1);
+    }
+    
+    public void visit(NoActuals noActuals) { // dopuni da li postoji i ostala sranja
+    	Collection<Obj> real_parameters_from_symbol_table = Symbol_Table.find(current_variable_in_use.getName()).getLocalSymbols();
+    	
+    	if(real_parameters_from_symbol_table == null) return;
+    	if(real_parameters_from_symbol_table != null && real_parameters_from_symbol_table.size() > 0) {
+    		report_error("NOT THE SAME NUMBER OF ARGUMENTS (from noActuals) !", noActuals);
+    	}
+    }
+    
+    public void visit(ActualParams actualParamsAtTheEnd) {
+    	list_of_actual_parameters.add(actualParamsAtTheEnd.getExpr());
+    }
+    
+    public void visit(ActualParam actualParamSingle) {
+    	list_of_actual_parameters.add(actualParamSingle.getExpr());
+    }
+    
     
     
     

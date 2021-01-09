@@ -8,21 +8,12 @@ const char cc = 'c', dd = 'd';
 const bool ee = true, ff = false;
 {
 	
-	void func(){ }
+	int func(int a, int b){ return 0; }
 	
 	void main(int a, int b[], char c, char d[], bool e, bool f[]){
-		a++;
-		b[0]++;
 		
-		func();
 		
-		read(a);
-		read(b[0]);
-		read(c);
-		read(c);
-		read(c);
-		read(c);
-		read(d[0]);
+		func(a,func(a,b[0]));
 	}
 	
 }
