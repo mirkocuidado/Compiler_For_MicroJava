@@ -1,51 +1,125 @@
 program MJProgram
-int a,b[],c,d;
-char e, f[], g;
-bool h, i[];
+int a,b,c,d;
 
-const int aa = 2, bb = 6;
-const char cc = 'c', dd = 'd';
-const bool ee = true, ff = false;
-{
+	const int y = 3;
+{	
 	
-	void m(){ }
+	int k(int a, int b) { return b; }
 	
-	int func(int a[], int b){ return 0; }
-	
-	void main(int a, int b[], char c, char d[], bool e, bool f[])
-		int x,y,z;
-		char xx,yy,zz;
-	
+	int func_check(int a[], char b[], bool c)
+	int local;
 	{
-		
-		x = 123;
-		xx = 'c';
-		
-		if(a==x){
-			if(c==d[3] && a>=b[y]){
-				z = 300;
-			}
-			else z = 400;
-		}
-		else z = 500;
-		
-		
-		b = e ? b : b;
-		
-		do{
-			a = 2;
-			
-		} while(a==func(b,a));
-		
-		func(b,func(b,b[0]));
-		
-		d[0] = d[1];
+		local = a[0];
+		print(local); //10
+		local = local * 2  + local - a[1];
+		print(local); //28
+		return local;
 	}
 	
-	void k(int z){
+	//char s() { return 'c'; }
+	
+	void main()
+	int x;
+	char z;
+	bool p;
+	char xx[];
+	char yy[];
+	int br[];
+	//int dd;
+	{
+		br = new int[10];
+		br[0] = 10;
+		br[1] = 2;
+		br[2] = 100;
 		
-		z = 400;
+		x = func_check(br,xx,p);
+		print(x); //28
 		
-		return;
+		
+		print(br[br[1]]); //100
+		print(br[0]); // 10
+		br[0]++;
+		print(br[0]); //11
+		
+		x = br[0] + br[1]; // br[0] = 11 br[1] = 2 br[2] = 100
+		a = 2 + br[0] * br[2];
+		b = br[1] * br[2];
+		c = br[2] / br[1];
+	
+		print(x); 
+		print(a);
+		print(b);
+		print(c);
+		//x = 2 + 3 * (4 + 5) + k(0,1);
+		///print(x); //30
+		
+		//a = x;
+		//a++;
+		//print(a); //31
+		//a--;
+		//a--;
+		//print(a); //29
+		
+		
+		
+		//z = 'm';
+		//print(z); //'m'
+		
+		
+		//xx = new char[x];
+		///yy = new char[x];
+		//xx[0] = 'i';
+		
+		//z = xx[0];
+		//print(z); // 'i'
+		
+		//yy = xx;
+		//print(yy[0]); //'i'
+		
+		
+		
+		//print(xx[0]); // 'i'
+		
+		//xx[0] = 5;
+		//x = xx[0];
+		//print(x);
+		
+		//x = xx[0] + xx[2]; 
+		//print(2); //2
+		
+		//x = k(33, k(12,13));	
+		//print(x); //13
+		
+		//x = y;
+		//print(x); // 3
+		//print(y); // 3
+		
+		//d = 4;
+		//print(d); //4
+		//d++;
+		//print(d); //5
+		//d--;
+		//print(d); //4
+		
+		//dd = 10;
+		//print(dd); //10
+		//dd++;
+		//print(dd); //11
+		//dd--;
+		//print(dd); // 10
+		
+		//p = true;
+		//print(p); //1
+		//p = false;
+		//print(p); //0
+		
+		//z = 'm'; 
+		//print(z); //m
+		
+		//z=s();
+		//print(z); //c
+		
+		//return;
 	}
+	
 }

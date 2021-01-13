@@ -424,12 +424,13 @@ public class SemanticPass extends VisitorAdaptor {
      **********  IMPORTANT ***********/
     
     public void visit(Designator designator) {
-    	current_variable_in_use = Symbol_Table.find(designator.getName());
+    	current_variable_in_use = Symbol_Table.find(designator.getDesigIdent().getName());
     	if(current_variable_in_use == Symbol_Table.noObj) {
-    		report_error("VARIABLE OF NAME " + designator.getName() + " IS NOT DEFINED!", null);
+    		report_error("VARIABLE OF NAME " + designator.getDesigIdent().getName() + " IS NOT DEFINED!", null);
     		return;
     	}
-    	designator.struct = current_variable_in_use.getType();
+    	designator.obj = current_variable_in_use;
+    	designator.getDesigIdent().obj = current_variable_in_use;
     	
     	if(current_variable_in_use.getKind() == Obj.Meth) {
     		list_of_function_calls.add(current_variable_in_use);
@@ -440,7 +441,7 @@ public class SemanticPass extends VisitorAdaptor {
     	//else current_method_we_are_using = null; pravi probleme, a i mislim da ne treba da postoji
     	
     	if(current_variable_in_use.getType().getKind() != Struct.Array && if_we_are_using_an_array==true) {
-    		report_error("ARRAY VARIABLE OF NAME " + designator.getName() + " USED WITH [ ]!", null);
+    		report_error("ARRAY VARIABLE OF NAME " + designator.getDesigIdent().getName() + " USED WITH [ ]!", null);
     	}
     	
     	report_info("CURRENT VARIABLE IN USE IS " + current_variable_in_use.getName() + " AND IT IS OF TYPE " + getTypeAsString(current_variable_in_use.getType().getKind()), null);
@@ -491,11 +492,6 @@ public class SemanticPass extends VisitorAdaptor {
     		report_info("GLOBAL METHOD " + current_method_we_are_using.getName() + " HAS BEEN CALLED!", null);
     	}
     }
-    
-    /********** DESIGNATOR STATEMENT TYPE PROPAGATION **********/
-    public void visit(DesignatorStatementOptionsClassAssignExpression assignDesignator) {
-    	assignDesignator.struct = assignDesignator.getExpr().struct;
-    }
 
     
     /********** IMPORTANT ***********
@@ -503,10 +499,10 @@ public class SemanticPass extends VisitorAdaptor {
 		DESIGNATOR STATEMNT -> CHECK IF TYPES ON BOTH SIDES OF EQUAL ARE THE SAME
 				~~~~~~~~~~ 
      **********  IMPORTANT ***********/
-    public void visit(DesignatorStatementClass designatorStatement) {
+    public void visit(DesignatorStatementOptionsClassAssignExpression designatorStatement) {
     	if(assignOperationFlag == true) {
-	    	Struct s1 = designatorStatement.getDesignator().struct;
-	    	Struct s2 = designatorStatement.getDesignatorStatementOptions().struct;
+	    	Struct s1 = Symbol_Table.find(designatorStatement.getDesignator().getDesigIdent().getName()).getType();
+	    	Struct s2 = designatorStatement.getExpr().struct;
 	    	
 	    	assignOperationFlag = false;
 	    	
@@ -640,7 +636,7 @@ public class SemanticPass extends VisitorAdaptor {
     
     
     public void visit(ReadClass read) {
-    	String designator_in_use = read.getDesignator().getName();
+    	String designator_in_use = read.getDesignator().getDesigIdent().getName();
     	Obj in_symbol_table = Symbol_Table.find(designator_in_use);
     	if(in_symbol_table.getKind()!=Obj.Var) {
     		report_error("DESIGNATOR IN USE " + designator_in_use + " IS NOT A VARIABLE !", read);
@@ -720,6 +716,9 @@ public class SemanticPass extends VisitorAdaptor {
     	expressionInParenthesis.struct = expressionInParenthesis.getExpr().struct;
     }
     
+    public void visit(FactorOptionalParams factor) {
+    	factor.struct = factor.getDesignator().obj.getType();
+    }
     
     
     /********** IMPORTANT ***********

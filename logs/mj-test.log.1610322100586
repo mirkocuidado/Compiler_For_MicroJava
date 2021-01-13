@@ -1,0 +1,188 @@
+INFO  00:28:58,712 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:28:58,776 - #2 program
+INFO  00:28:58,776 - #48 MJProgram
+INFO  00:28:58,776 - #48 int
+INFO  00:28:58,777 - #48 a
+INFO  00:28:58,778 - #36 ,
+INFO  00:28:58,778 - #48 b
+INFO  00:28:58,778 - #36 ,
+INFO  00:28:58,778 - #48 c
+INFO  00:28:58,779 - #36 ,
+INFO  00:28:58,779 - #48 d
+INFO  00:28:58,779 - #38 ;
+INFO  00:28:58,779 - #40 {
+INFO  00:28:58,779 - #5 void
+INFO  00:28:58,781 - #48 main
+INFO  00:28:58,781 - #42 (
+INFO  00:28:58,781 - #43 )
+INFO  00:28:58,782 - #48 int
+INFO  00:28:58,782 - #48 x
+INFO  00:28:58,782 - #36 ,
+INFO  00:28:58,782 - #48 y
+INFO  00:28:58,782 - #38 ;
+INFO  00:28:58,790 - #48 char
+INFO  00:28:58,790 - #48 z
+INFO  00:28:58,790 - #38 ;
+INFO  00:28:58,790 - #48 bool
+INFO  00:28:58,790 - #48 p
+INFO  00:28:58,790 - #38 ;
+INFO  00:28:58,790 - #40 {
+INFO  00:28:58,790 - #18 print
+INFO  00:28:58,792 - #42 (
+INFO  00:28:58,792 - #47 2
+INFO  00:28:58,792 - #43 )
+INFO  00:28:58,794 - #38 ;
+INFO  00:28:58,794 - #46 return
+INFO  00:28:58,795 - #38 ;
+INFO  00:28:58,795 - #41 }
+INFO  00:28:58,795 - #41 }
+INFO  00:28:58,803 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    NoGroupDecl(
+    ) [NoGroupDecl]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListClass(
+          VarListClass(
+            VarListClass(
+              VarListSingle(
+                VarClassNoArray(
+                 a
+                ) [VarClassNoArray]
+              ) [VarListSingle]
+              VarClassNoArray(
+               b
+              ) [VarClassNoArray]
+            ) [VarListClass]
+            VarClassNoArray(
+             c
+            ) [VarClassNoArray]
+          ) [VarListClass]
+          VarClassNoArray(
+           d
+          ) [VarClassNoArray]
+        ) [VarListClass]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  ProgramLBraceClass(
+  ) [ProgramLBraceClass]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        VarDeclListClass(
+          VarDeclListClass(
+            NoVarDeclList(
+            ) [NoVarDeclList]
+            VarDeclClass(
+              Type(
+               int
+              ) [Type]
+              VarListClass(
+                VarListSingle(
+                  VarClassNoArray(
+                   x
+                  ) [VarClassNoArray]
+                ) [VarListSingle]
+                VarClassNoArray(
+                 y
+                ) [VarClassNoArray]
+              ) [VarListClass]
+            ) [VarDeclClass]
+          ) [VarDeclListClass]
+          VarDeclClass(
+            Type(
+             char
+            ) [Type]
+            VarListSingle(
+              VarClassNoArray(
+               z
+              ) [VarClassNoArray]
+            ) [VarListSingle]
+          ) [VarDeclClass]
+        ) [VarDeclListClass]
+        VarDeclClass(
+          Type(
+           bool
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             p
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          PrintStmt(
+            ClassOneClass(
+              NormalExpressionClass(
+                ExprFirstOptionClassWithMinus(
+                  TermClass(
+                    NumberConst(
+                     2
+                    ) [NumberConst]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprFirstOptionClassWithMinus]
+              ) [NormalExpressionClass]
+            ) [ClassOneClass]
+            NoCommaNumberClass(
+            ) [NoCommaNumberClass]
+          ) [PrintStmt]
+        ) [Statements]
+        ReturnNoExpr(
+        ) [ReturnNoExpr]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:28:58,803 - ===================================
+INFO  00:28:58,807 - PROGRAM NAME DETECTED => MJProgram ON LINE 1
+INFO  00:28:58,807 - VARIABLE a IS BEING DEFINED! ON LINE 2
+INFO  00:28:58,807 - VARIABLE b IS BEING DEFINED! ON LINE 2
+INFO  00:28:58,807 - VARIABLE c IS BEING DEFINED! ON LINE 2
+INFO  00:28:58,807 - VARIABLE d IS BEING DEFINED! ON LINE 2
+INFO  00:28:58,807 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 2
+INFO  00:28:58,807 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 5
+INFO  00:28:58,807 - VARIABLE x IS BEING DEFINED! ON LINE 6
+INFO  00:28:58,807 - VARIABLE y IS BEING DEFINED! ON LINE 6
+INFO  00:28:58,808 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 6
+INFO  00:28:58,808 - VARIABLE z IS BEING DEFINED! ON LINE 7
+INFO  00:28:58,808 - VARIABLES OF TYPE char HAVE BEEN DEFINED! ON LINE 7
+INFO  00:28:58,808 - VARIABLE p IS BEING DEFINED! ON LINE 8
+INFO  00:28:58,808 - VARIABLES OF TYPE bool HAVE BEEN DEFINED! ON LINE 8
+INFO  00:28:58,808 - METHOD BODY STARTING!
+INFO  00:28:58,808 - CONST NUMBER 2 ON LINE 11
+INFO  00:28:58,808 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 11
+INFO  00:28:58,808 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 11
+INFO  00:28:58,808 - PRINT FUNCTION CALL IN USE! ON LINE 11
+INFO  00:28:58,809 - return; AND THE FUNCTION IS VOID!
+INFO  00:28:58,809 - METHOD BODY ENDING!
+INFO  00:28:58,809 - END OF DEFINING FUNCTION main
+INFO  00:28:58,809 - PROGRAM ENDED => MJProgram ON LINE 1
+INFO  00:28:58,809 -  Deklarisanih promenljivih ima = 8
+INFO  00:28:58,809 - ===================================
+INFO  00:28:58,813 - Parsiranje uspesno zavrseno!

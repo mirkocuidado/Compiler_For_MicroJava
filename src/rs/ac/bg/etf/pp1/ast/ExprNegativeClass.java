@@ -1,17 +1,27 @@
 // generated with ast extension for cup
 // version 0.8
-// 9/0/2021 20:28:31
+// 12/0/2021 16:21:32
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ExprNegativeClass extends ExprNegative {
 
+    private String M1;
     private ExprPositive ExprPositive;
 
-    public ExprNegativeClass (ExprPositive ExprPositive) {
+    public ExprNegativeClass (String M1, ExprPositive ExprPositive) {
+        this.M1=M1;
         this.ExprPositive=ExprPositive;
         if(ExprPositive!=null) ExprPositive.setParent(this);
+    }
+
+    public String getM1() {
+        return M1;
+    }
+
+    public void setM1(String M1) {
+        this.M1=M1;
     }
 
     public ExprPositive getExprPositive() {
@@ -44,6 +54,9 @@ public class ExprNegativeClass extends ExprNegative {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("ExprNegativeClass(\n");
+
+        buffer.append(" "+tab+M1);
+        buffer.append("\n");
 
         if(ExprPositive!=null)
             buffer.append(ExprPositive.toString("  "+tab));

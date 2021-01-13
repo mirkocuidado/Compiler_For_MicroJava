@@ -53,7 +53,7 @@ terminal DO, WHILE;
 terminal IF, ELSE;
 terminal NEW;
 terminal READ, PRINT;
-terminal PLUS, MINUS, MUL, DIV, MOD, EQUAL;
+terminal EQUAL;
 terminal EQUAL_COMPARATION, NOT_EQUAL_COMPARATION;
 terminal GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL;
 terminal AND, OR;
@@ -69,6 +69,7 @@ terminal Integer NUMBER;
 terminal String IDENT;
 terminal Character CHAR;
 terminal String BOOLEAN;
+terminal String MUL, DIV, MOD, PLUS, MINUS;
 
 nonterminal GroupDeclList GroupDeclList;
 nonterminal MethodDeclList MethodDeclList;
@@ -108,10 +109,13 @@ nonterminal LSquareKeyWord LSquareKeyWord;
 nonterminal AssignOpKeyWord AssignOpKeyWord;
 nonterminal LBraceKeyWord LBraceKeyWord;
 nonterminal RBraceKeyWord RBraceKeyWord;
+nonterminal Helper Helper;
+nonterminal LParenFactor LParenFactor;
+nonterminal FlagSet FlagSet;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgramName, MethodDecl, ReturnValue;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, Program, ProgramName, MethodDecl, ReturnValue, DesigIdent;
 	
 	
 	
@@ -121,7 +125,7 @@ nonterminal rs.etf.pp1.symboltable.concepts.Struct FactorOptional, FactorOptiona
 												   
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Condition, ConditionOptional, CondTerm, CondFact, CondTermOptional, CondFactOptional;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Designator, OptionalDesignator, DesignatorStatementOptions, DesignatorStatement;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct OptionalDesignator, DesignatorStatement;
 
 precedence left ELSE;
 
@@ -291,13 +295,13 @@ FormalParamDecl ::= (FormalParamDeclClassNoArray) Type:formalParamType IDENT:for
 /********** DESIGNATORS **********/
 
 
+DesigIdent ::= (DesigIdent) IDENT:name {: RESULT=new DesigIdent(name); RESULT.setLine(nameleft); :};
 
-
-Designator ::= (Designator) IDENT:name OptionalDesignator:O1 {: RESULT=new Designator(name, O1); RESULT.setLine(nameleft); :};
+Designator ::= (Designator) DesigIdent:D1 OptionalDesignator:O2 {: RESULT=new Designator(D1, O2); RESULT.setLine(D1left); :};
 
 OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator:O1 DOT IDENT:name {: RESULT=new OptionalDesignatorClass(O1, name); RESULT.setLine(O1left); :}
 					|
-					(OptionalDesignatorArray) OptionalDesignator:O1 LSquareKeyWord:L2 Expr:E3 RSQUARE_BRACKET {: RESULT=new OptionalDesignatorArray(O1, L2, E3); RESULT.setLine(O1left); :}
+					(OptionalDesignatorArray) Helper:H1 LSquareKeyWord:L2 Expr:E3 RSQUARE_BRACKET {: RESULT=new OptionalDesignatorArray(H1, L2, E3); RESULT.setLine(H1left); :}
 					|
 					(NoOptionalDesignatorClass) {: RESULT=new NoOptionalDesignatorClass(); :} /* epsilon */
 					;
@@ -309,18 +313,16 @@ LSquareKeyWord ::= (LSquareClass) LSQUARE_BRACKET {: RESULT=new LSquareClass(); 
 
 /********** DESIGNATOR STATEMENTS **********/
 
+Helper::=(HelperClass) {: RESULT=new HelperClass(); :} ;
 
-
-DesignatorStatement ::= (DesignatorStatementClass) Designator:designatorName DesignatorStatementOptions:D1 {: RESULT=new DesignatorStatementClass(designatorName, D1); RESULT.setLine(designatorNameleft); :};
-
-DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOpKeyWord:A1 Expr:E2 {: RESULT=new DesignatorStatementOptionsClassAssignExpression(A1, E2); RESULT.setLine(A1left); :}
-							|
-							(DesignatorStatementActualParameters) LPAREN ActualPars:A1  RPAREN {: RESULT=new DesignatorStatementActualParameters(A1); RESULT.setLine(A1left); :}
-							|
-							(DesignatorStatementPlusPlus) PLUS_PLUS {: RESULT=new DesignatorStatementPlusPlus(); :}
-							|
-							(DesignatorStatementMinusMinus) MINUS_MINUS {: RESULT=new DesignatorStatementMinusMinus(); :}
-							; 
+DesignatorStatement ::= (DesignatorStatementOptionsClassAssignExpression) Designator:designatorName AssignOpKeyWord:A1 Expr:E2 {: RESULT=new DesignatorStatementOptionsClassAssignExpression(designatorName, A1, E2); RESULT.setLine(designatorNameleft); :}
+						|
+						(DesignatorStatementActualParameters) Designator:designatorName LPAREN ActualPars:A1  RPAREN {: RESULT=new DesignatorStatementActualParameters(designatorName, A1); RESULT.setLine(designatorNameleft); :}
+						|
+						(DesignatorStatementPlusPlus) Designator:designatorName PLUS_PLUS {: RESULT=new DesignatorStatementPlusPlus(designatorName); RESULT.setLine(designatorNameleft); :}
+						|
+						(DesignatorStatementMinusMinus) Designator:designatorName MINUS_MINUS {: RESULT=new DesignatorStatementMinusMinus(designatorName); RESULT.setLine(designatorNameleft); :}
+						; 
 
 AssignOpKeyWord ::= (AssignOpClass) AssignOp:A1 {: RESULT=new AssignOpClass(A1); RESULT.setLine(A1left); :};
 
@@ -458,7 +460,7 @@ CondFactOptional ::= (CondFactOptionalClass) RelOp:R1 ExprOne:E2 {: RESULT=new C
 
 
 		
-ExprNegative ::= (ExprNegativeClass) MINUS ExprPositive:E1 {: RESULT=new ExprNegativeClass(E1); RESULT.setLine(E1left); :};
+ExprNegative ::= (ExprNegativeClass) MINUS:M1 ExprPositive:E2 {: RESULT=new ExprNegativeClass(M1, E2); RESULT.setLine(M1left); :};
 
 ExprPositive ::= (ExprFirstOptionClassWithMinus) Term:T1 ExprOptionalList:E2 {: RESULT=new ExprFirstOptionClassWithMinus(T1, E2); RESULT.setLine(T1left); :};
 
@@ -501,7 +503,9 @@ TermOptionalList ::= (TermOptionalListClass) TermOptionalList:T1 MulOp:M2 Factor
 			
 				
 				
-Factor ::= 	(DesignatorClass) Designator:D1 FactorOptional:F2 {: RESULT=new DesignatorClass(D1, F2); RESULT.setLine(D1left); :}
+Factor ::= 	(DesignatorClass) Designator:D1 {: RESULT=new DesignatorClass(D1); RESULT.setLine(D1left); :}
+			|
+			(FactorOptionalParams) Designator:D1 LPAREN ActualPars:A2 RPAREN {: RESULT=new FactorOptionalParams(D1, A2); RESULT.setLine(D1left); :}
 			|
 			(NumberConst) NUMBER:val {: RESULT=new NumberConst(val); RESULT.setLine(valleft); :}
 			|
@@ -514,10 +518,7 @@ Factor ::= 	(DesignatorClass) Designator:D1 FactorOptional:F2 {: RESULT=new Desi
 			(ParenFactorClass) LPAREN Expr:E1 RPAREN {: RESULT=new ParenFactorClass(E1); RESULT.setLine(E1left); :}
 			;
 
-FactorOptional ::= (FactorOptionalParams) LPAREN ActualPars:A1 RPAREN {: RESULT=new FactorOptionalParams(A1); RESULT.setLine(A1left); :}
-				|
-				(NoFactorOptional) {: RESULT=new NoFactorOptional(); :} /* epsilon */
-				;
+LParenFactor ::= (LParenFactorClass) LPAREN {: RESULT=new LParenFactorClass(); :};
 
 FactorOptionalSecond ::= (FactorOptionalSecondClass) LSQUARE_BRACKET Expr:E1 RSQUARE_BRACKET {: RESULT=new FactorOptionalSecondClass(E1); RESULT.setLine(E1left); :}
 				|
@@ -532,9 +533,9 @@ FactorOptionalSecond ::= (FactorOptionalSecondClass) LSQUARE_BRACKET Expr:E1 RSQ
 
 
 
-AddOp ::= (PlusOperation) PLUS {: RESULT=new PlusOperation(); :}
+AddOp ::= (PlusOperation) PLUS:P1 {: RESULT=new PlusOperation(P1); RESULT.setLine(P1left); :}
 		|
-		(MinusOperation) MINUS {: RESULT=new MinusOperation(); :}
+		(MinusOperation) MINUS:M1 {: RESULT=new MinusOperation(M1); RESULT.setLine(M1left); :}
 		;
 		
 AssignOp ::= (AssignOperationClass) EQUAL {: RESULT=new AssignOperationClass(); :};
@@ -552,9 +553,9 @@ RelOp ::= (RelationOperationClassEqualComparation) EQUAL_COMPARATION {: RESULT=n
 		(LessOrEqualOperationClass) LESS_OR_EQUAL {: RESULT=new LessOrEqualOperationClass(); :}
 		;
 
-MulOp ::= (MultiplyOperationClass) MUL {: RESULT=new MultiplyOperationClass(); :}
+MulOp ::= (MultiplyOperationClass) MUL:val {: RESULT=new MultiplyOperationClass(val); RESULT.setLine(valleft); :}
 		|
-		(DivideOperationClass) DIV {: RESULT=new DivideOperationClass(); :}
+		(DivideOperationClass) DIV:val {: RESULT=new DivideOperationClass(val); RESULT.setLine(valleft); :}
 		|
-		(ModOperationClass) MOD {: RESULT=new ModOperationClass(); :}
+		(ModOperationClass) MOD:val {: RESULT=new ModOperationClass(val); RESULT.setLine(valleft); :}
 		;

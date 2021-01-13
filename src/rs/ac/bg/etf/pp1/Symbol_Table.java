@@ -109,6 +109,9 @@ public class Symbol_Table extends Tab {
 				return newObj;
 		}
 
+		public static void remove(String o) {
+			currentScope.getLocals().deleteKey(o);
+		}
 		/**
 		 * U hes tabeli opsega trazi Obj cvor sa imenom name, pocevsi od
 		 * najugnezdenijeg opsega, pa redom kroz opsege na nizim nivoima. Povratna

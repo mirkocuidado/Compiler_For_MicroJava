@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 9/0/2021 20:28:31
+// 12/0/2021 16:21:32
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -12,7 +12,7 @@ public interface Visitor {
     public void visit(GroupDeclList GroupDeclList);
     public void visit(Matched Matched);
     public void visit(TermOptionalList TermOptionalList);
-    public void visit(DesignatorStatementOptions DesignatorStatementOptions);
+    public void visit(LParenFactor LParenFactor);
     public void visit(ExprOne ExprOne);
     public void visit(FormalParamDecl FormalParamDecl);
     public void visit(ConditionOptional ConditionOptional);
@@ -48,6 +48,7 @@ public interface Visitor {
     public void visit(CondTermOptional CondTermOptional);
     public void visit(AddOp AddOp);
     public void visit(DesignatorStatement DesignatorStatement);
+    public void visit(Helper Helper);
     public void visit(ActualPars ActualPars);
     public void visit(PrintCommaNumber PrintCommaNumber);
     public void visit(BreakKeyWord BreakKeyWord);
@@ -55,6 +56,7 @@ public interface Visitor {
     public void visit(Statement Statement);
     public void visit(VarDecl VarDecl);
     public void visit(RBraceKeyWord RBraceKeyWord);
+    public void visit(FlagSet FlagSet);
     public void visit(AssignOpKeyWord AssignOpKeyWord);
     public void visit(ClassDecl ClassDecl);
     public void visit(ConstDecl ConstDecl);
@@ -79,13 +81,13 @@ public interface Visitor {
     public void visit(PlusOperation PlusOperation);
     public void visit(NoFactorOptionalSecondClass NoFactorOptionalSecondClass);
     public void visit(FactorOptionalSecondClass FactorOptionalSecondClass);
-    public void visit(NoFactorOptional NoFactorOptional);
-    public void visit(FactorOptionalParams FactorOptionalParams);
+    public void visit(LParenFactorClass LParenFactorClass);
     public void visit(ParenFactorClass ParenFactorClass);
     public void visit(NewFactorClass NewFactorClass);
     public void visit(BooleanClassConstFactor BooleanClassConstFactor);
     public void visit(CharConst CharConst);
     public void visit(NumberConst NumberConst);
+    public void visit(FactorOptionalParams FactorOptionalParams);
     public void visit(DesignatorClass DesignatorClass);
     public void visit(NoTermOptionalListClass NoTermOptionalListClass);
     public void visit(TermOptionalListClass TermOptionalListClass);
@@ -142,12 +144,13 @@ public interface Visitor {
     public void visit(DesignatorStatementPlusPlus DesignatorStatementPlusPlus);
     public void visit(DesignatorStatementActualParameters DesignatorStatementActualParameters);
     public void visit(DesignatorStatementOptionsClassAssignExpression DesignatorStatementOptionsClassAssignExpression);
-    public void visit(DesignatorStatementClass DesignatorStatementClass);
+    public void visit(HelperClass HelperClass);
     public void visit(LSquareClass LSquareClass);
     public void visit(NoOptionalDesignatorClass NoOptionalDesignatorClass);
     public void visit(OptionalDesignatorArray OptionalDesignatorArray);
     public void visit(OptionalDesignatorClass OptionalDesignatorClass);
     public void visit(Designator Designator);
+    public void visit(DesigIdent DesigIdent);
     public void visit(FormParYesError FormParYesError);
     public void visit(FormalParamDeclClassArray FormalParamDeclClassArray);
     public void visit(FormalParamDeclClassNoArray FormalParamDeclClassNoArray);

@@ -1,13 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 9/0/2021 20:28:31
+// 12/0/2021 16:21:32
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class MultiplyOperationClass extends MulOp {
 
-    public MultiplyOperationClass () {
+    private String val;
+
+    public MultiplyOperationClass (String val) {
+        this.val=val;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val=val;
     }
 
     public void accept(Visitor visitor) {
@@ -29,6 +40,9 @@ public class MultiplyOperationClass extends MulOp {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("MultiplyOperationClass(\n");
+
+        buffer.append(" "+tab+val);
+        buffer.append("\n");
 
         buffer.append(tab);
         buffer.append(") [MultiplyOperationClass]");

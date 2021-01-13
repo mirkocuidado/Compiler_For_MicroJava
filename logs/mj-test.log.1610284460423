@@ -1,0 +1,109 @@
+INFO  14:02:31,023 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  14:02:31,082 - #2 program
+INFO  14:02:31,082 - #48 MJProgram
+INFO  14:02:31,082 - #40 {
+INFO  14:02:31,084 - #5 void
+INFO  14:02:31,085 - #48 main
+INFO  14:02:31,085 - #42 (
+INFO  14:02:31,086 - #43 )
+INFO  14:02:31,086 - #40 {
+INFO  14:02:31,087 - #18 print
+INFO  14:02:31,089 - #42 (
+INFO  14:02:31,089 - #47 2
+INFO  14:02:31,089 - #43 )
+INFO  14:02:31,091 - #38 ;
+INFO  14:02:31,091 - #18 print
+INFO  14:02:31,091 - #42 (
+INFO  14:02:31,091 - #47 5
+INFO  14:02:31,091 - #43 )
+INFO  14:02:31,091 - #38 ;
+INFO  14:02:31,092 - #41 }
+INFO  14:02:31,092 - #41 }
+INFO  14:02:31,099 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  ProgramLBraceClass(
+  ) [ProgramLBraceClass]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          PrintStmt(
+            ClassOneClass(
+              NormalExpressionClass(
+                ExprFirstOptionClassWithMinus(
+                  TermClass(
+                    NumberConst(
+                     2
+                    ) [NumberConst]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprFirstOptionClassWithMinus]
+              ) [NormalExpressionClass]
+            ) [ClassOneClass]
+            NoCommaNumberClass(
+            ) [NoCommaNumberClass]
+          ) [PrintStmt]
+        ) [Statements]
+        PrintStmt(
+          ClassOneClass(
+            NormalExpressionClass(
+              ExprFirstOptionClassWithMinus(
+                TermClass(
+                  NumberConst(
+                   5
+                  ) [NumberConst]
+                  NoTermOptionalListClass(
+                  ) [NoTermOptionalListClass]
+                ) [TermClass]
+                NoExprOptionalListClass(
+                ) [NoExprOptionalListClass]
+              ) [ExprFirstOptionClassWithMinus]
+            ) [NormalExpressionClass]
+          ) [ClassOneClass]
+          NoCommaNumberClass(
+          ) [NoCommaNumberClass]
+        ) [PrintStmt]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  14:02:31,100 - ===================================
+INFO  14:02:31,104 - PROGRAM NAME DETECTED => MJProgram ON LINE 1
+INFO  14:02:31,104 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 4
+INFO  14:02:31,104 - METHOD BODY STARTING!
+INFO  14:02:31,104 - CONST NUMBER 2 ON LINE 5
+INFO  14:02:31,104 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 5
+INFO  14:02:31,104 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 5
+INFO  14:02:31,104 - PRINT FUNCTION CALL IN USE! ON LINE 5
+INFO  14:02:31,104 - CONST NUMBER 5 ON LINE 7
+INFO  14:02:31,104 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 7
+INFO  14:02:31,104 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 7
+INFO  14:02:31,104 - PRINT FUNCTION CALL IN USE! ON LINE 7
+INFO  14:02:31,105 - METHOD BODY ENDING!
+INFO  14:02:31,105 - END OF DEFINING FUNCTION main
+INFO  14:02:31,105 - PROGRAM ENDED => MJProgram ON LINE 1
+INFO  14:02:31,105 -  Deklarisanih promenljivih ima = 0
+INFO  14:02:31,105 - ===================================
+INFO  14:02:31,108 - Parsiranje uspesno zavrseno!

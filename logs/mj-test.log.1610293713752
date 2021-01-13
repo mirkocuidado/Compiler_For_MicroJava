@@ -1,0 +1,86 @@
+INFO  16:47:18,981 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  16:47:19,044 - #2 program
+INFO  16:47:19,044 - #48 MJProgram
+INFO  16:47:19,044 - #40 {
+INFO  16:47:19,046 - #5 void
+INFO  16:47:19,048 - #48 main
+INFO  16:47:19,048 - #42 (
+INFO  16:47:19,048 - #43 )
+INFO  16:47:19,049 - #40 {
+INFO  16:47:19,050 - #18 print
+INFO  16:47:19,051 - #42 (
+INFO  16:47:19,051 - #47 2
+INFO  16:47:19,051 - #43 )
+INFO  16:47:19,054 - #38 ;
+INFO  16:47:19,054 - #46 return
+INFO  16:47:19,054 - #38 ;
+INFO  16:47:19,054 - #41 }
+INFO  16:47:19,055 - #41 }
+INFO  16:47:19,063 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  ProgramLBraceClass(
+  ) [ProgramLBraceClass]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          PrintStmt(
+            ClassOneClass(
+              NormalExpressionClass(
+                ExprFirstOptionClassWithMinus(
+                  TermClass(
+                    NumberConst(
+                     2
+                    ) [NumberConst]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprFirstOptionClassWithMinus]
+              ) [NormalExpressionClass]
+            ) [ClassOneClass]
+            NoCommaNumberClass(
+            ) [NoCommaNumberClass]
+          ) [PrintStmt]
+        ) [Statements]
+        ReturnNoExpr(
+        ) [ReturnNoExpr]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  16:47:19,064 - ===================================
+INFO  16:47:19,067 - PROGRAM NAME DETECTED => MJProgram ON LINE 1
+INFO  16:47:19,067 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 3
+INFO  16:47:19,068 - METHOD BODY STARTING!
+INFO  16:47:19,068 - CONST NUMBER 2 ON LINE 6
+INFO  16:47:19,068 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 6
+INFO  16:47:19,068 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 6
+INFO  16:47:19,068 - PRINT FUNCTION CALL IN USE! ON LINE 6
+INFO  16:47:19,068 - return; AND THE FUNCTION IS VOID!
+INFO  16:47:19,068 - METHOD BODY ENDING!
+INFO  16:47:19,068 - END OF DEFINING FUNCTION main
+INFO  16:47:19,068 - PROGRAM ENDED => MJProgram ON LINE 1
+INFO  16:47:19,068 -  Deklarisanih promenljivih ima = 0
+INFO  16:47:19,068 - ===================================
+INFO  16:47:19,072 - Parsiranje uspesno zavrseno!

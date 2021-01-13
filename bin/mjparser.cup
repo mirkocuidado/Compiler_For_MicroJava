@@ -53,7 +53,7 @@ terminal DO, WHILE;
 terminal IF, ELSE;
 terminal NEW;
 terminal READ, PRINT;
-terminal PLUS, MINUS, MUL, DIV, MOD, EQUAL;
+terminal EQUAL;
 terminal EQUAL_COMPARATION, NOT_EQUAL_COMPARATION;
 terminal GREATER, LESS, GREATER_OR_EQUAL, LESS_OR_EQUAL;
 terminal AND, OR;
@@ -69,6 +69,7 @@ terminal Integer NUMBER;
 terminal String IDENT;
 terminal Character CHAR;
 terminal String BOOLEAN;
+terminal String MUL, DIV, MOD, PLUS, MINUS;
 
 nonterminal GroupDeclList, MethodDeclList;
 nonterminal GroupDecl;
@@ -89,11 +90,11 @@ nonterminal ActualParamList;
 nonterminal RelOp;
 nonterminal MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
-nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord, AssignOpKeyWord, LBraceKeyWord, RBraceKeyWord;
+nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord, AssignOpKeyWord, LBraceKeyWord, RBraceKeyWord, Helper, LParenFactor, FlagSet;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
-nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgramName, MethodDecl, ReturnValue;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, Program, ProgramName, MethodDecl, ReturnValue, DesigIdent;
 	
 	
 	
@@ -103,7 +104,7 @@ nonterminal rs.etf.pp1.symboltable.concepts.Struct FactorOptional, FactorOptiona
 												   
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Condition, ConditionOptional, CondTerm, CondFact, CondTermOptional, CondFactOptional;
 
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Designator, OptionalDesignator, DesignatorStatementOptions, DesignatorStatement;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct OptionalDesignator, DesignatorStatement;
 
 precedence left ELSE;
 
@@ -273,13 +274,13 @@ FormalParamDecl ::= (FormalParamDeclClassNoArray) Type:formalParamType IDENT:for
 /********** DESIGNATORS **********/
 
 
+DesigIdent ::= (DesigIdent) IDENT:name;
 
-
-Designator ::= (Designator) IDENT:name OptionalDesignator;
+Designator ::= (Designator) DesigIdent OptionalDesignator;
 
 OptionalDesignator ::= (OptionalDesignatorClass) OptionalDesignator DOT IDENT:name
 					|
-					(OptionalDesignatorArray) OptionalDesignator LSquareKeyWord Expr RSQUARE_BRACKET
+					(OptionalDesignatorArray) Helper LSquareKeyWord Expr RSQUARE_BRACKET
 					|
 					(NoOptionalDesignatorClass) /* epsilon */
 					;
@@ -291,18 +292,16 @@ LSquareKeyWord ::= (LSquareClass) LSQUARE_BRACKET;
 
 /********** DESIGNATOR STATEMENTS **********/
 
+Helper::=(HelperClass) ;
 
-
-DesignatorStatement ::= (DesignatorStatementClass) Designator:designatorName DesignatorStatementOptions;
-
-DesignatorStatementOptions ::= (DesignatorStatementOptionsClassAssignExpression) AssignOpKeyWord Expr
-							|
-							(DesignatorStatementActualParameters) LPAREN ActualPars  RPAREN
-							|
-							(DesignatorStatementPlusPlus) PLUS_PLUS
-							|
-							(DesignatorStatementMinusMinus) MINUS_MINUS
-							; 
+DesignatorStatement ::= (DesignatorStatementOptionsClassAssignExpression) Designator:designatorName AssignOpKeyWord Expr
+						|
+						(DesignatorStatementActualParameters) Designator:designatorName LPAREN ActualPars  RPAREN
+						|
+						(DesignatorStatementPlusPlus) Designator:designatorName PLUS_PLUS
+						|
+						(DesignatorStatementMinusMinus) Designator:designatorName MINUS_MINUS
+						; 
 
 AssignOpKeyWord ::= (AssignOpClass) AssignOp;
 
@@ -483,7 +482,9 @@ TermOptionalList ::= (TermOptionalListClass) TermOptionalList MulOp Factor
 			
 				
 				
-Factor ::= 	(DesignatorClass) Designator FactorOptional
+Factor ::= 	(DesignatorClass) Designator
+			|
+			(FactorOptionalParams) Designator LPAREN ActualPars RPAREN
 			|
 			(NumberConst) NUMBER:val
 			|
@@ -496,10 +497,7 @@ Factor ::= 	(DesignatorClass) Designator FactorOptional
 			(ParenFactorClass) LPAREN Expr RPAREN
 			;
 
-FactorOptional ::= (FactorOptionalParams) LPAREN ActualPars RPAREN
-				|
-				(NoFactorOptional) /* epsilon */
-				;
+LParenFactor ::= (LParenFactorClass) LPAREN;
 
 FactorOptionalSecond ::= (FactorOptionalSecondClass) LSQUARE_BRACKET Expr RSQUARE_BRACKET
 				|
@@ -534,9 +532,9 @@ RelOp ::= (RelationOperationClassEqualComparation) EQUAL_COMPARATION
 		(LessOrEqualOperationClass) LESS_OR_EQUAL
 		;
 
-MulOp ::= (MultiplyOperationClass) MUL
+MulOp ::= (MultiplyOperationClass) MUL:val
 		|
-		(DivideOperationClass) DIV
+		(DivideOperationClass) DIV:val
 		|
-		(ModOperationClass) MOD
+		(ModOperationClass) MOD:val
 		;

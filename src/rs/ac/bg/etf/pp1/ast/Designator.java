@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 9/0/2021 20:28:31
+// 12/0/2021 16:21:31
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,23 +9,24 @@ public class Designator implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    public rs.etf.pp1.symboltable.concepts.Struct struct = null;
+    public rs.etf.pp1.symboltable.concepts.Obj obj = null;
 
-    private String name;
+    private DesigIdent DesigIdent;
     private OptionalDesignator OptionalDesignator;
 
-    public Designator (String name, OptionalDesignator OptionalDesignator) {
-        this.name=name;
+    public Designator (DesigIdent DesigIdent, OptionalDesignator OptionalDesignator) {
+        this.DesigIdent=DesigIdent;
+        if(DesigIdent!=null) DesigIdent.setParent(this);
         this.OptionalDesignator=OptionalDesignator;
         if(OptionalDesignator!=null) OptionalDesignator.setParent(this);
     }
 
-    public String getName() {
-        return name;
+    public DesigIdent getDesigIdent() {
+        return DesigIdent;
     }
 
-    public void setName(String name) {
-        this.name=name;
+    public void setDesigIdent(DesigIdent DesigIdent) {
+        this.DesigIdent=DesigIdent;
     }
 
     public OptionalDesignator getOptionalDesignator() {
@@ -57,15 +58,18 @@ public class Designator implements SyntaxNode {
     }
 
     public void childrenAccept(Visitor visitor) {
+        if(DesigIdent!=null) DesigIdent.accept(visitor);
         if(OptionalDesignator!=null) OptionalDesignator.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
+        if(DesigIdent!=null) DesigIdent.traverseTopDown(visitor);
         if(OptionalDesignator!=null) OptionalDesignator.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
+        if(DesigIdent!=null) DesigIdent.traverseBottomUp(visitor);
         if(OptionalDesignator!=null) OptionalDesignator.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -75,7 +79,10 @@ public class Designator implements SyntaxNode {
         buffer.append(tab);
         buffer.append("Designator(\n");
 
-        buffer.append(" "+tab+name);
+        if(DesigIdent!=null)
+            buffer.append(DesigIdent.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
         buffer.append("\n");
 
         if(OptionalDesignator!=null)

@@ -1,13 +1,24 @@
 // generated with ast extension for cup
 // version 0.8
-// 9/0/2021 20:28:31
+// 12/0/2021 16:21:32
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class ModOperationClass extends MulOp {
 
-    public ModOperationClass () {
+    private String val;
+
+    public ModOperationClass (String val) {
+        this.val=val;
+    }
+
+    public String getVal() {
+        return val;
+    }
+
+    public void setVal(String val) {
+        this.val=val;
     }
 
     public void accept(Visitor visitor) {
@@ -29,6 +40,9 @@ public class ModOperationClass extends MulOp {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("ModOperationClass(\n");
+
+        buffer.append(" "+tab+val);
+        buffer.append("\n");
 
         buffer.append(tab);
         buffer.append(") [ModOperationClass]");

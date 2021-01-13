@@ -1,0 +1,227 @@
+INFO  01:49:44,855 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  01:49:44,933 - #2 program
+INFO  01:49:44,933 - #48 MJProgram
+INFO  01:49:44,933 - #40 {
+INFO  01:49:44,935 - #48 int
+INFO  01:49:44,936 - #48 k
+INFO  01:49:44,936 - #42 (
+INFO  01:49:44,937 - #43 )
+INFO  01:49:44,937 - #40 {
+INFO  01:49:44,938 - #46 return
+INFO  01:49:44,941 - #47 22
+INFO  01:49:44,942 - #38 ;
+INFO  01:49:44,944 - #41 }
+INFO  01:49:44,944 - #5 void
+INFO  01:49:44,946 - #48 main
+INFO  01:49:44,946 - #42 (
+INFO  01:49:44,946 - #43 )
+INFO  01:49:44,946 - #48 int
+INFO  01:49:44,946 - #48 x
+INFO  01:49:44,946 - #38 ;
+INFO  01:49:44,947 - #40 {
+INFO  01:49:44,947 - #48 x
+INFO  01:49:44,956 - #24 =
+INFO  01:49:44,958 - #48 k
+INFO  01:49:44,959 - #42 (
+INFO  01:49:44,959 - #43 )
+INFO  01:49:44,960 - #38 ;
+INFO  01:49:44,961 - #18 print
+INFO  01:49:44,961 - #42 (
+INFO  01:49:44,961 - #48 x
+INFO  01:49:44,961 - #43 )
+INFO  01:49:44,962 - #38 ;
+INFO  01:49:44,963 - #46 return
+INFO  01:49:44,963 - #38 ;
+INFO  01:49:44,963 - #41 }
+INFO  01:49:44,964 - #41 }
+INFO  01:49:44,971 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  MethodDeclarations(
+    MethodDeclarations(
+      NoMethodDecl(
+      ) [NoMethodDecl]
+      MethodDecl(
+        ReturnValueClassNoVoid(
+          Type(
+           int
+          ) [Type]
+         k
+        ) [ReturnValueClassNoVoid]
+        NoFormParam(
+        ) [NoFormParam]
+        NoVarDeclList(
+        ) [NoVarDeclList]
+        LBraceClass(
+        ) [LBraceClass]
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          ReturnExpr(
+            ReturnNonTerminalClass(
+            ) [ReturnNonTerminalClass]
+            ClassOneClass(
+              NormalExpressionClass(
+                ExprFirstOptionClassWithMinus(
+                  TermClass(
+                    NumberConst(
+                     22
+                    ) [NumberConst]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprFirstOptionClassWithMinus]
+              ) [NormalExpressionClass]
+            ) [ClassOneClass]
+          ) [ReturnExpr]
+        ) [Statements]
+        RBraceClass(
+        ) [RBraceClass]
+      ) [MethodDecl]
+    ) [MethodDeclarations]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        NoVarDeclList(
+        ) [NoVarDeclList]
+        VarDeclClass(
+          Type(
+           int
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             x
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            Assignment(
+              DesignatorStatementClass(
+                Designator(
+                  HelperClass(
+                  ) [HelperClass]
+                 x
+                  NoOptionalDesignatorClass(
+                  ) [NoOptionalDesignatorClass]
+                ) [Designator]
+                HelperClass(
+                ) [HelperClass]
+                DesignatorStatementOptionsClassAssignExpression(
+                  AssignOpClass(
+                    AssignOperationClass(
+                    ) [AssignOperationClass]
+                  ) [AssignOpClass]
+                  ClassOneClass(
+                    NormalExpressionClass(
+                      ExprFirstOptionClassWithMinus(
+                        TermClass(
+                          DesignatorClass(
+                            Designator(
+                              HelperClass(
+                              ) [HelperClass]
+                             k
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                            ) [Designator]
+                            FactorOptionalParams(
+                              NoActuals(
+                              ) [NoActuals]
+                            ) [FactorOptionalParams]
+                          ) [DesignatorClass]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprFirstOptionClassWithMinus]
+                    ) [NormalExpressionClass]
+                  ) [ClassOneClass]
+                ) [DesignatorStatementOptionsClassAssignExpression]
+              ) [DesignatorStatementClass]
+            ) [Assignment]
+          ) [Statements]
+          PrintStmt(
+            ClassOneClass(
+              NormalExpressionClass(
+                ExprFirstOptionClassWithMinus(
+                  TermClass(
+                    DesignatorClass(
+                      Designator(
+                        HelperClass(
+                        ) [HelperClass]
+                       x
+                        NoOptionalDesignatorClass(
+                        ) [NoOptionalDesignatorClass]
+                      ) [Designator]
+                      NoFactorOptional(
+                      ) [NoFactorOptional]
+                    ) [DesignatorClass]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprFirstOptionClassWithMinus]
+              ) [NormalExpressionClass]
+            ) [ClassOneClass]
+            NoCommaNumberClass(
+            ) [NoCommaNumberClass]
+          ) [PrintStmt]
+        ) [Statements]
+        ReturnNoExpr(
+        ) [ReturnNoExpr]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  01:49:44,972 - ===================================
+INFO  01:49:44,976 - PROGRAM NAME DETECTED => MJProgram ON LINE 1
+INFO  01:49:44,976 - FUNCTION k WITH RETURN VALUE OF TYPE int ON LINE 5
+INFO  01:49:44,977 - METHOD BODY STARTING!
+INFO  01:49:44,977 - CONST NUMBER 22 ON LINE 5
+INFO  01:49:44,977 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 5
+INFO  01:49:44,977 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 5
+INFO  01:49:44,977 - SUCCESSFUL RETURN! TYPES: int AND int ! ON LINE 5
+INFO  01:49:44,977 - METHOD BODY ENDING!
+INFO  01:49:44,977 - END OF DEFINING FUNCTION k
+INFO  01:49:44,977 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 9
+INFO  01:49:44,977 - VARIABLE x IS BEING DEFINED! ON LINE 10
+INFO  01:49:44,977 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 10
+INFO  01:49:44,977 - METHOD BODY STARTING!
+INFO  01:49:44,977 - CURRENT VARIABLE IN USE IS x AND IT IS OF TYPE int
+INFO  01:49:44,977 - BEGINNING OF AN ASSIGNEMENT! ON LINE 17
+INFO  01:49:44,978 - CURRENT VARIABLE IN USE IS k AND IT IS OF TYPE int
+INFO  01:49:44,978 - WE ARE USING A VARIABLE OF TYPE int ON LINE 4
+INFO  01:49:44,978 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 4
+INFO  01:49:44,978 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 4
+INFO  01:49:44,978 - SUCCESSFUL ASSIGNEMENT! TYPES: int AND int ! ON LINE 1
+INFO  01:49:44,978 - CURRENT VARIABLE IN USE IS x AND IT IS OF TYPE int
+INFO  01:49:44,978 - WE ARE USING A VARIABLE OF TYPE int ON LINE 7
+INFO  01:49:44,978 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 7
+INFO  01:49:44,978 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 7
+INFO  01:49:44,978 - PRINT FUNCTION CALL IN USE! ON LINE 7
+INFO  01:49:44,978 - return; AND THE FUNCTION IS VOID!
+INFO  01:49:44,978 - METHOD BODY ENDING!
+INFO  01:49:44,978 - END OF DEFINING FUNCTION main
+INFO  01:49:44,978 - PROGRAM ENDED => MJProgram ON LINE 1
+INFO  01:49:44,979 -  Deklarisanih promenljivih ima = 1
+INFO  01:49:44,979 - ===================================
+INFO  01:49:50,897 - Parsiranje uspesno zavrseno!

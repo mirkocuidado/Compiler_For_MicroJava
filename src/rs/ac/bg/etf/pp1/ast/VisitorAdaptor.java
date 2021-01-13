@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 9/0/2021 20:28:31
+// 12/0/2021 16:21:32
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -12,7 +12,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(GroupDeclList GroupDeclList) { }
     public void visit(Matched Matched) { }
     public void visit(TermOptionalList TermOptionalList) { }
-    public void visit(DesignatorStatementOptions DesignatorStatementOptions) { }
+    public void visit(LParenFactor LParenFactor) { }
     public void visit(ExprOne ExprOne) { }
     public void visit(FormalParamDecl FormalParamDecl) { }
     public void visit(ConditionOptional ConditionOptional) { }
@@ -48,6 +48,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(CondTermOptional CondTermOptional) { }
     public void visit(AddOp AddOp) { }
     public void visit(DesignatorStatement DesignatorStatement) { }
+    public void visit(Helper Helper) { }
     public void visit(ActualPars ActualPars) { }
     public void visit(PrintCommaNumber PrintCommaNumber) { }
     public void visit(BreakKeyWord BreakKeyWord) { }
@@ -55,6 +56,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Statement Statement) { }
     public void visit(VarDecl VarDecl) { }
     public void visit(RBraceKeyWord RBraceKeyWord) { }
+    public void visit(FlagSet FlagSet) { }
     public void visit(AssignOpKeyWord AssignOpKeyWord) { }
     public void visit(ClassDecl ClassDecl) { }
     public void visit(ConstDecl ConstDecl) { }
@@ -79,13 +81,13 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(PlusOperation PlusOperation) { visit(); }
     public void visit(NoFactorOptionalSecondClass NoFactorOptionalSecondClass) { visit(); }
     public void visit(FactorOptionalSecondClass FactorOptionalSecondClass) { visit(); }
-    public void visit(NoFactorOptional NoFactorOptional) { visit(); }
-    public void visit(FactorOptionalParams FactorOptionalParams) { visit(); }
+    public void visit(LParenFactorClass LParenFactorClass) { visit(); }
     public void visit(ParenFactorClass ParenFactorClass) { visit(); }
     public void visit(NewFactorClass NewFactorClass) { visit(); }
     public void visit(BooleanClassConstFactor BooleanClassConstFactor) { visit(); }
     public void visit(CharConst CharConst) { visit(); }
     public void visit(NumberConst NumberConst) { visit(); }
+    public void visit(FactorOptionalParams FactorOptionalParams) { visit(); }
     public void visit(DesignatorClass DesignatorClass) { visit(); }
     public void visit(NoTermOptionalListClass NoTermOptionalListClass) { visit(); }
     public void visit(TermOptionalListClass TermOptionalListClass) { visit(); }
@@ -142,12 +144,13 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorStatementPlusPlus DesignatorStatementPlusPlus) { visit(); }
     public void visit(DesignatorStatementActualParameters DesignatorStatementActualParameters) { visit(); }
     public void visit(DesignatorStatementOptionsClassAssignExpression DesignatorStatementOptionsClassAssignExpression) { visit(); }
-    public void visit(DesignatorStatementClass DesignatorStatementClass) { visit(); }
+    public void visit(HelperClass HelperClass) { visit(); }
     public void visit(LSquareClass LSquareClass) { visit(); }
     public void visit(NoOptionalDesignatorClass NoOptionalDesignatorClass) { visit(); }
     public void visit(OptionalDesignatorArray OptionalDesignatorArray) { visit(); }
     public void visit(OptionalDesignatorClass OptionalDesignatorClass) { visit(); }
     public void visit(Designator Designator) { visit(); }
+    public void visit(DesigIdent DesigIdent) { visit(); }
     public void visit(FormParYesError FormParYesError) { visit(); }
     public void visit(FormalParamDeclClassArray FormalParamDeclClassArray) { visit(); }
     public void visit(FormalParamDeclClassNoArray FormalParamDeclClassNoArray) { visit(); }

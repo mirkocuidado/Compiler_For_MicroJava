@@ -1,0 +1,186 @@
+INFO  13:57:44,256 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  13:57:44,318 - #2 program
+INFO  13:57:44,318 - #48 MJProgram
+INFO  13:57:44,318 - #40 {
+INFO  13:57:44,320 - #5 void
+INFO  13:57:44,322 - #48 main
+INFO  13:57:44,322 - #42 (
+INFO  13:57:44,322 - #48 int
+INFO  13:57:44,322 - #48 a
+INFO  13:57:44,323 - #36 ,
+INFO  13:57:44,324 - #48 int
+INFO  13:57:44,324 - #48 b
+INFO  13:57:44,324 - #44 [
+INFO  13:57:44,324 - #45 ]
+INFO  13:57:44,324 - #36 ,
+INFO  13:57:44,324 - #48 char
+INFO  13:57:44,324 - #48 c
+INFO  13:57:44,325 - #36 ,
+INFO  13:57:44,325 - #48 char
+INFO  13:57:44,325 - #48 d
+INFO  13:57:44,325 - #44 [
+INFO  13:57:44,325 - #45 ]
+INFO  13:57:44,335 - #36 ,
+INFO  13:57:44,335 - #48 bool
+INFO  13:57:44,335 - #48 e
+INFO  13:57:44,335 - #36 ,
+INFO  13:57:44,335 - #48 bool
+INFO  13:57:44,335 - #48 f
+INFO  13:57:44,335 - #44 [
+INFO  13:57:44,335 - #45 ]
+INFO  13:57:44,335 - #43 )
+INFO  13:57:44,335 - #40 {
+INFO  13:57:44,336 - #18 print
+INFO  13:57:44,338 - #42 (
+INFO  13:57:44,338 - #47 2
+INFO  13:57:44,338 - #43 )
+INFO  13:57:44,340 - #38 ;
+INFO  13:57:44,340 - #18 print
+INFO  13:57:44,340 - #42 (
+INFO  13:57:44,340 - #47 5
+INFO  13:57:44,340 - #43 )
+INFO  13:57:44,340 - #38 ;
+INFO  13:57:44,340 - #41 }
+INFO  13:57:44,340 - #41 }
+INFO  13:57:44,348 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  NoGroupDecl(
+  ) [NoGroupDecl]
+  ProgramLBraceClass(
+  ) [ProgramLBraceClass]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      FormParams(
+        FormalParamDecls(
+          FormalParamDecls(
+            FormalParamDecls(
+              FormalParamDecls(
+                FormalParamDecls(
+                  SingleFormalParamDecl(
+                    FormalParamDeclClassNoArray(
+                      Type(
+                       int
+                      ) [Type]
+                     a
+                    ) [FormalParamDeclClassNoArray]
+                  ) [SingleFormalParamDecl]
+                  FormalParamDeclClassArray(
+                    Type(
+                     int
+                    ) [Type]
+                   b
+                  ) [FormalParamDeclClassArray]
+                ) [FormalParamDecls]
+                FormalParamDeclClassNoArray(
+                  Type(
+                   char
+                  ) [Type]
+                 c
+                ) [FormalParamDeclClassNoArray]
+              ) [FormalParamDecls]
+              FormalParamDeclClassArray(
+                Type(
+                 char
+                ) [Type]
+               d
+              ) [FormalParamDeclClassArray]
+            ) [FormalParamDecls]
+            FormalParamDeclClassNoArray(
+              Type(
+               bool
+              ) [Type]
+             e
+            ) [FormalParamDeclClassNoArray]
+          ) [FormalParamDecls]
+          FormalParamDeclClassArray(
+            Type(
+             bool
+            ) [Type]
+           f
+          ) [FormalParamDeclClassArray]
+        ) [FormalParamDecls]
+      ) [FormParams]
+      NoVarDeclList(
+      ) [NoVarDeclList]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          PrintStmt(
+            ClassOneClass(
+              NormalExpressionClass(
+                ExprFirstOptionClassWithMinus(
+                  TermClass(
+                    NumberConst(
+                     2
+                    ) [NumberConst]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprFirstOptionClassWithMinus]
+              ) [NormalExpressionClass]
+            ) [ClassOneClass]
+            NoCommaNumberClass(
+            ) [NoCommaNumberClass]
+          ) [PrintStmt]
+        ) [Statements]
+        PrintStmt(
+          ClassOneClass(
+            NormalExpressionClass(
+              ExprFirstOptionClassWithMinus(
+                TermClass(
+                  NumberConst(
+                   5
+                  ) [NumberConst]
+                  NoTermOptionalListClass(
+                  ) [NoTermOptionalListClass]
+                ) [TermClass]
+                NoExprOptionalListClass(
+                ) [NoExprOptionalListClass]
+              ) [ExprFirstOptionClassWithMinus]
+            ) [NormalExpressionClass]
+          ) [ClassOneClass]
+          NoCommaNumberClass(
+          ) [NoCommaNumberClass]
+        ) [PrintStmt]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  13:57:44,348 - ===================================
+INFO  13:57:44,351 - PROGRAM NAME DETECTED => MJProgram ON LINE 1
+INFO  13:57:44,352 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 4
+INFO  13:57:44,352 - FORMAL PARAMETER a DEFINED AND IT IS OF TYPE int ON LINE 4
+INFO  13:57:44,352 - FORMAL ARRAY PARAMETER b DEFINED AND IT IS OF TYPE int ON LINE 4
+INFO  13:57:44,352 - FORMAL PARAMETER c DEFINED AND IT IS OF TYPE char ON LINE 4
+INFO  13:57:44,352 - FORMAL ARRAY PARAMETER d DEFINED AND IT IS OF TYPE char ON LINE 4
+INFO  13:57:44,352 - FORMAL PARAMETER e DEFINED AND IT IS OF TYPE boolean ON LINE 4
+INFO  13:57:44,352 - FORMAL ARRAY PARAMETER f DEFINED AND IT IS OF TYPE boolean ON LINE 4
+INFO  13:57:44,352 - METHOD BODY STARTING!
+INFO  13:57:44,352 - CONST NUMBER 2 ON LINE 5
+INFO  13:57:44,352 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 5
+INFO  13:57:44,352 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 5
+INFO  13:57:44,352 - PRINT FUNCTION CALL IN USE! ON LINE 5
+INFO  13:57:44,352 - CONST NUMBER 5 ON LINE 7
+INFO  13:57:44,353 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 7
+INFO  13:57:44,353 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 7
+INFO  13:57:44,353 - PRINT FUNCTION CALL IN USE! ON LINE 7
+INFO  13:57:44,353 - METHOD BODY ENDING!
+INFO  13:57:44,353 - END OF DEFINING FUNCTION main
+INFO  13:57:44,353 - PROGRAM ENDED => MJProgram ON LINE 1
+INFO  13:57:44,353 -  Deklarisanih promenljivih ima = 0
+INFO  13:57:44,353 - ===================================
+INFO  13:57:44,356 - Parsiranje uspesno zavrseno!
