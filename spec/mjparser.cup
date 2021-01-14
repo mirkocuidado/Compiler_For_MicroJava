@@ -90,7 +90,7 @@ nonterminal ActualParamList;
 nonterminal RelOp;
 nonterminal MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
-nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord, AssignOpKeyWord, LBraceKeyWord, RBraceKeyWord, Helper, LParenFactor, FlagSet;
+nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord, AssignOpKeyWord, LBraceKeyWord, RBraceKeyWord, Helper, LParenFactor, FlagSet, ColonKeyWord, TernaryKeyWord, Fake, ElseKeyWord, EmptyHelper;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -328,7 +328,7 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (ReadClass) READ LPAREN Designator:designator RPAREN SEMI
 		   |
-		   (IfStatement) IF LPAREN PotentialError RPAREN Statement OptionalElse /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
+		   (IfStatement) IF LPAREN PotentialError RPAREN Statement EmptyHelper OptionalElse /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
 		   |
 		   (DoWhileStatement) DoKeyWord Statement WHILE LPAREN Condition RPAREN SEMI
 		   |
@@ -337,6 +337,15 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   (StatementStatement) LBRACE StatementList RBRACE
 		   ;
 		   
+EmptyHelper ::= (Empty) ;
+
+OptionalElse ::= (YesOptionalStatement) ELSE Statement
+				|
+				(NoOptionalStatement) /* epsilon */
+				; 
+				
+ElseKeyWord ::= (ElseClassBaby) ELSE;
+				  
 DoKeyWord ::= (DoClass) DO;
 
 BreakKeyWord ::= (BreakKeyWordClass) BREAK;
@@ -352,10 +361,7 @@ StatementList ::= (Statements) StatementList Statement
 				
 PotentialError ::= (IfConditionNoError) Condition;
 
-OptionalElse ::= (YesOptionalStatement) ELSE Statement
-				|
-				(NoOptionalStatement) /* epsilon */
-				;
+
 
 PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER
 					|
@@ -451,7 +457,7 @@ ExprOne ::= (NormalExpressionClass) ExprPositive
 
 Expr ::= (ClassOneClass) ExprOne
 		|
-		(ClassTwoClass) CondFact TERNARY ExprOne:exprFirst COLON ExprOne:exprSecond
+		(ClassTwoClass) ExprOne TernaryKeyWord ExprOne:exprFirst ColonKeyWord ExprOne:exprSecond
 		;
 	
 ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList AddOp Term
@@ -459,8 +465,9 @@ ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList AddOp Term
 					(NoExprOptionalListClass) /* epsilon */
 					;
 
+TernaryKeyWord ::= (TernaryClass) TERNARY;
 
-
+ColonKeyWord ::= (ColonClass) COLON;
 
 /********** TERMS **********/
 

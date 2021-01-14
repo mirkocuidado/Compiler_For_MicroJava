@@ -1,72 +1,77 @@
 // generated with ast extension for cup
 // version 0.8
-// 12/0/2021 16:21:32
+// 14/0/2021 0:52:54
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public abstract class VisitorAdaptor implements Visitor { 
 
-    public void visit(Unmatched Unmatched) { }
-    public void visit(LSquareKeyWord LSquareKeyWord) { }
-    public void visit(GroupDeclList GroupDeclList) { }
-    public void visit(Matched Matched) { }
-    public void visit(TermOptionalList TermOptionalList) { }
-    public void visit(LParenFactor LParenFactor) { }
-    public void visit(ExprOne ExprOne) { }
-    public void visit(FormalParamDecl FormalParamDecl) { }
-    public void visit(ConditionOptional ConditionOptional) { }
-    public void visit(Variable Variable) { }
-    public void visit(ExprNegative ExprNegative) { }
-    public void visit(StatementList StatementList) { }
-    public void visit(MethodsOption MethodsOption) { }
-    public void visit(ValueOptions ValueOptions) { }
-    public void visit(CondFactOptional CondFactOptional) { }
-    public void visit(FactorOptional FactorOptional) { }
-    public void visit(ConstVariable ConstVariable) { }
-    public void visit(ExprOptionalList ExprOptionalList) { }
-    public void visit(Factor Factor) { }
-    public void visit(CondTerm CondTerm) { }
-    public void visit(VarList VarList) { }
-    public void visit(ConstList ConstList) { }
-    public void visit(ExprPositive ExprPositive) { }
-    public void visit(Term Term) { }
-    public void visit(Condition Condition) { }
-    public void visit(DoKeyWord DoKeyWord) { }
-    public void visit(MulOp MulOp) { }
-    public void visit(OptionalDesignator OptionalDesignator) { }
-    public void visit(PotentialError PotentialError) { }
-    public void visit(RelOp RelOp) { }
-    public void visit(ReturnNonTerminal ReturnNonTerminal) { }
-    public void visit(AssignOp AssignOp) { }
-    public void visit(ActualParamList ActualParamList) { }
-    public void visit(LBraceKeyWord LBraceKeyWord) { }
-    public void visit(FactorOptionalSecond FactorOptionalSecond) { }
-    public void visit(VarDeclList VarDeclList) { }
-    public void visit(FormalParamList FormalParamList) { }
-    public void visit(Expr Expr) { }
-    public void visit(CondTermOptional CondTermOptional) { }
-    public void visit(AddOp AddOp) { }
-    public void visit(DesignatorStatement DesignatorStatement) { }
-    public void visit(Helper Helper) { }
-    public void visit(ActualPars ActualPars) { }
-    public void visit(PrintCommaNumber PrintCommaNumber) { }
-    public void visit(BreakKeyWord BreakKeyWord) { }
-    public void visit(ExtendsOption ExtendsOption) { }
-    public void visit(Statement Statement) { }
-    public void visit(VarDecl VarDecl) { }
-    public void visit(RBraceKeyWord RBraceKeyWord) { }
-    public void visit(FlagSet FlagSet) { }
-    public void visit(AssignOpKeyWord AssignOpKeyWord) { }
-    public void visit(ClassDecl ClassDecl) { }
-    public void visit(ConstDecl ConstDecl) { }
-    public void visit(CondFact CondFact) { }
-    public void visit(MethodDeclList MethodDeclList) { }
-    public void visit(SwitchStatementList SwitchStatementList) { }
-    public void visit(ReturnValue ReturnValue) { }
-    public void visit(GroupDecl GroupDecl) { }
     public void visit(FormPars FormPars) { }
+    public void visit(AssignOpKeyWord AssignOpKeyWord) { }
+    public void visit(Factor Factor) { }
+    public void visit(Statement Statement) { }
+    public void visit(GroupDeclList GroupDeclList) { }
+    public void visit(TernaryKeyWord TernaryKeyWord) { }
+    public void visit(ConstList ConstList) { }
+    public void visit(ConstVariable ConstVariable) { }
+    public void visit(CondTermOptional CondTermOptional) { }
+    public void visit(FlagSet FlagSet) { }
+    public void visit(FormalParamList FormalParamList) { }
+    public void visit(Variable Variable) { }
+    public void visit(ExprOptionalList ExprOptionalList) { }
+    public void visit(PotentialError PotentialError) { }
+    public void visit(LSquareKeyWord LSquareKeyWord) { }
+    public void visit(Expr Expr) { }
+    public void visit(ValueOptions ValueOptions) { }
+    public void visit(VarDecl VarDecl) { }
+    public void visit(ExprPositive ExprPositive) { }
+    public void visit(MethodsOption MethodsOption) { }
+    public void visit(PrintCommaNumber PrintCommaNumber) { }
+    public void visit(Unmatched Unmatched) { }
+    public void visit(ExprOne ExprOne) { }
+    public void visit(LBraceKeyWord LBraceKeyWord) { }
+    public void visit(RelOp RelOp) { }
+    public void visit(OptionalDesignator OptionalDesignator) { }
+    public void visit(EmptyHelper EmptyHelper) { }
+    public void visit(ActualParamList ActualParamList) { }
+    public void visit(FactorOptionalSecond FactorOptionalSecond) { }
+    public void visit(Helper Helper) { }
+    public void visit(TermOptionalList TermOptionalList) { }
+    public void visit(Condition Condition) { }
+    public void visit(ExtendsOption ExtendsOption) { }
+    public void visit(CondFactOptional CondFactOptional) { }
+    public void visit(DesignatorStatement DesignatorStatement) { }
+    public void visit(FactorOptional FactorOptional) { }
+    public void visit(StatementList StatementList) { }
+    public void visit(ConstDecl ConstDecl) { }
+    public void visit(ColonKeyWord ColonKeyWord) { }
+    public void visit(MulOp MulOp) { }
+    public void visit(GroupDecl GroupDecl) { }
+    public void visit(CondTerm CondTerm) { }
+    public void visit(ConditionOptional ConditionOptional) { }
+    public void visit(FormalParamDecl FormalParamDecl) { }
+    public void visit(ActualPars ActualPars) { }
+    public void visit(VarList VarList) { }
+    public void visit(ReturnNonTerminal ReturnNonTerminal) { }
+    public void visit(ClassDecl ClassDecl) { }
+    public void visit(ElseKeyWord ElseKeyWord) { }
+    public void visit(SwitchStatementList SwitchStatementList) { }
+    public void visit(MethodDeclList MethodDeclList) { }
+    public void visit(AddOp AddOp) { }
+    public void visit(ExprNegative ExprNegative) { }
+    public void visit(AssignOp AssignOp) { }
+    public void visit(RBraceKeyWord RBraceKeyWord) { }
+    public void visit(Fake Fake) { }
     public void visit(OptionalElse OptionalElse) { }
+    public void visit(Matched Matched) { }
+    public void visit(VarDeclList VarDeclList) { }
+    public void visit(CondFact CondFact) { }
+    public void visit(ReturnValue ReturnValue) { }
+    public void visit(Term Term) { }
+    public void visit(LParenFactor LParenFactor) { }
+    public void visit(DoKeyWord DoKeyWord) { }
+    public void visit(BreakKeyWord BreakKeyWord) { }
     public void visit(ModOperationClass ModOperationClass) { visit(); }
     public void visit(DivideOperationClass DivideOperationClass) { visit(); }
     public void visit(MultiplyOperationClass MultiplyOperationClass) { visit(); }
@@ -92,6 +97,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(NoTermOptionalListClass NoTermOptionalListClass) { visit(); }
     public void visit(TermOptionalListClass TermOptionalListClass) { visit(); }
     public void visit(TermClass TermClass) { visit(); }
+    public void visit(ColonClass ColonClass) { visit(); }
+    public void visit(TernaryClass TernaryClass) { visit(); }
     public void visit(NoExprOptionalListClass NoExprOptionalListClass) { visit(); }
     public void visit(ExprOptionalListClass ExprOptionalListClass) { visit(); }
     public void visit(ClassTwoClass ClassTwoClass) { visit(); }
@@ -118,8 +125,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(SwitchStatementListClass SwitchStatementListClass) { visit(); }
     public void visit(NoCommaNumberClass NoCommaNumberClass) { visit(); }
     public void visit(CommaNumberClass CommaNumberClass) { visit(); }
-    public void visit(NoOptionalStatement NoOptionalStatement) { visit(); }
-    public void visit(YesOptionalStatement YesOptionalStatement) { visit(); }
     public void visit(IfConditionNoError IfConditionNoError) { visit(); }
     public void visit(NoStmt NoStmt) { visit(); }
     public void visit(Statements Statements) { visit(); }
@@ -127,6 +132,10 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ContinueKeyWord ContinueKeyWord) { visit(); }
     public void visit(BreakKeyWordClass BreakKeyWordClass) { visit(); }
     public void visit(DoClass DoClass) { visit(); }
+    public void visit(ElseClassBaby ElseClassBaby) { visit(); }
+    public void visit(NoOptionalStatement NoOptionalStatement) { visit(); }
+    public void visit(YesOptionalStatement YesOptionalStatement) { visit(); }
+    public void visit(Empty Empty) { visit(); }
     public void visit(StatementStatement StatementStatement) { visit(); }
     public void visit(SwitchStatement SwitchStatement) { visit(); }
     public void visit(DoWhileStatement DoWhileStatement) { visit(); }

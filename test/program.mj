@@ -1,57 +1,137 @@
 program MJProgram
 int a,b,c,d;
 
+	const int term = 0;
 	const int y = 3;
-{	
+	{
+	//void kk() {} 
 	
 	int k(int a, int b) { return b; }
 	
-	int func_check(int a[], char b[], bool c)
-	int local;
-	{
-		local = a[0];
-		print(local); //10
-		local = local * 2  + local - a[1];
-		print(local); //28
-		return local;
-	}
+	//int func_check(int a[], char b[], bool c)
+	//int local;
+	//{
+	//	local = a[0];
+	//	print(local); //10
+	//	local = local * 2  + local - a[1];
+	//	print(local); //28
+	//	return local;
+	//}
 	
 	//char s() { return 'c'; }
 	
 	void main()
 	int x;
-	char z;
+	//char z;
 	bool p;
-	char xx[];
-	char yy[];
-	int br[];
+	bool r;
+	bool q;
+	//char xx[];
+	//char yy[];
+	//int br[];
 	//int dd;
 	{
-		br = new int[10];
-		br[0] = 10;
-		br[1] = 2;
-		br[2] = 100;
+		// br = new int[10];
+		//br[0] = 10;
+		//br[1] = 2;
+		//br[2] = 100;
 		
-		x = func_check(br,xx,p);
-		print(x); //28
+		//x = func_check(br,xx,p);
+		//print(x); //28
 		
 		
-		print(br[br[1]]); //100
-		print(br[0]); // 10
-		br[0]++;
-		print(br[0]); //11
+		//print(br[br[1]]); //100
+		//print(br[0]); // 10
+		//br[0]++;
+		//print(br[0]); //11
 		
-		x = br[0] + br[1]; // br[0] = 11 br[1] = 2 br[2] = 100
-		a = 2 + br[0] * br[2];
-		b = br[1] * br[2];
-		c = br[2] / br[1];
+		//x = br[0] + br[1]; // br[0] = 11 br[1] = 2 br[2] = 100
+		//a = 2 + br[0] * br[2];
+		//b = - br[1] * br[2];
+		//c = - br[2] / br[1];
 	
-		print(x); 
-		print(a);
-		print(b);
-		print(c);
+		//x = 1;
+		//a = 1; b = 1; c = 1;
+		
+		//x = 1;
+		
+		//read(x);
+		//print(x);
+		
+		//x = term ? k(10,11) : k(12,13);
+		//print(x);
+ 		
+ 		p = false;
+ 		q = false;
+ 		r = true;
+ 		
+ 		if(p){
+ 			print(100);
+ 			print(100);
+ 			print(100);
+ 			if(q){
+ 				print(101);
+ 				print(101);
+ 				print(101);
+ 			}
+ 			else if(r){
+ 				print(102);
+ 				print(102);
+ 				print(102);
+ 			}
+ 			else{
+ 				print(103);
+ 				print(103);
+ 				print(103);
+ 			}
+ 		}
+ 		else if(r){
+ 			print(200);
+ 			print(200);
+ 			print(200);
+ 			if(q){
+ 				print(201);
+ 				print(201);
+ 				print(201);
+ 			}
+ 			else{
+ 				print(202);
+ 				print(202);
+ 				print(202);
+ 			}
+ 		}else{
+ 			print(300);
+ 			print(300);
+ 			print(300);
+ 		}
+ 		
+ 		print(500);
+ 		
+ 		p = true;
+ 		if(p){
+ 			print('a');
+ 		}
+ 	
+ 		
+ 		
+		//read(z);
+		//print(z);
+		
+		//read(br[1]);
+		//print(br[1]);
+		
+		//print(x,5); 
+		//print(a,10);
+		//print(b,5);
+		//print(c,10);
+		
 		//x = 2 + 3 * (4 + 5) + k(0,1);
-		///print(x); //30
+		//x = -(5 + 2) - 3 + 4;
+		
+		//print(-x+4-10); //30
+		
+		//k(0,1);
+		//kk();
 		
 		//a = x;
 		//a++;

@@ -112,6 +112,11 @@ nonterminal RBraceKeyWord RBraceKeyWord;
 nonterminal Helper Helper;
 nonterminal LParenFactor LParenFactor;
 nonterminal FlagSet FlagSet;
+nonterminal ColonKeyWord ColonKeyWord;
+nonterminal TernaryKeyWord TernaryKeyWord;
+nonterminal Fake Fake;
+nonterminal ElseKeyWord ElseKeyWord;
+nonterminal EmptyHelper EmptyHelper;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -349,7 +354,7 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   |
 		   (ReadClass) READ LPAREN Designator:designator RPAREN SEMI {: RESULT=new ReadClass(designator); RESULT.setLine(designatorleft); :}
 		   |
-		   (IfStatement) IF LPAREN PotentialError:P1 RPAREN Statement:S2 OptionalElse:O3 {: RESULT=new IfStatement(P1, S2, O3); RESULT.setLine(P1left); :} /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
+		   (IfStatement) IF LPAREN PotentialError:P1 RPAREN Statement:S2 EmptyHelper:E3 OptionalElse:O4 {: RESULT=new IfStatement(P1, S2, E3, O4); RESULT.setLine(P1left); :} /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
 		   |
 		   (DoWhileStatement) DoKeyWord:D1 Statement:S2 WHILE LPAREN Condition:C3 RPAREN SEMI {: RESULT=new DoWhileStatement(D1, S2, C3); RESULT.setLine(D1left); :}
 		   |
@@ -358,6 +363,15 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   (StatementStatement) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementStatement(S1); RESULT.setLine(S1left); :}
 		   ;
 		   
+EmptyHelper ::= (Empty) {: RESULT=new Empty(); :} ;
+
+OptionalElse ::= (YesOptionalStatement) ELSE Statement:S1 {: RESULT=new YesOptionalStatement(S1); RESULT.setLine(S1left); :}
+				|
+				(NoOptionalStatement) {: RESULT=new NoOptionalStatement(); :} /* epsilon */
+				; 
+				
+ElseKeyWord ::= (ElseClassBaby) ELSE {: RESULT=new ElseClassBaby(); :};
+				  
 DoKeyWord ::= (DoClass) DO {: RESULT=new DoClass(); :};
 
 BreakKeyWord ::= (BreakKeyWordClass) BREAK {: RESULT=new BreakKeyWordClass(); :};
@@ -373,10 +387,7 @@ StatementList ::= (Statements) StatementList:S1 Statement:S2 {: RESULT=new State
 				
 PotentialError ::= (IfConditionNoError) Condition:C1 {: RESULT=new IfConditionNoError(C1); RESULT.setLine(C1left); :};
 
-OptionalElse ::= (YesOptionalStatement) ELSE Statement:S1 {: RESULT=new YesOptionalStatement(S1); RESULT.setLine(S1left); :}
-				|
-				(NoOptionalStatement) {: RESULT=new NoOptionalStatement(); :} /* epsilon */
-				;
+
 
 PrintCommaNumber ::= (CommaNumberClass) COMMA NUMBER:N1 {: RESULT=new CommaNumberClass(N1); RESULT.setLine(N1left); :}
 					|
@@ -472,7 +483,7 @@ ExprOne ::= (NormalExpressionClass) ExprPositive:E1 {: RESULT=new NormalExpressi
 
 Expr ::= (ClassOneClass) ExprOne:E1 {: RESULT=new ClassOneClass(E1); RESULT.setLine(E1left); :}
 		|
-		(ClassTwoClass) CondFact:C1 TERNARY ExprOne:exprFirst COLON ExprOne:exprSecond {: RESULT=new ClassTwoClass(C1, exprFirst, exprSecond); RESULT.setLine(C1left); :}
+		(ClassTwoClass) ExprOne:E1 TernaryKeyWord:T2 ExprOne:exprFirst ColonKeyWord:C3 ExprOne:exprSecond {: RESULT=new ClassTwoClass(E1, T2, exprFirst, C3, exprSecond); RESULT.setLine(E1left); :}
 		;
 	
 ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList:E1 AddOp:A2 Term:T3 {: RESULT=new ExprOptionalListClass(E1, A2, T3); RESULT.setLine(E1left); :}
@@ -480,8 +491,9 @@ ExprOptionalList ::= (ExprOptionalListClass) ExprOptionalList:E1 AddOp:A2 Term:T
 					(NoExprOptionalListClass) {: RESULT=new NoExprOptionalListClass(); :} /* epsilon */
 					;
 
+TernaryKeyWord ::= (TernaryClass) TERNARY {: RESULT=new TernaryClass(); :};
 
-
+ColonKeyWord ::= (ColonClass) COLON {: RESULT=new ColonClass(); :};
 
 /********** TERMS **********/
 

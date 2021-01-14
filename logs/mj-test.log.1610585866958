@@ -1,0 +1,660 @@
+INFO  01:56:28,781 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  01:56:28,851 - #2 program
+INFO  01:56:28,851 - #43 MJProgram
+INFO  01:56:28,851 - #43 int
+INFO  01:56:28,852 - #43 a
+INFO  01:56:28,853 - #31 ,
+INFO  01:56:28,853 - #43 b
+INFO  01:56:28,853 - #31 ,
+INFO  01:56:28,853 - #43 c
+INFO  01:56:28,853 - #31 ,
+INFO  01:56:28,854 - #43 d
+INFO  01:56:28,854 - #33 ;
+INFO  01:56:28,854 - #9 const
+INFO  01:56:28,854 - #43 int
+INFO  01:56:28,854 - #43 term
+INFO  01:56:28,854 - #19 =
+INFO  01:56:28,854 - #42 0
+INFO  01:56:28,854 - #33 ;
+INFO  01:56:28,855 - #9 const
+INFO  01:56:28,855 - #43 int
+INFO  01:56:28,855 - #43 y
+INFO  01:56:28,855 - #19 =
+INFO  01:56:28,855 - #42 3
+INFO  01:56:28,856 - #33 ;
+INFO  01:56:28,856 - #35 {
+INFO  01:56:28,856 - #43 int
+INFO  01:56:28,856 - #43 k
+INFO  01:56:28,857 - #37 (
+INFO  01:56:28,857 - #43 int
+INFO  01:56:28,857 - #43 a
+INFO  01:56:28,857 - #31 ,
+INFO  01:56:28,857 - #43 int
+INFO  01:56:28,857 - #43 b
+INFO  01:56:28,857 - #38 )
+INFO  01:56:28,857 - #35 {
+INFO  01:56:28,858 - #41 return
+INFO  01:56:28,860 - #43 b
+INFO  01:56:28,861 - #33 ;
+INFO  01:56:28,865 - #36 }
+INFO  01:56:28,865 - #5 void
+INFO  01:56:28,867 - #43 main
+INFO  01:56:28,867 - #37 (
+INFO  01:56:28,867 - #38 )
+INFO  01:56:28,868 - #43 int
+INFO  01:56:28,868 - #43 x
+INFO  01:56:28,868 - #33 ;
+INFO  01:56:28,868 - #43 bool
+INFO  01:56:28,868 - #43 p
+INFO  01:56:28,868 - #33 ;
+INFO  01:56:28,868 - #43 bool
+INFO  01:56:28,868 - #43 r
+INFO  01:56:28,868 - #33 ;
+INFO  01:56:28,868 - #43 bool
+INFO  01:56:28,868 - #43 q
+INFO  01:56:28,868 - #33 ;
+INFO  01:56:28,868 - #35 {
+INFO  01:56:28,869 - #43 p
+INFO  01:56:28,869 - #19 =
+INFO  01:56:28,869 - #45 false
+INFO  01:56:28,870 - #33 ;
+INFO  01:56:28,870 - #43 q
+INFO  01:56:28,870 - #19 =
+INFO  01:56:28,870 - #45 false
+INFO  01:56:28,870 - #33 ;
+INFO  01:56:28,871 - #43 r
+INFO  01:56:28,871 - #19 =
+INFO  01:56:28,871 - #45 false
+INFO  01:56:28,871 - #33 ;
+INFO  01:56:28,871 - #14 if
+INFO  01:56:28,871 - #37 (
+INFO  01:56:28,871 - #43 p
+INFO  01:56:28,871 - #38 )
+INFO  01:56:28,873 - #35 {
+INFO  01:56:28,874 - #18 print
+INFO  01:56:28,874 - #37 (
+INFO  01:56:28,874 - #42 100
+INFO  01:56:28,874 - #38 )
+INFO  01:56:28,875 - #33 ;
+INFO  01:56:28,875 - #36 }
+INFO  01:56:28,875 - #15 else
+INFO  01:56:28,876 - #14 if
+INFO  01:56:28,876 - #37 (
+INFO  01:56:28,876 - #43 r
+INFO  01:56:28,876 - #38 )
+INFO  01:56:28,877 - #35 {
+INFO  01:56:28,877 - #18 print
+INFO  01:56:28,877 - #37 (
+INFO  01:56:28,877 - #42 200
+INFO  01:56:28,877 - #38 )
+INFO  01:56:28,877 - #33 ;
+INFO  01:56:28,877 - #36 }
+INFO  01:56:28,877 - #15 else
+INFO  01:56:28,877 - #35 {
+INFO  01:56:28,877 - #18 print
+INFO  01:56:28,877 - #37 (
+INFO  01:56:28,877 - #42 300
+INFO  01:56:28,877 - #38 )
+INFO  01:56:28,877 - #33 ;
+INFO  01:56:28,877 - #36 }
+INFO  01:56:28,877 - #18 print
+INFO  01:56:28,878 - #37 (
+INFO  01:56:28,878 - #42 500
+INFO  01:56:28,878 - #38 )
+INFO  01:56:28,878 - #33 ;
+INFO  01:56:28,878 - #36 }
+INFO  01:56:28,878 - #36 }
+INFO  01:56:28,887 - Program(
+  ProgramName(
+   MJProgram
+  ) [ProgramName]
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        NoGroupDecl(
+        ) [NoGroupDecl]
+        GroupDeclarationVars(
+          VarDeclClass(
+            Type(
+             int
+            ) [Type]
+            VarListClass(
+              VarListClass(
+                VarListClass(
+                  VarListSingle(
+                    VarClassNoArray(
+                     a
+                    ) [VarClassNoArray]
+                  ) [VarListSingle]
+                  VarClassNoArray(
+                   b
+                  ) [VarClassNoArray]
+                ) [VarListClass]
+                VarClassNoArray(
+                 c
+                ) [VarClassNoArray]
+              ) [VarListClass]
+              VarClassNoArray(
+               d
+              ) [VarClassNoArray]
+            ) [VarListClass]
+          ) [VarDeclClass]
+        ) [GroupDeclarationVars]
+      ) [GroupDeclarations]
+      GroupDeclarationsConsts(
+        ConstDeclClass(
+          Type(
+           int
+          ) [Type]
+          ConstListSingle(
+            ConstListNoArray(
+             term
+              ValuesNumber(
+               0
+              ) [ValuesNumber]
+            ) [ConstListNoArray]
+          ) [ConstListSingle]
+        ) [ConstDeclClass]
+      ) [GroupDeclarationsConsts]
+    ) [GroupDeclarations]
+    GroupDeclarationsConsts(
+      ConstDeclClass(
+        Type(
+         int
+        ) [Type]
+        ConstListSingle(
+          ConstListNoArray(
+           y
+            ValuesNumber(
+             3
+            ) [ValuesNumber]
+          ) [ConstListNoArray]
+        ) [ConstListSingle]
+      ) [ConstDeclClass]
+    ) [GroupDeclarationsConsts]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    MethodDeclarations(
+      NoMethodDecl(
+      ) [NoMethodDecl]
+      MethodDecl(
+        ReturnValueClassNoVoid(
+          Type(
+           int
+          ) [Type]
+         k
+        ) [ReturnValueClassNoVoid]
+        FormParams(
+          FormalParamDecls(
+            SingleFormalParamDecl(
+              FormalParamDeclClassNoArray(
+                Type(
+                 int
+                ) [Type]
+               a
+              ) [FormalParamDeclClassNoArray]
+            ) [SingleFormalParamDecl]
+            FormalParamDeclClassNoArray(
+              Type(
+               int
+              ) [Type]
+             b
+            ) [FormalParamDeclClassNoArray]
+          ) [FormalParamDecls]
+        ) [FormParams]
+        NoVarDeclList(
+        ) [NoVarDeclList]
+        LBraceClass(
+        ) [LBraceClass]
+        Statements(
+          NoStmt(
+          ) [NoStmt]
+          ReturnExpr(
+            ReturnNonTerminalClass(
+            ) [ReturnNonTerminalClass]
+            ClassOneClass(
+              NormalExpressionClass(
+                ExprFirstOptionClassWithMinus(
+                  TermClass(
+                    DesignatorClass(
+                      Designator(
+                        DesigIdent(
+                         b
+                        ) [DesigIdent]
+                        NoOptionalDesignatorClass(
+                        ) [NoOptionalDesignatorClass]
+                      ) [Designator]
+                    ) [DesignatorClass]
+                    NoTermOptionalListClass(
+                    ) [NoTermOptionalListClass]
+                  ) [TermClass]
+                  NoExprOptionalListClass(
+                  ) [NoExprOptionalListClass]
+                ) [ExprFirstOptionClassWithMinus]
+              ) [NormalExpressionClass]
+            ) [ClassOneClass]
+          ) [ReturnExpr]
+        ) [Statements]
+        RBraceClass(
+        ) [RBraceClass]
+      ) [MethodDecl]
+    ) [MethodDeclarations]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        VarDeclListClass(
+          VarDeclListClass(
+            VarDeclListClass(
+              NoVarDeclList(
+              ) [NoVarDeclList]
+              VarDeclClass(
+                Type(
+                 int
+                ) [Type]
+                VarListSingle(
+                  VarClassNoArray(
+                   x
+                  ) [VarClassNoArray]
+                ) [VarListSingle]
+              ) [VarDeclClass]
+            ) [VarDeclListClass]
+            VarDeclClass(
+              Type(
+               bool
+              ) [Type]
+              VarListSingle(
+                VarClassNoArray(
+                 p
+                ) [VarClassNoArray]
+              ) [VarListSingle]
+            ) [VarDeclClass]
+          ) [VarDeclListClass]
+          VarDeclClass(
+            Type(
+             bool
+            ) [Type]
+            VarListSingle(
+              VarClassNoArray(
+               r
+              ) [VarClassNoArray]
+            ) [VarListSingle]
+          ) [VarDeclClass]
+        ) [VarDeclListClass]
+        VarDeclClass(
+          Type(
+           bool
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             q
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        Statements(
+          Statements(
+            Statements(
+              Statements(
+                NoStmt(
+                ) [NoStmt]
+                Assignment(
+                  DesignatorStatementOptionsClassAssignExpression(
+                    Designator(
+                      DesigIdent(
+                       p
+                      ) [DesigIdent]
+                      NoOptionalDesignatorClass(
+                      ) [NoOptionalDesignatorClass]
+                    ) [Designator]
+                    AssignOpClass(
+                      AssignOperationClass(
+                      ) [AssignOperationClass]
+                    ) [AssignOpClass]
+                    ClassOneClass(
+                      NormalExpressionClass(
+                        ExprFirstOptionClassWithMinus(
+                          TermClass(
+                            BooleanClassConstFactor(
+                             false
+                            ) [BooleanClassConstFactor]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                        ) [ExprFirstOptionClassWithMinus]
+                      ) [NormalExpressionClass]
+                    ) [ClassOneClass]
+                  ) [DesignatorStatementOptionsClassAssignExpression]
+                ) [Assignment]
+              ) [Statements]
+              Assignment(
+                DesignatorStatementOptionsClassAssignExpression(
+                  Designator(
+                    DesigIdent(
+                     q
+                    ) [DesigIdent]
+                    NoOptionalDesignatorClass(
+                    ) [NoOptionalDesignatorClass]
+                  ) [Designator]
+                  AssignOpClass(
+                    AssignOperationClass(
+                    ) [AssignOperationClass]
+                  ) [AssignOpClass]
+                  ClassOneClass(
+                    NormalExpressionClass(
+                      ExprFirstOptionClassWithMinus(
+                        TermClass(
+                          BooleanClassConstFactor(
+                           false
+                          ) [BooleanClassConstFactor]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprFirstOptionClassWithMinus]
+                    ) [NormalExpressionClass]
+                  ) [ClassOneClass]
+                ) [DesignatorStatementOptionsClassAssignExpression]
+              ) [Assignment]
+            ) [Statements]
+            Assignment(
+              DesignatorStatementOptionsClassAssignExpression(
+                Designator(
+                  DesigIdent(
+                   r
+                  ) [DesigIdent]
+                  NoOptionalDesignatorClass(
+                  ) [NoOptionalDesignatorClass]
+                ) [Designator]
+                AssignOpClass(
+                  AssignOperationClass(
+                  ) [AssignOperationClass]
+                ) [AssignOpClass]
+                ClassOneClass(
+                  NormalExpressionClass(
+                    ExprFirstOptionClassWithMinus(
+                      TermClass(
+                        BooleanClassConstFactor(
+                         false
+                        ) [BooleanClassConstFactor]
+                        NoTermOptionalListClass(
+                        ) [NoTermOptionalListClass]
+                      ) [TermClass]
+                      NoExprOptionalListClass(
+                      ) [NoExprOptionalListClass]
+                    ) [ExprFirstOptionClassWithMinus]
+                  ) [NormalExpressionClass]
+                ) [ClassOneClass]
+              ) [DesignatorStatementOptionsClassAssignExpression]
+            ) [Assignment]
+          ) [Statements]
+          IfStatement(
+            IfConditionNoError(
+              ConditionClass(
+                CondTermClass(
+                  CondFactClass(
+                    NormalExpressionClass(
+                      ExprFirstOptionClassWithMinus(
+                        TermClass(
+                          DesignatorClass(
+                            Designator(
+                              DesigIdent(
+                               p
+                              ) [DesigIdent]
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                            ) [Designator]
+                          ) [DesignatorClass]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprFirstOptionClassWithMinus]
+                    ) [NormalExpressionClass]
+                    NoCondFactOptionalClass(
+                    ) [NoCondFactOptionalClass]
+                  ) [CondFactClass]
+                  NoCondTermOptionalClass(
+                  ) [NoCondTermOptionalClass]
+                ) [CondTermClass]
+                NoConditionOptionalClass(
+                ) [NoConditionOptionalClass]
+              ) [ConditionClass]
+            ) [IfConditionNoError]
+            StatementStatement(
+              Statements(
+                NoStmt(
+                ) [NoStmt]
+                PrintStmt(
+                  ClassOneClass(
+                    NormalExpressionClass(
+                      ExprFirstOptionClassWithMinus(
+                        TermClass(
+                          NumberConst(
+                           100
+                          ) [NumberConst]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprFirstOptionClassWithMinus]
+                    ) [NormalExpressionClass]
+                  ) [ClassOneClass]
+                  NoCommaNumberClass(
+                  ) [NoCommaNumberClass]
+                ) [PrintStmt]
+              ) [Statements]
+            ) [StatementStatement]
+            Empty(
+            ) [Empty]
+            YesOptionalStatement(
+              IfStatement(
+                IfConditionNoError(
+                  ConditionClass(
+                    CondTermClass(
+                      CondFactClass(
+                        NormalExpressionClass(
+                          ExprFirstOptionClassWithMinus(
+                            TermClass(
+                              DesignatorClass(
+                                Designator(
+                                  DesigIdent(
+                                   r
+                                  ) [DesigIdent]
+                                  NoOptionalDesignatorClass(
+                                  ) [NoOptionalDesignatorClass]
+                                ) [Designator]
+                              ) [DesignatorClass]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprFirstOptionClassWithMinus]
+                        ) [NormalExpressionClass]
+                        NoCondFactOptionalClass(
+                        ) [NoCondFactOptionalClass]
+                      ) [CondFactClass]
+                      NoCondTermOptionalClass(
+                      ) [NoCondTermOptionalClass]
+                    ) [CondTermClass]
+                    NoConditionOptionalClass(
+                    ) [NoConditionOptionalClass]
+                  ) [ConditionClass]
+                ) [IfConditionNoError]
+                StatementStatement(
+                  Statements(
+                    NoStmt(
+                    ) [NoStmt]
+                    PrintStmt(
+                      ClassOneClass(
+                        NormalExpressionClass(
+                          ExprFirstOptionClassWithMinus(
+                            TermClass(
+                              NumberConst(
+                               200
+                              ) [NumberConst]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprFirstOptionClassWithMinus]
+                        ) [NormalExpressionClass]
+                      ) [ClassOneClass]
+                      NoCommaNumberClass(
+                      ) [NoCommaNumberClass]
+                    ) [PrintStmt]
+                  ) [Statements]
+                ) [StatementStatement]
+                Empty(
+                ) [Empty]
+                YesOptionalStatement(
+                  StatementStatement(
+                    Statements(
+                      NoStmt(
+                      ) [NoStmt]
+                      PrintStmt(
+                        ClassOneClass(
+                          NormalExpressionClass(
+                            ExprFirstOptionClassWithMinus(
+                              TermClass(
+                                NumberConst(
+                                 300
+                                ) [NumberConst]
+                                NoTermOptionalListClass(
+                                ) [NoTermOptionalListClass]
+                              ) [TermClass]
+                              NoExprOptionalListClass(
+                              ) [NoExprOptionalListClass]
+                            ) [ExprFirstOptionClassWithMinus]
+                          ) [NormalExpressionClass]
+                        ) [ClassOneClass]
+                        NoCommaNumberClass(
+                        ) [NoCommaNumberClass]
+                      ) [PrintStmt]
+                    ) [Statements]
+                  ) [StatementStatement]
+                ) [YesOptionalStatement]
+              ) [IfStatement]
+            ) [YesOptionalStatement]
+          ) [IfStatement]
+        ) [Statements]
+        PrintStmt(
+          ClassOneClass(
+            NormalExpressionClass(
+              ExprFirstOptionClassWithMinus(
+                TermClass(
+                  NumberConst(
+                   500
+                  ) [NumberConst]
+                  NoTermOptionalListClass(
+                  ) [NoTermOptionalListClass]
+                ) [TermClass]
+                NoExprOptionalListClass(
+                ) [NoExprOptionalListClass]
+              ) [ExprFirstOptionClassWithMinus]
+            ) [NormalExpressionClass]
+          ) [ClassOneClass]
+          NoCommaNumberClass(
+          ) [NoCommaNumberClass]
+        ) [PrintStmt]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  01:56:28,888 - ===================================
+INFO  01:56:28,892 - PROGRAM NAME DETECTED => MJProgram ON LINE 1
+INFO  01:56:28,892 - VARIABLE a IS BEING DEFINED! ON LINE 2
+INFO  01:56:28,893 - VARIABLE b IS BEING DEFINED! ON LINE 2
+INFO  01:56:28,893 - VARIABLE c IS BEING DEFINED! ON LINE 2
+INFO  01:56:28,893 - VARIABLE d IS BEING DEFINED! ON LINE 2
+INFO  01:56:28,893 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 2
+INFO  01:56:28,893 - CONST VALUE 0 IS BEING USED! ON LINE 4
+INFO  01:56:28,893 - CONST VARIABLE term IS BEING DEFINED! ON LINE 4
+INFO  01:56:28,893 - CONST VALUE 3 IS BEING USED! ON LINE 5
+INFO  01:56:28,893 - CONST VARIABLE y IS BEING DEFINED! ON LINE 5
+INFO  01:56:28,893 - FUNCTION k WITH RETURN VALUE OF TYPE int ON LINE 9
+INFO  01:56:28,894 - FORMAL PARAMETER a DEFINED AND IT IS OF TYPE int ON LINE 9
+INFO  01:56:28,894 - FORMAL PARAMETER b DEFINED AND IT IS OF TYPE int ON LINE 9
+INFO  01:56:28,894 - METHOD BODY STARTING!
+INFO  01:56:28,894 - CURRENT VARIABLE IN USE IS b AND IT IS OF TYPE int
+INFO  01:56:28,894 - WE ARE USING A VARIABLE OF TYPE int ON LINE 9
+INFO  01:56:28,894 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 9
+INFO  01:56:28,894 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 9
+INFO  01:56:28,894 - SUCCESSFUL RETURN! TYPES: int AND int ! ON LINE 9
+INFO  01:56:28,894 - METHOD BODY ENDING!
+INFO  01:56:28,894 - END OF DEFINING FUNCTION k
+INFO  01:56:28,895 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 23
+INFO  01:56:28,895 - VARIABLE x IS BEING DEFINED! ON LINE 24
+INFO  01:56:28,895 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 24
+INFO  01:56:28,895 - VARIABLE p IS BEING DEFINED! ON LINE 26
+INFO  01:56:28,895 - VARIABLES OF TYPE bool HAVE BEEN DEFINED! ON LINE 26
+INFO  01:56:28,895 - VARIABLE r IS BEING DEFINED! ON LINE 27
+INFO  01:56:28,895 - VARIABLES OF TYPE bool HAVE BEEN DEFINED! ON LINE 27
+INFO  01:56:28,895 - VARIABLE q IS BEING DEFINED! ON LINE 28
+INFO  01:56:28,895 - VARIABLES OF TYPE bool HAVE BEEN DEFINED! ON LINE 28
+INFO  01:56:28,895 - METHOD BODY STARTING!
+INFO  01:56:28,895 - CURRENT VARIABLE IN USE IS p AND IT IS OF TYPE boolean
+INFO  01:56:28,895 - BEGINNING OF AN ASSIGNEMENT! ON LINE 64
+INFO  01:56:28,895 - CONST CHAR false ON LINE 64
+INFO  01:56:28,895 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 64
+INFO  01:56:28,895 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 64
+INFO  01:56:28,895 - SUCCESSFUL ASSIGNEMENT! TYPES: boolean AND boolean ! ON LINE 64
+INFO  01:56:28,895 - CURRENT VARIABLE IN USE IS q AND IT IS OF TYPE boolean
+INFO  01:56:28,896 - BEGINNING OF AN ASSIGNEMENT! ON LINE 65
+INFO  01:56:28,896 - CONST CHAR false ON LINE 65
+INFO  01:56:28,896 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 65
+INFO  01:56:28,896 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 65
+INFO  01:56:28,896 - SUCCESSFUL ASSIGNEMENT! TYPES: boolean AND boolean ! ON LINE 65
+INFO  01:56:28,896 - CURRENT VARIABLE IN USE IS r AND IT IS OF TYPE boolean
+INFO  01:56:28,896 - BEGINNING OF AN ASSIGNEMENT! ON LINE 66
+INFO  01:56:28,896 - CONST CHAR false ON LINE 66
+INFO  01:56:28,896 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 66
+INFO  01:56:28,896 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 66
+INFO  01:56:28,896 - SUCCESSFUL ASSIGNEMENT! TYPES: boolean AND boolean ! ON LINE 66
+INFO  01:56:28,896 - CURRENT VARIABLE IN USE IS p AND IT IS OF TYPE boolean
+INFO  01:56:28,896 - WE ARE USING A VARIABLE OF TYPE boolean ON LINE 68
+INFO  01:56:28,896 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 68
+INFO  01:56:28,896 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 68
+INFO  01:56:28,896 - USING ONLY ONE BOOLEAN IN TERM! ON LINE 68
+INFO  01:56:28,896 - CONST NUMBER 100 ON LINE 69
+INFO  01:56:28,896 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 69
+INFO  01:56:28,896 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 69
+INFO  01:56:28,897 - PRINT FUNCTION CALL IN USE! ON LINE 69
+INFO  01:56:28,897 - CURRENT VARIABLE IN USE IS r AND IT IS OF TYPE boolean
+INFO  01:56:28,897 - WE ARE USING A VARIABLE OF TYPE boolean ON LINE 80
+INFO  01:56:28,897 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 80
+INFO  01:56:28,897 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 80
+INFO  01:56:28,897 - USING ONLY ONE BOOLEAN IN TERM! ON LINE 80
+INFO  01:56:28,898 - CONST NUMBER 200 ON LINE 81
+INFO  01:56:28,898 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 81
+INFO  01:56:28,898 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 81
+INFO  01:56:28,898 - PRINT FUNCTION CALL IN USE! ON LINE 81
+INFO  01:56:28,898 - CONST NUMBER 300 ON LINE 89
+INFO  01:56:28,898 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 89
+INFO  01:56:28,898 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 89
+INFO  01:56:28,898 - PRINT FUNCTION CALL IN USE! ON LINE 89
+INFO  01:56:28,898 - CONST NUMBER 500 ON LINE 92
+INFO  01:56:28,898 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 92
+INFO  01:56:28,898 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 92
+INFO  01:56:28,898 - PRINT FUNCTION CALL IN USE! ON LINE 92
+INFO  01:56:28,898 - METHOD BODY ENDING!
+INFO  01:56:28,898 - END OF DEFINING FUNCTION main
+INFO  01:56:28,898 - PROGRAM ENDED => MJProgram ON LINE 1
+INFO  01:56:28,898 -  Deklarisanih promenljivih ima = 8
+INFO  01:56:28,898 - ===================================
+INFO  01:56:28,906 - Parsiranje uspesno zavrseno!

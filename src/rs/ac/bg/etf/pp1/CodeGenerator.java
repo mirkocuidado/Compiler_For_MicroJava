@@ -61,6 +61,8 @@ public class CodeGenerator extends VisitorAdaptor{
 	String nameOfProgram;
 	Obj table_symbol_object;
 	
+	int printWidth = -1;
+	
 	public void visit(ProgramName programName) {
 		nameOfProgram = programName.getProgramName();
 		table_symbol_object = Symbol_Table.find(nameOfProgram);
@@ -135,17 +137,56 @@ public class CodeGenerator extends VisitorAdaptor{
 		 */
 	}
 
+	/********** READ **********/
+	public void visit(ReadClass readStmt) {
+		if(readStmt.getDesignator().obj.getType().getKind() == Struct.Array) {
+			if(readStmt.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
+				Code.put(Code.bread);
+				Code.put(Code.bastore);
+			}
+			else {
+				Code.put(Code.read);
+				Code.put(Code.astore);
+			}
+		}
+		else {
+			if(readStmt.getDesignator().obj.getType().getKind() == Struct.Char) {
+				Code.put(Code.bread);
+				Code.store(readStmt.getDesignator().obj);
+			}
+			else {
+				Code.put(Code.read);
+				Code.store(readStmt.getDesignator().obj);
+			}
+		}
+	}
 	
 	/********** PRINT **********/
 	public void visit(PrintStmt printStmt){
-		if(printStmt.getExpr().struct == Symbol_Table.intType){
-			Code.loadConst(5);
-			Code.put(Code.print);
-		}
-		else{
-			Code.loadConst(1);
+		if(printStmt.getExpr().struct == Symbol_Table.charType){
+			if(printWidth==-1) {
+				Code.loadConst(1);
+			}
+			else {
+				Code.loadConst(printWidth);
+			}
 			Code.put(Code.bprint);
 		}
+		else{
+			if(printWidth==-1) {
+				Code.loadConst(5);
+			}
+			else {
+				Code.loadConst(printWidth);
+			}
+			Code.put(Code.print);
+		}
+		
+		printWidth = -1;
+	}
+	
+	public void visit(CommaNumberClass printWidthParam) {
+		printWidth = printWidthParam.getN1();
 	}
 	
 	/********** RETURN EXPRESSION 1 **********/
@@ -228,7 +269,6 @@ public class CodeGenerator extends VisitorAdaptor{
 	
 	/********** DESIGNATOR STATEMENT -> ASSIGNEMENT **********/
 	public void visit(DesignatorStatementOptionsClassAssignExpression designatorWithAssignement) {
-		// STORE U NIZ u zavisnosti od tipa
 		
 		if(did_i_use_new == true) { 
 			if(designatorWithAssignement.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
@@ -242,6 +282,9 @@ public class CodeGenerator extends VisitorAdaptor{
 			Code.store(designatorWithAssignement.getDesignator().obj);
 			return; //!!!!!
 		}
+		
+		
+		
 		if(designatorWithAssignement.getDesignator().obj.getType().getKind() == Struct.Array) {
 			if(if_we_are_using_an_array !=0) {
 				if(designatorWithAssignement.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
@@ -266,6 +309,9 @@ public class CodeGenerator extends VisitorAdaptor{
 		int offset = functionObj.getAdr() - Code.pc;
 		Code.put(Code.call);
 		Code.put2(offset);
+		if(funcCall.getDesignator().obj.getType() != Symbol_Table.noType) {
+			Code.put(Code.pop);
+		}
 	}
 	
 	/********** DESIGNATOR STATEMENT -> PLUSPLUS **********/
@@ -403,4 +449,167 @@ public class CodeGenerator extends VisitorAdaptor{
 			Code.put(Code.sub);
 		}
 	}
+	
+	public void visit(TermClass negative) {
+		if(negative.getParent().getParent().getClass() == ExprNegativeClass.class) {
+			Code.put(Code.const_m1);
+			Code.put(Code.mul);
+		}
+	}
+	
+	List<Integer> ternaryList = new ArrayList<>();
+	
+	public void visit(TernaryClass ternary) {
+		Code.put(Code.const_1); 
+		ternaryList.add(Code.pc+1);
+		Code.putFalseJump(Code.eq, Code.pc-1);
+	}
+	
+	public void visit(ColonClass colon) {
+		Code.putJump(Code.pc+1);
+		Code.fixup(ternaryList.remove(ternaryList.size()-1));
+		ternaryList.add(Code.pc-2);
+	}
+	
+	
+	public void visit(ClassTwoClass ternaryEnd) {
+		Code.fixup(ternaryList.remove(ternaryList.size()-1));
+	}
+	
+	 /* x = 1 ? 2 : 3;
+	 * 0: enter
+	 * 1: 0
+	 * 2: 1
+	 * 3: const_1
+	 * 4: const_1
+	 * 5: jne
+	 * 6: xxxxxxxxxxxxx0
+	 * 7: xxxxxxxxxxxxx7
+	 * 8: const_2
+	 * 9: jmp
+	 * 10:yyyyyyyyyyyyy0
+	 * 11:yyyyyyyyyyyyy4
+	 * 12:const_3
+	 * 13:store_0
+	 * 14:
+	 * */
+	
+
+	List<List<Integer>> ifElseListNextHop = new ArrayList<>();
+	List<Integer> current_list_of_addresses_to_patch_next_hop = null;
+	
+	List<List<Integer>> ifElseListToEnd = new ArrayList<>();
+	List<Integer> current_list_of_addresses_to_hop_to_end = null;
+	
+	public void visit(IfConditionNoError ifCondition) {
+		/***** PLACE A CONSTANT FOR COMPARISON *****/
+		Code.put(Code.const_1);
+		/***** IF YOU CAME FROM ELSE YOU ARE NOT CHANGING THE CURRENT LIST OF PATCH ADDRESSES *****/
+		if(ifCondition.getParent().getParent().getClass() == YesOptionalStatement.class) {
+			
+		}
+		/***** BUT IF YOU DID NOT COME BACK FROM ELSE THEN YOU NEED TO CHANGE YOUR CURRENT LIST -> ADD NEW, SAVE OLD *****/
+		else {
+			ifElseListNextHop.add(new ArrayList<>());
+			current_list_of_addresses_to_patch_next_hop = ifElseListNextHop.get(ifElseListNextHop.size()-1);
+			ifElseListToEnd.add(new ArrayList<>());
+			current_list_of_addresses_to_hop_to_end = ifElseListToEnd.get(ifElseListToEnd.size()-1);
+		}
+		/***** ANYWAYS YOU NEED TO MAKE A __________ WHERE IT NEEDS TO BE PATCHED LATER*****/
+		current_list_of_addresses_to_patch_next_hop.add(Code.pc+1);
+		Code.putFalseJump(Code.eq, Code.pc-1);
+	}
+	
+	public void visit(Empty emptyHelper) {
+		/***** PUT A JMP HERE, TO GO ALL THE WAY TO THE END OF THE IF-ELSE STRUCTURE *****/
+		Code.putJump(Code.pc+1);
+		/***** FIX THE PREVIOUS ELEMENT FOR NEXT HOP OF THE ***CURRENT*** SCOPE, SO IF IT'S CONDITION IS FALSE, IT COMES HERE *****/
+		if(current_list_of_addresses_to_patch_next_hop.size()!=0)
+			Code.fixup(current_list_of_addresses_to_patch_next_hop.remove(current_list_of_addresses_to_patch_next_hop.size()-1));
+		/***** AT THE END OF THE IF-ELSE STRUCTURE, PATCH THE JMP ADDRESS *****/
+		current_list_of_addresses_to_hop_to_end.add(Code.pc-2);
+	}
+	
+	public void visit(ElseClassBaby elseExists) {}
+	
+	public void visit(NoOptionalStatement noElse) {
+		/***** WHEN WE REACH THE PLACE WHERE THERE IS NO MORE ELSE-s, WE PATCH ALL END ADDRESSES *****/
+		for(int address_to_patch : current_list_of_addresses_to_hop_to_end) {
+			Code.fixup(address_to_patch);
+		}
+		current_list_of_addresses_to_hop_to_end.removeAll(current_list_of_addresses_to_hop_to_end);
+		
+		/***** AND WE MOVE ON TO THE PREVIOUS SCOPE OF IF-ELSEs *****/
+		ifElseListToEnd.remove(ifElseListToEnd.size()-1);
+		ifElseListNextHop.remove(ifElseListNextHop.size()-1);
+		if(ifElseListToEnd.size()!=0)
+			current_list_of_addresses_to_hop_to_end = ifElseListToEnd.get(ifElseListToEnd.size()-1);
+		if(ifElseListNextHop.size()!=0)
+			current_list_of_addresses_to_patch_next_hop = ifElseListNextHop.get(ifElseListNextHop.size()-1);
+		
+	}
+	
+	public void visit(YesOptionalStatement elseWithNoIfAgain) {
+		/***** IF WE ARE DID NOT GO TO ELSE IF(...) AGAIN, THEN THIS WAS THE FINAL PART OF THE IF-ELSE CONSTRUCTION *****/
+		if(elseWithNoIfAgain.getStatement().getClass() != IfStatement.class) {
+			/***** SINCE IT IS THE END, WE PATCH ALL THE ADDRESSES FOR END *****/
+			for(int address_to_patch : current_list_of_addresses_to_hop_to_end) {
+				Code.fixup(address_to_patch);
+			}
+			current_list_of_addresses_to_hop_to_end.removeAll(current_list_of_addresses_to_hop_to_end);
+			
+			/***** SINCE IT IS THE END, WE ALSO PATCH ALL ADDRESSES FOR NEXT HOP*****/
+			for(int address_to_patch : current_list_of_addresses_to_patch_next_hop) {
+				Code.fixup(address_to_patch);
+			}
+			current_list_of_addresses_to_patch_next_hop.removeAll(current_list_of_addresses_to_patch_next_hop);
+			
+			/***** AND IF THERE ARE MORE PREVIOUS SCOPES, WE CHANGE TO THEM *****/
+			if(ifElseListToEnd.size()!=0) {
+				ifElseListToEnd.remove(ifElseListToEnd.size()-1);
+				if(ifElseListToEnd.size()!=0)
+				current_list_of_addresses_to_hop_to_end = ifElseListToEnd.get(ifElseListToEnd.size()-1);
+			}
+			if(ifElseListNextHop.size()!=0) {
+				ifElseListNextHop.remove(ifElseListNextHop.size()-1);
+				if(ifElseListNextHop.size()!=0)
+				current_list_of_addresses_to_patch_next_hop = ifElseListNextHop.get(ifElseListNextHop.size()-1);
+			}
+		}
+	}
+	
+	 /************************************************************************************
+	 *   key                | value (Lista)
+	 *   if - spolja          x, y, z
+	 *   if - unutra          ux, uy, uz
+	 *************************************************************************************
+	 * if(...) { -> ostavim tag da treba popuniti za netacan uslov
+	 * 
+	 * }
+	 * 
+	 ************************************************************************************* 
+	 * if(...){ -> ostavim tag da treba popuniti za netacan uslov
+	 * 
+	 * } 
+	 * else { -> ostavim tag da treba odavde skociti na kraj, ako je gore bilo tacno
+	 * 
+	 * }
+	 * 
+	 *************************************************************************************
+	 *  if(...) {       -> ostavim tag da treba popuniti za netacan uslov
+	 *  			
+	 *  }		  	   -> ostavim tag da treba skociti na kraj, ako je gore bilo tacno
+	 *  else if(...) { -> ostavim tag da treba popuniti za netacan uslov
+	 *  --------
+	 *  }			   -> ostavim tag da treba skociti na kraj, ako je gore bilo tacno
+	 *  else if(...){  -> ostavim tag da treba popuniti za netacan uslov
+	 *   --------      
+	 *  }
+	 *  else{		   -> ostavim tag da treba skociti na kraj, ako je gore bilo tacno
+	 *  
+	 *  }
+	 *************************************************************************************/
+	
+	
+	
 }
