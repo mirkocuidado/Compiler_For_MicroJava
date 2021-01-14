@@ -569,7 +569,7 @@ public class SemanticPass extends VisitorAdaptor {
     
     
     /********** MARK THE BEGINNING OF DO...WHILE **********/
-    public void visit(DoKeyWord param) {
+    public void visit(DoClass param) {
     	do_while_flag++;
     	report_info("BEGINNING OF A DO...WHILE LOOP!", param);
     }
@@ -983,8 +983,8 @@ public class SemanticPass extends VisitorAdaptor {
     
     /********** TERNARY **********/
     public void visit(ClassTwoClass ternary) {
-    	Struct s1 = ternary.getExprOne().struct;
-    	Struct s2 = ternary.getExprOne1().struct;
+    	Struct s1 = ternary.getExprOne1().struct;
+    	Struct s2 = ternary.getExprOne2().struct;
     	
     	ternary.struct = s1;
     	
@@ -1008,7 +1008,7 @@ public class SemanticPass extends VisitorAdaptor {
     			return;
     		}
     		else {
-    			report_error("TERNARY FAILED! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", ternary);
+    			report_error("TERNARY FAILED!! TYPES: " + getTypeAsString(s1.getElemType().getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", ternary);
     			return;
     		}
     	}
@@ -1020,13 +1020,13 @@ public class SemanticPass extends VisitorAdaptor {
     			return;
     		}
     		else {
-    			report_error("TERNARY FAILED! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", ternary);
+    			report_error("TERNARY FAILED!!! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getElemType().getKind()) + " !", ternary);
     			return;
     		}
     	}
     	else if(!s1.assignableTo(s2)) {
     		// ako nijedan nije niz i assignable su
-    		report_error("TERNARY FAILED! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", ternary);
+    		report_error("TERNARY FAILED!!!! TYPES: " + getTypeAsString(s1.getKind()) + " AND " + getTypeAsString(s2.getKind()) + " !", ternary);
 			return;
     	}
     	else {

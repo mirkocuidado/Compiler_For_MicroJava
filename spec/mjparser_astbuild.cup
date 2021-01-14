@@ -108,7 +108,8 @@ nonterminal ContinueKeyWord ContinueKeyWord;
 nonterminal LSquareKeyWord LSquareKeyWord;
 nonterminal AssignOpKeyWord AssignOpKeyWord;
 nonterminal LBraceKeyWord LBraceKeyWord;
-nonterminal RBraceKeyWord RBraceKeyWord;
+nonterminal 
+			RBraceKeyWord RBraceKeyWord;
 nonterminal Helper Helper;
 nonterminal LParenFactor LParenFactor;
 nonterminal FlagSet FlagSet;
@@ -117,6 +118,9 @@ nonterminal TernaryKeyWord TernaryKeyWord;
 nonterminal Fake Fake;
 nonterminal ElseKeyWord ElseKeyWord;
 nonterminal EmptyHelper EmptyHelper;
+nonterminal
+		    RParenBrother RParenBrother;
+nonterminal LParenBrother LParenBrother;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -356,12 +360,16 @@ Statement ::= (Assignment) DesignatorStatement:D1 SEMI {: RESULT=new Assignment(
 		   |
 		   (IfStatement) IF LPAREN PotentialError:P1 RPAREN Statement:S2 EmptyHelper:E3 OptionalElse:O4 {: RESULT=new IfStatement(P1, S2, E3, O4); RESULT.setLine(P1left); :} /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
 		   |
-		   (DoWhileStatement) DoKeyWord:D1 Statement:S2 WHILE LPAREN Condition:C3 RPAREN SEMI {: RESULT=new DoWhileStatement(D1, S2, C3); RESULT.setLine(D1left); :}
+		   (DoWhileStatement) DoKeyWord:D1 Statement:S2 WHILE LParenBrother:L3 Condition:C4 RParenBrother:R5 SEMI {: RESULT=new DoWhileStatement(D1, S2, L3, C4, R5); RESULT.setLine(D1left); :}
 		   |
 		   (SwitchStatement) SWITCH LPAREN Expr:E1 RPAREN LBRACE SwitchStatementList:S2 RBRACE {: RESULT=new SwitchStatement(E1, S2); RESULT.setLine(E1left); :}
 		   |
 		   (StatementStatement) LBRACE StatementList:S1 RBRACE {: RESULT=new StatementStatement(S1); RESULT.setLine(S1left); :}
 		   ;
+	
+LParenBrother ::= (LParenClass) LPAREN {: RESULT=new LParenClass(); :} ;
+		   
+RParenBrother ::= (RParenClass) RPAREN {: RESULT=new RParenClass(); :} ;
 		   
 EmptyHelper ::= (Empty) {: RESULT=new Empty(); :} ;
 

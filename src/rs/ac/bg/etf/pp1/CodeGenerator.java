@@ -8,54 +8,44 @@ import rs.etf.pp1.symboltable.concepts.*;
 
 public class CodeGenerator extends VisitorAdaptor{
 	
+	public CodeGenerator() {
+		
+		/********** len **********/
+		Obj obj = Symbol_Table.lenObj;
+		obj.setAdr(Code.pc);
+		Code.put(Code.enter);
+		Code.put(obj.getLevel());
+		Code.put(obj.getLocalSymbols().size());
+		Code.put(Code.load_n);
+		Code.put(Code.arraylength);
+		Code.put(Code.exit);
+		Code.put(Code.return_);
+		
+		/********** chr **********/
+		obj = Symbol_Table.chrObj;
+		obj.setAdr(Code.pc);
+		Code.put(Code.enter);
+		Code.put(obj.getLevel());
+		Code.put(obj.getLocalSymbols().size());
+		Code.put(Code.load_n);
+		Code.put(Code.exit);
+		Code.put(Code.return_);
+		
+		/********** ord **********/
+		obj = Symbol_Table.ordObj;
+		obj.setAdr(Code.pc);
+		Code.put(Code.enter);
+		Code.put(obj.getLevel());
+		Code.put(obj.getLocalSymbols().size());
+		Code.put(Code.load_n);
+		Code.put(Code.exit);
+		Code.put(Code.return_);
+	}
+	
 	private int mainPc;
 	
 	public int getMainPc(){
 		return mainPc;
-	}
-	
-	int Prec(char ch){ 
-		switch (ch) { 
-			case '+': case '-':  return 1; 
-			case '*': case '/': case '%': return 2; 
-		} 
-		return -1; 
-	} 
-	
-	String infixToPostfix(String exp) 
-	{ 
-		String result = new String(""); 
-		
-		Stack<Character> stack = new Stack<>(); 
-		
-		for (int i = 0; i<exp.length(); ++i){ 
-			char c = exp.charAt(i); 
-			
-			if (Character.isLetterOrDigit(c)) 
-				result += c; 
-			else if (c == '(') 
-				stack.push(c);
-			else if (c == ')'){ 
-				while (!stack.isEmpty() && stack.peek() != '(') 
-					result += stack.pop(); 
-				
-					stack.pop(); 
-			} 
-			else { 
-				while (!stack.isEmpty() && Prec(c)<= Prec(stack.peek())){ 
-					result += stack.pop(); 
-			} 
-				stack.push(c); 
-			} 
-	
-		} 
-	
-		while (!stack.isEmpty()){ 
-			if(stack.peek() == '(') 
-				return "Invalid Expression"; 
-			result += stack.pop(); 
-		} 
-		return result; 
 	}
 	
 	String nameOfProgram;
@@ -269,7 +259,7 @@ public class CodeGenerator extends VisitorAdaptor{
 	
 	/********** DESIGNATOR STATEMENT -> ASSIGNEMENT **********/
 	public void visit(DesignatorStatementOptionsClassAssignExpression designatorWithAssignement) {
-		
+		just_set_an_array = false;
 		if(did_i_use_new == true) { 
 			if(designatorWithAssignement.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
 				Obj o = Symbol_Table.insert(Obj.Con, "0", new Struct(Struct.Int));
@@ -413,14 +403,18 @@ public class CodeGenerator extends VisitorAdaptor{
 	/********** BULLSHIT **********/
 	
 	int if_we_are_using_an_array = 0;
+	boolean just_set_an_array = false;
 	
     public void visit(NoOptionalDesignatorClass param) {
     	if(if_we_are_using_an_array > 0)
-    		if_we_are_using_an_array--;
+    		if(just_set_an_array == false)
+    			if_we_are_using_an_array--;
+    		else just_set_an_array = false;
     }
     
     public void visit(OptionalDesignatorArray param) {
     	if_we_are_using_an_array++;
+    	just_set_an_array = true;
     }
 	
 
@@ -530,7 +524,9 @@ public class CodeGenerator extends VisitorAdaptor{
 		current_list_of_addresses_to_hop_to_end.add(Code.pc-2);
 	}
 	
-	public void visit(ElseClassBaby elseExists) {}
+	public void visit(ElseClassBaby elseExists) {
+		/***** EMPTY *****/
+	}
 	
 	public void visit(NoOptionalStatement noElse) {
 		/***** WHEN WE REACH THE PLACE WHERE THERE IS NO MORE ELSE-s, WE PATCH ALL END ADDRESSES *****/
@@ -609,6 +605,125 @@ public class CodeGenerator extends VisitorAdaptor{
 	 *  
 	 *  }
 	 *************************************************************************************/
+	
+	class ThreeListsClass{
+		
+		public ThreeListsClass() {
+			start_of_do_while_loops_struct = new ArrayList<>();
+			end_of_do_while_loops_struct = new ArrayList<>();
+			initial_jump_on_do_struct = new ArrayList<>();
+		}
+		
+		public List<Integer> start_of_do_while_loops_struct;
+		public List<Integer> end_of_do_while_loops_struct;
+		public List<Integer> initial_jump_on_do_struct;
+	}
+	
+	List<ThreeListsClass> hash_map = new ArrayList<>();
+	List<Integer> start_of_do_while_loops = null; // first statement of do...while
+	List<Integer> end_of_do_while_loops = null;   // first statement after do...while
+	List<Integer> initial_jump_on_do = null;      // check the condition
+	
+	public void visit(DoClass doKeyWord) {
+		hash_map.add(new ThreeListsClass());
+		start_of_do_while_loops = hash_map.get(hash_map.size()-1).start_of_do_while_loops_struct;
+		end_of_do_while_loops = hash_map.get(hash_map.size()-1).end_of_do_while_loops_struct;
+		initial_jump_on_do = hash_map.get(hash_map.size()-1).initial_jump_on_do_struct;
+		
+		Code.putJump(Code.pc+1);
+		start_of_do_while_loops.add(Code.pc);
+		initial_jump_on_do.add(Code.pc-2);
+	}
+	
+	public void visit(LParenClass doWhileConditionBegin) {
+		for(int address:initial_jump_on_do)
+			Code.fixup(address);
+		initial_jump_on_do.removeAll(initial_jump_on_do);
+	}
+	
+	public void visit(RParenClass doWhileCloseParen) {
+		Code.put(Code.const_1);
+		end_of_do_while_loops.add(Code.pc+1);
+		Code.putFalseJump(Code.eq, Code.pc-1);
+		Code.putJump(start_of_do_while_loops.remove(start_of_do_while_loops.size()-1));
+	}
+	
+	public void visit(DoWhileStatement instrAfterDoWhile) {
+		for(int end_of_do_while:end_of_do_while_loops)
+			Code.fixup(end_of_do_while);
+		end_of_do_while_loops.removeAll(end_of_do_while_loops);
+		
+		if(hash_map.size()!=0) hash_map.remove(hash_map.size()-1);
+		
+		if(hash_map.size()!=0) {
+			start_of_do_while_loops = hash_map.get(hash_map.size()-1).start_of_do_while_loops_struct;
+			end_of_do_while_loops = hash_map.get(hash_map.size()-1).end_of_do_while_loops_struct;
+			initial_jump_on_do = hash_map.get(hash_map.size()-1).initial_jump_on_do_struct;
+		}
+	}
+	
+	public void visit(BreakKeyWordClass breakKeyWord) {
+		Code.putJump(Code.pc+1);
+		end_of_do_while_loops.add(Code.pc-2);
+	}
+	
+	public void visit(ContinueKeyWord continueKeyWord) {
+		Code.putJump(Code.pc+1);
+		initial_jump_on_do.add(Code.pc-2);
+	}
+	
+	 /**************************************************************************************************************************
+	 *  do {       -> skocim na uslov od while, zapamtim u start_of_do_while_loops za povratak i u initial_jump_on_do za patch
+	 *  			
+	 *  }
+	 *  while(...); -> uslov netacan => skocim ispod, nakon while
+	 *  			-> uslov tacan => skocim na poslednju naredbu iz start_of_do_while_loops
+	 ***************************************************************************************************************************/
+	
+	public void visit(CondFactOptionalClass relOp) {
+		if(relOp.getRelOp() instanceof RelationOperationClassEqualComparation) {
+			Code.putFalseJump(Code.eq, Code.pc+7);
+			Code.put(Code.const_1);
+			Code.putJump(Code.pc+4);
+			Code.loadConst(0);
+		}
+		else if(relOp.getRelOp() instanceof RelationOperationClassNotEqualComparation) {
+			Code.putFalseJump(Code.ne, Code.pc+7);
+			Code.put(Code.const_1);
+			Code.putJump(Code.pc+4);
+			Code.loadConst(0);
+		}
+		else if(relOp.getRelOp() instanceof GreaterOperationClass) {
+			Code.putFalseJump(Code.gt, Code.pc+7);
+			Code.put(Code.const_1);
+			Code.putJump(Code.pc+4);
+			Code.loadConst(0);
+		}
+		else if(relOp.getRelOp() instanceof LessOperationClass) {
+			Code.putFalseJump(Code.lt, Code.pc+7);
+			Code.put(Code.const_1);
+			Code.putJump(Code.pc+4);
+			Code.loadConst(0);
+		}
+		else if(relOp.getRelOp() instanceof GreaterOrEqualOperationClass) {
+			Code.putFalseJump(Code.ge, Code.pc+7);
+			Code.put(Code.const_1);
+			Code.putJump(Code.pc+4);
+			Code.loadConst(0);
+		}
+		else if(relOp.getRelOp() instanceof LessOrEqualOperationClass) {
+			Code.putFalseJump(Code.le, Code.pc+7);
+			Code.put(Code.const_1);
+			Code.putJump(Code.pc+4);
+			Code.loadConst(0);
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

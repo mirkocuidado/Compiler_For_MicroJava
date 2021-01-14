@@ -90,7 +90,9 @@ nonterminal ActualParamList;
 nonterminal RelOp;
 nonterminal MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
-nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord, AssignOpKeyWord, LBraceKeyWord, RBraceKeyWord, Helper, LParenFactor, FlagSet, ColonKeyWord, TernaryKeyWord, Fake, ElseKeyWord, EmptyHelper;
+nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord, AssignOpKeyWord, LBraceKeyWord, 
+			RBraceKeyWord, Helper, LParenFactor, FlagSet, ColonKeyWord, TernaryKeyWord, Fake, ElseKeyWord, EmptyHelper,
+		    RParenBrother, LParenBrother;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -330,12 +332,16 @@ Statement ::= (Assignment) DesignatorStatement SEMI
 		   |
 		   (IfStatement) IF LPAREN PotentialError RPAREN Statement EmptyHelper OptionalElse /* ako budes probao oporavak ceo za if, probaj da spustis RPAREN */
 		   |
-		   (DoWhileStatement) DoKeyWord Statement WHILE LPAREN Condition RPAREN SEMI
+		   (DoWhileStatement) DoKeyWord Statement WHILE LParenBrother Condition RParenBrother SEMI
 		   |
 		   (SwitchStatement) SWITCH LPAREN Expr RPAREN LBRACE SwitchStatementList RBRACE
 		   |
 		   (StatementStatement) LBRACE StatementList RBRACE
 		   ;
+	
+LParenBrother ::= (LParenClass) LPAREN ;
+		   
+RParenBrother ::= (RParenClass) RPAREN ;
 		   
 EmptyHelper ::= (Empty) ;
 

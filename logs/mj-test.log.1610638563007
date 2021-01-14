@@ -1,0 +1,454 @@
+INFO  16:35:33,988 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  16:35:34,060 - #2 program
+INFO  16:35:34,061 - #43 test301
+INFO  16:35:34,061 - #9 const
+INFO  16:35:34,063 - #43 int
+INFO  16:35:34,063 - #43 nula
+INFO  16:35:34,064 - #19 =
+INFO  16:35:34,064 - #42 0
+INFO  16:35:34,064 - #33 ;
+INFO  16:35:34,065 - #9 const
+INFO  16:35:34,065 - #43 int
+INFO  16:35:34,065 - #43 jedan
+INFO  16:35:34,065 - #19 =
+INFO  16:35:34,065 - #42 1
+INFO  16:35:34,066 - #33 ;
+INFO  16:35:34,066 - #9 const
+INFO  16:35:34,066 - #43 int
+INFO  16:35:34,066 - #43 pet
+INFO  16:35:34,066 - #19 =
+INFO  16:35:34,066 - #42 5
+INFO  16:35:34,067 - #33 ;
+INFO  16:35:34,067 - #43 int
+INFO  16:35:34,076 - #43 niz
+INFO  16:35:34,076 - #39 [
+INFO  16:35:34,076 - #40 ]
+INFO  16:35:34,077 - #33 ;
+INFO  16:35:34,077 - #43 char
+INFO  16:35:34,077 - #43 nizch
+INFO  16:35:34,077 - #39 [
+INFO  16:35:34,077 - #40 ]
+INFO  16:35:34,077 - #33 ;
+INFO  16:35:34,077 - #35 {
+INFO  16:35:34,078 - #5 void
+INFO  16:35:34,078 - #43 main
+INFO  16:35:34,078 - #37 (
+INFO  16:35:34,079 - #38 )
+INFO  16:35:34,080 - #43 int
+INFO  16:35:34,081 - #43 bodovi
+INFO  16:35:34,081 - #33 ;
+INFO  16:35:34,081 - #43 bool
+INFO  16:35:34,081 - #43 bt
+INFO  16:35:34,081 - #33 ;
+INFO  16:35:34,082 - #35 {
+INFO  16:35:34,082 - #43 bodovi
+INFO  16:35:34,084 - #19 =
+INFO  16:35:34,086 - #42 0
+INFO  16:35:34,087 - #33 ;
+INFO  16:35:34,088 - #43 bodovi
+INFO  16:35:34,088 - #28 ++
+INFO  16:35:34,089 - #33 ;
+INFO  16:35:34,089 - #43 bodovi
+INFO  16:35:34,089 - #19 =
+INFO  16:35:34,089 - #43 bodovi
+INFO  16:35:34,089 - #49 +
+INFO  16:35:34,089 - #43 jedan
+INFO  16:35:34,089 - #33 ;
+INFO  16:35:34,089 - #43 bodovi
+INFO  16:35:34,089 - #19 =
+INFO  16:35:34,090 - #43 bodovi
+INFO  16:35:34,090 - #46 *
+INFO  16:35:34,090 - #43 pet
+INFO  16:35:34,090 - #33 ;
+INFO  16:35:34,090 - #43 bodovi
+INFO  16:35:34,090 - #29 --
+INFO  16:35:34,090 - #33 ;
+INFO  16:35:34,090 - #18 print
+INFO  16:35:34,090 - #37 (
+INFO  16:35:34,090 - #43 bodovi
+INFO  16:35:34,090 - #38 )
+INFO  16:35:34,091 - #33 ;
+INFO  16:35:34,091 - #36 }
+INFO  16:35:34,091 - #36 }
+INFO  16:35:34,101 - Program(
+  ProgramName(
+   test301
+  ) [ProgramName]
+  GroupDeclarations(
+    GroupDeclarations(
+      GroupDeclarations(
+        GroupDeclarations(
+          GroupDeclarations(
+            NoGroupDecl(
+            ) [NoGroupDecl]
+            GroupDeclarationsConsts(
+              ConstDeclClass(
+                Type(
+                 int
+                ) [Type]
+                ConstListSingle(
+                  ConstListNoArray(
+                   nula
+                    ValuesNumber(
+                     0
+                    ) [ValuesNumber]
+                  ) [ConstListNoArray]
+                ) [ConstListSingle]
+              ) [ConstDeclClass]
+            ) [GroupDeclarationsConsts]
+          ) [GroupDeclarations]
+          GroupDeclarationsConsts(
+            ConstDeclClass(
+              Type(
+               int
+              ) [Type]
+              ConstListSingle(
+                ConstListNoArray(
+                 jedan
+                  ValuesNumber(
+                   1
+                  ) [ValuesNumber]
+                ) [ConstListNoArray]
+              ) [ConstListSingle]
+            ) [ConstDeclClass]
+          ) [GroupDeclarationsConsts]
+        ) [GroupDeclarations]
+        GroupDeclarationsConsts(
+          ConstDeclClass(
+            Type(
+             int
+            ) [Type]
+            ConstListSingle(
+              ConstListNoArray(
+               pet
+                ValuesNumber(
+                 5
+                ) [ValuesNumber]
+              ) [ConstListNoArray]
+            ) [ConstListSingle]
+          ) [ConstDeclClass]
+        ) [GroupDeclarationsConsts]
+      ) [GroupDeclarations]
+      GroupDeclarationVars(
+        VarDeclClass(
+          Type(
+           int
+          ) [Type]
+          VarListSingle(
+            VarClassArray(
+             niz
+            ) [VarClassArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [GroupDeclarationVars]
+    ) [GroupDeclarations]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         char
+        ) [Type]
+        VarListSingle(
+          VarClassArray(
+           nizch
+          ) [VarClassArray]
+        ) [VarListSingle]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        VarDeclListClass(
+          NoVarDeclList(
+          ) [NoVarDeclList]
+          VarDeclClass(
+            Type(
+             int
+            ) [Type]
+            VarListSingle(
+              VarClassNoArray(
+               bodovi
+              ) [VarClassNoArray]
+            ) [VarListSingle]
+          ) [VarDeclClass]
+        ) [VarDeclListClass]
+        VarDeclClass(
+          Type(
+           bool
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             bt
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        Statements(
+          Statements(
+            Statements(
+              Statements(
+                Statements(
+                  NoStmt(
+                  ) [NoStmt]
+                  Assignment(
+                    DesignatorStatementOptionsClassAssignExpression(
+                      Designator(
+                        DesigIdent(
+                         bodovi
+                        ) [DesigIdent]
+                        NoOptionalDesignatorClass(
+                        ) [NoOptionalDesignatorClass]
+                      ) [Designator]
+                      AssignOpClass(
+                        AssignOperationClass(
+                        ) [AssignOperationClass]
+                      ) [AssignOpClass]
+                      ClassOneClass(
+                        NormalExpressionClass(
+                          ExprFirstOptionClassWithMinus(
+                            TermClass(
+                              NumberConst(
+                               0
+                              ) [NumberConst]
+                              NoTermOptionalListClass(
+                              ) [NoTermOptionalListClass]
+                            ) [TermClass]
+                            NoExprOptionalListClass(
+                            ) [NoExprOptionalListClass]
+                          ) [ExprFirstOptionClassWithMinus]
+                        ) [NormalExpressionClass]
+                      ) [ClassOneClass]
+                    ) [DesignatorStatementOptionsClassAssignExpression]
+                  ) [Assignment]
+                ) [Statements]
+                Assignment(
+                  DesignatorStatementPlusPlus(
+                    Designator(
+                      DesigIdent(
+                       bodovi
+                      ) [DesigIdent]
+                      NoOptionalDesignatorClass(
+                      ) [NoOptionalDesignatorClass]
+                    ) [Designator]
+                  ) [DesignatorStatementPlusPlus]
+                ) [Assignment]
+              ) [Statements]
+              Assignment(
+                DesignatorStatementOptionsClassAssignExpression(
+                  Designator(
+                    DesigIdent(
+                     bodovi
+                    ) [DesigIdent]
+                    NoOptionalDesignatorClass(
+                    ) [NoOptionalDesignatorClass]
+                  ) [Designator]
+                  AssignOpClass(
+                    AssignOperationClass(
+                    ) [AssignOperationClass]
+                  ) [AssignOpClass]
+                  ClassOneClass(
+                    NormalExpressionClass(
+                      ExprFirstOptionClassWithMinus(
+                        TermClass(
+                          DesignatorClass(
+                            Designator(
+                              DesigIdent(
+                               bodovi
+                              ) [DesigIdent]
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                            ) [Designator]
+                          ) [DesignatorClass]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        ExprOptionalListClass(
+                          NoExprOptionalListClass(
+                          ) [NoExprOptionalListClass]
+                          PlusOperation(
+                           +
+                          ) [PlusOperation]
+                          TermClass(
+                            DesignatorClass(
+                              Designator(
+                                DesigIdent(
+                                 jedan
+                                ) [DesigIdent]
+                                NoOptionalDesignatorClass(
+                                ) [NoOptionalDesignatorClass]
+                              ) [Designator]
+                            ) [DesignatorClass]
+                            NoTermOptionalListClass(
+                            ) [NoTermOptionalListClass]
+                          ) [TermClass]
+                        ) [ExprOptionalListClass]
+                      ) [ExprFirstOptionClassWithMinus]
+                    ) [NormalExpressionClass]
+                  ) [ClassOneClass]
+                ) [DesignatorStatementOptionsClassAssignExpression]
+              ) [Assignment]
+            ) [Statements]
+            Assignment(
+              DesignatorStatementOptionsClassAssignExpression(
+                Designator(
+                  DesigIdent(
+                   bodovi
+                  ) [DesigIdent]
+                  NoOptionalDesignatorClass(
+                  ) [NoOptionalDesignatorClass]
+                ) [Designator]
+                AssignOpClass(
+                  AssignOperationClass(
+                  ) [AssignOperationClass]
+                ) [AssignOpClass]
+                ClassOneClass(
+                  NormalExpressionClass(
+                    ExprFirstOptionClassWithMinus(
+                      TermClass(
+                        DesignatorClass(
+                          Designator(
+                            DesigIdent(
+                             bodovi
+                            ) [DesigIdent]
+                            NoOptionalDesignatorClass(
+                            ) [NoOptionalDesignatorClass]
+                          ) [Designator]
+                        ) [DesignatorClass]
+                        TermOptionalListClass(
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                          MultiplyOperationClass(
+                           *
+                          ) [MultiplyOperationClass]
+                          DesignatorClass(
+                            Designator(
+                              DesigIdent(
+                               pet
+                              ) [DesigIdent]
+                              NoOptionalDesignatorClass(
+                              ) [NoOptionalDesignatorClass]
+                            ) [Designator]
+                          ) [DesignatorClass]
+                        ) [TermOptionalListClass]
+                      ) [TermClass]
+                      NoExprOptionalListClass(
+                      ) [NoExprOptionalListClass]
+                    ) [ExprFirstOptionClassWithMinus]
+                  ) [NormalExpressionClass]
+                ) [ClassOneClass]
+              ) [DesignatorStatementOptionsClassAssignExpression]
+            ) [Assignment]
+          ) [Statements]
+          Assignment(
+            DesignatorStatementMinusMinus(
+              Designator(
+                DesigIdent(
+                 bodovi
+                ) [DesigIdent]
+                NoOptionalDesignatorClass(
+                ) [NoOptionalDesignatorClass]
+              ) [Designator]
+            ) [DesignatorStatementMinusMinus]
+          ) [Assignment]
+        ) [Statements]
+        PrintStmt(
+          ClassOneClass(
+            NormalExpressionClass(
+              ExprFirstOptionClassWithMinus(
+                TermClass(
+                  DesignatorClass(
+                    Designator(
+                      DesigIdent(
+                       bodovi
+                      ) [DesigIdent]
+                      NoOptionalDesignatorClass(
+                      ) [NoOptionalDesignatorClass]
+                    ) [Designator]
+                  ) [DesignatorClass]
+                  NoTermOptionalListClass(
+                  ) [NoTermOptionalListClass]
+                ) [TermClass]
+                NoExprOptionalListClass(
+                ) [NoExprOptionalListClass]
+              ) [ExprFirstOptionClassWithMinus]
+            ) [NormalExpressionClass]
+          ) [ClassOneClass]
+          NoCommaNumberClass(
+          ) [NoCommaNumberClass]
+        ) [PrintStmt]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  16:35:34,101 - ===================================
+INFO  16:35:34,105 - PROGRAM NAME DETECTED => test301 ON LINE 3
+INFO  16:35:34,105 - CONST VALUE 0 IS BEING USED! ON LINE 5
+INFO  16:35:34,105 - CONST VARIABLE nula IS BEING DEFINED! ON LINE 5
+INFO  16:35:34,105 - CONST VALUE 1 IS BEING USED! ON LINE 6
+INFO  16:35:34,105 - CONST VARIABLE jedan IS BEING DEFINED! ON LINE 6
+INFO  16:35:34,105 - CONST VALUE 5 IS BEING USED! ON LINE 7
+INFO  16:35:34,105 - CONST VARIABLE pet IS BEING DEFINED! ON LINE 7
+INFO  16:35:34,105 - ARRAY VARIABLE niz IS BEING DEFINED! ON LINE 9
+INFO  16:35:34,106 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 9
+INFO  16:35:34,106 - ARRAY VARIABLE nizch IS BEING DEFINED! ON LINE 10
+INFO  16:35:34,106 - VARIABLES OF TYPE char HAVE BEEN DEFINED! ON LINE 10
+INFO  16:35:34,106 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 13
+INFO  16:35:34,106 - VARIABLE bodovi IS BEING DEFINED! ON LINE 14
+INFO  16:35:34,106 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 14
+INFO  16:35:34,106 - VARIABLE bt IS BEING DEFINED! ON LINE 15
+INFO  16:35:34,106 - VARIABLES OF TYPE bool HAVE BEEN DEFINED! ON LINE 15
+INFO  16:35:34,106 - METHOD BODY STARTING!
+INFO  16:35:34,106 - CURRENT VARIABLE IN USE IS bodovi AND IT IS OF TYPE int
+INFO  16:35:34,106 - BEGINNING OF AN ASSIGNEMENT! ON LINE 17
+INFO  16:35:34,106 - CONST NUMBER 0 ON LINE 17
+INFO  16:35:34,106 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 17
+INFO  16:35:34,107 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 17
+INFO  16:35:34,107 - SUCCESSFUL ASSIGNEMENT! TYPES: int AND int ! ON LINE 17
+INFO  16:35:34,107 - CURRENT VARIABLE IN USE IS bodovi AND IT IS OF TYPE int
+INFO  16:35:34,107 - USING ++ ON bodovi ON LINE 18
+INFO  16:35:34,107 - CURRENT VARIABLE IN USE IS bodovi AND IT IS OF TYPE int
+INFO  16:35:34,107 - BEGINNING OF AN ASSIGNEMENT! ON LINE 19
+INFO  16:35:34,107 - CURRENT VARIABLE IN USE IS bodovi AND IT IS OF TYPE int
+INFO  16:35:34,107 - WE ARE USING A VARIABLE OF TYPE int ON LINE 19
+INFO  16:35:34,107 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 19
+INFO  16:35:34,107 - CURRENT VARIABLE IN USE IS jedan AND IT IS OF TYPE int
+INFO  16:35:34,107 - WE ARE USING A VARIABLE OF TYPE int ON LINE 19
+INFO  16:35:34,107 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 19
+INFO  16:35:34,108 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 11
+INFO  16:35:34,108 - USING INTEGERS IN TERM! ON LINE 19
+INFO  16:35:34,108 - SUCCESSFUL ASSIGNEMENT! TYPES: int AND int ! ON LINE 19
+INFO  16:35:34,108 - CURRENT VARIABLE IN USE IS bodovi AND IT IS OF TYPE int
+INFO  16:35:34,108 - BEGINNING OF AN ASSIGNEMENT! ON LINE 20
+INFO  16:35:34,108 - CURRENT VARIABLE IN USE IS bodovi AND IT IS OF TYPE int
+INFO  16:35:34,108 - WE ARE USING A VARIABLE OF TYPE int ON LINE 20
+INFO  16:35:34,108 - CURRENT VARIABLE IN USE IS pet AND IT IS OF TYPE int
+INFO  16:35:34,108 - WE ARE USING A VARIABLE OF TYPE int ON LINE 20
+INFO  16:35:34,108 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 11
+INFO  16:35:34,108 - USING INTEGERS IN TERM! ON LINE 20
+INFO  16:35:34,108 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 20
+INFO  16:35:34,108 - SUCCESSFUL ASSIGNEMENT! TYPES: int AND int ! ON LINE 20
+INFO  16:35:34,108 - CURRENT VARIABLE IN USE IS bodovi AND IT IS OF TYPE int
+INFO  16:35:34,108 - USING -- ON bodovi ON LINE 21
+INFO  16:35:34,109 - CURRENT VARIABLE IN USE IS bodovi AND IT IS OF TYPE int
+INFO  16:35:34,109 - WE ARE USING A VARIABLE OF TYPE int ON LINE 22
+INFO  16:35:34,109 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 22
+INFO  16:35:34,109 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 22
+INFO  16:35:34,109 - PRINT FUNCTION CALL IN USE! ON LINE 22
+INFO  16:35:34,109 - METHOD BODY ENDING!
+INFO  16:35:34,109 - END OF DEFINING FUNCTION main
+INFO  16:35:34,109 - PROGRAM ENDED => test301 ON LINE 3
+INFO  16:35:34,109 -  Deklarisanih promenljivih ima = 4
+INFO  16:35:34,109 - ===================================
+INFO  16:35:34,113 - Parsiranje uspesno zavrseno!
