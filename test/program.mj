@@ -2,13 +2,21 @@ program p
 	const int size = 10;
 	{
 	
-		void f(char ch, int a, int arg)
-		int x;
-		{
-			x = arg;
-		}
+	void f(char ch, int a, int arg)
+	int x;
+	{
+		x = arg;
+	}
+	
+	int pppp(){
+		return 0;
+	}
+	
+	
 	void main() int x, i; char c;
 	{
+	
+		pppp();
 		i = 0;
 		do{
 			 i++;
@@ -29,4 +37,4 @@ program p
 	 	
 	print(true ? '-' : '+');
 	}
-	}
+}

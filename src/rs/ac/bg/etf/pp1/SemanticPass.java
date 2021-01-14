@@ -265,12 +265,16 @@ public class SemanticPass extends VisitorAdaptor {
 
     /********** FUNCTION ENDING **********/
     public void visit(MethodDecl methodDecl){
-    	if(!returnFound && returnForMethod != Symbol_Table.noType){
+    	/*if(!returnFound && returnForMethod != Symbol_Table.noType){
 			report_error("SEMANTIC ERROR ON LINE " + methodDecl.getLine() + ": FUNCTION " + currentMethod.getName() + " DOES NOT HAVE A RETURN STATEMENT!", null);
 			return;
-    	}
+    	}*/
     	currentMethod.setLevel(number_of_method_formal_parameters);
     	Symbol_Table.chainLocalSymbols(currentMethod);
+    	
+    	methodDecl.obj = currentMethod;
+    	
+    	
     	Symbol_Table.closeScope();
     	
     	report_info("END OF DEFINING FUNCTION " + currentMethod.getName(), null);

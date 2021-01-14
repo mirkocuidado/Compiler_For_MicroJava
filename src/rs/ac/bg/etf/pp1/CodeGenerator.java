@@ -226,8 +226,15 @@ public class CodeGenerator extends VisitorAdaptor{
 	}
 	
 	public void visit(MethodDecl methodDecl){
-		Code.put(Code.exit);
-		Code.put(Code.return_);
+		if(methodDecl.obj.getType() != Symbol_Table.noType) {
+			Code.put(Code.const_m1);
+			Code.put(Code.trap);
+		}
+		else {
+			Code.put(Code.exit);
+			Code.put(Code.return_);
+			
+		}
 	}
 	
 	
