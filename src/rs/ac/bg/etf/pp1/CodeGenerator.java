@@ -121,10 +121,6 @@ public class CodeGenerator extends VisitorAdaptor{
 		else {
 			Code.load(desig.getDesignator().obj);
 		}
-		
-		/*
-		 * problem 1 -> sta ako je ovde a[3] -> npr. x = 1 + 2 + a[3] + 4;
-		 */
 	}
 
 	/********** READ **********/
@@ -630,9 +626,9 @@ public class CodeGenerator extends VisitorAdaptor{
 		end_of_do_while_loops = hash_map.get(hash_map.size()-1).end_of_do_while_loops_struct;
 		initial_jump_on_do = hash_map.get(hash_map.size()-1).initial_jump_on_do_struct;
 		
-		Code.putJump(Code.pc+1);
+		//Code.putJump(Code.pc+1); za while
 		start_of_do_while_loops.add(Code.pc);
-		initial_jump_on_do.add(Code.pc-2);
+		//initial_jump_on_do.add(Code.pc-2); za while
 	}
 	
 	public void visit(LParenClass doWhileConditionBegin) {
@@ -673,7 +669,7 @@ public class CodeGenerator extends VisitorAdaptor{
 	}
 	
 	 /**************************************************************************************************************************
-	 *  do {       -> skocim na uslov od while, zapamtim u start_of_do_while_loops za povratak i u initial_jump_on_do za patch
+	 *  do {       -> zapamtim u start_of_do_while_loops za povratak
 	 *  			
 	 *  }
 	 *  while(...); -> uslov netacan => skocim ispod, nakon while
@@ -719,12 +715,47 @@ public class CodeGenerator extends VisitorAdaptor{
 		}
 	}
 	
+	/********** && and || **********/
 	
+	List<Integer> and_list_saver = new ArrayList<>();
+	List<Integer> or_list_saver = new ArrayList<>();
 	
+	public void visit(FakeOrClass fakeOr) {
+		Code.put(Code.dup);
+		Code.put(Code.const_1);
+		Code.putFalseJump(Code.ne, Code.pc+1);
+		or_list_saver.add(Code.pc-2);
+		Code.put(Code.pop);
+	}
 	
+	public void visit(FakeAndClass fakeAnd) {
+		Code.put(Code.dup);
+		Code.put(Code.const_n);
+		Code.putFalseJump(Code.ne, Code.pc+1);
+		and_list_saver.add(Code.pc-2);
+		Code.put(Code.pop);
+	}
 	
+	public void visit(CondTermOptionalClass allAroundAnd) {
+		Code.fixup(and_list_saver.remove(and_list_saver.size()-1));
+	}
 	
-	
-	
+	public void visit(ConditionOptionalClass allAroundOr) {
+		Code.fixup(or_list_saver.remove(or_list_saver.size()-1));
+	}
+
+	 /********************************************************************************************************************
+	 *  if(a < 2 && b > 3 || c < 4){ ... } 
+	 *   
+	 *   0: 1 ili 0 -> da li je a manje ili vece-jednako od 2
+	 *   1: dupliram 1 ili 0 za if
+	 *   2: fakeAndClass -> poredim sa 0 na ExprStack -> skacem ako je 0==0 tj. a<2 je netacno i preskacem sledeci
+	 *   
+	 *   ****** preskacem b > 3 ******
+	 *   
+	 *   3: 1 ili 0 -> da li je c manje ili vece-jednako od 4
+	 * 	 4: dupliram 1 ili 0 za if
+	 *   5: fakeorClass -> poredi sa 1 na ExprStack -> skacem ako je 1==1 tj. c<4 je tacno i preskacem sve uslove do kraja
+	 *********************************************************************************************************************/
 	
 }

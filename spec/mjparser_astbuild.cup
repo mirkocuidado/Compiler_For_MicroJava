@@ -121,6 +121,8 @@ nonterminal EmptyHelper EmptyHelper;
 nonterminal
 		    RParenBrother RParenBrother;
 nonterminal LParenBrother LParenBrother;
+nonterminal FakeAND FakeAND;
+nonterminal FakeOR FakeOR;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -452,18 +454,22 @@ Condition ::= (ConditionClass) CondTerm:C1 ConditionOptional:C2 {: RESULT=new Co
 					:} {: RESULT=new ConditionError(); :}
 					;		
 		
-ConditionOptional ::= (ConditionOptionalClass) ConditionOptional:C1 OR CondTerm:C2 {: RESULT=new ConditionOptionalClass(C1, C2); RESULT.setLine(C1left); :}
+ConditionOptional ::= (ConditionOptionalClass) ConditionOptional:C1 OR FakeOR:F2 CondTerm:C3 {: RESULT=new ConditionOptionalClass(C1, F2, C3); RESULT.setLine(C1left); :}
 					|
 					(NoConditionOptionalClass) {: RESULT=new NoConditionOptionalClass(); :} /* epsilon */	
 					;		
-		
+
+FakeOR ::= (FakeOrClass) {: RESULT=new FakeOrClass(); :} ;
+
 CondTerm ::= (CondTermClass) CondFact:C1 CondTermOptional:C2 {: RESULT=new CondTermClass(C1, C2); RESULT.setLine(C1left); :};
 
-CondTermOptional ::= (CondTermOptionalClass) CondTermOptional:C1 AND CondFact:C2 {: RESULT=new CondTermOptionalClass(C1, C2); RESULT.setLine(C1left); :}
+CondTermOptional ::= (CondTermOptionalClass) CondTermOptional:C1 AND FakeAND:F2 CondFact:C3 {: RESULT=new CondTermOptionalClass(C1, F2, C3); RESULT.setLine(C1left); :}
 					|
 					(NoCondTermOptionalClass) {: RESULT=new NoCondTermOptionalClass(); :} /* epsilon */
 					;
-		
+
+FakeAND ::= (FakeAndClass) {: RESULT=new FakeAndClass(); :} ;
+
 CondFact ::= (CondFactClass) ExprOne:E1 CondFactOptional:C2 {: RESULT=new CondFactClass(E1, C2); RESULT.setLine(E1left); :};
 
 CondFactOptional ::= (CondFactOptionalClass) RelOp:R1 ExprOne:E2 {: RESULT=new CondFactOptionalClass(R1, E2); RESULT.setLine(R1left); :}

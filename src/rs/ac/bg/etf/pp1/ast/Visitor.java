@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/0/2021 12:53:35
+// 14/0/2021 22:20:26
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,10 +9,12 @@ public interface Visitor {
 
     public void visit(FormPars FormPars);
     public void visit(AssignOpKeyWord AssignOpKeyWord);
+    public void visit(FakeAND FakeAND);
     public void visit(Factor Factor);
     public void visit(Statement Statement);
     public void visit(GroupDeclList GroupDeclList);
     public void visit(TernaryKeyWord TernaryKeyWord);
+    public void visit(FakeOR FakeOR);
     public void visit(ConstList ConstList);
     public void visit(ConstVariable ConstVariable);
     public void visit(RParenBrother RParenBrother);
@@ -49,8 +51,8 @@ public interface Visitor {
     public void visit(ColonKeyWord ColonKeyWord);
     public void visit(LParenBrother LParenBrother);
     public void visit(MulOp MulOp);
-    public void visit(GroupDecl GroupDecl);
     public void visit(CondTerm CondTerm);
+    public void visit(GroupDecl GroupDecl);
     public void visit(ConditionOptional ConditionOptional);
     public void visit(FormalParamDecl FormalParamDecl);
     public void visit(ActualPars ActualPars);
@@ -112,9 +114,11 @@ public interface Visitor {
     public void visit(NoCondFactOptionalClass NoCondFactOptionalClass);
     public void visit(CondFactOptionalClass CondFactOptionalClass);
     public void visit(CondFactClass CondFactClass);
+    public void visit(FakeAndClass FakeAndClass);
     public void visit(NoCondTermOptionalClass NoCondTermOptionalClass);
     public void visit(CondTermOptionalClass CondTermOptionalClass);
     public void visit(CondTermClass CondTermClass);
+    public void visit(FakeOrClass FakeOrClass);
     public void visit(NoConditionOptionalClass NoConditionOptionalClass);
     public void visit(ConditionOptionalClass ConditionOptionalClass);
     public void visit(ConditionError ConditionError);

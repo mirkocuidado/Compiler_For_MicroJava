@@ -92,7 +92,7 @@ nonterminal MulOp, AddOp;
 nonterminal PotentialError, OptionalElse;		
 nonterminal ReturnNonTerminal, DoKeyWord, BreakKeyWord, ContinueKeyWord, LSquareKeyWord, AssignOpKeyWord, LBraceKeyWord, 
 			RBraceKeyWord, Helper, LParenFactor, FlagSet, ColonKeyWord, TernaryKeyWord, Fake, ElseKeyWord, EmptyHelper,
-		    RParenBrother, LParenBrother;
+		    RParenBrother, LParenBrother, FakeAND, FakeOR;
 
 /********** PHASE 3 - SEMANTIC ANALYSIS **********/	
 
@@ -424,18 +424,22 @@ Condition ::= (ConditionClass) CondTerm ConditionOptional
 					:}
 					;		
 		
-ConditionOptional ::= (ConditionOptionalClass) ConditionOptional OR CondTerm
+ConditionOptional ::= (ConditionOptionalClass) ConditionOptional OR FakeOR CondTerm
 					|
 					(NoConditionOptionalClass) /* epsilon */	
 					;		
-		
+
+FakeOR ::= (FakeOrClass) ;
+
 CondTerm ::= (CondTermClass) CondFact CondTermOptional;
 
-CondTermOptional ::= (CondTermOptionalClass) CondTermOptional AND CondFact
+CondTermOptional ::= (CondTermOptionalClass) CondTermOptional AND FakeAND CondFact
 					|
 					(NoCondTermOptionalClass) /* epsilon */
 					;
-		
+
+FakeAND ::= (FakeAndClass) ;
+
 CondFact ::= (CondFactClass) ExprOne CondFactOptional;
 
 CondFactOptional ::= (CondFactOptionalClass) RelOp ExprOne

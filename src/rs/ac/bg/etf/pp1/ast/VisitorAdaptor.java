@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/0/2021 12:53:35
+// 14/0/2021 22:20:26
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,10 +9,12 @@ public abstract class VisitorAdaptor implements Visitor {
 
     public void visit(FormPars FormPars) { }
     public void visit(AssignOpKeyWord AssignOpKeyWord) { }
+    public void visit(FakeAND FakeAND) { }
     public void visit(Factor Factor) { }
     public void visit(Statement Statement) { }
     public void visit(GroupDeclList GroupDeclList) { }
     public void visit(TernaryKeyWord TernaryKeyWord) { }
+    public void visit(FakeOR FakeOR) { }
     public void visit(ConstList ConstList) { }
     public void visit(ConstVariable ConstVariable) { }
     public void visit(RParenBrother RParenBrother) { }
@@ -49,8 +51,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ColonKeyWord ColonKeyWord) { }
     public void visit(LParenBrother LParenBrother) { }
     public void visit(MulOp MulOp) { }
-    public void visit(GroupDecl GroupDecl) { }
     public void visit(CondTerm CondTerm) { }
+    public void visit(GroupDecl GroupDecl) { }
     public void visit(ConditionOptional ConditionOptional) { }
     public void visit(FormalParamDecl FormalParamDecl) { }
     public void visit(ActualPars ActualPars) { }
@@ -112,9 +114,11 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(NoCondFactOptionalClass NoCondFactOptionalClass) { visit(); }
     public void visit(CondFactOptionalClass CondFactOptionalClass) { visit(); }
     public void visit(CondFactClass CondFactClass) { visit(); }
+    public void visit(FakeAndClass FakeAndClass) { visit(); }
     public void visit(NoCondTermOptionalClass NoCondTermOptionalClass) { visit(); }
     public void visit(CondTermOptionalClass CondTermOptionalClass) { visit(); }
     public void visit(CondTermClass CondTermClass) { visit(); }
+    public void visit(FakeOrClass FakeOrClass) { visit(); }
     public void visit(NoConditionOptionalClass NoConditionOptionalClass) { visit(); }
     public void visit(ConditionOptionalClass ConditionOptionalClass) { visit(); }
     public void visit(ConditionError ConditionError) { visit(); }

@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 14/0/2021 12:53:35
+// 14/0/2021 22:20:26
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,11 +8,14 @@ package rs.ac.bg.etf.pp1.ast;
 public class CondTermOptionalClass extends CondTermOptional {
 
     private CondTermOptional CondTermOptional;
+    private FakeAND FakeAND;
     private CondFact CondFact;
 
-    public CondTermOptionalClass (CondTermOptional CondTermOptional, CondFact CondFact) {
+    public CondTermOptionalClass (CondTermOptional CondTermOptional, FakeAND FakeAND, CondFact CondFact) {
         this.CondTermOptional=CondTermOptional;
         if(CondTermOptional!=null) CondTermOptional.setParent(this);
+        this.FakeAND=FakeAND;
+        if(FakeAND!=null) FakeAND.setParent(this);
         this.CondFact=CondFact;
         if(CondFact!=null) CondFact.setParent(this);
     }
@@ -23,6 +26,14 @@ public class CondTermOptionalClass extends CondTermOptional {
 
     public void setCondTermOptional(CondTermOptional CondTermOptional) {
         this.CondTermOptional=CondTermOptional;
+    }
+
+    public FakeAND getFakeAND() {
+        return FakeAND;
+    }
+
+    public void setFakeAND(FakeAND FakeAND) {
+        this.FakeAND=FakeAND;
     }
 
     public CondFact getCondFact() {
@@ -39,17 +50,20 @@ public class CondTermOptionalClass extends CondTermOptional {
 
     public void childrenAccept(Visitor visitor) {
         if(CondTermOptional!=null) CondTermOptional.accept(visitor);
+        if(FakeAND!=null) FakeAND.accept(visitor);
         if(CondFact!=null) CondFact.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(CondTermOptional!=null) CondTermOptional.traverseTopDown(visitor);
+        if(FakeAND!=null) FakeAND.traverseTopDown(visitor);
         if(CondFact!=null) CondFact.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(CondTermOptional!=null) CondTermOptional.traverseBottomUp(visitor);
+        if(FakeAND!=null) FakeAND.traverseBottomUp(visitor);
         if(CondFact!=null) CondFact.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -61,6 +75,12 @@ public class CondTermOptionalClass extends CondTermOptional {
 
         if(CondTermOptional!=null)
             buffer.append(CondTermOptional.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(FakeAND!=null)
+            buffer.append(FakeAND.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
