@@ -1,40 +1,100 @@
 program p
-	const int size = 10;
+	
+	int buffer [];
+	
 	{
 	
-	void f(char ch, int a, int arg)
-	int x;
+	int give_me_length_of_array(int array[])
 	{
-		x = arg;
+		return len(array);
 	}
 	
-	int pppp(){
-		return 0;
+	int num_plus_ten(int b[], int num)
+	int buf[];
+	{
+		buf = b;
+		if(num<=0){
+			print(b[num]);
+			print(buf[num]);
+		}
+		else{
+			print(b[num-1]);
+			print(buf[num-1]);
+		}
+		
+		return num + 10;
 	}
 	
-	
-	void main() int x, i; char c;
+	int sum_all_elements_of_array(int array[])
+	int sum, i;
 	{
-	
-		pppp();
+		sum = 0;
 		i = 0;
 		do{
-			 i++;
-		}while(i<size);
+			sum = sum + array[i];
+			i++;
+		}
+		while(i < give_me_length_of_array(array));
 		
-		f(c, x, i);
-		read(x);
-		do{
-	 		if(x < 0) break;
-	 		if (0 < x && x < size){
-				print(1);
-			}
-			else if (-size < x && x <= 0){
-				print(2);
-	 		}
-			read(x);
-	 	}while(true);
-	 	
-	print(true ? '-' : '+');
+		return sum;
 	}
+	
+	
+	void main()
+		int index;
+		int sum;
+		int buffer_Fake[];
+		int aaa[];
+	{
+		
+		buffer = new int[10];
+		buffer[0] = 1;
+		
+		aaa = buffer;
+		
+		print(aaa[0]);
+		
+		index = 0;
+		do{
+			buffer[index] = num_plus_ten(buffer, index);
+			index++;
+		}
+		while(index<give_me_length_of_array(buffer));
+	
+		sum = sum_all_elements_of_array(buffer);
+		
+		print(sum);
+		
+		
+		
+		buffer[0] = 5;
+		buffer_Fake = buffer;
+		buffer_Fake[0] = 6;
+		print(buffer_Fake[0]);
+		
+		
+		buffer[0] = 1;
+		buffer[1] = 2;
+		buffer[2] = 3;
+		buffer[3] = 10;
+		
+		index = buffer[buffer[buffer[0]]];
+		print(index);
+		
+		buffer[buffer[buffer[0]]] = 15;
+		print(buffer[2]);
+		
+		
+		index = buffer[0] + buffer[1] + buffer[2];
+		print(index);
+		
+		buffer[0] = buffer[1] + buffer[2];
+		print(buffer[0]);
+		
+		print(buffer[0] + buffer[0]);
+		
+		
+		return;
+	}
+	
 }

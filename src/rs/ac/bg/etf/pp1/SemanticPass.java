@@ -89,7 +89,7 @@ public class SemanticPass extends VisitorAdaptor {
 	/********** READ PROGRAM NAME **********/
 	public void visit(ProgramName programName){
     	programName.obj = Symbol_Table.insert(Obj.Prog, programName.getProgramName(), Symbol_Table.noType);
-    	report_info("PROGRAM NAME DETECTED => "+ programName.getProgramName(), programName);
+    	report_info("PROGRAM NAME DETECTED => " + programName.getProgramName(), programName);
     	Symbol_Table.openScope();
     }
 	
@@ -97,7 +97,7 @@ public class SemanticPass extends VisitorAdaptor {
     public void visit(Program program){
     	nVars = Symbol_Table.currentScope.getnVars();
     	Symbol_Table.chainLocalSymbols(program.getProgramName().obj);
-    	report_info("PROGRAM ENDED => "+ program.getProgramName().getProgramName(), program);
+    	report_info("PROGRAM ENDED => " + program.getProgramName().getProgramName(), program);
     	Symbol_Table.closeScope();
     }
     
@@ -149,6 +149,29 @@ public class SemanticPass extends VisitorAdaptor {
 		report_info("ARRAY VARIABLE " + varNode.getName() + " IS BEING DEFINED!", varDecl);
 	}
 
+	
+		
+	
+	/********** GLOBAL CONSTANTS **********/
+	
+	
+	
+	
+	/********** CONST VARIABLE DEFINITION **********/
+	public void visit(ConstListNoArray constDecl) {
+		constDeclCount++;
+		Obj error_handler = Symbol_Table.find(constDecl.getConstVarName());
+		if(error_handler!= Symbol_Table.noObj) {
+			report_error("ERROR! CONST VARIABLE " + constDecl.getConstVarName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
+		}
+		if(!constDecl.getValueOptions().struct.assignableTo(current_variable_definition_type)) {
+			report_error("ERROR! CONST VARIABLE " + constDecl.getConstVarName() + " WITH MULTIPLE TYPES! ", null);
+		}
+		Obj varNode = Symbol_Table.insert(Obj.Con, constDecl.getConstVarName(), current_variable_definition_type);
+		varNode.setAdr(constValue);
+		report_info("CONST VARIABLE " + constDecl.getConstVarName() + " IS BEING DEFINED!", constDecl);
+	}
+	
 	/********** NUMBER VALUE ANALYSE **********/
 	public void visit(ValuesNumber constValueNumber) {
 		constValue = constValueNumber.getNumValue();
@@ -184,29 +207,6 @@ public class SemanticPass extends VisitorAdaptor {
 	
 	
 	
-	/********** GLOBAL CONSTANTS **********/
-	
-	
-	
-	
-	/********** CONST VARIABLE DEFINITION **********/
-	public void visit(ConstListNoArray constDecl) {
-		constDeclCount++;
-		Obj error_handler = Symbol_Table.find(constDecl.getConstVarName());
-		if(error_handler!= Symbol_Table.noObj) {
-			report_error("ERROR! CONST VARIABLE " + constDecl.getConstVarName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
-		}
-		if(!constDecl.getValueOptions().struct.assignableTo(current_variable_definition_type)) {
-			report_error("ERROR! CONST VARIABLE " + constDecl.getConstVarName() + " WITH MULTIPLE TYPES! ", null);
-		}
-		Obj varNode = Symbol_Table.insert(Obj.Con, constDecl.getConstVarName(), current_variable_definition_type);
-		varNode.setAdr(constValue);
-		report_info("CONST VARIABLE " + constDecl.getConstVarName() + " IS BEING DEFINED!", constDecl);
-	}
-	
-	
-	
-	
 	/********** TYPE **********/
 	
 	
@@ -222,13 +222,13 @@ public class SemanticPass extends VisitorAdaptor {
 		}else{
 			if(Obj.Type == typeNode.getKind()){
 				type.struct = typeNode.getType();
-			}else{
+			}
+			else{
 				report_error("ERROR! " + type.getTypeName() + " IS NOT A VALID!", type);
 				type.struct = Symbol_Table.noType;
 			}
 		}
-	
-	current_variable_definition_type = type.struct;
+		current_variable_definition_type = type.struct;
     }
     
     
@@ -241,39 +241,62 @@ public class SemanticPass extends VisitorAdaptor {
     
     /********** GET FUNCTION NAME AND RETURN VALUE **********/
     public void visit(ReturnValueClassNoVoid methodTypeName){
-    	currentMethod = Symbol_Table.insert(Obj.Meth, methodTypeName.getMethName(), methodTypeName.getType().struct);
-    	if(Symbol_Table.find(methodTypeName.getMethName()) == Symbol_Table.noObj) {
-    		report_error("ERROR! " + methodTypeName.getMethName() + " ALREADY EXISTS IN THE SYMBOL TALBE!", methodTypeName);
-    	}
-    	returnForMethod = methodTypeName.getType().struct;
-    	methodTypeName.obj = currentMethod;
-    	Symbol_Table.openScope();
-		report_info("FUNCTION " + methodTypeName.getMethName() + " WITH RETURN VALUE OF TYPE " + getTypeAsString(methodTypeName.getType().struct.getKind()), methodTypeName);
+    	Obj error_handler = Symbol_Table.find(methodTypeName.getMethName());
+		if(error_handler!= Symbol_Table.noObj) {
+			// error if it already exists in the table
+			report_error("ERROR! METHOD " + methodTypeName.getMethName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
+		}
+		else {
+	    	currentMethod = Symbol_Table.insert(Obj.Meth, methodTypeName.getMethName(), methodTypeName.getType().struct);
+	    	if(Symbol_Table.find(methodTypeName.getMethName()) == Symbol_Table.noObj) {
+	    		report_error("ERROR! " + methodTypeName.getMethName() + " ALREADY EXISTS IN THE SYMBOL TALBE!", methodTypeName);
+	    	}
+	    	returnForMethod = methodTypeName.getType().struct;
+	    	methodTypeName.obj = currentMethod;
+	    	Symbol_Table.openScope();
+			report_info("FUNCTION " + methodTypeName.getMethName() + " WITH RETURN VALUE OF TYPE " + getTypeAsString(methodTypeName.getType().struct.getKind()), methodTypeName);
+		}
     }
     
     /********** GET FUNCTION NAME AND VOID FOR RETURN VALUE **********/
     public void visit(ReturnValueClassVoid methodTypeName){
-    	currentMethod = Symbol_Table.insert(Obj.Meth, methodTypeName.getMethName(), Symbol_Table.noType);
-    	if(Symbol_Table.find(methodTypeName.getMethName()) == Symbol_Table.noObj) {
-    		report_error("ERROR! " + methodTypeName.getMethName() + " ALREADY EXISTS IN THE SYMBOL TALBE!", methodTypeName);
-    	}
-    	returnForMethod = Symbol_Table.noType;
-    	methodTypeName.obj = currentMethod;
-    	Symbol_Table.openScope();
-		report_info("FUNCTION " + methodTypeName.getMethName() + " WITH VOID AS RETURN VALUE! ", methodTypeName);
+    	Obj error_handler = Symbol_Table.find(methodTypeName.getMethName());
+		if(error_handler!= Symbol_Table.noObj) {
+			// error if it already exists in the table
+			report_error("ERROR! METHOD " + methodTypeName.getMethName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
+		}
+		else {
+			currentMethod = Symbol_Table.insert(Obj.Meth, methodTypeName.getMethName(), Symbol_Table.noType);
+			
+	    	if(Symbol_Table.find(methodTypeName.getMethName()) == Symbol_Table.noObj) {
+	    		report_error("ERROR! " + methodTypeName.getMethName() + " ALREADY EXISTS IN THE SYMBOL TALBE!", methodTypeName);
+	    	}
+	    	
+	    	returnForMethod = Symbol_Table.noType;
+	    	methodTypeName.obj = currentMethod;
+	    	Symbol_Table.openScope();
+			report_info("FUNCTION " + methodTypeName.getMethName() + " WITH VOID AS RETURN VALUE! ", methodTypeName);
+	    
+		}
     }
-
+    
     /********** FUNCTION ENDING **********/
     public void visit(MethodDecl methodDecl){
     	/*if(!returnFound && returnForMethod != Symbol_Table.noType){
 			report_error("SEMANTIC ERROR ON LINE " + methodDecl.getLine() + ": FUNCTION " + currentMethod.getName() + " DOES NOT HAVE A RETURN STATEMENT!", null);
 			return;
-    	}*/
+			
+			********** MUST NOT EXISTS -> HAS TO BE DONE BY TRAP! }*/
+    	
+    	if(currentMethod == null) {
+    		report_error("ILLEGAL ACTIONS!", null);
+			return;
+    	}
+    	
     	currentMethod.setLevel(number_of_method_formal_parameters);
     	Symbol_Table.chainLocalSymbols(currentMethod);
     	
     	methodDecl.obj = currentMethod;
-    	
     	
     	Symbol_Table.closeScope();
     	
@@ -300,7 +323,14 @@ public class SemanticPass extends VisitorAdaptor {
 			return;
     	}
     	
-    	Struct s1 = currentMethod.getType();
+    	Struct s1 = null;
+    	if(currentMethod!=null)
+    		s1 = currentMethod.getType();
+    	else {
+    		report_error("ILLEGAL ACTIONS! " , returnParam);
+    		return;
+    	}
+    	
     	Struct s2 = returnParam.getExpr().struct;
 
     	returnFound = true;
@@ -353,7 +383,7 @@ public class SemanticPass extends VisitorAdaptor {
     	}
     }
     
-    /********** RETURN STATEMENT VOID**********/
+    /********** RETURN STATEMENT VOID **********/
     public void visit(ReturnNoExpr returnParam) {
     	
     	if(open_method == false) {
@@ -376,7 +406,6 @@ public class SemanticPass extends VisitorAdaptor {
     
     
     
-
     /********** FORMAL PARAMETERS **********/
     
     
@@ -388,7 +417,7 @@ public class SemanticPass extends VisitorAdaptor {
     	Obj getObjectFromSymbolTable = Symbol_Table.find(formalParam.getFormalParamName());
     	if(getObjectFromSymbolTable!=Symbol_Table.noObj && getObjectFromSymbolTable.getLevel()==1) {
     		// already exists and is of this level
-    		report_error("VARIABLE OF THIS NAME ALREADY DEFINED!", null);
+    		report_error("PARAMETER OF THIS NAME ALREADY DEFINED IN CURRENT METHOD!", null);
     	}
     	else{
     		// already defined, but as a global or not defined at all
@@ -419,8 +448,6 @@ public class SemanticPass extends VisitorAdaptor {
     
     
     
-    
-    
     /********** IMPORTANT ***********
 				~~~~~~~~~~ 
 		READ THE CURRENT VARIABLE WE ARE USING
@@ -442,7 +469,6 @@ public class SemanticPass extends VisitorAdaptor {
     		stack.add(new ArrayList<>());
     		list_of_actual_parameters = stack.get(stack.size()-1);
     	}
-    	//else current_method_we_are_using = null; pravi probleme, a i mislim da ne treba da postoji
     	
     	if(current_variable_in_use.getType().getKind() != Struct.Array && if_we_are_using_an_array==true) {
     		report_error("ARRAY VARIABLE OF NAME " + designator.getDesigIdent().getName() + " USED WITH [ ]!", null);
@@ -720,6 +746,7 @@ public class SemanticPass extends VisitorAdaptor {
     	expressionInParenthesis.struct = expressionInParenthesis.getExpr().struct;
     }
     
+    /********** OPTIONAL TYPE PROPAGATION **********/
     public void visit(FactorOptionalParams factor) {
     	factor.struct = factor.getDesignator().obj.getType();
     }

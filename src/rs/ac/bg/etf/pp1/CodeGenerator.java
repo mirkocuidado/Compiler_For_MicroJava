@@ -106,7 +106,8 @@ public class CodeGenerator extends VisitorAdaptor{
 	/* ~~~~~~~~~~ LOAD for a = b; the b variable <- Factor = Expr; or for any other use of variable names ~~~~~~~~~~ */
 	public void visit(DesignatorClass desig) {
 		if(desig.getDesignator().obj.getType().getKind() == Struct.Array) {
-			if(if_we_are_using_an_array !=0) {
+			if(if_we_are_using_an_array_to_load !=0) {
+				if_we_are_using_an_array_to_load--;
 				if(desig.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
 					Code.put(Code.baload);
 				}
@@ -123,6 +124,9 @@ public class CodeGenerator extends VisitorAdaptor{
 		}
 	}
 
+	
+	
+	
 	/********** READ **********/
 	public void visit(ReadClass readStmt) {
 		if(readStmt.getDesignator().obj.getType().getKind() == Struct.Array) {
@@ -146,6 +150,9 @@ public class CodeGenerator extends VisitorAdaptor{
 			}
 		}
 	}
+	
+	
+	
 	
 	/********** PRINT **********/
 	public void visit(PrintStmt printStmt){
@@ -171,6 +178,7 @@ public class CodeGenerator extends VisitorAdaptor{
 		printWidth = -1;
 	}
 	
+	/********** PRINT WIDTH **********/
 	public void visit(CommaNumberClass printWidthParam) {
 		printWidth = printWidthParam.getN1();
 	}
@@ -226,15 +234,15 @@ public class CodeGenerator extends VisitorAdaptor{
 	}
 	
 	public void visit(MethodDecl methodDecl){
-		if(methodDecl.obj.getType() != Symbol_Table.noType) {
+		/*if(methodDecl.obj.getType() != Symbol_Table.noType) {
 			Code.put(Code.const_m1);
 			Code.put(Code.trap);
 		}
-		else {
+		else {*/
 			Code.put(Code.exit);
 			Code.put(Code.return_);
 			
-		}
+		//}
 	}
 	
 	
@@ -258,11 +266,52 @@ public class CodeGenerator extends VisitorAdaptor{
 	/********** DESIGNATOR STATEMENT **********/
 	
 	
+	/********** BULLSHIT **********/
 	
+	int if_we_are_using_an_array_to_load = 0;
+	int if_we_are_using_an_array_to_store = 0;
+	//boolean just_set_an_array = false;
+	
+    public void visit(NoOptionalDesignatorClass param) {
+    	/*if(if_we_are_using_an_array > 0)
+    		if(just_set_an_array == false)
+    			if_we_are_using_an_array--;
+    		else just_set_an_array = false;*/
+    }
+    
+    public void visit(OptionalDesignatorArray param) {
+    	//if_we_are_using_an_array++;
+    	//just_set_an_array = true;
+    }
+    
+    //boolean lSquare = false;
+    
+    public void visit(LSquareClass lSquareParam) {
+    	SyntaxNode pom = lSquareParam.getParent();
+    	if(pom==null) return;
+    	
+    	while(pom!= null && pom.getClass() != DesignatorClass.class && pom.getClass() != DesignatorStatementOptionsClassAssignExpression.class)
+    		pom = pom.getParent();
+    	
+    	if(pom == null) {
+    		return;
+    	}
+    	if(pom.getClass() == DesignatorClass.class) {
+    		if_we_are_using_an_array_to_load++;
+    	}
+    	else if(pom.getClass() == DesignatorStatementOptionsClassAssignExpression.class){
+    		if_we_are_using_an_array_to_store++;
+    	}
+    	
+    	
+    	//lSquare = true;
+    }
 	
 	/********** DESIGNATOR STATEMENT -> ASSIGNEMENT **********/
 	public void visit(DesignatorStatementOptionsClassAssignExpression designatorWithAssignement) {
-		just_set_an_array = false;
+		//just_set_an_array = false;
+		
+		
 		if(did_i_use_new == true) { 
 			if(designatorWithAssignement.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
 				Obj o = Symbol_Table.insert(Obj.Con, "0", new Struct(Struct.Int));
@@ -277,9 +326,10 @@ public class CodeGenerator extends VisitorAdaptor{
 		}
 		
 		
-		
 		if(designatorWithAssignement.getDesignator().obj.getType().getKind() == Struct.Array) {
-			if(if_we_are_using_an_array !=0) {
+			if(if_we_are_using_an_array_to_store !=0) {
+				if_we_are_using_an_array_to_store--;
+				//lSquare = false;
 				if(designatorWithAssignement.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
 					Code.put(Code.bastore);
 				}
@@ -289,6 +339,16 @@ public class CodeGenerator extends VisitorAdaptor{
 			}
 			else {
 				Code.store(designatorWithAssignement.getDesignator().obj);
+				/*if(lSquare == true) {
+					if(designatorWithAssignement.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
+						Code.put(Code.bastore);
+					}
+					else {
+						Code.put(Code.astore);
+					}
+				}
+				else Code.store(designatorWithAssignement.getDesignator().obj);
+				lSquare = false;*/
 			}
 		}
 		else {
@@ -309,7 +369,7 @@ public class CodeGenerator extends VisitorAdaptor{
 	
 	/********** DESIGNATOR STATEMENT -> PLUSPLUS **********/
 	public void visit(DesignatorStatementPlusPlus plusplus) {
-		if(plusplus.getDesignator().obj.getType().getKind()!=Struct.Array) { // mozda if_we_are_using_an_array == 0?!
+		if(plusplus.getDesignator().obj.getType().getKind()!=Struct.Array) {
 			// if we are using a simple variable -> a++;
 			Code.load(plusplus.getDesignator().obj);
 			Code.put(Code.const_1);
@@ -339,7 +399,7 @@ public class CodeGenerator extends VisitorAdaptor{
 	/********** DESIGNATOR STATEMENT -> MINUSMINUS **********/
 	public void visit(DesignatorStatementMinusMinus minusminus) {
 		// if we are using a simple variable -> a--;
-		if(minusminus.getDesignator().obj.getType().getKind()!=Struct.Array) { // mozda if_we_are_using_an_array == 0?!
+		if(minusminus.getDesignator().obj.getType().getKind()!=Struct.Array) {
 			Code.load(minusminus.getDesignator().obj);
 			Code.put(Code.const_1);
 			Code.put(Code.sub);
@@ -364,17 +424,7 @@ public class CodeGenerator extends VisitorAdaptor{
 			}
 		}
 	}
-	
-	/*boolean should_i_pop = false;
-	
-	public void visit(AssignOpClass assign) {
-		if(should_i_pop == true) {
-			Code.put(Code.pop);
-			Code.put(Code.pop);
-			Code.put(Code.pop);
-		}
-		should_i_pop = false;
-	}*/
+
 	
 	boolean did_i_use_new = false;
 	
@@ -384,17 +434,21 @@ public class CodeGenerator extends VisitorAdaptor{
 	}
 	
 	
+	
+	
 	/********** DESIGNATOR **********/
 	
-	// leva strana sa ucitavanjem ako je levo a[3];
 	
 	
-	/********** DESIGNATOR -> ONLY LOAD IF IT HAS [ ] **********/
+	
+	/********** DESIGNATOR SPURS **********/
 	public void visit(Designator designator){
 		if(designator.getOptionalDesignator() instanceof OptionalDesignatorArray) {
-			//Code.load(designator.obj);
-			//Code.put(Code.aload); ovu liniju bih u OptionalDesignatorArray
-			//should_i_pop = true;
+			/*
+			 * 
+			 * EMPTY AS TOTTENHAM'S TROPHY CABINET
+			 * 
+			 */
 		}
 	}
 	
@@ -403,22 +457,7 @@ public class CodeGenerator extends VisitorAdaptor{
 		array_we_are_using = desigIdent.obj;
 	}
 	
-	/********** BULLSHIT **********/
-	
-	int if_we_are_using_an_array = 0;
-	boolean just_set_an_array = false;
-	
-    public void visit(NoOptionalDesignatorClass param) {
-    	if(if_we_are_using_an_array > 0)
-    		if(just_set_an_array == false)
-    			if_we_are_using_an_array--;
-    		else just_set_an_array = false;
-    }
-    
-    public void visit(OptionalDesignatorArray param) {
-    	if_we_are_using_an_array++;
-    	just_set_an_array = true;
-    }
+
 	
 
     
@@ -454,6 +493,14 @@ public class CodeGenerator extends VisitorAdaptor{
 		}
 	}
 	
+	
+	
+	
+	/********** TERNARY **********/
+	
+	
+	
+	
 	List<Integer> ternaryList = new ArrayList<>();
 	
 	public void visit(TernaryClass ternary) {
@@ -479,7 +526,7 @@ public class CodeGenerator extends VisitorAdaptor{
 	 * 2: 1
 	 * 3: const_1
 	 * 4: const_1
-	 * 5: jne
+	 * 5: jne (5 + mem[6]mem[7] )
 	 * 6: xxxxxxxxxxxxx0
 	 * 7: xxxxxxxxxxxxx7
 	 * 8: const_2
@@ -683,6 +730,13 @@ public class CodeGenerator extends VisitorAdaptor{
 	 *  			-> uslov tacan => skocim na poslednju naredbu iz start_of_do_while_loops
 	 ***************************************************************************************************************************/
 	
+	
+	
+	/********** <, <=, >, >=, ==, != **********/
+	
+	
+	
+	
 	public void visit(CondFactOptionalClass relOp) {
 		if(relOp.getRelOp() instanceof RelationOperationClassEqualComparation) {
 			Code.putFalseJump(Code.eq, Code.pc+7);
@@ -722,7 +776,13 @@ public class CodeGenerator extends VisitorAdaptor{
 		}
 	}
 	
+	
+	
+	
 	/********** && and || **********/
+	
+	
+	
 	
 	List<Integer> and_list_saver = new ArrayList<>();
 	List<Integer> or_list_saver = new ArrayList<>();
