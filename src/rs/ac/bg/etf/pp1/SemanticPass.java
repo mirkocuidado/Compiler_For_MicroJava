@@ -121,7 +121,8 @@ public class SemanticPass extends VisitorAdaptor {
 		Obj error_handler = Symbol_Table.find(varDecl.getVarName());
 		if(error_handler!= Symbol_Table.noObj) {
 			// error if it already exists in the table
-			report_error("ERROR! VARIABLE " + varDecl.getVarName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
+			if(current_method_we_are_using != null && error_handler.getLevel() == 1)
+				report_error("ERROR! VARIABLE " + varDecl.getVarName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
 		}
 		if(current_variable_definition_type == null) {
 			// this must mean that somebody did not define a type for this variable
@@ -138,7 +139,9 @@ public class SemanticPass extends VisitorAdaptor {
 		Obj error_handler = Symbol_Table.find(varDecl.getVarName());
 		if(error_handler!= Symbol_Table.noObj) {
 			// error if it already exists in the table
-			report_error("ERROR! ARRAY VARIABLE " + varDecl.getVarName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
+			if(current_method_we_are_using != null && error_handler.getLevel() == 1) {
+				report_error("ERROR! ARRAY VARIABLE " + varDecl.getVarName() + " ALREADY DEFINED IN SYMBOL TABLE! ", null);
+			}
 		}
 		if(current_variable_definition_type == null) {
 			// this must mean that somebody did not define a type for this variable
@@ -541,6 +544,12 @@ public class SemanticPass extends VisitorAdaptor {
     			return;
 	    	}
 	    	
+	    	Obj nullObj = Symbol_Table.noObj;
+	    	if(s1.getKind() == Struct.Array && s2 == Symbol_Table.nullType) {
+	    		
+	    		return;
+	    	}
+	    	
 	    	if(s1.getKind() == Struct.Array && s2.getKind() == Struct.Array) {
 	    		// ako su oba niz
 	    		if(s1.getElemType().getKind() == s2.getElemType().getKind()) {
@@ -925,6 +934,7 @@ public class SemanticPass extends VisitorAdaptor {
     		report_error("ERROR ON LINE "+ condFact.getLine()+" : CONDFACT WITH VARIOUS TYPES", condFact);
     	}
     	else {
+    		
     		report_info("USING TWO EXPRESSIONS OF TYPE " + getTypeAsString(s1.getKind()), condFact);
     	}
     }

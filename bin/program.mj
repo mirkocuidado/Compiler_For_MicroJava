@@ -1,100 +1,54 @@
-program p
+// Test301
+
+program test301
+
+	const int nula = 0;
+	const int jedan = 1;
+	const int pet = 5;
+
+	int niz[];
+	char nizch[];
 	
-	int buffer [];
-	
+{
+	void main()	
+		int bodovi;
+		bool bt;
 	{
-	
-	int give_me_length_of_array(int array[])
-	{
-		return len(array);
+		bodovi = 0;
+		bodovi++;
+		bodovi = bodovi + jedan;
+		bodovi = bodovi * pet;
+		bodovi--;
+		print(bodovi); 
+			
+		
+		niz = new int[3];
+		niz[nula] = jedan;
+		niz[1] = 2;
+		niz[niz[jedan]] = niz[niz[0]] * 3;
+		bodovi = niz[2]/niz[0];
+		print(bodovi); 
+		print(niz[2]);
+		
+		
+		nizch = new char[3];
+		nizch[0] = 'a';
+		nizch[jedan] = 'b';
+		nizch[pet - 3] = 'c';
+		print(nizch[1]);
+		print(nizch[jedan * 2]);
+			
+		
+		bodovi = bodovi + (pet * jedan - 1) * bodovi - (3 % 2 + 3 * 2 - 3); 
+		print(bodovi);
+			
+		read(bodovi);
+		bt = true;
+		
+		print(bt ? bodovi : bodovi + 10);
+		print(false ? bodovi + 20 : bodovi + 30);
+		print(bt ? '+' : '-');
 	}
-	
-	int num_plus_ten(int b[], int num)
-	int buf[];
-	{
-		buf = b;
-		if(num<=0){
-			print(b[num]);
-			print(buf[num]);
-		}
-		else{
-			print(b[num-1]);
-			print(buf[num-1]);
-		}
-		
-		return num + 10;
-	}
-	
-	int sum_all_elements_of_array(int array[])
-	int sum, i;
-	{
-		sum = 0;
-		i = 0;
-		do{
-			sum = sum + array[i];
-			i++;
-		}
-		while(i < give_me_length_of_array(array));
-		
-		return sum;
-	}
-	
-	
-	void main()
-		int index;
-		int sum;
-		int buffer_Fake[];
-		int aaa[];
-	{
-		
-		buffer = new int[10];
-		buffer[0] = 1;
-		
-		aaa = buffer;
-		
-		print(aaa[0]);
-		
-		index = 0;
-		do{
-			buffer[index] = num_plus_ten(buffer, index);
-			index++;
-		}
-		while(index<give_me_length_of_array(buffer));
-	
-		sum = sum_all_elements_of_array(buffer);
-		
-		print(sum);
-		
-		
-		
-		buffer[0] = 5;
-		buffer_Fake = buffer;
-		buffer_Fake[0] = 6;
-		print(buffer_Fake[0]);
-		
-		
-		buffer[0] = 1;
-		buffer[1] = 2;
-		buffer[2] = 3;
-		buffer[3] = 10;
-		
-		index = buffer[buffer[buffer[0]]];
-		print(index);
-		
-		buffer[buffer[buffer[0]]] = 15;
-		print(buffer[2]);
-		
-		
-		index = buffer[0] + buffer[1] + buffer[2];
-		print(index);
-		
-		buffer[0] = buffer[1] + buffer[2];
-		print(buffer[0]);
-		
-		print(buffer[0] + buffer[0]);
-		
-		
-		return;
-	}
-	
 }
+
+

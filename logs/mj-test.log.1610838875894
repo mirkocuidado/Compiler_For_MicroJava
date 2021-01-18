@@ -1,0 +1,381 @@
+INFO  00:14:06,504 - Compiling source file: C:\Users\38164\OneDrive\Desktop\Izvorni kod plz\MJCompiler\test\program.mj
+INFO  00:14:06,656 - #2 program
+INFO  00:14:06,656 - #44 p
+INFO  00:14:06,656 - #44 int
+INFO  00:14:06,658 - #44 buffer
+INFO  00:14:06,659 - #39 [
+INFO  00:14:06,659 - #40 ]
+INFO  00:14:06,659 - #33 ;
+INFO  00:14:06,659 - #44 int
+INFO  00:14:06,660 - #44 niz
+INFO  00:14:06,660 - #39 [
+INFO  00:14:06,660 - #40 ]
+INFO  00:14:06,660 - #33 ;
+INFO  00:14:06,660 - #35 {
+INFO  00:14:06,660 - #5 void
+INFO  00:14:06,661 - #44 main
+INFO  00:14:06,661 - #37 (
+INFO  00:14:06,661 - #38 )
+INFO  00:14:06,662 - #44 int
+INFO  00:14:06,663 - #44 index
+INFO  00:14:06,663 - #33 ;
+INFO  00:14:06,663 - #44 int
+INFO  00:14:06,663 - #44 sum
+INFO  00:14:06,663 - #33 ;
+INFO  00:14:06,663 - #44 int
+INFO  00:14:06,664 - #44 buffer_Fake
+INFO  00:14:06,664 - #39 [
+INFO  00:14:06,664 - #40 ]
+INFO  00:14:06,664 - #33 ;
+INFO  00:14:06,664 - #44 int
+INFO  00:14:06,664 - #44 aaa
+INFO  00:14:06,664 - #39 [
+INFO  00:14:06,664 - #40 ]
+INFO  00:14:06,664 - #33 ;
+INFO  00:14:06,664 - #44 int
+INFO  00:14:06,664 - #44 niz
+INFO  00:14:06,664 - #39 [
+INFO  00:14:06,664 - #40 ]
+INFO  00:14:06,664 - #33 ;
+INFO  00:14:06,664 - #44 int
+INFO  00:14:06,664 - #44 modif_one
+INFO  00:14:06,664 - #33 ;
+INFO  00:14:06,665 - #44 char
+INFO  00:14:06,665 - #44 modif_two
+INFO  00:14:06,665 - #39 [
+INFO  00:14:06,665 - #40 ]
+INFO  00:14:06,665 - #33 ;
+INFO  00:14:06,665 - #44 char
+INFO  00:14:06,665 - #44 modif_three
+INFO  00:14:06,665 - #33 ;
+INFO  00:14:06,665 - #35 {
+INFO  00:14:06,665 - #44 modif_three
+INFO  00:14:06,667 - #19 =
+INFO  00:14:06,670 - #45 a
+INFO  00:14:06,675 - #33 ;
+INFO  00:14:06,680 - #18 print
+INFO  00:14:06,681 - #37 (
+INFO  00:14:06,681 - #44 modif_three
+INFO  00:14:06,681 - #38 )
+INFO  00:14:06,683 - #33 ;
+INFO  00:14:06,684 - #44 modif_three
+INFO  00:14:06,684 - #19 =
+INFO  00:14:06,684 - #42 #
+INFO  00:14:06,684 - #43 3
+INFO  00:14:06,687 - #33 ;
+INFO  00:14:06,687 - #18 print
+INFO  00:14:06,688 - #37 (
+INFO  00:14:06,688 - #44 modif_three
+INFO  00:14:06,688 - #38 )
+INFO  00:14:06,688 - #33 ;
+INFO  00:14:06,688 - #36 }
+INFO  00:14:06,688 - #36 }
+INFO  00:14:06,702 - Program(
+  ProgramName(
+   p
+  ) [ProgramName]
+  GroupDeclarations(
+    GroupDeclarations(
+      NoGroupDecl(
+      ) [NoGroupDecl]
+      GroupDeclarationVars(
+        VarDeclClass(
+          Type(
+           int
+          ) [Type]
+          VarListSingle(
+            VarClassArray(
+             buffer
+            ) [VarClassArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [GroupDeclarationVars]
+    ) [GroupDeclarations]
+    GroupDeclarationVars(
+      VarDeclClass(
+        Type(
+         int
+        ) [Type]
+        VarListSingle(
+          VarClassArray(
+           niz
+          ) [VarClassArray]
+        ) [VarListSingle]
+      ) [VarDeclClass]
+    ) [GroupDeclarationVars]
+  ) [GroupDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      ReturnValueClassVoid(
+       main
+      ) [ReturnValueClassVoid]
+      NoFormParam(
+      ) [NoFormParam]
+      VarDeclListClass(
+        VarDeclListClass(
+          VarDeclListClass(
+            VarDeclListClass(
+              VarDeclListClass(
+                VarDeclListClass(
+                  VarDeclListClass(
+                    VarDeclListClass(
+                      NoVarDeclList(
+                      ) [NoVarDeclList]
+                      VarDeclClass(
+                        Type(
+                         int
+                        ) [Type]
+                        VarListSingle(
+                          VarClassNoArray(
+                           index
+                          ) [VarClassNoArray]
+                        ) [VarListSingle]
+                      ) [VarDeclClass]
+                    ) [VarDeclListClass]
+                    VarDeclClass(
+                      Type(
+                       int
+                      ) [Type]
+                      VarListSingle(
+                        VarClassNoArray(
+                         sum
+                        ) [VarClassNoArray]
+                      ) [VarListSingle]
+                    ) [VarDeclClass]
+                  ) [VarDeclListClass]
+                  VarDeclClass(
+                    Type(
+                     int
+                    ) [Type]
+                    VarListSingle(
+                      VarClassArray(
+                       buffer_Fake
+                      ) [VarClassArray]
+                    ) [VarListSingle]
+                  ) [VarDeclClass]
+                ) [VarDeclListClass]
+                VarDeclClass(
+                  Type(
+                   int
+                  ) [Type]
+                  VarListSingle(
+                    VarClassArray(
+                     aaa
+                    ) [VarClassArray]
+                  ) [VarListSingle]
+                ) [VarDeclClass]
+              ) [VarDeclListClass]
+              VarDeclClass(
+                Type(
+                 int
+                ) [Type]
+                VarListSingle(
+                  VarClassArray(
+                   niz
+                  ) [VarClassArray]
+                ) [VarListSingle]
+              ) [VarDeclClass]
+            ) [VarDeclListClass]
+            VarDeclClass(
+              Type(
+               int
+              ) [Type]
+              VarListSingle(
+                VarClassNoArray(
+                 modif_one
+                ) [VarClassNoArray]
+              ) [VarListSingle]
+            ) [VarDeclClass]
+          ) [VarDeclListClass]
+          VarDeclClass(
+            Type(
+             char
+            ) [Type]
+            VarListSingle(
+              VarClassArray(
+               modif_two
+              ) [VarClassArray]
+            ) [VarListSingle]
+          ) [VarDeclClass]
+        ) [VarDeclListClass]
+        VarDeclClass(
+          Type(
+           char
+          ) [Type]
+          VarListSingle(
+            VarClassNoArray(
+             modif_three
+            ) [VarClassNoArray]
+          ) [VarListSingle]
+        ) [VarDeclClass]
+      ) [VarDeclListClass]
+      LBraceClass(
+      ) [LBraceClass]
+      Statements(
+        Statements(
+          Statements(
+            Statements(
+              NoStmt(
+              ) [NoStmt]
+              Assignment(
+                DesignatorStatementOptionsClassAssignExpression(
+                  Designator(
+                    DesigIdent(
+                     modif_three
+                    ) [DesigIdent]
+                    NoOptionalDesignatorClass(
+                    ) [NoOptionalDesignatorClass]
+                  ) [Designator]
+                  AssignOpClass(
+                    AssignOperationClass(
+                    ) [AssignOperationClass]
+                  ) [AssignOpClass]
+                  ClassOneClass(
+                    NormalExpressionClass(
+                      ExprFirstOptionClassWithMinus(
+                        TermClass(
+                          CharConst(
+                           a
+                          ) [CharConst]
+                          NoTermOptionalListClass(
+                          ) [NoTermOptionalListClass]
+                        ) [TermClass]
+                        NoExprOptionalListClass(
+                        ) [NoExprOptionalListClass]
+                      ) [ExprFirstOptionClassWithMinus]
+                    ) [NormalExpressionClass]
+                  ) [ClassOneClass]
+                ) [DesignatorStatementOptionsClassAssignExpression]
+              ) [Assignment]
+            ) [Statements]
+            PrintStmt(
+              ClassOneClass(
+                NormalExpressionClass(
+                  ExprFirstOptionClassWithMinus(
+                    TermClass(
+                      DesignatorClass(
+                        Designator(
+                          DesigIdent(
+                           modif_three
+                          ) [DesigIdent]
+                          NoOptionalDesignatorClass(
+                          ) [NoOptionalDesignatorClass]
+                        ) [Designator]
+                      ) [DesignatorClass]
+                      NoTermOptionalListClass(
+                      ) [NoTermOptionalListClass]
+                    ) [TermClass]
+                    NoExprOptionalListClass(
+                    ) [NoExprOptionalListClass]
+                  ) [ExprFirstOptionClassWithMinus]
+                ) [NormalExpressionClass]
+              ) [ClassOneClass]
+              NoCommaNumberClass(
+              ) [NoCommaNumberClass]
+            ) [PrintStmt]
+          ) [Statements]
+          Assignment(
+            DesignatorStatementOptionsClassAssignExpression(
+              Designator(
+                DesigIdent(
+                 modif_three
+                ) [DesigIdent]
+                NoOptionalDesignatorClass(
+                ) [NoOptionalDesignatorClass]
+              ) [Designator]
+              AssignOpClass(
+                AssignOperationClass(
+                ) [AssignOperationClass]
+              ) [AssignOpClass]
+              ClassOneClass(
+                NormalExpressionClass(
+                  ExprFirstOptionClassWithMinus(
+                    TermClass(
+                      ModificationOne(
+                        HashTagClass(
+                        ) [HashTagClass]
+                       3
+                      ) [ModificationOne]
+                      NoTermOptionalListClass(
+                      ) [NoTermOptionalListClass]
+                    ) [TermClass]
+                    NoExprOptionalListClass(
+                    ) [NoExprOptionalListClass]
+                  ) [ExprFirstOptionClassWithMinus]
+                ) [NormalExpressionClass]
+              ) [ClassOneClass]
+            ) [DesignatorStatementOptionsClassAssignExpression]
+          ) [Assignment]
+        ) [Statements]
+        PrintStmt(
+          ClassOneClass(
+            NormalExpressionClass(
+              ExprFirstOptionClassWithMinus(
+                TermClass(
+                  DesignatorClass(
+                    Designator(
+                      DesigIdent(
+                       modif_three
+                      ) [DesigIdent]
+                      NoOptionalDesignatorClass(
+                      ) [NoOptionalDesignatorClass]
+                    ) [Designator]
+                  ) [DesignatorClass]
+                  NoTermOptionalListClass(
+                  ) [NoTermOptionalListClass]
+                ) [TermClass]
+                NoExprOptionalListClass(
+                ) [NoExprOptionalListClass]
+              ) [ExprFirstOptionClassWithMinus]
+            ) [NormalExpressionClass]
+          ) [ClassOneClass]
+          NoCommaNumberClass(
+          ) [NoCommaNumberClass]
+        ) [PrintStmt]
+      ) [Statements]
+      RBraceClass(
+      ) [RBraceClass]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  00:14:06,702 - ===================================
+INFO  00:14:06,723 - PROGRAM NAME DETECTED => p ON LINE 1
+INFO  00:14:06,724 - ARRAY VARIABLE buffer IS BEING DEFINED! ON LINE 3
+INFO  00:14:06,724 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 3
+INFO  00:14:06,724 - ARRAY VARIABLE niz IS BEING DEFINED! ON LINE 4
+INFO  00:14:06,724 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 4
+INFO  00:14:06,724 - FUNCTION main WITH VOID AS RETURN VALUE!  ON LINE 8
+INFO  00:14:06,724 - VARIABLE index IS BEING DEFINED! ON LINE 9
+INFO  00:14:06,724 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 9
+INFO  00:14:06,724 - VARIABLE sum IS BEING DEFINED! ON LINE 10
+INFO  00:14:06,725 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 10
+INFO  00:14:06,725 - ARRAY VARIABLE buffer_Fake IS BEING DEFINED! ON LINE 11
+INFO  00:14:06,725 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 11
+INFO  00:14:06,725 - ARRAY VARIABLE aaa IS BEING DEFINED! ON LINE 12
+INFO  00:14:06,725 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 12
+INFO  00:14:06,725 - ARRAY VARIABLE niz IS BEING DEFINED! ON LINE 13
+INFO  00:14:06,725 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 13
+INFO  00:14:06,725 - VARIABLE modif_one IS BEING DEFINED! ON LINE 14
+INFO  00:14:06,725 - VARIABLES OF TYPE int HAVE BEEN DEFINED! ON LINE 14
+INFO  00:14:06,725 - ARRAY VARIABLE modif_two IS BEING DEFINED! ON LINE 15
+INFO  00:14:06,725 - VARIABLES OF TYPE char HAVE BEEN DEFINED! ON LINE 15
+INFO  00:14:06,726 - VARIABLE modif_three IS BEING DEFINED! ON LINE 16
+INFO  00:14:06,726 - VARIABLES OF TYPE char HAVE BEEN DEFINED! ON LINE 16
+INFO  00:14:06,726 - METHOD BODY STARTING!
+INFO  00:14:06,726 - CURRENT VARIABLE IN USE IS modif_three AND IT IS OF TYPE char
+INFO  00:14:06,726 - BEGINNING OF AN ASSIGNEMENT! ON LINE 39
+INFO  00:14:06,726 - CONST CHAR a ON LINE 39
+INFO  00:14:06,726 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 39
+INFO  00:14:06,726 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 39
+INFO  00:14:15,269 - SUCCESSFUL ASSIGNEMENT! TYPES: char AND char ! ON LINE 39
+INFO  00:14:17,979 - CURRENT VARIABLE IN USE IS modif_three AND IT IS OF TYPE char
+INFO  00:14:17,980 - WE ARE USING A VARIABLE OF TYPE char ON LINE 40
+INFO  00:14:17,980 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 40
+INFO  00:14:17,980 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 40
+INFO  00:14:17,980 - PRINT FUNCTION CALL IN USE! ON LINE 40
+INFO  00:14:17,980 - CURRENT VARIABLE IN USE IS modif_three AND IT IS OF TYPE char
+INFO  00:14:17,980 - BEGINNING OF AN ASSIGNEMENT! ON LINE 41
+INFO  00:14:17,980 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 41
+INFO  00:14:17,980 - USING ONLY ONE EXPRESSION IN TERM! ON LINE 41

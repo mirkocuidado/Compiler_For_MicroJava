@@ -48,6 +48,56 @@ public class CodeGenerator extends VisitorAdaptor{
 		return mainPc;
 	}
 	
+	
+	public Obj getSthFromSymbolTable(String symbol_Name, String current_method_name) {
+		Collection<Obj> program_list = Symbol_Table.find(nameOfProgram).getLocalSymbols();
+		
+		List<Obj> list_of_program_stuff = new ArrayList<>(program_list);
+		
+		List<Obj> list_of_vars_for_current_method = null;
+		Obj retObj = null;
+		
+		for(int i = 0; i < list_of_program_stuff.size(); ++i) {
+			if(list_of_program_stuff.get(i).getName().equals(current_method_name)) {
+				list_of_vars_for_current_method = new ArrayList<>(list_of_program_stuff.get(i).getLocalSymbols());
+				break;
+			}
+		}
+		
+		if(list_of_vars_for_current_method != null) {
+			for(int i=0; i < list_of_vars_for_current_method.size(); ++i) {
+				if(list_of_vars_for_current_method.get(i).getName().equals(symbol_Name)) {
+					retObj = list_of_vars_for_current_method.get(i);
+					break;
+				}
+			}
+		}
+		else {
+			for(int i = 0; i < list_of_program_stuff.size(); ++i) {
+				if(list_of_program_stuff.get(i).getName().equals(symbol_Name)) {
+					retObj = list_of_program_stuff.get(i);
+					break;
+				}
+			}
+		}
+		
+		if(retObj == null) {
+			for(int i = 0; i < list_of_program_stuff.size(); ++i) {
+				if(list_of_program_stuff.get(i).getName().equals(symbol_Name)) {
+					retObj = list_of_program_stuff.get(i);
+					break;
+				}
+			}
+		}
+		
+		if(retObj == null) {
+			System.out.print("NO OBJECT FOUND!");
+			System.exit(1);
+		}
+		
+		return retObj;
+	}
+	
 	String nameOfProgram;
 	Obj table_symbol_object;
 	
@@ -65,7 +115,9 @@ public class CodeGenerator extends VisitorAdaptor{
 	Obj array_we_are_using = null;
 	
 	
+	/********** MODIFICATION STUFF **********/
 	
+	Obj current_method_used = null;
 	
 	/********** FACTOR **********/
 	
@@ -105,6 +157,7 @@ public class CodeGenerator extends VisitorAdaptor{
 	
 	/* ~~~~~~~~~~ LOAD for a = b; the b variable <- Factor = Expr; or for any other use of variable names ~~~~~~~~~~ */
 	public void visit(DesignatorClass desig) {
+		
 		if(desig.getDesignator().obj.getType().getKind() == Struct.Array) {
 			if(if_we_are_using_an_array_to_load !=0) {
 				if_we_are_using_an_array_to_load--;
@@ -216,6 +269,8 @@ public class CodeGenerator extends VisitorAdaptor{
 		Code.put(Code.enter);
 		Code.put(number_of_formal_params);
 		Code.put(number_of_formal_params_plus_local_variables);
+		
+		current_method_used = methodTypeName.obj;
 	}
 	
 	public void visit(ReturnValueClassVoid methodTypeName){
@@ -231,6 +286,10 @@ public class CodeGenerator extends VisitorAdaptor{
 		Code.put(Code.enter);
 		Code.put(number_of_formal_params);
 		Code.put(number_of_formal_params_plus_local_variables);
+		
+		
+		current_method_used = methodTypeName.obj;
+		
 	}
 	
 	public void visit(MethodDecl methodDecl){
@@ -256,7 +315,7 @@ public class CodeGenerator extends VisitorAdaptor{
 		Code.put2(offset);
 	}
 	
-	public void visit(HelperClass h) { 
+	public void visit(HelperClass h) {
 		Code.load(array_we_are_using);
 	}
 
@@ -311,6 +370,10 @@ public class CodeGenerator extends VisitorAdaptor{
 	public void visit(DesignatorStatementOptionsClassAssignExpression designatorWithAssignement) {
 		//just_set_an_array = false;
 		
+		if(modification_two_boolean == true) {
+			modification_two_boolean = false;
+			return;
+		}
 		
 		if(did_i_use_new == true) { 
 			if(designatorWithAssignement.getDesignator().obj.getType().getElemType().getKind() == Struct.Char) {
@@ -429,6 +492,7 @@ public class CodeGenerator extends VisitorAdaptor{
 	boolean did_i_use_new = false;
 	
 	public void visit(NewFactorClass newArray) {
+		
 		Code.put(Code.newarray);
 		did_i_use_new = true;
 	}
@@ -454,7 +518,13 @@ public class CodeGenerator extends VisitorAdaptor{
 	
 	/********** DESIGNATOR -> READ THE CURRENT ARRAY **********/
 	public void visit(DesigIdent desigIdent) {
+		
+		// DEBILU, ako si zvao direktno ovo, verovatno ce array_we_are_using biti null -> trazi preko Symbol_Table
 		array_we_are_using = desigIdent.obj;
+		
+		modification_two_array = desigIdent.obj;
+		
+		modification_three_variable_in_use = desigIdent.obj;
 	}
 	
 
@@ -781,7 +851,30 @@ public class CodeGenerator extends VisitorAdaptor{
 	
 	/********** && and || **********/
 	
-	
+
+/* if(a>=b && c && d || k)
+ * 
+ * load a>=b
+ * dup
+ * load 0
+ * je
+ * prva instrukcija ispod load c <-------
+ * pop                                   |
+ * load c                                |
+ * dup <---------------------------------|
+ * load 0
+ * je
+ * prva instrukcija ispod load d
+ * pop
+ * load d
+ * dup
+ * load 1
+ * je
+ * prva instrukcija ispod load k
+ * pop
+ * load k
+ * 
+ */
 	
 	
 	List<Integer> and_list_saver = new ArrayList<>();
@@ -798,7 +891,9 @@ public class CodeGenerator extends VisitorAdaptor{
 	public void visit(FakeAndClass fakeAnd) {
 		Code.put(Code.dup);
 		Code.put(Code.const_n);
-		Code.putFalseJump(Code.ne, Code.pc+1);
+		Code.putFalseJump(Code.ne, Code.pc+1); 
+		// ako je na steku 0 => preskoci taj AND, jer je netacan
+		// ako je na steku 1 => ne skace se, vec se uzima sledeci izraz
 		and_list_saver.add(Code.pc-2);
 		Code.put(Code.pop);
 	}
@@ -825,4 +920,683 @@ public class CodeGenerator extends VisitorAdaptor{
 	 *   5: fakeorClass -> poredi sa 1 na ExprStack -> skacem ako je 1==1 tj. c<4 je tacno i preskacem sve uslove do kraja
 	 *********************************************************************************************************************/
 	
+
+	
+	/********** a = #3; 
+	public void visit(ModificationOne modifParam) {
+		Obj array_to_load_for_modification_one = getSthFromSymbolTable("niz", current_method_used.getName());
+		Code.load(array_to_load_for_modification_one);
+		
+		int pom = modifParam.getVal();
+		Code.loadConst(pom);
+		
+		if(array_to_load_for_modification_one.getType().getElemType().getKind() == Struct.Char) {
+			Code.put(Code.baload);
+		}
+		else {
+			Code.put(Code.aload);
+		}
+		
+	}***********/
+	
+	
+	Obj modification_two_array = null;
+	boolean modification_two_boolean = false;
+	
+	/* array_of_char = #1667457891;
+	 
+			version_1
+	
+	public void visit(ModificationOne modifParamTwo) {
+		
+		int number_to_separate = modifParamTwo.getVal();
+		
+		int mask = 0x000000FF;
+		
+		for(int i=3; i>=0; i--) {
+			Code.load(modification_two_array);
+			Code.loadConst(i);
+			int n_helper = number_to_separate & mask;
+			Code.loadConst(n_helper);
+			number_to_separate = number_to_separate>>8;
+			Code.put(Code.bastore);
+			modification_two_boolean = true;
+		}
+	}*/
+	
+	/* array_of_char = #1667457891;
+	 
+	 		version_2
+	 		
+	 public void visit(ModificationOne modifParamTwo) {
+		
+		int number_to_separate = modifParamTwo.getVal();
+		
+		Obj fake = new Obj(Obj.Var, modification_two_array.getName(), new Struct(Struct.Array, Symbol_Table.intType), modification_two_array.getAdr(), modification_two_array.getLevel());
+		Code.load(fake);
+		Code.loadConst(0);
+		Code.loadConst(number_to_separate);
+		Code.put(Code.astore);
+		modification_two_boolean = true;
+	}*/
+	
+	Obj modification_three_variable_in_use = null;
+	
+	/* char_var = #3; -> char_var = char_var + 3
+	 
+	 
+	 public void visit(ModificationOne modifParamTwo) {
+		if(modification_three_variable_in_use.getType().getKind() == Struct.Array) {
+			Code.put(Code.dup2);
+			if(modification_three_variable_in_use.getType().getElemType().getKind() == Struct.Char) {
+				Code.put(Code.baload);
+			}
+			else {
+				Code.put(Code.aload);
+			}
+		}
+		else Code.load(modification_three_variable_in_use);
+		
+		Code.loadConst(modifParamTwo.getVal());
+		Code.put(Code.add);
+	}*/
+
+	
+	/* modification_4
+	 
+	 public void visit(RSquareClass endOfArrayUse) {
+		
+		Code.put(Code.dup2);
+		Code.put(Code.dup2);
+		Code.put(Code.pop);
+		Code.put(Code.arraylength);
+		Code.loadConst(2);
+		Code.put(Code.div);
+		Code.put(Code.add);
+		Code.put(Code.dup2);
+		if(array_we_are_using.getType().getElemType().getKind() == Struct.Char) {
+			Code.put(Code.baload);
+		}
+		else {
+			Code.put(Code.aload);
+		}
+		Code.loadConst(1);
+		Code.put(Code.add);
+		if(array_we_are_using.getType().getElemType().getKind() == Struct.Char) {
+			Code.put(Code.bastore);
+		}
+		else {
+			Code.put(Code.astore);
+		}
+	}
+	
+	public void visit(ModificationOne modificationFour) {
+		Code.put(Code.dup2);
+		Code.put(Code.pop);
+		Code.put(Code.arraylength);
+		Code.loadConst(2);
+		Code.put(Code.div);
+		Code.put(Code.add);
+		if(array_we_are_using.getType().getElemType().getKind() == Struct.Char) {
+			Code.put(Code.baload);
+		}
+		else {
+			Code.put(Code.aload);
+		}
+	}*/
+		
+	Obj modification_five_left_part = null;
+	
+	/* sth = array # expr
+	 
+	 public void visit(AssignOpClass ass) {
+		modification_five_left_part = array_we_are_using;
+	}
+	
+	public void visit(HashClass hash) {
+		Code.load(array_we_are_using);
+	}
+	
+	public void visit(ModificationFive modif) {
+		Code.put(Code.dup2);
+		Code.put(Code.dup2);
+		Code.put(Code.pop);
+		Code.put(Code.arraylength);
+		Code.loadConst(1);
+		Code.put(Code.sub);
+		Code.put(Code.dup_x1);
+		Code.put(Code.pop);
+		Code.put(Code.sub);
+		Code.put(Code.aload);
+		Code.put(Code.dup_x2);
+		Code.put(Code.pop);
+		Code.put(Code.aload);
+		Code.put(Code.add);
+		if(modification_five_left_part.getType().getKind()==Struct.Array) Code.put(Code.astore);
+		else Code.store(modification_five_left_part);
+	}*/
+	
+	int dup_place = 0;
+	int addres_to_fill = 0;
+	
+	/*public void visit(ModificationFive modif) {
+		Code.load(array_we_are_using);
+		Code.loadConst(0);
+		Code.put(Code.aload);
+		
+		// niz[0]
+		
+		Code.loadConst(0);
+		
+		// niz[0] 0
+		
+		dup_place = Code.pc;
+		Code.put(Code.dup);
+		
+		// niz[0] 0 0
+		
+		Code.load(array_we_are_using);
+		
+		// niz[0] 0 0 niz
+		
+		Code.put(Code.arraylength);
+		
+		// niz[0] 0 0 array_length
+		
+		Code.loadConst(1);
+		Code.put(Code.sub);
+		
+		// niz[0] 0 0 array_length-1
+		
+		Code.putFalseJump(Code.lt, Code.pc+1);
+		addres_to_fill = Code.pc - 2;
+		
+		// niz[0] 0
+		
+		Code.loadConst(1);
+		
+		// niz[0] 0 1
+		
+		Code.put(Code.add);
+		
+		// niz[0] 1
+		
+		Code.put(Code.dup_x1);
+		
+		// 1 niz[0] 1
+		
+		Code.load(array_we_are_using);
+		
+		// 1 niz[0] 1 niz
+		
+		Code.put(Code.dup_x1);
+		
+		// 1 niz[0] niz 1 niz
+		
+		Code.put(Code.pop);
+		
+		// 1 niz[0] niz 1
+		
+		Code.put(Code.aload);
+		
+		// 1 niz[0] niz[1]
+		
+		Code.put(Code.add);
+		
+		// 1 niz[0]+niz[1]
+		
+		Code.put(Code.dup_x1);
+		
+		// suma 1 suma
+		
+		Code.put(Code.pop);
+		
+		// suma 1
+		
+		Code.putJump(dup_place);
+		
+		Code.fixup(addres_to_fill);
+
+		Code.put(Code.pop);
+		
+		Code.store(modif.getDesignator().obj);
+		
+	}*/
+
+	
+	/* niz[2,3] -> temp = niz[2] niz[2] = niz[3] niz[3] = temp 
+	  
+	 public void visit(CommaClass commaArg) {
+		// niz expr1
+		
+		Code.put(Code.dup_x1);
+		
+		// expr1 niz expr1
+		
+		Code.put(Code.pop);
+		Code.put(Code.pop);
+		
+		// expr1
+		
+		Code.put(Code.dup);
+		
+		// expr1 expr1
+		
+		Code.load(array_we_are_using);
+		
+		// expr1 expr1 niz
+		
+		Code.put(Code.dup_x1);
+		
+		// expr1 niz expr1 niz
+		
+		Code.put(Code.pop);
+		
+		// expr1 niz expr1
+		
+		if(array_we_are_using.getType().getKind() == Struct.Char) {
+			Code.put(Code.baload);
+		}
+		else {
+			Code.put(Code.aload);
+		}
+		
+		//expr1 niz[expr1]
+	}
+	
+	
+	public void visit(ModificationSeven modSeven) {
+		// expr1 niz[expr1] expr2
+		
+		Code.put(Code.dup);
+		
+		// expr1 niz[expr1] expr2 expr2
+		
+		Code.load(array_we_are_using);
+		
+		// expr1 niz[expr1] expr2 expr2 niz
+		
+		Code.put(Code.dup_x1);
+		
+		// expr1 niz[expr1] expr2 niz expr2 niz
+		
+		Code.put(Code.pop);
+		
+		// expr1 niz[expr1] expr2 niz expr2
+		
+		if(array_we_are_using.getType().getKind() == Struct.Char) {
+			Code.put(Code.baload);
+		}
+		else {
+			Code.put(Code.aload);
+		}
+		
+		// expr1 niz[expr1] expr2 niz[expr2]
+		
+		Code.put(Code.dup_x2);
+		
+ 		//1 niz[2] niz[1] 2 niz[2]
+		
+		Code.put(Code.pop);
+		
+		// 1 niz[2] niz[1] 2
+		
+		Code.put(Code.dup_x1);
+		
+		// 1 niz[2] 2 niz[1] 2
+		
+		Code.put(Code.pop);
+		
+		// 1 niz[2] 2 niz[1]
+		
+		Code.load(array_we_are_using);
+		
+		// 1 niz[2] 2 niz[1] niz
+		
+		Code.put(Code.dup_x2);
+		
+		// 1 niz[2] niz 2 niz[1] niz
+		
+		Code.put(Code.pop);
+		
+		// 1 niz[2] niz 2 niz[1]
+		if(array_we_are_using.getType().getKind() == Struct.Char) {
+			Code.put(Code.bastore);
+		}
+		else {
+			Code.put(Code.astore);
+		}
+		
+		// 1 niz[2]
+		
+		Code.load(array_we_are_using);
+		
+		// 1 niz[2] niz
+		
+		Code.put(Code.dup_x2);
+		
+		// niz 1 niz[2] niz
+		
+		Code.put(Code.pop);
+		
+		// niz 1 niz[2]
+		if(array_we_are_using.getType().getKind() == Struct.Char) {
+			Code.put(Code.bastore);
+		}
+		else {
+			Code.put(Code.astore);
+		}
+		
+		// kraj
+	}*/
+	
+    Map<String, Integer> labels = new HashMap<>();
+    Map<String, List<Integer>> fixUps = new HashMap<>();
+    
+    /*public void visit(Ooof labelsParam) {
+    	String n = current_method_used.getName() + "_" + labelsParam.getI1();
+    	labels.put(n, Code.pc);
+    	if (fixUps.containsKey(n)) {
+    		for(int p : fixUps.get(n))
+    			Code.fixup(p);
+    		
+    		fixUps.remove(n);
+    	}
+    }
+	
+    public void visit(GoToStmt gotoParam) {
+    	String n = current_method_used.getName() + "_" + gotoParam.getI1();
+
+    	
+    	if(labels.containsKey(n)) {
+    		Code.putJump(labels.get(n));
+    	}
+    	else {
+    		Code.putJump(Code.pc+1);    	
+        	if(fixUps.containsKey(n) == false) {
+        		fixUps.put(n, new ArrayList<>());
+        	}
+    		fixUps.get(n).add(Code.pc-2);
+    	}
+    }*/
+    
+    int start = 0;
+    int check_for_index_and_array_size = 0;
+    int jump_if_you_have_a_new_max_value = 0;
+    
+    /*		get the maximum element of array
+     
+     public void visit(ModificationHardOne maxElem) {
+    	Code.load(array_we_are_using);
+    	Code.loadConst(0);
+    	Code.put(Code.aload);
+    	Code.loadConst(0);
+    	
+    	// niz[0] 0
+    	
+    	start = Code.pc;
+    	Code.put(Code.dup);
+    
+    	// niz[0] 0 0
+    	
+    	Code.loadConst(1);
+    	Code.put(Code.add);
+    	
+    	// niz[0] 0 1
+    	
+    	Code.load(array_we_are_using);
+    	Code.put(Code.arraylength);
+    	
+    	// niz[0] 0 1 array_length
+    	
+    	Code.putFalseJump(Code.lt, Code.pc+1);
+    	check_for_index_and_array_size = Code.pc - 2;
+    	
+    	// niz[0] 0
+    	
+    	Code.loadConst(1);
+    	Code.put(Code.add);
+    	
+    	// niz[0] 1
+    	
+    	Code.put(Code.dup);
+    	
+    	// niz[0] 1 1
+    	
+    	Code.load(array_we_are_using);
+    	
+    	// niz[0] 1 1 niz
+    	
+    	Code.put(Code.dup_x1);
+    	Code.put(Code.pop);
+    	
+    	// niz[0] 1 niz 1
+    	
+    	Code.put(Code.aload);
+    	
+    	// niz[0] 1 niz[1]
+    	
+    	Code.put(Code.dup_x1);
+    	Code.put(Code.pop);
+    	
+    	// niz[0] niz[1] 1
+    	
+    	Code.put(Code.dup_x2);
+    	Code.put(Code.pop);
+    	
+    	// 1 niz[0] niz[1]
+    	
+    	Code.put(Code.dup2);
+    	
+    	// 1 niz[0] niz[1] niz[0] niz[1]
+    	
+    	Code.putFalseJump(Code.ge, Code.pc+1);
+    	jump_if_you_have_a_new_max_value = Code.pc - 2;
+    	
+    	// 1 niz[0] niz[1]
+    	
+    	Code.put(Code.pop);
+    	
+    	// 1 niz[0]
+    	
+    	Code.put(Code.dup_x1);
+    	Code.put(Code.pop);
+    	
+    	// niz[0] 1
+    	
+    	Code.putJump(start);
+    	
+    	Code.fixup(jump_if_you_have_a_new_max_value);
+    	
+    	// 1 niz[0] niz[1]
+    	
+    	Code.put(Code.dup_x2);
+    	
+    	// niz[1] 1 niz[0] niz[1]
+    	
+    	Code.put(Code.pop);
+    	Code.put(Code.pop);
+    	
+    	// niz[1] 1
+    	
+    	Code.putJump(start);
+    	
+    	// finish
+    	Code.fixup(check_for_index_and_array_size);
+    	
+    	Code.put(Code.pop);
+    	
+    	//store to destination
+    	
+    	Code.store(maxElem.getDesignator().obj);
+    	
+    }*/
+    
+    /*		insert into sorted array
+    
+    int start_of_loop_one = 0;
+    int check_if_greater_than_array_of_zero = 0; 
+    int check_if_greater_than_array_of_len = 0;
+    int address_if_we_reached_the_end = 0;
+    int get_everything_ready_for_start_again = 0;
+    
+    public void visit(ModificationHardOne insertIntoSortArray) {
+    	// 4
+    	
+    	Code.put(Code.dup); // 4 4 
+    	
+    	Code.load(array_we_are_using); // 4 4 niz
+    	Code.loadConst(0); // 4 4 niz 0
+    	Code.put(Code.aload); // 4 4 niz[0]
+    	
+    	Code.putFalseJump(Code.gt, Code.pc+1); //**********************************************************
+    	check_if_greater_than_array_of_zero = Code.pc - 2;
+    	
+    	// 4
+    	
+    	Code.put(Code.dup); // 4 4 
+    	
+    	Code.load(array_we_are_using); // 4 4 niz
+    	Code.load(array_we_are_using); // 4 4 niz niz
+    	Code.put(Code.arraylength); // 4 4 niz array_len
+    	
+    	Code.loadConst(1);
+    	Code.put(Code.sub); // 4 4 niz (array_len-1)
+    	
+    	Code.put(Code.aload); // 4 4 niz[array_len-1]
+    	
+    	Code.putFalseJump(Code.lt, Code.pc+1); //**********************************************************
+    	check_if_greater_than_array_of_len = Code.pc - 2;
+    	
+    	// 4
+    	
+    	Code.loadConst(0);
+    	
+    	// START : 4 0
+    	
+    	start_of_loop_one = Code.pc;
+    	Code.put(Code.dup); 
+    	
+    	// 4 0 0 
+    	
+    	Code.load(array_we_are_using);
+    	Code.put(Code.arraylength);
+    	
+    	// 4 0 0 array_len
+    	
+    	Code.putFalseJump(Code.lt, Code.pc+1);
+    	address_if_we_reached_the_end = Code.pc - 2;
+    	
+    	// 4 0
+    	
+    	Code.put(Code.dup);
+    	
+    	// 4 0 0
+    	
+    	Code.load(array_we_are_using);
+    	
+    	// 4 0 0 niz
+    	
+    	Code.put(Code.dup_x1);
+    	Code.put(Code.pop);
+    	
+    	// 4 0 niz 0
+    	
+    	Code.put(Code.aload);
+    	
+    	// 4 0 niz[0]
+    	
+    	Code.put(Code.dup_x2);
+    	Code.put(Code.pop);
+    	
+    	// niz[0] 4 0
+    	
+    	Code.loadConst(1);
+    	Code.put(Code.add);
+    	
+    	// niz[0] 4 1
+    	
+    	Code.put(Code.dup_x2);
+    	Code.put(Code.pop);
+    	
+    	// 1 niz[0] 4 
+    	
+    	Code.put(Code.dup_x2);
+    	
+    	// 4 1 niz[0] 4
+    	
+    	Code.put(Code.dup2);
+    	
+    	// 4 1 niz[0] 4 niz[0] 4
+    	
+    	Code.putFalseJump(Code.gt, Code.pc+1); //***********************************************************
+    	get_everything_ready_for_start_again = Code.pc-2;
+    	
+    	// 4 1 niz[0] 4
+    	
+    	Code.put(Code.pop);
+    	
+    	// 4 1 niz[0]
+    	
+    	Code.put(Code.dup_x2);
+    	Code.put(Code.pop);
+    	
+    	// niz[0] 4 1
+    	
+    	Code.put(Code.dup_x1);
+    	
+    	// niz[0] 1 4 1
+    	
+    	Code.loadConst(1);
+    	Code.put(Code.sub);
+    	
+    	// niz[0] 1 4 0
+    	
+    	Code.put(Code.dup_x1);
+    	Code.put(Code.pop);
+    	
+    	// niz[0] 1 0 4
+    	
+    	Code.load(array_we_are_using);
+    	
+    	// niz[0] 1 0 4 niz
+    	
+    	Code.put(Code.dup_x2);
+    	Code.put(Code.pop);
+    	
+    	// niz[0] 1 niz 0 4 
+    	
+    	Code.put(Code.astore);
+    	
+    	// niz[0] 1
+    	
+    	Code.putJump(start_of_loop_one);
+    	
+    	Code.fixup(get_everything_ready_for_start_again);
+    	
+    	// 4 1 niz[0] 4 
+    	
+    	Code.put(Code.pop);
+    	Code.put(Code.pop);
+
+    	// 4 1 
+    	
+    	Code.putJump(start_of_loop_one);
+    	
+    	Code.fixup(address_if_we_reached_the_end);
+    	
+    	// 4 0
+    	
+    	Code.put(Code.pop);
+    	
+    	// 4 
+    	
+    	Code.fixup(check_if_greater_than_array_of_zero);
+    	Code.fixup(check_if_greater_than_array_of_len);
+    	
+    	// 4
+    	
+    	Code.put(Code.pop);
+    }
+    */
 }

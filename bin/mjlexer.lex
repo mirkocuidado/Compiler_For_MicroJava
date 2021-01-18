@@ -87,6 +87,9 @@ import java_cup.runtime.Symbol;
 "?"			{ return new_symbol(sym.TERNARY, yytext()); }			
 ":" 		{ return new_symbol(sym.COLON, yytext()); }
 
+"#"			{ return new_symbol(sym.HASHTAG, yytext()); }
+
+
 /********** COMMENTS **********/
 "//" {yybegin(COMMENT);}
 <COMMENT> . {yybegin(COMMENT);}

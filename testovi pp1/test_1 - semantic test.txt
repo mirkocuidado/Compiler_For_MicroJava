@@ -1,0 +1,49 @@
+program MJProgram
+int a, b[], c, d;
+char e, f[], g;
+bool h, i[];
+
+const int aa = 2, bb = 6;
+const char cc = 'c', dd = 'd';
+const bool ee = true, ff = false;
+{
+	
+	void m(){ }
+	
+	void k(int z){
+		
+		z = 400;
+		
+		return;
+	}
+	
+	int func(int a[], int b){ return 0; }
+	
+	void main(int a, int b[], char c, char d[], bool e, bool f[])
+		int x, y, z;
+		char xx, yy, zz;
+	{
+		
+		x = 123;
+		xx = 'c';
+		
+		if(a==x){
+			if(c == d[3] && a >= b[y]){
+				z = 300;
+			}
+			else z = 400;
+		}
+		else z = 500;
+		
+		b = e ? b : b;
+		
+		do{
+			a = 2;
+			
+		} while(a == func(b,a));
+		
+		func(b,func(b,b[0]));
+		
+		d[0] = d[1];
+	}
+}

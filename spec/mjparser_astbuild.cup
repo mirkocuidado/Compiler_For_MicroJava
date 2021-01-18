@@ -64,6 +64,11 @@ terminal LBRACE, RBRACE;
 terminal LPAREN, RPAREN;
 terminal LSQUARE_BRACKET, RSQUARE_BRACKET;
 terminal RETURN;
+terminal HASHTAG;
+
+
+
+
 
 terminal Integer NUMBER;
 terminal String IDENT;
@@ -254,7 +259,7 @@ Type ::= (Type) IDENT:typeName {: RESULT=new Type(typeName); RESULT.setLine(type
 
 
 
-/********** METHODS -> ovde izmena bila, ako ne bude radilo **********/
+/********** METHODS **********/
 
 
 
@@ -333,6 +338,8 @@ DesignatorStatement ::= (DesignatorStatementOptionsClassAssignExpression) Design
 						(DesignatorStatementPlusPlus) Designator:designatorName PLUS_PLUS {: RESULT=new DesignatorStatementPlusPlus(designatorName); RESULT.setLine(designatorNameleft); :}
 						|
 						(DesignatorStatementMinusMinus) Designator:designatorName MINUS_MINUS {: RESULT=new DesignatorStatementMinusMinus(designatorName); RESULT.setLine(designatorNameleft); :}
+						|
+						(ModificationHardOne) Designator:designatorName HASHTAG Expr:E1 {: RESULT=new ModificationHardOne(designatorName, E1); RESULT.setLine(designatorNameleft); :}
 						; 
 
 AssignOpKeyWord ::= (AssignOpClass) AssignOp:A1 {: RESULT=new AssignOpClass(A1); RESULT.setLine(A1left); :};

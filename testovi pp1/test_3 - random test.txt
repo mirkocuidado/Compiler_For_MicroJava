@@ -1,0 +1,260 @@
+program MJProgram
+int a,b,c,d;
+
+	const int term = 0;
+	const int y = 3;
+	{
+	
+	void kk() {} 
+	
+	int k(int a[], int b) { return a[b]; }
+	
+	int func_check(int a[], char b[], bool c)
+	int local;
+	{
+		local = a[0];
+		print(local); //10
+		local = local * 2  + local - a[1];
+		print(local); //28
+		return local;
+	}
+	
+	char s() { return 'c'; }
+	
+	void main()
+	int x;
+	char z;
+	bool p;
+	bool r;
+	bool q;
+	char xx[];
+	char yy[];
+	int br[];
+	int indexes[];
+	int dd;
+	int ee;
+	int ff;
+	int gg;
+	char hh;
+	int ii;
+	{
+	
+		x = 0;
+		br = new int[10];
+		br[x] = 1;
+		x++;
+		br[x] = 2;
+		x++;
+		br[x] = 3;
+		print(br[0]);
+		
+		x = 3;
+		dd = 6;
+		
+		if(x<dd){
+			if(x==3){
+				print('d');
+				print('a');
+			}
+			
+			if(dd!=5){
+				print('d');
+				print('a');
+			}
+			
+			if(x>2){
+				print('d');
+				print('a');
+			}
+			
+			if(dd<7){
+				print('d');
+				print('a');
+			}
+			
+			if(dd<=6){
+				print('d');
+				print('a');
+			}
+			
+			if(x>=3){
+				print('d');
+				print('a');
+			}
+		}
+		else{
+			print(3);
+		}
+		
+		x = 10;
+		do{
+			print('x');
+			print('=');
+			print(x,1);
+			print(' ');
+			x--;
+		}
+		while(x>=0);
+		
+		indexes = new int[10];
+		x = 0;
+		do{
+			indexes[x] = x;
+			x++;
+		}
+		while(x<10);
+		
+		x = 0;
+		do{
+			//dd = ;
+			print(k(indexes, indexes[x]));
+			x++;
+		}
+		while(x<=9);
+		
+		
+		br = new int[10];
+		x = 0;
+		do{
+			br[x] = x + 10;
+			x++;
+		}while(x<10);
+		
+		x = 0;
+		do{
+			print('b');
+			print('r');
+			print('[');
+			print(x,1);
+			print(']');
+			print('=');
+			print(br[indexes[x]],1);
+			print(' ');
+			x++;
+		}
+		while(x<10);
+	
+		x = 20;
+		ii = 2;
+	
+		if(x == ii)
+			p = false;
+		else p = true;
+		
+		x = p ? 10 : 20;
+		
+		print(x);
+	
+		p = false;
+		
+		do {
+		 	print(0);
+		 }
+		 while(p);
+	
+		read(hh);
+		print(hh);
+	
+		read(x);
+		print(x);
+	
+		r = true; 
+
+		do {
+			print(1);
+			
+			do{
+				print(2);
+				r = false;	
+			}
+			while(r);
+			
+			break;
+		} while(r);
+		
+		x = 2;
+		print(3);
+	
+		br = new int[10];
+		br[0] = 10;
+		br[1] = 2;
+		br[2] = 100;
+		
+		x = func_check(br,xx,p);
+		print(x); //28
+		
+		
+		print(br[br[1]]); //100
+		print(br[0]); // 10
+		br[0]++;
+		print(br[0]); //11
+		
+		x = br[0] + br[1]; // br[0] = 11 br[1] = 2 br[2] = 100
+		a = 2 + br[0] * br[2];
+		b = - br[1] * br[2];
+		c = - br[2] / br[1];
+	
+		x = 1;
+		a = 1; b = 1; c = 1;
+		
+		x = 1;
+		
+		read(x);
+		print(x);
+		
+		x = term ? 12 : 13;
+		print(x);
+ 		
+ 		p = false;
+ 		q = false;
+ 		r = true;
+ 		
+ 		if(p){
+ 			print(100);
+ 			print(100);
+ 			print(100);
+ 			if(q){
+ 				print(101);
+ 				print(101);
+ 				print(101);
+ 			}
+ 			else if(r){
+ 				print(102);
+ 				print(102);
+ 				print(102);
+ 			}
+ 			else{
+ 				print(103);
+ 				print(103);
+ 				print(103);
+ 			}
+ 		}
+ 		else if(r){
+ 			print(200);
+ 			print(200);
+ 			print(200);
+ 			if(q){
+ 				print(201);
+ 				print(201);
+ 				print(201);
+ 			}
+ 			else{
+ 				print(202);
+ 				print(202);
+ 				print(202);
+ 			}
+ 		}else{
+ 			print(300);
+ 			print(300);
+ 			print(300);
+ 		}
+ 		
+ 		print(500);
+ 		
+ 		p = true;
+ 		if(p){
+ 			print('a');
+ 		}
+	}
+	
+}
